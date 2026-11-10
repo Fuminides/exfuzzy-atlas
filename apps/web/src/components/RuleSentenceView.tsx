@@ -19,7 +19,12 @@ export function RuleSentenceView({ sentence, testId = "rule-sentence" }: { sente
           {i > 0 && <span className="kw">{tr(" y ", " and ")}</span>}
           {p.words.article && <>{p.words.article} </>}
           <strong className="var">{p.words.subject}</strong> <span className="kw">{p.words.verb}</span>{" "}
-          {p.color ? <ClassChip label={p.term} text={p.words.value} color={p.color} /> : <em className="term">{p.words.value}</em>}
+          {p.words.qualifier && (
+            <>
+              <span className="kw">{p.words.qualifier}</span>{" "}
+            </>
+          )}
+          {p.color ? <ClassChip label={p.term} text={p.words.value} color={p.color} /> : <em className="term" title={p.detail ?? undefined}>{p.words.value}</em>}
           {p.modifier !== null && p.modifier !== 1 && <span className="muted small">{tr(` (modificador ^${p.modifier})`, ` (modifier ^${p.modifier})`)}</span>}
         </span>
       ))}{" "}

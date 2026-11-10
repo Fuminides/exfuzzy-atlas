@@ -7,6 +7,7 @@ import { resetMaps } from "./test/maplibreMock";
 import userEvent from "@testing-library/user-event";
 import { mixtureV07 } from "./test/fixturesMixture";
 import { classifierV05, regressionV05 } from "./test/v05";
+import { withAtLeast } from "./test/fixturesConditions";
 
 vi.mock("maplibre-gl", async () => (await import("./test/maplibreMock")).maplibreFactory());
 
@@ -70,6 +71,16 @@ describe("wording guard (English)", () => {
     expect(text()).not.toMatch(/activation/i);
     expect(text().replace(/[Nn]o (single )?rule decides( alone)?/g, "").replace(/none decides alone/g, "")).not.toMatch(/decid|winn/i);
     expect(text()).not.toMatch(/\b(las|los|reglas|predicciones|estaciones|observaciones|datos|cada|apoya|suma)\b/i);
+  });
+
+  it("patrones (v0.8, a condition read as “at least”): same guard, no Spanish left, and the cards say “is at least”", async () => {
+    installApi({}, withAtLeast(classifierV05()));
+    render(<App initialLang="en" initialTab="patrones" />);
+    await ready.patrones();
+    await waitFor(() => expect(text()).toMatch(/ is at least /));
+    expect(text()).not.toMatch(FORBIDDEN);
+    expect(text()).not.toMatch(/activation/i);
+    expect(text()).not.toMatch(/\b(las|los|reglas|predicciones|estaciones|observaciones|datos|cada|al menos|como mucho)\b/i);
   });
 
   it("patrones (regression): same guard", async () => {

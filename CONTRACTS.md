@@ -198,10 +198,10 @@ Son aditivas y compatibles con v0.3: todos los campos nuevos de modelos existent
     - `rule_deltas` (firing y, en clasificadores, asociación, modificado − original);
     - `prediction_change`;
     - `synthetic_what_if: true`;
-    - `label`: «respuesta del modelo ante entradas modificadas — no efecto causal ni predicción».
+    - `label`: «respuesta del modelo ante entradas modificadas» (v0.8; antes llevaba además «— no efecto causal ni predicción»).
 
     Validación (422): solo variables del modelo, valores finitos, dentro del `domain` de la variable (extremos incluidos). Sin overrides, `modified == original`. Un override desactiva `observation_ids`, `observed` y `observed_at_utc` de lo modificado (`source_id = what_if_override`), y la traza modificada lleva un aviso. No escribe nada en disco. Entidad sin modelo: 422; entidad o emisión inexistentes: 404.
-12. **`GET /api/v1/rule-stories?model_id&from&to&tau&limit`** (§8, Rule Stories). Frases con plantilla, sin modelo de lenguaje, en español, que **solo describen activaciones**. Cada historia lleva `numbers` (las cifras del texto), `queries` (las peticiones `rule-map` / `rule-territories` exactas) y `checks` (qué recuento de qué propiedad de esas respuestas da cada cifra), de modo que se puede auditar sin confiar en el texto. Tipos y puntuación documentados en `atlas.services.stories` y en `score_definition`: `co_activation_burst` (varias entidades por encima de `tau` a la vez durante emisiones consecutivas; solo en rejillas regulares), `localized_rule` y `territory_leader`. Se ordena por puntuación (desempate: tipo y posición de la regla), `limit` ≤ 50 (por defecto 10) y `n_candidates` dice cuántas había. La puntuación ordena qué mostrar; no es un test estadístico ni una probabilidad.
+12. **`GET /api/v1/rule-stories?model_id&from&to&tau&limit`** (§8, Rule Stories). Frases con plantilla, sin modelo de lenguaje, en español, que **solo describen activaciones**. Cada historia lleva `numbers` (las cifras del texto), `queries` (las peticiones `rule-map` / `rule-territories` exactas) y `checks` (qué recuento de qué propiedad de esas respuestas da cada cifra), de modo que se puede auditar sin confiar en el texto. El `disclaimer` dice solo qué son: «Descripciones de activaciones del modelo en la ventana pedida.» (v0.8; antes seguía con una lista de lo que no son). Tipos y puntuación documentados en `atlas.services.stories` y en `score_definition`: `co_activation_burst` (varias entidades por encima de `tau` a la vez durante emisiones consecutivas; solo en rejillas regulares), `localized_rule` y `territory_leader`. Se ordena por puntuación (desempate: tipo y posición de la regla), `limit` ≤ 50 (por defecto 10) y `n_candidates` dice cuántas había. La puntuación ordena qué mostrar; no es un test estadístico ni una probabilidad.
 
 **Fuera de alcance, a propósito:** comparar dos reglas del mismo modelo (Rule Duel, E4) ya se hace con dos llamadas a `rule-map`; comparar modelos exige un mapeo explícito de reglas y no existe endpoint. `rule_contribution` y `dominant_contributor` siguen sin exponerse.
 
@@ -340,7 +340,7 @@ existente cambia (`tests/contracts/test_models_v062.py`).
    explicación: `tests/integration/test_explanations.py` compara `input_sha256` con el contexto reconstruido.
 6. **Mezcla de reglas (v0.7).** La plantilla v2 ya dice cómo describir un `rule_mixture_classifier` (`class_weights` por
    regla; las reglas suman su apoyo a cada categoría, ninguna decide sola, un peso no es «importancia» ni «evidencia en
-   contra»). `scripts/explain_model.py` rechaza esa familia hasta que v0.7 fije sus campos.
+   contra»). `scripts/explain_model.py` describe esa familia desde v0.7 (§18).
 
 ## 18. Enmienda de A0 en v0.7 (2026-11-09): mezcla de reglas (`rule_mixture_classifier`)
 
@@ -423,3 +423,55 @@ sirven a la vez, cada tarea según el `inference.family` de su `rules.json`.
    código los modelos servidos (regla ganadora, regresión y las mezclas ajustadas con `20c1095`) dan las mismas tablas de
    activación y predicciones bit a bit (`python -m atlas.ml.publish_parity --tables`). `exfuzzy_version()` registra
    `3.4.0`; cada modelo conserva en `rules.json` y `card.json` la versión con la que se ajustó.
+
+## 19. Enmienda de A0 en v0.8 (2026-11-10): condiciones ordinales («al menos» / «como mucho») y términos compuestos
+
+Aditiva sobre v0.7 (`SCHEMA_VERSION` 0.8.0). Los payloads v0.7 siguen validando y un modelo sin esas condiciones se
+serializa con `operator: "is"` y `terms: [term]` (`tests/contracts/test_models_v08.py`). Origen: AT-041k
+(`docs/ml/ordinal_conditions.md`), ex-fuzzy PR 45; los cuatro modelos que ganaron la regla pre-registrada (`uk_water_do`,
+`nyc_pickups_h3`, `nyc_pickups_h6`, `de_no2_h3`) se publican con ellas.
+
+1. **`Antecedent`.** Campos nuevos:
+   - `operator`: `is` (un término, como siempre), `at_least` / `at_most` («x es al menos / como mucho t» sobre los términos
+     ordenados de una variable de cantidad) o `any_of` (un término compuesto con nombre: un tramo del reloj o de la
+     semana).
+   - `terms`: nombres de los **términos base** de la variable que cubre la condición, en el orden de la variable (de
+     menor a mayor). `[term]` para `is` (se rellena si falta). `at_least t` cubre de `t` al último término y
+     `at_most t` del primero a `t` (el validador lo comprueba contra la variable). Un compuesto puede cubrir términos
+     no contiguos: el primero y el último de un reloj son los dos extremos de un mismo tramo que cruza la medianoche.
+   - `term`: sigue siendo el término para `is`, el término umbral para `at_least` (el más bajo cubierto) y `at_most` (el
+     más alto), y para `any_of` el **nombre interno** del compuesto (que no es un término de la variable).
+   - `label`, `label_en` (solo `any_of`, si no null): nombre para mostrar del compuesto, de la config
+     `configs/compound_terms.json` con clave el nombre interno. Son nombres **provisionales** que solo se muestran: se
+     cambian en la config sin reajustar el modelo (`python -m atlas.services.enrich --labels-only`; `publish` los aplica
+     a la copia publicada de `rules.json`).
+   - `RuleDefinition.text` y `rules.json` escriben `IF x IS at least Fair AND hora IS <nombre interno>`, como ex_fuzzy.
+2. **Pertenencia de una condición.** Para `at_least`, `at_most` y `any_of` es la **suma acotada**
+   `min(1, Σ pertenencias de los términos que cubre)`, la que calcula la biblioteca; la t-norma de la regla se aplica
+   sobre ella como sobre cualquier antecedente. Atlas la **lee** de ex_fuzzy (`compute_antecedents_memberships`, el
+   índice de la condición), no la recalcula (`atlas.explain.engine.trace_antecedents`; el test compara con la suma de
+   las pertenencias de los términos base). `AntecedentTrace` lleva `operator` y `terms` (y `term` = nombre interno del
+   compuesto) con las mismas reglas de validación.
+3. **Variables.** No hay geometría nueva: la forma de una condición ordinal o compuesta es la suma acotada de los
+   trapecios publicados de `terms`, y la web la calcula a partir de los parámetros de `LinguisticVariable.terms[]` y de
+   `Antecedent.terms`. Solo se dibuja; no se sirve.
+4. **Exportación.** `rules_export` ya no se niega a exportar estos modelos: lee las condiciones con
+   `rule.conditions()` (`atlas.ml.exfuzzy_features.rule_conditions`: `Condition(feature, variable, operator, term,
+   term_index, terms, code, name)`), nunca del texto impreso. `atlas.explain` (trazas) y `report_fx` usan la misma
+   función; importancia, historias, territorios, el almacén mock y la API trabajan con identificadores de regla y firing,
+   y no cambian.
+5. **Qué dice cada condición.** «Es al menos Aceptable» es un enunciado sobre el orden de los términos de una entrada,
+   no sobre la entrada fuera del modelo; el firing de una regla con estas condiciones sigue siendo un grado de
+   emparejamiento y nunca una probabilidad, una contribución ni un riesgo.
+6. **Textos.** La etiqueta de `POST /scenarios` pasa a «respuesta del modelo ante entradas modificadas» y el `disclaimer`
+   de `/rule-stories` a «Descripciones de activaciones del modelo en la ventana pedida.»: dicen lo que son y no lo que no
+   son (decisión del usuario, 2026-11-10; la web ya no los mostraba).
+7. **Dependencia.** `pyproject.toml` fija `ex-fuzzy==3.5.0` de PyPI: el código del commit `7a0844a` (PR 45) más el cambio
+   de versión (`diff` de los dos árboles `ex_fuzzy/`: solo `_version.py`). Con las opciones apagadas es bit a bit la 3.4.0.
+   Los cuatro modelos nuevos se ajustaron con `7a0844a` y lo registran (`3.4.0+g7a0844a`) con un aviso que dice que su
+   código es el de la 3.5.0; los modelos anteriores conservan la versión con la que se ajustaron.
+8. **Registro 0.8.0 y publicación.** Los cuatro modelos nuevos llevan el id `exfuzzy-<tarea>-<ejecución>-ordinal-seed<k>`
+   (`mixture-nonneg-ordinal`, `level-rel7-ordinal`, `fx-w-unique-ordinal`); los modelos que sustituyen quedan fuera del
+   registro en una carpeta de respaldo (`artifacts/published-v07`). Los run directories los escribe
+   `python -m atlas.ml.publish_ordinal runs` y se publican con `atlas.services.publish` y se comprueban con
+   `atlas.ml.publish_parity` como siempre (`docs/ml/ordinal_conditions.md`, sección 6).

@@ -49,7 +49,7 @@ En `Fuminides/ex-fuzzy`, leer `AGENTS.md`, `LLM/DEVELOPMENT.md` y `LLM/DELEGATIO
 
 ## Entorno y operativa
 
-- **Python:** `PYTHON` (Makefile; por defecto `python`) es el intérprete del entorno donde está instalado el proyecto, con `ex-fuzzy==3.4.0` de PyPI (la versión fijada en `pyproject.toml`). Si falta un paquete, se declara en `pyproject.toml`. El Makefile fija `PYTHONPATH=src:apps/api`. Desde el contrato v0.7 se necesita ex-fuzzy 3.4.0, la primera versión con la mezcla de reglas; `EXFUZZY_SRC=<checkout>` (Makefile) usa otro ex_fuzzy en su lugar y registra su commit (`docs/reproduce.md`).
+- **Python:** `PYTHON` (Makefile; por defecto `python`) es el intérprete del entorno donde está instalado el proyecto, con `ex-fuzzy==3.5.0` de PyPI (la versión fijada en `pyproject.toml`). Si falta un paquete, se declara en `pyproject.toml`. El Makefile fija `PYTHONPATH=src:apps/api`. Desde el contrato v0.7 se necesita la mezcla de reglas (ex-fuzzy 3.4.0) y desde el v0.8 las condiciones ordinales y los términos compuestos (ex-fuzzy 3.5.0); `EXFUZZY_SRC=<checkout>` (Makefile) usa otro ex_fuzzy en su lugar y registra su commit (`docs/reproduce.md`).
 - **Comandos:** `make test`, `make lint`, `make schemas`, `make fixtures`, `make api` (ver `docs/reproduce.md`).
 - **Datos:** raw en la raíz de datasets de la máquina (`ATLAS_DATASETS_ROOT`, por defecto `~/Datasets`), con symlink en `data/raw/<source>` (ver `LLM_help/DATASETS_PATHS.md`). No dejar datos reales en git.
 - **Fixtures:** las sintéticas van en `fixtures/synthetic/`, llevan `synthetic: true` y nunca se presentan como reales.

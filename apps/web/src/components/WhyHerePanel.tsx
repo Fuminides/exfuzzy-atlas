@@ -204,7 +204,7 @@ export function WhyHerePanel({ entityName, state, rules, selectedRuleId, onSelec
                 <tbody>
                   {selected.antecedents.map((a) => (
                     <tr key={a.feature}>
-                      <th scope="row">
+                      <th scope="row" title={names.detail(a.feature, a) ?? undefined}>
                         {onSelectFeature ? (
                           <button
                             type="button"

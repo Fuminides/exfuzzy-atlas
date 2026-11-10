@@ -241,29 +241,36 @@ _PROBES = {"term_bound_fix": has_term_bound_fix, "unique_antecedents": has_uniqu
 
 class RuleCondition(NamedTuple):
     """One condition of a rule: input ``feature`` (index), ``operator`` (``is`` | ``at_least`` | ``at_most`` |
-    ``any_of``), the ``term`` it refers to (the compound's name for ``any_of``), and ``text`` (the term,
-    ``at least <term>``, ``at most <term>`` or the compound's name, as ex_fuzzy prints it)."""
+    ``any_of``), the ``term`` it refers to (the compound's name for ``any_of``), ``text`` (the term,
+    ``at least <term>``, ``at most <term>`` or the compound's name, as ex_fuzzy prints it), ``terms`` (the base terms
+    it covers, low to high) and ``code`` (the integer stored in ``RuleSimple.antecedents``, an index into the
+    memberships ex_fuzzy computes for the variable)."""
 
     feature: int
     operator: str
     term: str
     text: str
+    terms: tuple[str, ...]
+    code: int
 
 
 def rule_conditions(rule, antecedents) -> list[RuleCondition]:
     """The conditions of ``rule`` (an ex_fuzzy ``RuleSimple``) in variable order, without the don't-cares.
 
-    With ex_fuzzy PR 45 this is ``rule.conditions(antecedents)``, so an ordinal code (a term gene beyond the number of
-    terms) reads as ``at least`` / ``at most`` and a compound code as ``any_of`` with its name. Without it (3.4.0)
-    every antecedent is the term it indexes: both give the same answer for a rule with single terms, which is why
-    callers use this instead of indexing the term names.
+    With ex_fuzzy 3.5.0 (PR 45) this is ``rule.conditions(antecedents)``, so an ordinal code (a term gene beyond the
+    number of terms) reads as ``at least`` / ``at most`` and a compound code as ``any_of`` with its name. Without it
+    (3.4.0) every antecedent is the term it indexes: both give the same answer for a rule with single terms, which is
+    why callers use this instead of indexing the term names.
     """
     if has_ordinal_conditions():
-        return [RuleCondition(c.feature, c.operator, str(c.name if c.operator == "any_of" else c.term),
-                              _OPERATOR_TEXT[c.operator] + str(c.name if c.operator == "any_of" else c.term))
-                for c in rule.conditions(antecedents)]
+        out = []
+        for c in rule.conditions(antecedents):
+            term = str(c.name if c.operator == "any_of" else c.term)
+            out.append(RuleCondition(c.feature, c.operator, term, _OPERATOR_TEXT[c.operator] + term,
+                                     tuple(str(t) for t in c.terms), int(c.code)))
+        return out
     names = [v.linguistic_variable_names() for v in antecedents]
-    return [RuleCondition(f, "is", str(names[f][int(t)]), str(names[f][int(t)]))
+    return [RuleCondition(f, "is", str(names[f][int(t)]), str(names[f][int(t)]), (str(names[f][int(t)]),), int(t))
             for f, t in enumerate(rule.antecedents) if t >= 0]
 
 

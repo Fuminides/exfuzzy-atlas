@@ -75,7 +75,7 @@ class ModelCtx:
     first: datetime  # first and last issue time exported: the card coverage clipped to the period
     last: datetime
     step_hours: int
-    pairs: list[tuple[str, str]]
+    pairs: list[tuple[str, str, str]]  # (feature, operator, term): the P axis of mem shards
     period: tuple[datetime, datetime] | None = None  # None: the whole coverage
     full: tuple[datetime, datetime] | None = None  # the card coverage
     family: m.InferenceFamily = field(init=False)
@@ -169,23 +169,25 @@ class Ctx:
         return mc
 
 
-def antecedent_pairs(rules: m.ModelRules) -> list[tuple[str, str]]:
-    """The ``(feature, term)`` memberships the rules use, in order of first appearance: the P axis of ``mem`` shards.
+CONDITION_OPERATORS = ("is", "at_least", "at_most", "any_of")
 
-    This and ``store._antecedent_traces`` are the only places that read the shape of an antecedent. A rules document
-    whose antecedents carry anything beyond feature, term and modifier (contract v0.8 operators and unions) fails
-    loudly here instead of exporting memberships that mean something else.
+
+def antecedent_pairs(rules: m.ModelRules) -> list[tuple[str, str, str]]:
+    """The conditions the rules use as ``(feature, operator, term)``, in order of first appearance (P axis of ``mem``).
+
+    A condition is one membership: the term's own for ``is``, the bounded sum of the covered terms for ``at_least`` /
+    ``at_most`` / ``any_of`` (``term`` is then the threshold term or the compound's internal name; contract v0.8). This,
+    ``engine.pair_positions`` and ``store._antecedent_traces`` are the only readers of the shape of an antecedent; an
+    operator they do not know fails the export instead of writing memberships that mean something else.
     """
-    pairs: list[tuple[str, str]] = []
+    pairs: list[tuple[str, str, str]] = []
     for rule in rules.rules:
         for a in rule.antecedents:
-            extra = set(a.model_dump(exclude_none=True)) - {"feature", "term", "modifier"}
-            if extra:
-                raise NotImplementedError(
-                    f"{rules.model_id} {rule.rule_id}: antecedent fields {sorted(extra)} need slot support in the "
-                    "static export (extract.antecedent_pairs, engine, store._antecedent_traces)")
-            if (a.feature, a.term) not in pairs:
-                pairs.append((a.feature, a.term))
+            if a.operator not in CONDITION_OPERATORS:
+                raise NotImplementedError(f"{rules.model_id} {rule.rule_id}: unknown condition operator {a.operator!r}")
+            key = (a.feature, a.operator, a.term)
+            if key not in pairs:
+                pairs.append(key)
     return pairs
 
 
@@ -544,8 +546,7 @@ def export_day(ctx: Ctx, mc: ModelCtx, key: str) -> int:
     ant = engine.antecedent_features(h.model, mc.family)
     pos = {f: j for j, f in enumerate(h.features)}
     Xa = X[:, [pos[f] for f in ant]] if n else np.zeros((0, len(ant)))
-    terms = engine.term_names(h.model, mc.family)
-    pairs = [(ant.index(f), terms[ant.index(f)].index(t)) for f, t in mc.pairs]
+    pairs = engine.pair_positions(h.model, mc.family, mc.pairs)
     finite = np.isfinite(Xa).all(axis=1) if n else np.zeros(0, dtype=bool)
     mem = np.full((len(pairs), n), np.nan)
     if finite.any():

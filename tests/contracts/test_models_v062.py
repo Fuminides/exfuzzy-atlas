@@ -28,7 +28,7 @@ def _payload(**over):
 
 def test_round_trip_and_defaults():
     e = m.ModelExplanation.model_validate(_payload())
-    assert e.schema_version == m.SCHEMA_VERSION == "0.7.0" and e.synthetic is False and e.reviewed is False
+    assert e.schema_version == m.SCHEMA_VERSION == "0.8.0" and e.synthetic is False and e.reviewed is False
     again = m.ModelExplanation.model_validate_json(e.model_dump_json())
     assert again == e and again.generated_by.model == "claude-opus-5-5"
 

@@ -1,5 +1,6 @@
 import type { LinguisticTerm, LinguisticVariable, RuleTrace } from "../api/types";
 import { tr } from "../i18n";
+import { boundedSumPoints, condKey, isExtra, termsOf, type CondSpec } from "../lib/conditions";
 import { fmt, fmtNum, unitLabel } from "../lib/format";
 import { useFeatureLabel, useNames } from "../lib/labels";
 
@@ -7,6 +8,10 @@ interface Props {
   variable: LinguisticVariable;
   /** Term the selected rule uses for this variable, drawn thicker. */
   ruleTerm: string | null;
+  /** v0.8: the ordinal and compound conditions some rule of the model uses on this variable (drawn as the bounded sum of their terms). */
+  conditions?: readonly CondSpec[];
+  /** v0.8: the selected rule's condition on this variable when it is one of those, drawn thicker. */
+  ruleCondition?: CondSpec | null;
   ruleId: string | null;
   /** Variables of the selected rule, to switch between them. */
   siblings: readonly string[];
@@ -35,9 +40,11 @@ export const isDrawn = (t: LinguisticTerm) => t.membership_type !== "gaussian" &
 /**
  * Linguistic terms of one variable. Trapezoidal/triangular terms are drawn as the polyline of their params (placed on
  * the axis, nothing else); gaussian terms are listed. The input value of the selected station and every μ come from
- * the rule trace (the engine's numbers); the client computes no membership.
+ * the rule trace (the engine's numbers); the client computes no membership. The only shape computed here is the dashed line
+ * of an ordinal or compound condition (v0.8): the sum of the memberships of the terms it covers, capped at 1, drawn from
+ * the terms' published parameters.
  */
-export function PartitionsPanel({ variable, ruleTerm, ruleId, siblings, onVariable, onClose, trace, stationName }: Props) {
+export function PartitionsPanel({ variable, ruleTerm, conditions = [], ruleCondition = null, ruleId, siblings, onVariable, onClose, trace, stationName }: Props) {
   const label = useFeatureLabel();
   const names = useNames();
   const drawn = variable.terms.filter(isDrawn);
@@ -52,7 +59,14 @@ export function PartitionsPanel({ variable, ruleTerm, ruleId, siblings, onVariab
   const value = input?.value ?? null;
   // Memberships of this variable's terms that the trace carries (those some rule uses); never computed here.
   const mu = new Map<string, number>();
-  for (const r of trace?.rules ?? []) for (const a of r.antecedents) if (a.feature === variable.feature) mu.set(a.term, a.membership);
+  const muCond = new Map<string, number>();
+  for (const r of trace?.rules ?? []) for (const a of r.antecedents) if (a.feature === variable.feature) (isExtra(a) ? muCond : mu).set(condKey(a), a.membership);
+  const shapes = conditions.map((c, i) => {
+    const pts = boundedSumPoints(variable.terms.filter((t) => termsOf(c).includes(t.name)), lo, hi);
+    const top = pts.filter(([, m]) => m >= 1).map(([x]) => x);
+    return { c, key: condKey(c), pts, at: top.length ? (Math.min(...top) + Math.max(...top)) / 2 : (lo + hi) / 2, row: i };
+  });
+  const ruleKey = ruleCondition && isExtra(ruleCondition) ? condKey(ruleCondition) : null;
   const outside = value !== null && (value < lo || value > hi);
   const unit = variable.unit ? unitLabel(variable.unit) : "";
   const colorOf = (i: number) => COLORS[i % COLORS.length]!;
@@ -103,6 +117,12 @@ export function PartitionsPanel({ variable, ruleTerm, ruleId, siblings, onVariab
             </g>
           );
         })}
+        {shapes.map(({ c, key, pts, at, row }) => (
+          <g key={key} data-condition={key}>
+            <polyline className={key === ruleKey ? "term term--sum term--rule" : "term term--sum"} points={pts.map(([x, m]) => `${X(x)},${Y(m)}`).join(" ")} />
+            <text x={X(at)} y={Y(1) + 11 + row * 10} textAnchor="middle" className="axis sum-label">{names.label(variable.feature, c)}</text>
+          </g>
+        ))}
         {value !== null && (
           <g data-testid="input-marker" data-value={String(value)}>
             <line x1={X(value)} x2={X(value)} y1={Y(1)} y2={Y(0)} className="input-line" />
@@ -113,9 +133,18 @@ export function PartitionsPanel({ variable, ruleTerm, ruleId, siblings, onVariab
                 <circle key={t.name} cx={X(value)} cy={Y(m)} r={4} data-mu={String(m)} data-term={t.name} style={{ fill: colorOf(i) }} />
               );
             })}
+            {shapes.map(({ key }) => {
+              const m = muCond.get(key);
+              return m === undefined ? null : <circle key={key} cx={X(value)} cy={Y(m)} r={4} data-mu={String(m)} data-condition={key} style={{ fill: "var(--ink)" }} />;
+            })}
           </g>
         )}
       </svg>
+      {shapes.length > 0 && (
+        <p className="muted" data-testid="partition-conditions">
+          {tr("La línea discontinua suma las pertenencias de los términos que cubre cada condición, con tope en 1.", "The dashed line adds up the memberships of the terms each condition covers, capped at 1.")}
+        </p>
+      )}
       <p className="muted">
         {value === null
           ? trace
@@ -157,6 +186,24 @@ export function PartitionsPanel({ variable, ruleTerm, ruleId, siblings, onVariab
                   <span className="muted">
                     {!trace ? "—" : value === null ? tr("sin entrada", "no input") : tr("ninguna regla usa este término", "no rule uses this term")}
                   </span>
+                )}
+              </td>
+            </tr>
+          ))}
+          {shapes.map(({ c, key }) => (
+            <tr key={key} data-condition={key} aria-current={key === ruleKey ? "true" : undefined}>
+              <th scope="row">
+                <span className="swatch" style={{ background: "transparent", borderColor: "var(--ink)", borderStyle: "dashed" }} aria-hidden="true" />{" "}
+                <em className="term-phrase">{names.label(variable.feature, c)}</em>
+                {key === ruleKey && <span className="muted">{tr(` · usado por ${ruleId}`, ` · used by ${ruleId}`)}</span>}
+              </th>
+              <td>{tr("suma acotada", "bounded sum")}</td>
+              <td>{names.detail(variable.feature, c) ?? termsOf(c).map((n) => names.term(variable.feature, n)).join(", ")}</td>
+              <td>
+                {muCond.has(key) && value !== null ? (
+                  <span data-raw={String(muCond.get(key))}>{fmt(muCond.get(key)!)}</span>
+                ) : (
+                  <span className="muted">{!trace ? "—" : value === null ? tr("sin entrada", "no input") : tr("ninguna regla usa este término", "no rule uses this term")}</span>
                 )}
               </td>
             </tr>

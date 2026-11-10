@@ -1,6 +1,6 @@
 [
   {
-    "schema_version": "0.7.0",
+    "schema_version": "0.8.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "task_id": "madrid_no2_h6",
@@ -92,7 +92,7 @@
     "next_cursor": null
   },
   {
-    "schema_version": "0.7.0",
+    "schema_version": "0.8.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "task_id": "madrid_no2_h6",
@@ -184,7 +184,7 @@
     "next_cursor": null
   },
   {
-    "schema_version": "0.7.0",
+    "schema_version": "0.8.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "task_id": "madrid_no2_h6",
@@ -276,7 +276,7 @@
     "next_cursor": null
   },
   {
-    "schema_version": "0.7.0",
+    "schema_version": "0.8.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "task_id": "madrid_no2_h6",

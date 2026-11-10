@@ -57,6 +57,12 @@ publicados con DuckDB y pandas, no a través de la API:
 `exfuzzy-nyc_pickups_h1-mixture-nonneg-seed1`, `docs/ml/rule_mixture_serve.md`), ajustados con `ex_fuzzy` `20c1095` y servidos con ex-fuzzy 3.4.0 (el código de `5409bb8`), con el que reproducen sus tablas bit a bit;
 `tests/integration` pasa sobre el lote de QA de esos modelos (123 pasan, 129 se saltan por ser opt-in, de Madrid o de otra familia).
 
+**Contrato v0.8 (2026-11-10):** el modelo de Water del lote es `exfuzzy-uk_water_do-fx-w-unique-ordinal-seed0` (38 reglas, 81 condiciones:
+24 «al menos» / «como mucho» y 2 de un término compuesto, `docs/ml/ordinal_conditions.md` sección 6); los otros dos modelos del lote
+no cambian. El lote nuevo (`published-v08`: registro 0.8.0, los diez modelos) se construye con `scripts/qa/qa_bundle.py --published
+artifacts/published-v08` y `tests/integration` pasa sobre él fichero a fichero. Subir el lote a la release `qa-artifacts` sustituye
+al anterior, que usan las ramas abiertas: se hace al fusionar, no antes.
+
 **Modelo de Water servido (2026-10-31):** `exfuzzy-uk_water_do-fx-w-unique-seed0` (39 reglas, 0 repetidas, `exfuzzy_version`
 `3.3.1+g2ffcfb9`, ajustado con la construcción local de `ex_fuzzy`; véase `docs/reproduce.md`). `make qa` (113 pruebas pasan, 41 se
 saltan por ser opt-in o de otra tarea) y `python -m atlas.services.verify` se ejecutaron con él, con la biblioteca fijada y con la

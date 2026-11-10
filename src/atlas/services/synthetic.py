@@ -19,6 +19,7 @@ Everything is invented (``atlas.ml.synthetic``) and labelled synthetic in every 
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,7 +30,7 @@ import pandas as pd
 from atlas.contracts import models as m
 from atlas.ml import artifacts
 from atlas.ml.classification import ClassScheme, classification_metric_rows
-from atlas.ml.fuzzy import FuzzyParams
+from atlas.ml.fuzzy import FuzzyParams, FuzzyRegressor
 from atlas.ml.fuzzy_classifier import FuzzyClassifier, FuzzyClassifierParams
 from atlas.ml.pipeline import LoadedRun, RunConfig, load_run, train_run
 from atlas.ml.rules_export import export_classifier_rules
@@ -111,7 +112,34 @@ class SyntheticPublished:
     summary: PublishSummary
 
 
-def _train_classifier_run(table: pd.DataFrame, config: RunConfig, artifacts_dir: Path, mixture: bool = False) -> Path:
+# Contract v0.8 (``build_synthetic(..., ordinal=True)``): the fitted rules are rewritten so that every kind of condition
+# appears: ``at least``, ``at most``, a compound of adjacent terms and a compound that wraps (the first and last term).
+ORDINAL_INPUTS = ("y_t", "exo_t")
+ORDINAL_COMPOUNDS = {"hour": [("Test stretch", ["Low", "Medium"]), ("Test ends", ["Low", "High"])]}
+
+
+def force_ordinal_rules(rulebase, rules) -> None:
+    """Rewrite the first rules of a fitted rule base: R01 ``y_t at least Medium AND hour Test stretch``, R02 ``exo_t at
+    most Medium``, R03 ``y_t at most Medium AND hour Test ends``; the others stay as the search left them."""
+    from atlas.ml import exfuzzy_features as xf
+    from atlas.ml.synthetic import FEATURES
+
+    by = {str(v.name): v for v in rulebase.antecedents}
+
+    def code(feature: str, text: str) -> int:
+        return xf.condition_labels(by[feature]).index(text)
+
+    wanted = [{"y_t": "at least Medium", "hour": "Test stretch"}, {"exo_t": "at most Medium"},
+              {"y_t": "at most Medium", "hour": "Test ends"}]
+    for rule, conditions in zip(rules, wanted, strict=False):
+        for f in range(len(FEATURES)):
+            rule.antecedents[f] = -1
+        for feature, text in conditions.items():
+            rule.antecedents[FEATURES.index(feature)] = code(feature, text)
+
+
+def _train_classifier_run(table: pd.DataFrame, config: RunConfig, artifacts_dir: Path, mixture: bool = False,
+                          ordinal: bool = False) -> Path:
     """Fit a tiny ``FuzzyClassifier`` on the training rows and write a run directory (what A4's runs contain).
 
     ``mixture``: the mixture-of-rules inference (v0.7), non-negative weights, rules searched under the mixture."""
@@ -122,9 +150,20 @@ def _train_classifier_run(table: pd.DataFrame, config: RunConfig, artifacts_dir:
     train, test = table[masks["train"] & complete], table[masks["test"] & complete]
     y_train, y_test = SCHEME.classify(train[config.target_column]), SCHEME.classify(test[config.target_column])
     extra = dict(inference="mixture", mixture_non_negative=True, mixture_search=True) if mixture else {}
+    if ordinal:
+        extra |= dict(ordinal_conditions=ORDINAL_INPUTS, compound_terms=ORDINAL_COMPOUNDS)
     params = FuzzyClassifierParams(nRules=9, nAnts=2, n_gen=8, pop_size=16, patience=None, **extra)
     model = FuzzyClassifier(params, config.feature_units).fit(train[config.features], y_train, labels, config.seed)
-    run_id = f"synthetic-{'mixture' if mixture else 'class'}-seed{config.seed}"
+    if ordinal:
+        from atlas.explain.classifier import get_master_rulebase
+
+        rb = get_master_rulebase(model)
+        force_ordinal_rules(rb, rb.get_rules())
+        if mixture:  # the fitted weights stay with their positions; only the check that they belong to the rules moves
+            from ex_fuzzy import rule_mixture
+
+            model.estimator.mixture_.rule_keys_ = rule_mixture.rule_keys(model.estimator.rule_base)
+    run_id = f"synthetic-{'mixture' if mixture else 'class'}{'-ordinal' if ordinal else ''}-seed{config.seed}"
     model_id = f"exfuzzy-{config.task_id}-{run_id}"
     created = datetime.now(timezone.utc)
     commit, dirty = artifacts.git_state()
@@ -161,21 +200,44 @@ def _train_classifier_run(table: pd.DataFrame, config: RunConfig, artifacts_dir:
     )
 
 
+@contextmanager
+def _ordinal_regressor(on: bool):
+    """With ``on``, every regressor fitted inside the block has its first rules rewritten by ``force_ordinal_rules``."""
+    if not on:
+        yield
+        return
+    original = FuzzyRegressor.fit
+
+    def fit(self, X, y, seed):
+        out = original(self, X, y, seed)
+        rb = self.get_rulebase()
+        force_ordinal_rules(rb, rb.rules)
+        return out
+
+    FuzzyRegressor.fit = fit
+    try:
+        yield
+    finally:
+        FuzzyRegressor.fit = original
+
+
 def build_synthetic(
     root: Path, *, n_hours: int = 24 * 45, exo_missing_fraction: float = 0.03, task: str = "regression",
-    v04: bool = False,
+    v04: bool = False, ordinal: bool = False,
 ) -> SyntheticPublished:
     """Train a small model on a synthetic table (3 entities, from 2024-01-01) and publish most of it under ``root``.
 
     ``task`` is ``regression`` (the default demo), ``classification`` (a tiny winning-rule classifier over the
     invented bands of ``SCHEME``) or ``mixture`` (the same classifier with the mixture of rules, v0.7). ``v04`` adds
-    the unmodelled entity ``E9`` and the v0.4 metadata (see the module docstring).
+    the unmodelled entity ``E9`` and the v0.4 metadata (see the module docstring). ``ordinal`` (contract v0.8, needs
+    ex-fuzzy 3.5.0) makes the first rules use ``at least`` / ``at most`` conditions and compound terms.
     """
     if task not in TASKS:
         raise ValueError(f"task must be one of {TASKS}, got {task!r}")
     classifier = task in ("classification", "mixture")
     root = Path(root)
     root.mkdir(parents=True, exist_ok=True)
+    options_ordinal = dict(ordinal_conditions=ORDINAL_INPUTS, compound_terms=ORDINAL_COMPOUNDS) if ordinal else {}
     table = make_synthetic_table(n_entities=3, n_hours=n_hours, seed=1, exo_missing_fraction=exo_missing_fraction)
     table.to_parquet(root / "features.parquet", index=False)
     config = RunConfig(
@@ -184,10 +246,13 @@ def build_synthetic(
         horizon_hours=HORIZON_HOURS, features=FEATURES, feature_units=FEATURE_UNITS, persistence_feature="y_t",
         split=chronological_split_spec(table["issued_at_utc"], horizon_hours=HORIZON_HOURS), seed=3,
         data_version="synthetic-test", synthetic=True, gbm_max_iter=20,
-        fuzzy=FuzzyParams(nRules=8, nAnts=3, n_gen=8, pop_size=16),
+        fuzzy=FuzzyParams(nRules=8, nAnts=3, n_gen=8, pop_size=16, **options_ordinal),
     )
-    run_dir = (_train_classifier_run(table, config, root / "runs", mixture=task == "mixture") if classifier
-               else train_run(table, config, artifacts_dir=root / "runs").run_dir)
+    if classifier:
+        run_dir = _train_classifier_run(table, config, root / "runs", mixture=task == "mixture", ordinal=ordinal)
+    else:
+        with _ordinal_regressor(ordinal):
+            run_dir = train_run(table, config, artifacts_dir=root / "runs").run_dir
     entities = m.EntityCollection(
         data_version="synthetic-entities", synthetic=True, type="FeatureCollection", domain=m.Domain.AIR,
         features=[

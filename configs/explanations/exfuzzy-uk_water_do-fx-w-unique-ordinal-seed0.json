@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.8.0",
+  "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+  "synthetic": false,
+  "model_id": "exfuzzy-uk_water_do-fx-w-unique-ordinal-seed0",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.322",
+    "model": "claude-opus-5-5"
+  },
+  "generated_at_utc": "2026-11-10T13:39:47Z",
+  "input_sha256": "523adf9d2ea57d75419511bcf8bfd804c8c31255d25a2717f972c59027de6baa",
+  "reviewed": false,
+  "es": {
+    "headline": "Cuatro reglas deciden el 68 % de las estimaciones, y el modelo se equivoca menos que la regresión lineal pero más que el Random Forest.",
+    "summary": [
+      "Las 38 reglas usan seis entradas de cada muestra. El Nitrógeno amoniacal de la muestra (mg/l) aparece en 24 reglas y la Temperatura del agua de la muestra (°C) en 19. Después vienen el pH de la muestra, en 13, el Ortofosfato de la muestra (mg/l), en 12, y los Días desde pleno invierno, en 10. La Hora local de la muestra solo aparece en 3.",
+      "Cada estimación promedia los valores de las reglas que se cumplen, según cuánto se cumple cada una. Decide la que más se cumple, y si empatan, la primera del modelo. R08 decide el 27 % (Nitrógeno amoniacal es como mucho media (sobre el límite) y Días desde pleno invierno es Primavera-otoño → 6,89 mg/l) y se desvía 0,59 mg/l de media. Con R01 y R04 llega al 56 %.",
+      "El error medio absoluto del modelo es de 0,63 mg/l. Así que se equivoca menos que la regresión lineal, que se queda en 0,66 mg/l, y más que el Random Forest, con 0,55 mg/l."
+    ],
+    "points": [
+      "Solo 14 de las 38 reglas deciden alguna estimación.",
+      "R04 (pH de la muestra bajo → 5,82 mg/l) decide el 14 % y se desvía 0,87 mg/l de media.",
+      "R12 (Temperatura del agua como mucho media → 13,47 mg/l) decide el 12 % y se desvía solo 0,47 mg/l de media.",
+      "La Hora local de la muestra aparece en 3 reglas, que entre todas deciden el 2,5 % de las estimaciones.",
+      "R10 da el valor más bajo entre las reglas que deciden, 2,80 mg/l, y decide el 1,5 % de las estimaciones."
+    ]
+  },
+  "en": {
+    "headline": "Four rules decide 68% of the estimates, and the model's error is lower than linear regression's but higher than the random forest's.",
+    "summary": [
+      "The 38 rules use six inputs from each sample. Ammoniacal nitrogen in the sample (mg/l) appears in 24 rules and Water temperature of the sample (°C) in 19. Next come pH of the sample in 13, Orthophosphate in the sample (mg/l) in 12 and Days from midwinter in 10. Local hour of the sample appears in only 3.",
+      "Each estimate averages the values of the rules that hold, by how much each holds. The rule that holds most decides, and a tie goes to the first rule in the model's order. R08 decides 27% (ammoniacal nitrogen is at most medium (above the limit) and Days from midwinter is Spring-autumn → 6.89 mg/l). It is off by 0.59 mg/l on average. With R01 and R04 it reaches 56%.",
+      "The model's mean absolute error is 0.63 mg/l. So it does better than linear regression, at 0.66 mg/l, and worse than the random forest, at 0.55 mg/l."
+    ],
+    "points": [
+      "Only 14 of the 38 rules decide any estimate at all.",
+      "R04 (pH of the sample low → 5.82 mg/l) decides 14% of the estimates and is off by 0.87 mg/l on average.",
+      "R12 (water temperature at most medium → 13.47 mg/l) decides 12% and is off by just 0.47 mg/l on average.",
+      "Local hour of the sample appears in 3 rules, which together decide 2.5% of the estimates.",
+      "R10 gives the lowest value of any rule that decides, 2.80 mg/l, and decides 1.5% of the estimates."
+    ]
+  }
+}

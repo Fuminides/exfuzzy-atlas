@@ -186,6 +186,24 @@ def _variable_names(v: dict) -> dict:
     return {"label": es, "label_en": tidy(v.get("label_en")) or es}
 
 
+def _condition(a: dict, variables: dict, term_names: dict) -> dict:
+    """One condition of a rule's ``if``. A plain term (``is``) is written as it always was, so the context of a model
+    without ordinal or compound conditions does not change. ``at_least`` / ``at_most`` (contract v0.8) add the
+    ``operator`` (the term is the threshold) and ``covers`` (every term the condition holds for, low to high); a
+    compound (``any_of``) is named by its display name and ``covers`` the terms it unites."""
+    item = {"variable": a["feature"], **_variable_names(variables[a["feature"]])}
+    operator = a.get("operator", "is")
+    if operator == "is":
+        return {**item, "term": {"name": a["term"], **term_names[(a["feature"], a["term"])]}}
+    covers = [{"name": t, **term_names[(a["feature"], t)]} for t in a["terms"]]
+    if operator == "any_of":
+        return {**item, "operator": operator,
+                "term": {"name": a["term"], **_named(a.get("label") or a["term"], a.get("label_en") or a["term"])},
+                "covers": covers}
+    return {**item, "operator": operator, "term": {"name": a["term"], **term_names[(a["feature"], a["term"])]},
+            "covers": covers}
+
+
 def _bar_names(key: str, classifier: bool) -> dict:
     """lib/performance.ts ``barLabel``."""
     names = {
@@ -329,11 +347,7 @@ def build_context(published: Path, model_id: str) -> dict:
         item: dict = {
             "rule_id": rule["rule_id"],
             "rank_by_decided_share": rank,
-            "if": [
-                {"variable": a["feature"], **_variable_names(variables[a["feature"]]),
-                 "term": {"name": a["term"], **term_names[(a["feature"], a["term"])]}}
-                for a in rule["antecedents"]
-            ],
+            "if": [_condition(a, variables, term_names) for a in rule["antecedents"]],
         }
         consequent = rule["consequent"]
         if classifier:
@@ -488,11 +502,7 @@ def _mixture_rule(rule: dict, stats: dict, rank: int, variables: dict, term_name
     item: dict = {
         "rule_id": rule["rule_id"],
         "rank_by_top_rule_share": rank,
-        "if": [
-            {"variable": a["feature"], **_variable_names(variables[a["feature"]]),
-             "term": {"name": a["term"], **term_names[(a["feature"], a["term"])]}}
-            for a in rule["antecedents"]
-        ],
+        "if": [_condition(a, variables, term_names) for a in rule["antecedents"]],
     }
     if rule.get("strongest_class"):
         item["strongest_class"] = named(rule["strongest_class"])

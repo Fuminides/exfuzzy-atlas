@@ -11,7 +11,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from atlas.contracts import models as m
-from atlas.ml.exfuzzy_features import has_rule_mixture
+from atlas.ml.exfuzzy_features import has_compound_terms, has_ordinal_conditions, has_rule_mixture
 from atlas.services.static import export, fmt
 from atlas.services.static.store import StaticStore
 from atlas.services.synthetic import build_synthetic
@@ -20,14 +20,22 @@ from atlas_api.main import create_app
 for _var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
     os.environ.setdefault(_var, "2")
 
+needs_ordinal = pytest.mark.skipif(not (has_ordinal_conditions() and has_compound_terms()),
+                                   reason="needs ex_fuzzy with ordinal conditions and compound terms (3.5.0)")
 needs_mixture = pytest.mark.skipif(not has_rule_mixture() and not os.environ.get("CI"),
                                    reason="needs ex_fuzzy with inference='mixture'")
 
 
-@pytest.fixture(scope="module", params=["regression", "classification", pytest.param("mixture", marks=needs_mixture)])
+@pytest.fixture(scope="module", params=[
+    "regression", "classification", pytest.param("mixture", marks=needs_mixture),
+    pytest.param("regression-ordinal", marks=needs_ordinal),
+    pytest.param("classification-ordinal", marks=needs_ordinal),
+    pytest.param("mixture-ordinal", marks=[needs_mixture, needs_ordinal]),
+])
 def exported(request, tmp_path_factory):
     root = tmp_path_factory.mktemp(f"static-{request.param}")
-    built = build_synthetic(root / "syn", task=request.param, v04=True)
+    task, _, ordinal = request.param.partition("-")
+    built = build_synthetic(root / "syn", task=task, v04=True, ordinal=bool(ordinal))
     out = root / "out"
     export.main(["--published-dir", str(built.published_dir), "--out", str(out),
                  "--explanations-dir", str(root / "none"), "--check-n", "4"])
@@ -52,6 +60,26 @@ def test_parity_with_the_api_and_a_clean_tree(exported):
     names = {p.name for p in data.rglob("*") if p.is_file()}
     assert not any(n.endswith((".pkl", ".parquet")) or n in ("SHA256SUMS", "publish.json") for n in names)
     assert (out / "golden" / data.name / "index.json.gz").is_file()
+
+
+def test_every_kind_of_condition_is_exported_and_traced(exported, request):
+    """v0.8: at_least / at_most / any_of conditions have their own memberships (the bounded sum ex_fuzzy computes)."""
+    _, _, data = exported
+    rules = json.loads(gzip.decompress(next((data / "models").glob("*/rules.json.gz")).read_bytes()))
+    kinds = {a["operator"] for r in rules["rules"] for a in r["antecedents"]}
+    meta = json.loads(gzip.decompress(next((data / "models").glob("*/meta.json.gz")).read_bytes()))
+    assert [p[1] for p in meta["mem_pairs"]] and {p[1] for p in meta["mem_pairs"]} == kinds
+    if request.node.callspec.params["exported"].endswith("-ordinal"):
+        assert {"is", "at_least", "at_most", "any_of"} <= kinds
+        client = TestClient(create_app(StaticStore(data)))
+        entry = next(iter(json.loads(gzip.decompress((data / "domains.json.gz").read_bytes()))["domains"][0]["tasks"]))
+        shard = json.loads(gzip.decompress(next((data / "models").glob("*/20*/pred.json.gz")).read_bytes()))
+        trace = client.get(f"/api/v1/entities/{meta['entities'][shard['ei'][5]]}/rule-trace",
+                           params={"model_id": meta["model_id"], "at": shard["t"][shard["ti"][5]]}).json()
+        got = {(a["operator"], tuple(a["terms"])) for e in trace["rules"] for a in e["antecedents"]}
+        assert ("at_least", ("Medium", "High")) in got and ("any_of", ("Low", "Medium")) in got
+        assert ("any_of", ("Low", "High")) in got and ("at_most", ("Low", "Medium")) in got
+        assert entry["task_id"] == meta["task_id"]
 
 
 def test_the_static_store_refuses_what_is_not_precomputed(exported):

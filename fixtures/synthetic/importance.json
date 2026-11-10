@@ -1,6 +1,6 @@
 [
   {
-    "schema_version": "0.7.0",
+    "schema_version": "0.8.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -161,7 +161,7 @@
     "observed_class_shares": null
   },
   {
-    "schema_version": "0.7.0",
+    "schema_version": "0.8.0",
     "data_version": "synthetic-test",
     "synthetic": true,
     "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
@@ -392,7 +392,7 @@
     }
   },
   {
-    "schema_version": "0.7.0",
+    "schema_version": "0.8.0",
     "data_version": "synthetic-test",
     "synthetic": true,
     "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",

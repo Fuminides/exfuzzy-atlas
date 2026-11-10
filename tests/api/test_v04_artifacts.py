@@ -429,7 +429,7 @@ def test_stories_are_capped_deterministic_and_wording_clean(world):
     hits = [h for h in wording_audit.scan_payload(world.client.get("/api/v1/rule-territories", params={
         "model_id": world.model_id, **WINDOW}).json(), "rule-territories") if h.kind != "other-context"]
     assert hits == []
-    assert full["disclaimer"].startswith("Descripciones de activaciones") and "No son causas" in full["disclaimer"]
+    assert full["disclaimer"].startswith("Descripciones de activaciones")
     for story in full["stories"]:
         for word in ("causa", "explica", "debido a", "porque", "provoca", "probabilidad", "riesgo"):
             assert word not in story["text"].lower().replace("no es la contribución", "")
@@ -523,7 +523,7 @@ def test_scenario_equals_the_engine_on_the_modified_row(world):
         assert change.value_delta == pytest.approx(expected.prediction.value - served.prediction.value, abs=1e-9)
         assert change.label_changed is None
     # the modified trace is labelled as a what-if and nothing claims it was observed
-    assert any("no efecto causal" in w for w in scenario.modified.quality.warnings)
+    assert any(w.startswith("what-if: inputs overridden") for w in scenario.modified.quality.warnings)
     overridden = [fv for fv in scenario.modified.feature_values if fv.feature in overrides]
     assert all(fv.source_id == "what_if_override" and fv.observed_at_utc is None for fv in overridden)
     assert scenario.modified.observed is None

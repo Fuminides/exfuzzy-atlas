@@ -1,7 +1,8 @@
 import { createContext, useContext } from "react";
-import { getLang, localized, tr } from "../i18n";
+import { getLang, localized, tr, trIn, type Lang } from "../i18n";
 import type { LinguisticVariable, RuleDefinition, TargetScheme } from "../api/types";
-import { sig3, unitLabel } from "./format";
+import { hourRangeText, hourStretches, joinOr, operatorOf, type CondSpec } from "./conditions";
+import { dec, sig3, unitLabel } from "./format";
 import { strongestText } from "./mixture";
 import { conditionText, conditionWords, termPhrase, type ConditionWords } from "./termPhrases";
 
@@ -105,7 +106,18 @@ export function labelWithUnit(label: string, unit: string | null | undefined): s
 const termWords = (): Record<string, string> => ({ low: tr("baja", "low"), medium: tr("media", "medium"), high: tr("alta", "high") });
 
 /** A linguistic term as shown: the three generic terms in the interface language, every other term is the model's own word. */
-export const termLabel = (term: string): string => termWords()[term.toLowerCase()] ?? term;
+export const termLabel = (term: string): string => termWords()[term.toLowerCase()] ?? limitLabel(term) ?? term;
+
+/**
+ * Water's detection-limit terms when the model publishes no label for them: `<=L` is "at or below the detection limit",
+ * `Bajo>L` / `Medio>L` / `Alto>L` a level above it (the wording of configs/water/attribution.json), never the raw name.
+ */
+const LIMIT_LEVELS: Record<string, [string, string]> = { Bajo: ["baja", "low"], Medio: ["media", "medium"], Alto: ["alta", "high"] };
+function limitLabel(term: string): string | null {
+  if (term === "<=L") return tr("≤ límite de detección", "≤ detection limit");
+  const m = /^(Bajo|Medio|Alto)>L$/.exec(term);
+  return m ? tr(`${LIMIT_LEVELS[m[1]!]![0]} (sobre el límite)`, `${LIMIT_LEVELS[m[1]!]![1]} (above the limit)`) : null;
+}
 
 type Classy = { label: string; display_label?: string | null; display_label_en?: string | null };
 
@@ -141,19 +153,65 @@ export function officialNames(scheme: (ShortNamed & { kind?: TargetScheme["kind"
 export interface Names {
   /** Today's label of a term: the model's word («alta», «Buena»). */
   term: (feature: string, term: string) => string;
-  /** The term as a complete phrase («humedad alta», "high demand"; «Buena» as it is): see lib/termPhrases.ts. */
-  phrase: (feature: string, term: string) => string;
-  /** A condition in words, the variable named once and the term agreeing with it («la demanda hace 1 h es alta»). */
-  cond: (feature: string, term: string, label: string) => ConditionWords;
+  /**
+   * The term as a complete phrase («humedad alta», "high demand"; «Buena» as it is): see lib/termPhrases.ts. With the
+   * condition of contract v0.8 as `spec`: «≥ humedad alta», «≤ humedad alta», or the compound's name («Primeras horas»).
+   */
+  phrase: (feature: string, term: string, spec?: CondSpec) => string;
+  /**
+   * A condition in words, the variable named once and the term agreeing with it («la demanda hace 1 h es alta»). With
+   * `spec`: «es al menos alta», «es como mucho alta», «es Primeras horas».
+   */
+  cond: (feature: string, term: string, label: string, spec?: CondSpec) => ConditionWords;
+  /** The label of a condition on a plot: «Aceptable», «al menos Aceptable», «como mucho Media», the compound's name («Primeras horas»). */
+  label: (feature: string, spec: CondSpec) => string;
+  /** What a compound covers, «Tarde-noche o Noche, 17–5 h» (the range for an hour of the day); null for any other condition. */
+  detail: (feature: string, spec: CondSpec) => string | null;
   cls: (label: string) => string;
   /** A class as a complete phrase: NYC's «alta» is «demanda alta»; EAQI's «Buena» stays. */
   clsPhrase: (label: string) => string;
 }
 
+/** The words of an ordinal or compound condition (contract v0.8) from the words of its term: the verb stays, «al menos» follows it. */
+function withOperator(base: ConditionWords, spec: CondSpec | undefined, compound: string, lang: Lang): ConditionWords {
+  const t = trIn(lang);
+  switch (operatorOf(spec)) {
+    case "at_least":
+      return { ...base, qualifier: t("al menos", "at least") };
+    case "at_most":
+      return { ...base, qualifier: t("como mucho", "at most") };
+    case "any_of":
+      return { ...base, verb: t("es", "is"), value: compound };
+    default:
+      return base;
+  }
+}
+
+/** The label of a condition from the label of its term: «al menos Aceptable», «Primeras horas»; the term itself for `is`. */
+const withOperatorLabel = (termText: string, spec: CondSpec, compound: string, lang: Lang): string => {
+  const t = trIn(lang);
+  return { is: termText, at_least: t(`al menos ${termText}`, `at least ${termText}`), at_most: t(`como mucho ${termText}`, `at most ${termText}`), any_of: compound }[operatorOf(spec)];
+};
+
+/** The compact phrase of a condition: «≥ humedad alta», «≤ humedad alta», the compound's name, else the term's phrase. */
+const withOperatorPhrase = (phrase: string, spec: CondSpec | undefined, compound: string): string =>
+  ({ is: phrase, at_least: `≥ ${phrase}`, at_most: `≤ ${phrase}`, any_of: compound })[operatorOf(spec)];
+
+/** Display names of the compounds a model's rules use, by `feature|term`: a trace does not carry them. */
+type Compounds = ReadonlyMap<string, Pick<CondSpec, "label" | "label_en">>;
+
+/** A compound's name in the interface language: the Atlas display name (`label` / `label_en`), else its internal name. */
+const compoundName = (feature: string, name: string, spec: CondSpec | undefined, known?: Compounds): string => {
+  const src = spec?.label != null ? spec : known?.get(`${feature}|${name}`);
+  return localized(src?.label ?? name, src?.label_en);
+};
+
 export const DEFAULT_NAMES: Names = {
   term: (_f, term) => termLabel(term),
-  phrase: (f, term) => termPhrase(f, term, getLang(), termLabel(term)),
-  cond: (f, term, label) => conditionWords(f, term, label, termLabel(term), null, getLang()),
+  phrase: (f, term, spec) => withOperatorPhrase(termPhrase(f, term, getLang(), termLabel(term)), spec, compoundName(f, term, spec)),
+  cond: (f, term, label, spec) => withOperator(conditionWords(f, term, label, termLabel(term), null, getLang()), spec, compoundName(f, term, spec), getLang()),
+  label: (f, spec) => withOperatorLabel(termLabel(spec.term), spec, compoundName(f, spec.term, spec), getLang()),
+  detail: (_f, spec) => (operatorOf(spec) === "any_of" && spec.terms?.length ? joinOr(spec.terms.map(termLabel), getLang()) : null),
   cls: (label) => label,
   clsPhrase: (label) => label,
 };
@@ -163,10 +221,14 @@ export const DEFAULT_NAMES: Names = {
  * names of a relative level («demanda alta»).
  */
 export function namesFor(
-  variables: readonly (Pick<LinguisticVariable, "feature" | "terms"> & Partial<Pick<LinguisticVariable, "unit">>)[],
+  variables: readonly (Pick<LinguisticVariable, "feature" | "terms"> & Partial<Pick<LinguisticVariable, "unit" | "domain">>)[],
   scheme: { classes: readonly Classy[] } | null | undefined,
   target?: string | null,
+  /** The model's rules: a trace names a compound by its internal name only, so its display name is looked up here. */
+  rules?: readonly Pick<RuleDefinition, "antecedents">[],
 ): Names {
+  const compounds: Compounds = new Map(rules?.flatMap((r) => r.antecedents).filter((a) => operatorOf(a) === "any_of").map((a) => [`${a.feature}|${a.term}`, a] as const));
+  const variableOf = new Map(variables.map((v) => [v.feature, v] as const));
   const terms = new Map(variables.flatMap((v) => v.terms.map((t) => [`${v.feature}|${t.name}`, t] as const)));
   const units = new Map(variables.map((v) => [v.feature, v.unit ?? null] as const));
   const classes = new Map((scheme?.classes ?? []).map((c) => [c.label, c] as const));
@@ -182,8 +244,19 @@ export function namesFor(
   };
   return {
     term,
-    phrase: (feature, name) => termPhrase(feature, name, getLang(), term(feature, name)),
-    cond: (feature, name, label) => conditionWords(feature, name, label, term(feature, name), units.get(feature), getLang()),
+    phrase: (feature, name, spec) => withOperatorPhrase(termPhrase(feature, name, getLang(), term(feature, name)), spec, compoundName(feature, name, spec, compounds)),
+    cond: (feature, name, label, spec) =>
+      withOperator(conditionWords(feature, name, label, term(feature, name), units.get(feature), getLang()), spec, compoundName(feature, name, spec, compounds), getLang()),
+    label: (feature, spec) => withOperatorLabel(term(feature, spec.term), spec, compoundName(feature, spec.term, spec, compounds), getLang()),
+    detail: (feature, spec) => {
+      if (operatorOf(spec) !== "any_of" || !spec.terms?.length) return null;
+      const v = variableOf.get(feature);
+      const covered = spec.terms.map((n) => v?.terms.find((t) => t.name === n)).filter((t): t is NonNullable<typeof t> => !!t);
+      const list = joinOr(spec.terms.map((n) => term(feature, n)), getLang());
+      // an hour of the day: the hours where the compound holds at least half (display only)
+      const hours = v && (v.unit === "h" || v.unit === "hour") ? hourRangeText(hourStretches(covered, v.domain as [number, number] | null | undefined), (h) => dec(h, 0)) : "";
+      return hours ? `${list}, ${hours}` : list;
+    },
     cls: (label) => cls(label) ?? label,
     clsPhrase: (label) => (target ? termPhrase(target, label, getLang(), cls(label) ?? label) : (cls(label) ?? label)),
   };
@@ -203,6 +276,8 @@ export interface SentencePart {
   termText: string;
   /** The condition in words (lib/termPhrases.ts): «la» **demanda hace 1 h** «es» *alta*. */
   words: ConditionWords;
+  /** A compound (v0.8): what it covers, «Tarde-noche o Noche, 17–5 h», for the tooltip; null for any other condition. */
+  detail: string | null;
   /** Official class colour when the term is a class of the scheme (the NO₂ inputs are classes of the ICA). */
   color: string | null;
   modifier: number | null;
@@ -212,8 +287,14 @@ export interface SentencePart {
 export const capFirst = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1);
 
 /** One condition as words: «el NO₂ hace 4 h es Buena», «la demanda hace 1 h es alta». */
-export const condText = (a: { feature: string; term: string }, label: (feature: string) => string, names: Names = DEFAULT_NAMES): string =>
-  conditionText(names.cond(a.feature, a.term, label(a.feature)));
+export const condText = (a: { feature: string } & CondSpec, label: (feature: string) => string, names: Names = DEFAULT_NAMES): string =>
+  conditionText(names.cond(a.feature, a.term, label(a.feature), a));
+
+/** A condition for a tooltip: the sentence, and for a compound what it covers: «La hora es Primeras horas (Madrugada o Mañana, 0–10 h)». */
+export function fullCondition(a: { feature: string } & CondSpec, label: (feature: string) => string, names: Names = DEFAULT_NAMES): string {
+  const detail = names.detail(a.feature, a);
+  return `${capFirst(condText(a, label, names))}${detail ? ` (${detail})` : ""}`;
+}
 
 /** The consequent of a rule as plain pieces: a class (with colour), a number with unit, or a fuzzy term. */
 export type Outcome =
@@ -237,7 +318,8 @@ export function ruleSentence(rule: RuleDefinition, label: (feature: string) => s
     label: label(a.feature),
     term: a.term,
     termText: names.term(a.feature, a.term),
-    words: names.cond(a.feature, a.term, label(a.feature)),
+    words: names.cond(a.feature, a.term, label(a.feature), a),
+    detail: names.detail(a.feature, a),
     color: colorOfClass(scheme, a.term),
     modifier: a.modifier ?? null,
   }));

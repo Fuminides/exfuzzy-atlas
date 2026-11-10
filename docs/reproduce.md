@@ -3,6 +3,15 @@
 `PYTHON` es `python` por defecto. En una máquina nueva: `pip install -e ".[dev]"` y luego `make <target>` (o
 `make <target> PYTHON=<intérprete>` para usar otro).
 
+## Dependencia de ex_fuzzy desde el contrato v0.8: ex-fuzzy 3.5.0
+
+`pyproject.toml` fija desde v0.8 `ex-fuzzy==3.5.0` (PyPI): el código del commit `7a0844a` (PR 45: condiciones ordinales
+«al menos / como mucho» y términos compuestos, `docs/ml/ordinal_conditions.md`) más el cambio de versión (`diff -r` de los
+dos árboles `ex_fuzzy/`: solo `_version.py`). Con las opciones apagadas es bit a bit la 3.4.0. Los cuatro modelos que usan
+esas condiciones se ajustaron con `7a0844a` y lo registran (`3.4.0+g7a0844a`); sus tablas se recalculan con la 3.5.0 sin
+ninguna diferencia (`python -m atlas.ml.publish_parity --tables`). Lo que sigue de esta sección (3.4.0) sigue valiendo
+para los modelos anteriores.
+
 ## Dependencia de ex_fuzzy desde el contrato v0.7: ex-fuzzy 3.4.0
 
 Los clasificadores de la demo usan la inferencia «mezcla de reglas» (`inference='mixture'`, PR 44 de ex-fuzzy). La
@@ -190,9 +199,10 @@ El fichero queda con `reviewed: false` y se commitea. Una persona lo lee contra 
 coincide con el contexto que sale de los ficheros publicados actuales (un modelo republicado con la explicación vieja).
 La API la lee de `configs/explanations/` (`ATLAS_EXPLANATIONS_DIR` para otro directorio).
 
-La plantilla (versión 2) tiene una sección aparte para los clasificadores de mezcla de reglas (contrato v0.7,
-`rule_mixture_classifier`: las reglas suman su apoyo a cada categoría y ninguna decide sola). El script todavía no lee
-sus campos: ante esa familia se para con un mensaje en vez de tratarla como otra cosa. Al reentrenar un modelo, su
+La plantilla tiene secciones aparte para los clasificadores de mezcla de reglas (contrato v0.7, `rule_mixture_classifier`:
+las reglas suman su apoyo a cada categoría y ninguna decide sola) y para las reglas con condiciones ordinales o compuestas
+(contrato v0.8: «al menos» / «como mucho» y términos compuestos; el contexto añade `operator` y `covers` solo a esas
+condiciones, así que el de un modelo sin ellas no cambia). El script describe las dos. Al reentrenar un modelo, su
 explicación queda desfasada (`input_sha256`) y hay que regenerarla.
 
 ## Demo y QA

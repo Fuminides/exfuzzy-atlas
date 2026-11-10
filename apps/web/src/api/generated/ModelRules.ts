@@ -40,10 +40,29 @@ export type ModelId = string;
 export type Antecedents = [Antecedent, ...Antecedent[]];
 export type Feature = string;
 /**
+ * v0.8, `any_of` only: Spanish display name of the compound, e.g. 'Noche larga', from an Atlas config keyed by `term` (configs/compound_terms.json); display only, so names can change without refitting.
+ */
+export type Label = string | null;
+/**
+ * v0.8, `any_of` only: English display name of the compound, e.g. 'Long night'.
+ */
+export type LabelEn = string | null;
+/**
  * Hedge exponent applied to the membership, if any.
  */
 export type Modifier = number | null;
+/**
+ * v0.8: `is` one term; `at_least` / `at_most` a term of the ordered terms of a quantity input ('x is at least Fair'); `any_of` a named compound of terms (a stretch of the clock or the week). The membership of the last three is the bounded sum min(1, sum of the memberships of `terms`) (ex_fuzzy).
+ */
+export type Operator = "is" | "at_least" | "at_most" | "any_of";
+/**
+ * The term the condition refers to: for `is` the term itself, for `at_least` / `at_most` the threshold term (the lowest / the highest term covered), for `any_of` the compound's internal name (the key of `label`), which is not a term of the variable.
+ */
 export type Term = string;
+/**
+ * v0.8: names of the base terms of the variable that the condition covers, in the variable's order (low to high). A compound may cover non-adjacent terms: the first and the last term of a clock are the two ends of one stretch of the day that wraps midnight. `[term]` for `is`; filled in when absent.
+ */
+export type Terms = string[];
 /**
  * v0.7, rule mixture only: W[r, c] for every class of target_scheme, as fitted. The rule adds W[r, c] x firing to the score of class c. Signed when mixture_weights is 'unconstrained'. A weight is a coefficient of a fitted linear model on firing strengths: not a probability, a confidence or a risk.
  */
@@ -115,7 +134,7 @@ export type DisplayLabel = string | null;
  * v0.6: English display name of the class, e.g. ICA 'Buena' -> 'Good' (EAQI: its own official name); the UI shows it when the interface is in English, else falls back to `display_label` (then `label`).
  */
 export type DisplayLabelEn = string | null;
-export type Label = string;
+export type Label1 = string;
 /**
  * Lower bound in the scheme unit; null = unbounded.
  */
@@ -164,23 +183,23 @@ export type Feature1 = string;
 /**
  * v0.5: display name of the input, e.g. 'NO₂ hace 3 h'; the UI shows it instead of `feature`.
  */
-export type Label1 = string | null;
+export type Label2 = string | null;
 /**
  * v0.6: English display name of the input, e.g. 'NO₂ 4 h ago'; the UI shows it when the interface is in English, else falls back to `label` (then `feature`).
  */
-export type LabelEn = string | null;
+export type LabelEn1 = string | null;
 /**
  * @minItems 1
  */
-export type Terms = [LinguisticTerm, ...LinguisticTerm[]];
+export type Terms1 = [LinguisticTerm, ...LinguisticTerm[]];
 /**
  * v0.5.1: display name of the term, e.g. '≤ límite de detección' for '<=L'; the UI shows it instead of `name`, which stays the key that rules refer to.
  */
-export type Label2 = string | null;
+export type Label3 = string | null;
 /**
  * v0.6: English display name of the term, e.g. '≤ detection limit'; the UI shows it when the interface is in English, else falls back to `label` (then `name`).
  */
-export type LabelEn1 = string | null;
+export type LabelEn2 = string | null;
 export type MembershipType = "trapezoidal" | "triangular" | "gaussian";
 export type Name1 = string;
 /**
@@ -236,8 +255,12 @@ export interface RuleDefinition {
 }
 export interface Antecedent {
   feature: Feature;
+  label?: Label;
+  label_en?: LabelEn;
   modifier?: Modifier;
+  operator?: Operator;
   term: Term;
+  terms?: Terms;
 }
 /**
  * What the rule concludes. Rule mixture (v0.7): the class the genetic search attached to the rule, used by the search and its pruning only; it does not enter the prediction (class_weights do), so it must not be shown as the rule's conclusion.
@@ -277,7 +300,7 @@ export interface TargetClass {
   description_en?: DescriptionEn;
   display_label?: DisplayLabel;
   display_label_en?: DisplayLabelEn;
-  label: Label;
+  label: Label1;
   lower: Lower;
   merged_from?: MergedFrom;
   upper: Upper;
@@ -287,14 +310,14 @@ export interface LinguisticVariable {
   description_en?: DescriptionEn1;
   domain?: Domain1;
   feature: Feature1;
-  label?: Label1;
-  label_en?: LabelEn;
-  terms: Terms;
+  label?: Label2;
+  label_en?: LabelEn1;
+  terms: Terms1;
   unit?: Unit2;
 }
 export interface LinguisticTerm {
-  label?: Label2;
-  label_en?: LabelEn1;
+  label?: Label3;
+  label_en?: LabelEn2;
   membership_type: MembershipType;
   name: Name1;
   params: Params;

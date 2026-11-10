@@ -266,7 +266,7 @@ def test_what_if_reruns_the_real_engine_and_changes_nothing_on_disk(client, task
     assert scenario.modified.prediction.label == expected.prediction.label
     assert scenario.original == m.RuleTrace.model_validate(trace(client, task, eid, at))
     assert {i.feature: i.origin for i in scenario.inputs}[used] == "overridden"
-    assert scenario.synthetic_what_if and "no efecto causal" in scenario.label
+    assert scenario.synthetic_what_if and scenario.label.startswith("respuesta del modelo")
     same = m.ScenarioResponse.model_validate(client.post("/api/v1/scenarios", json={**body, "overrides": {}}).json())
     assert same.modified == same.original
     out_of_domain = client.post("/api/v1/scenarios", json={**body, "overrides": {used: hi + 1e-6 * abs(hi) + 1e-9}})

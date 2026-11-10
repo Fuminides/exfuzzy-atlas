@@ -37,9 +37,31 @@ def antecedent_features(model, family: m.InferenceFamily) -> list[str]:
     return class_feature_names(get_master_rulebase(model))
 
 
-def term_names(model, family: m.InferenceFamily) -> list[list[str]]:
-    rb = get_rulebase(model) if family == m.InferenceFamily.TSK_ZERO_ORDER else get_master_rulebase(model)
-    return [list(v.linguistic_variable_names()) for v in rb.antecedents]
+def pair_positions(model, family: m.InferenceFamily, pairs: list[tuple[str, str, str]]) -> list[tuple[int, int]]:
+    """``(feature position, condition code)`` of each ``(feature, operator, term)``: where ex_fuzzy keeps its number.
+
+    The rules' own conditions (``rule_conditions``, the function the traces and ``rules.json`` use) say which code of
+    which input a condition is: the term index for ``is``, a code beyond the terms for ``at_least`` / ``at_most`` and
+    for a compound (contract v0.8). The membership at that code is the bounded sum of the terms it covers; it is read,
+    never recomputed.
+    """
+    from atlas.ml.exfuzzy_features import rule_conditions
+
+    if family == m.InferenceFamily.TSK_ZERO_ORDER:
+        rb = get_rulebase(model)
+        rules, variables = rb.rules, rb.antecedents
+    else:
+        rb = get_master_rulebase(model)
+        rules, variables = rb.get_rules(), rb.antecedents
+    names = [str(v.name) for v in variables]
+    found: dict[tuple[str, str, str], tuple[int, int]] = {}
+    for rule in rules:
+        for c in rule_conditions(rule, variables):
+            found.setdefault((names[c.feature], c.operator, c.term), (c.feature, c.code))
+    missing = [p for p in pairs if tuple(p) not in found]
+    if missing:
+        raise ValueError(f"conditions {missing} of rules.json are not in the rule base of the model")
+    return [found[tuple(p)] for p in pairs]
 
 
 def activate(model, family: m.InferenceFamily, X: np.ndarray) -> Activations:

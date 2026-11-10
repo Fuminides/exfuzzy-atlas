@@ -40,7 +40,7 @@ export function ReportTab({ domain, task, territoryTitle }: Props) {
   const unit = unitLabel(task.unit);
   const when = task.horizon_hours > 0 ? ` ${horizonClause(task.horizon_hours)}` : "";
   return (
-    <Naming variables={rules.status === "ok" ? rules.data.variables : NO_VARIABLES} scheme={scheme} target={task.target}>
+    <Naming variables={rules.status === "ok" ? rules.data.variables : NO_VARIABLES} scheme={scheme} target={task.target} rules={rules.status === "ok" ? rules.data.rules : NO_VARIABLES}>
       <div className="page" data-task={task.task_id}>
         <PageHead title={tr(`Informe de rendimiento: ${territoryTitle}`, `Performance report: ${territoryTitle}`)}>
           {tr(<>Cómo predice el modelo {predicts}{when} en el periodo de prueba ({period}), frente a modelos de referencia sobre las mismas predicciones.</>,

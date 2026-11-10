@@ -405,7 +405,7 @@
       "type": "string"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ObservationsResponse.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/ObservationsResponse.schema.json",
   "additionalProperties": false,
   "properties": {
     "data_version": {
@@ -447,7 +447,7 @@
       "type": "string"
     },
     "schema_version": {
-      "default": "0.7.0",
+      "default": "0.8.0",
       "title": "Schema Version",
       "type": "string"
     },

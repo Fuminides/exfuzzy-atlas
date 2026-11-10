@@ -1,6 +1,6 @@
 # Static export: the demo as a fully static site (GitHub Pages)
 
-Format version **1** (`manifest.format_version`). Contract: v0.7 (`SCHEMA_VERSION` 0.7.0); the export changes no contract.
+Format version **2** (`manifest.format_version`, `meta.format_version`; 1 was the first layout, whose `mem_pairs` had no operator). Contract: v0.8 (`SCHEMA_VERSION` 0.8.0); the export changes no contract. A reader refuses a format other than its own.
 Study behind it: the feasibility study of 2026-11-09 (sizes, Pages limits, what-if), re-checked here against `main` at
 registry 0.7.0 (10 tasks, 9 mixture-of-rules classifiers plus the water TSK, NYC +6 h being a winning-rule classifier).
 
@@ -49,7 +49,9 @@ Two implementations of the builders are kept in step, and they are what the expo
     `properties.modelled === false` are not in E; they never have rows).
   * **R**: the rules, in `rules.json` order (`rules[r].rule_id`; `R01…`).
   * **C**: the classes, in `target_scheme.classes` order (classifiers).
-  * **P**: the used `(feature, term)` pairs, in order of first appearance in the rules (`meta.mem_pairs`).
+  * **P**: the used **conditions** `(feature, operator, term)`, in order of first appearance in the rules (`meta.mem_pairs`). One
+    entry is one membership: the term's own for `is`, the bounded sum `min(1, Σ memberships of the covered terms)` that ex_fuzzy
+    computes for `at_least`, `at_most` and `any_of` (`term` is the threshold term, or the compound's internal name; contract v0.8).
 * **Missing-reason codes**: `meta.missing_reasons`, the `MissingReason` enum in contract order:
   `["no_observation","invalid_observation","censored","missing_input","prediction_unavailable","not_modelled"]`.
   A column of codes holds the index into that list, or `null`.
@@ -80,7 +82,7 @@ data/<export_id>/
   models/<model_id>/meta.json.gz             what the builders need that no API body carries (section 4)
   models/<model_id>/<key>/pred.json.gz       predictions, observed target, published label, deciding rule (section 5)
   models/<model_id>/<key>/fire.json.gz       firing per rule (section 6)
-  models/<model_id>/<key>/mem.json.gz        membership per used (feature, term) (section 6)
+  models/<model_id>/<key>/mem.json.gz        membership per used condition (section 6)
   inputs/<territory>/<column>/<key>.json.gz  one model input over (hour of day x entity), shared by models (section 7)
   models/<model_id>/inputs/<feature>/all.json.gz   irregular tasks: the same, row-aligned (section 7)
   models/<model_id>/agg/<kind>/<from>.json.gz      window statistics for rule-map and rule-territories (section 8)
@@ -122,7 +124,7 @@ window or entity file means "no data there": the builder answers as the API does
     {"name": "no2_last", "obs_unit": "ug/m3", "trace_unit": "ug/m3", "source_id": "...", "lag_hours": 0.0,
      "input": "inputs/germany/no2_last"}         // base path of the input files (section 7)
   ],
-  "mem_pairs": [["no2_last", "Low"], ["…", "…"]],  // axis P
+  "mem_pairs": [["no2_last", "is", "Low"], ["hour", "any_of", "Night"], ["y", "at_least", "Medium"]],  // axis P
   "inference": { "...": "InferenceSpec exactly as the API puts it in a RuleTrace" },
   "windows": {"day": ["2025-01-01", "…"], "week": ["2024-12-30", "…"], "month": [...], "year": [...], "coverage": true},
   "stories": {"tau": 0.5, "limit": 10},
@@ -169,12 +171,14 @@ withholds the label there too.
 
 ```jsonc
 {"v": 1, "kind": "fire", "n": 10412, "f": [[…n floats|null…], …R arrays…]}   // f[r][i] = firing_strength of rule r in row i
-{"v": 1, "kind": "mem",  "n": 10412, "m": [[…n floats|null…], …P arrays…]}   // m[p][i] = membership of pair p in row i
+{"v": 1, "kind": "mem",  "n": 10412, "m": [[…n floats|null…], …P arrays…]}   // m[p][i] = membership of condition p in row i
 ```
 
 `null` marks a row whose inputs are not all present (the published firing is NaN with `missing_input`). The firing is the
 published `firing_strength` (the t-norm output, before `rule_mode`). The membership is ex_fuzzy's membership of the input value in
-the term, before any modifier. For every model served today `effective_firing = firing_strength`; the exporter refuses a TSK
+the condition (the term for `is`, the bounded sum of the covered terms for the other operators), before any modifier. The exporter
+reads it from the library's own array at the condition's code (`engine.pair_positions`, through `rule_conditions`, the function the
+API's traces use); nothing is recomputed from the term parameters. For every model served today `effective_firing = firing_strength`; the exporter refuses a TSK
 model with `rule_mode != additive` until a column for it exists.
 
 ## 7. Input files
@@ -268,11 +272,13 @@ time** at the featured instants.
 semantics, same null/reason rules, same ordering. Entities always come in the order of `tasks/<task_id>/entities.json.gz` `features`,
 unmodelled ones included. `h` = `meta`, `entry` = the registry fields in `meta`.
 
-**Antecedent shape.** Two functions are the only readers of how a rule's antecedent is written (today feature, term and an optional
-modifier): `atlas.services.static.extract.antecedent_pairs` (the P axis of `mem`) and `StaticStore._antecedent_traces` (the trace
-entries). Contract v0.8 adds an operator to antecedents ("at least / at most", named unions): the exporter then **refuses to export**
-(`NotImplementedError`) until those two are extended, instead of writing memberships that mean something else. Everything exact
-(`rules.json`, `card.json`, …) passes through as the API serves it, whatever fields it has.
+**Antecedent shape (contract v0.8).** A rule's condition is `{feature, operator, term, terms, modifier?, label?, label_en?}`:
+`operator` is `is`, `at_least`, `at_most` or `any_of`; `terms` are the base terms it covers (low to high; a compound may cover
+non-adjacent ones). Its membership is one entry of `mem` (axis P, key `(feature, operator, term)`). Three functions are the only
+readers of this shape: `atlas.services.static.extract.antecedent_pairs` (the P axis), `atlas.services.static.engine.pair_positions`
+(where ex_fuzzy keeps each condition) and `StaticStore._antecedent_traces` (the trace entries; `antecedentTraces` in
+`apps/web/src/api/static/trace.ts`). An operator they do not know fails the export. Everything exact (`rules.json`, `card.json`, …)
+passes through as the API serves it, whatever fields it has.
 
 Query-shape validation (the 422s of `apps/api/atlas_api/main.py`: `time` xor `from/to`, `to > from`, window <= 366 days, `tau` only with
 `activation_frequency`, `firing_strength` takes `time`) stays in the web's static layer; the builders assume valid queries.
@@ -340,8 +346,10 @@ Unknown entity: 404; unmodelled: 404 with the store's detail.
 2. `feature_values[f] = {feature, value: x_f, unit: trace_unit, source_id, observed_at_utc: t - lag_hours or null, missing_reason: no_observation if null}`.
 3. Any input null: `rules = []`, `prediction = {value: null, unit: target_unit, fallback_used: false, missing_reason: missing_input}`, quality warning
    `"missing input: a, b"`.
-4. Otherwise, per rule `r` with `rules[r].antecedents`: `antecedents[a] = {feature, term, membership: mem[p], modifier,
-   effective_membership: membership ** modifier (or membership without one)}`; `firing_strength = effective_firing = fire[r]`.
+4. Otherwise, per rule `r` with `rules[r].antecedents`: `antecedents[a] = {feature, term, operator, terms, membership: mem[p], modifier,
+   effective_membership: membership ** modifier (or membership without one)}`, where `p` is the entry `(feature, operator, term)` of
+   `meta.mem_pairs`, `operator` and `terms` are those of the rule in `rules.json` (`[term]` for `is`), and the membership is not
+   recomputed from `terms`; `firing_strength = effective_firing = fire[r]`.
    * TSK: `prediction.value = pred`, `fallback_used = (sum of the firings <= 1e-10)`.
    * Winning-rule classifier: `weight = rules[r].weight`, `association_degree = firing * (1 if inference.rule_weighting == "none" else weight)`;
      `label = classes[plabel]`, `winning_rule_id = rules[decided]`, `fallback_used = no association > 0`.
@@ -473,7 +481,7 @@ python -u -m atlas.services.static.export --published-dir artifacts/published --
   Default: `germany=2025-01-01T00:00:00Z,2025-03-31T23:00:00Z` (`fmt.DEFAULT_PERIODS`). The periods are part of the export id.
 * `--base <previous data/<export_id>>` re-exports **only what changed**. A task is reused (hard links, else copies) when its model's
   `SHA256SUMS`, its explanation file and its period are the same as in the base manifest and the format, tau grid and `--no-whatif`
-  setting match; every other task is exported from scratch. This is the cheap way to re-export one or a few republished models:
+  setting match (a base of another `format_version` is not reused: re-export everything once); every other task is exported from scratch. This is the cheap way to re-export one or a few republished models:
   `make export-static ARGS="--base OUT/data/<old id>"` after republishing. The shared `inputs/<territory>/` files are reused only if the
   whole territory is unchanged; otherwise they are rewritten for all the models of the territory (reading each model's inputs), while the
   unchanged models keep their own files. `manifest.base` records the base export id and the reused tasks. `--only t` forces `t` to be

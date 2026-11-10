@@ -47,6 +47,23 @@ mark, "validation period: not the test period", "Los colores son categorías, no
 The English guard matches `/caus(e|al)/`, so "because" trips it too: on the guarded tabs write the sentence another
 way ("no prediction is published: the zone has no reference level").
 
+## Ordinal and compound conditions (contract v0.8)
+
+- A condition `at_least` / `at_most` reads like an `is` condition with «al menos» / «como mucho» (EN "at least" / "at most")
+  after the verb: «la temperatura es al menos media», "temperature is at least medium"; the verb of the term stays
+  («está al menos en…»). The term is worded exactly as an `is` condition would word it (`lib/termPhrases.ts`). In a matrix
+  cell or a hovercard line the compact marker is ≥ / ≤ before the term's phrase («≥ demanda alta»); on a plot the label
+  is «al menos Aceptable» / "at least Fair".
+- A compound (`any_of`) reads «es Primeras horas» / "is Early hours". Its name is a **display name** from an Atlas
+  config (`label` / `label_en`), provisional and free to change without refitting the model; the web shows it as data
+  with `localized(es, en)` and falls back to the internal `term`, never hard-coding a name. What it covers goes in a
+  tooltip or the rule detail: the terms' labels joined with «o» / "or", and for an hour of the day the hours where the
+  bounded sum is at least one half, computed from the terms' published parameters («Tarde-noche o Noche, 17–5 h»; a
+  stretch through midnight reads «17–5 h»). Display only.
+- On the partitions plot an ordinal or compound condition that some rule uses is a dashed line: the sum of the
+  memberships of the terms it covers, capped at 1 (the bounded sum). Memberships quoted anywhere else come from the
+  API's traces.
+
 ## Terms
 
 | Español | English |
@@ -187,3 +204,6 @@ way ("no prediction is published: the zone has no reference level").
 | Se cumple (columna con el grado en que se cumple una regla, fuera de Explorar) | Holds |
 | «Reglas ganadoras» no existe en este modelo (mezcla de reglas: no hay ganadora) | "Winning rules" does not exist in this model |
 | la que más cuenta (texto general de la página de inicio) | counts most |
+| al menos / como mucho (condición ordinal de una entrada con términos ordenados, contrato v0.8): «es al menos Aceptable», «es como mucho Media» | at least / at most: "is at least Fair", "is at most Medium" |
+| condición compuesta (varios términos con nombre propio, p. ej. «Primeras horas» = Madrugada + Mañana): «es Primeras horas» | compound condition: "is Early hours" |
+| suma acotada (la forma que se dibuja de una condición ordinal o compuesta) | bounded sum |

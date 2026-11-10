@@ -371,7 +371,7 @@ export function Workspace({ domain, task: selectedTask, mode, onMode, onDate, on
 
   return (
     <ZoneContext.Provider value={zone}>
-    <Naming variables={rules.data.variables} scheme={scheme} target={task?.target ?? selectedTask.target}>
+    <Naming variables={rules.data.variables} scheme={scheme} target={task?.target ?? selectedTask.target} rules={rules.data.rules}>
     <RuleLookupProvider model={rules.data} importance={importance.status === "ok" ? importance.data : null} scheme={scheme} unit={unit} colourWithoutRanking={sharedColours !== null && importance.status !== "ok"}>
     <div className="workspace" data-domain={domain.domain} data-task={selectedTask.task_id} data-irregular={irregular ? "true" : undefined}>
       {timelineFirst ? timeline : (

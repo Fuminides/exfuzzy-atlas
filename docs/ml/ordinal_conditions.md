@@ -348,11 +348,11 @@ suppresses (-) relative to the others, and a rule's weights are conditional on t
 (`rule_mixture.md`, section 5). For Water the number is the additive consequent of a TSK rule, not the oxygen of the samples it
 covers.
 
-**`uk_water_do`, B seed 0** (the largest gain; the three rules with the largest effect among those with an ordinal condition):
+**`uk_water_do`, B seed 0** (the largest gain; the three rules with the largest effect among those with an ordinal condition; the terms are written with their display labels, as the report now prints them):
 
-    IF water_temperature IS Low AND ph IS at most Medium: THEN dissolved oxygen += +18.8
-    IF ammoniacal_nitrogen IS <=L AND water_temperature IS at most Medium: THEN dissolved oxygen += +17.2
-    IF ammoniacal_nitrogen IS at most Medio>L: THEN dissolved oxygen += +16.8
+    IF water_temperature IS low AND ph IS at most medium: THEN dissolved oxygen += +18.8
+    IF ammoniacal_nitrogen IS ≤ detection limit AND water_temperature IS at most medium: THEN dissolved oxygen += +17.2
+    IF ammoniacal_nitrogen IS at most medium (above the limit): THEN dissolved oxygen += +16.8
 
 **`nyc_pickups_h3`, B seed 0** (a mixture; the second robust winner):
 
@@ -363,18 +363,19 @@ covers.
 In the same fit the compound terms are used by two rules: `IF local_hour IS Primeras horas` (Madrugada or Mañana) and
 `IF local_dow IS Fin de semana`. Others: `de_no2_h3` (B seed 0) `IF no2_lag24h IS at least Fair AND relative_humidity IS at least
 Medium` (centred: Good -1.69, Fair -0.18, Moderate +0.61, Poor or worse +1.26) and `IF no2_lag3h IS at most Fair AND
-valid_hour_local IS Afternoon`; Water `IF ammoniacal_nitrogen IS Bajo>L AND local_hour IS Low or Medium`.
+valid_hour_local IS Afternoon`; Water `IF ammoniacal_nitrogen IS low (above the limit) AND local_hour IS low or medium`.
 
 ## 5. Atlas code changes, risks and what is left
 
 * **Atlas code.** `rule_conditions` / `condition_labels` / the capability probes (`ordinal_conditions`, `compound_terms`) in
   `atlas.ml.exfuzzy_features`; `rule_signatures`, `classifier_rule_sets`, `classifier_term_usage` and `build_consensus_model` read
   conditions through them (they give the same result on ex-fuzzy 3.4.0 and with the options off); `ordinal_conditions` (True or the inputs) and
-  `compound_terms` in `FuzzyClassifierParams` / `FuzzyParams`, left out of `as_dict` when off; `rules_export` refuses an
-  `at least` / `at most` / compound condition (`UnsupportedModelError`) because contract v0.7 has no operator; the driver
-  `atlas.ml.experiment_ordinal`. Tests: `tests/ml/test_ordinal_conditions.py`.
-* **Not done on purpose.** No contract bump, no web change, nothing published. `atlas.explain.{classifier,mixture,traces}` and
-  `report_fx` still index `linguistic_variable_names()[term]`: they serve contract objects, so they need the v0.8 operator first.
+  `compound_terms` in `FuzzyClassifierParams` / `FuzzyParams`, left out of `as_dict` when off; the driver
+  `atlas.ml.experiment_ordinal`. Tests: `tests/ml/test_ordinal_conditions.py`. (When this report was written
+  `rules_export` still refused these conditions because contract v0.7 has no operator, and `atlas.explain` and `report_fx` still
+  indexed the term names; contract v0.8 fixed both: section 6.)
+* **Decision after the report.** The maintainer decided (2026-11-10) to publish arm B in the four tasks that won under the
+  registered rule (`uk_water_do`, `nyc_pickups_h3`, `nyc_pickups_h6`, `de_no2_h3`) and to keep the other six models. Section 6.
 * **Summary of the answer.** Under the registered rule B beats A in 4 of 10 tasks, but only two (`nyc_pickups_h3`, `uk_water_do`)
   survive the median check, one of them by 0.0001, and the test period shows no gain in the seed means (section 3). The
   option gave the clearest validation gains in Water and NYC +3 h. In NYC +3 h the B fit is also smaller (9 rules and 12
@@ -387,3 +388,69 @@ valid_hour_local IS Afternoon`; Water `IF ammoniacal_nitrogen IS Bajo>L AND loca
   conditions in 7 of 10 tasks.
 * **Reproduce** (the large machine, section 0.8): `arms --workers 18` (61 min), `decide`, `test`, `report`; the outputs are in
   `artifacts/experiments/ordinal_conditions/` of the workstation (git-ignored).
+
+## 6. Publication (contract v0.8)
+
+Contract v0.8 (`CONTRACTS.md` section 19) gives an `Antecedent` an operator (`is`, `at_least`, `at_most`, `any_of`) and the
+base terms it covers, and `rules_export` and `atlas.explain` read each rule through `rule.conditions()`; the
+membership of such a condition in a trace is the bounded sum that ex-fuzzy computes (read, never recomputed). The four
+selected arm-B fits are published as new models; the models they replace keep their directories in
+`artifacts/published-v07/` (outside the registry, with the v0.7 `registry.json`), and the registry 0.8.0 with all ten served
+tasks is in `artifacts/published-v08/`, which is promoted to `artifacts/published/` when the PR is merged, as v0.7 was.
+
+| task | model id | rules | conditions | `at least` / `at most` | compound | validation | test | replaced model (validation, test) |
+|---|---|---|---|---|---|---|---|---|
+| `uk_water_do` (MAE, RMSE) | `exfuzzy-uk_water_do-fx-w-unique-ordinal-seed0` | 38 | 81 | 24 | 2 | 0.6030, 0.9101 | 0.6251, 0.9277 | 39 rules, 64 conditions: 0.6233, 0.9252 and 0.6351, 0.9315 |
+| `nyc_pickups_h3` (macro-F1) | `exfuzzy-nyc_pickups_h3-mixture-nonneg-ordinal-seed0` | 9 | 12 | 8 | 2 | 0.3346 | 0.3772 | 15 rules, 16 conditions: 0.3246, 0.3714 |
+| `nyc_pickups_h6` (macro-F1) | `exfuzzy-nyc_pickups_h6-level-rel7-ordinal-seed0` | 5 | 10 | 5 | 0 | 0.3185 | 0.3370 | 8 rules, 9 conditions: 0.3141, 0.3526 |
+| `de_no2_h3` (macro-F1) | `exfuzzy-de_no2_h3-mixture-nonneg-ordinal-seed0` | 12 | 20 | 8 | 2 | 0.5194 | 0.5477 | 15 rules, 23 conditions: 0.5179, 0.5422 |
+
+The figures are those of the experiment (`decisions.json`, section 2 and 3: the published fit is its selected seed) and the
+test column was read when the run directory was written, as for any published model. Two readings: the New York +6 h model
+is better on validation and lower on test than the model it replaces (0.3370 against 0.3526; the replaced model was fitted
+on an older build and the experiment re-selected the shape, 60 x 4 against 30 x 3, section 1); and the test macro-F1 of
+New York +3 h and Germany +3 h is above the replaced models' by 0.006 and 0.005, with a Water test MAE 0.010 lower (0.6251
+against 0.6351), which is the order of the seed spread of section 3.
+
+**Compound names.** They live in `configs/compound_terms.json`, keyed by the name the fit gave, and are display names only.
+The maintainer chose the Germany hour ones (2026-11-10): «Madrugada y mañana» / "Night and morning" (Night + Morning rush, 0 to
+9.5 h) and «Segunda mitad del día» / "Second half of the day" (Midday + Evening, 9.5 to 23 h); the others stay as
+`configs/ml/ordinal_conditions_experiment.json` had them («Primeras horas» / "Early hours" for New York, «Fin de semana» /
+"Weekend", «baja o media» / "low or medium" for the water hour). `publish` and `python -m atlas.services.enrich
+--published-dir <dir> --model-id <id> --labels-only` (without `--metadata`) apply them to the published `rules.json` as
+`Antecedent.label` / `label_en`, so a name changes without refitting; the explanation's `input_sha256` then follows the context.
+
+**ex-fuzzy.** The fits ran on commit `7a0844a` (`3.4.0+g7a0844a`, recorded in their manifests and `rules.json`, with a warning),
+and the released 3.5.0 differs from it only in `_version.py` (`diff -r` of the two `ex_fuzzy/` trees). The tables of the
+four models were recomputed with both, with no record and no prediction different (below).
+
+Commands (the large machine for the run directories and the publication; `R` is the checkout, `A` the artifacts directory,
+`D` the processed data, `P` the published directory, which starts with a copy of the v0.7 `registry.json`):
+
+```bash
+python -u -m atlas.ml.publish_ordinal runs --tasks de_no2_h3 nyc_pickups_h3 nyc_pickups_h6 uk_water_do
+python -m atlas.services.publish --run-dir $A/uk_water_do/fx-w-unique-ordinal-seed0 --features $D/water/features/uk_water_do \
+  --entities $D/water/entities.geojson --feature-spec configs/water/feature_spec.json --from 2024-01-01T00:00:00Z \
+  --to 2026-01-01T00:00:00Z --task-id uk_water_do --title "River dissolved oxygen (UK)" --irregular-times \
+  --metadata configs/water/attribution.json --published-dir $P
+python -m atlas.services.publish --run-dir $A/nyc_pickups_h<3|6>/<run> --features $D/mobility/features/nyc_pickups_h<3|6>_level \
+  --entities $D/mobility/taxi_zones_simplified.geojson --feature-spec configs/mobility/feature_spec.json \
+  --from 2025-02-08T05:00:00Z --to 2025-04-01T04:00:00Z --task-id nyc_pickups_h<3|6> --title "Yellow-taxi demand level (NYC)" \
+  --observed-label-column target_level --metadata configs/mobility/attribution.json --include-unmodelled-entities \
+  --territory nyc --territory-title "Nueva York" --territory-title-en "New York" --published-dir $P
+python -m atlas.services.publish --run-dir $A/de_no2_h3/mixture-nonneg-ordinal-seed0 --features $D/air-de/features/de_no2_h3/table \
+  --entities $D/air-de/stations.geojson --feature-spec configs/air/de_no2_h3_feature_spec.json --from 2025-01-01T00:00:00Z \
+  --to 2026-01-01T00:00:00Z --task-id de_no2_h3 --title "Germany air quality (EEA)" --metadata configs/air/attribution_de.json \
+  --territory germany --territory-title Alemania --territory-title-en Germany --skip-labels-not-in-spec --published-dir $P
+python -m atlas.ml.publish_ordinal strip-paths $P      # publish.json: the data root becomes data/..., as the public cleanup did
+python -m atlas.services.verify $P/<model>; python -m atlas.ml.publish_parity $P/<model>; python -m atlas.ml.publish_parity --tables $P/<model>
+```
+
+**Checks.** `atlas.services.verify` passes for the ten models. The mixtures (Germany +3 h, New York +3 h) and the winning-rule
+model (New York +6 h) pass `publish_parity` row by row (label, firing, contribution, decisive flag, top rule, traces) with no
+mismatch, and `publish_parity --tables` recomputes every activation record (45.9 M for Germany +3 h) and prediction with
+no difference, with ex-fuzzy `7a0844a` and with the released 3.5.0. For Water the whole table of predictions equals the
+published one exactly; `--tables` windows the rows by two days, and the regressor's prediction of 13 of 3,316 rows then
+differs from the whole-table one by at most 5.3e-15 (the matrix product rounds differently for another number of rows; the
+replaced model shows the same on another machine, 66 rows), so that check reports Water as not ok although no firing record
+differs. The traces of every condition kind are tested against the library (`tests/ml/test_ordinal_export.py`).

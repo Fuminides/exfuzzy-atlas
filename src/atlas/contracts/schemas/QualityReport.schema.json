@@ -1,5 +1,5 @@
 {
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/QualityReport.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/QualityReport.schema.json",
   "additionalProperties": false,
   "description": "Audit table required for every source (DATA_SOURCES.md).",
   "properties": {
@@ -115,7 +115,7 @@
       "type": "string"
     },
     "schema_version": {
-      "default": "0.7.0",
+      "default": "0.8.0",
       "title": "Schema Version",
       "type": "string"
     },

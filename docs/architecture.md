@@ -11,7 +11,7 @@ Atlas es **AGPL-3.0-or-later**, igual que `ex_fuzzy`. Ojo: la metadata upstream 
 | Capa | Elección |
 |---|---|
 | Python | ≥ 3.10 (CI en 3.12) |
-| Motor de reglas | `ex-fuzzy==3.4.0` de PyPI (primera versión con la mezcla de reglas y su poda, PR 44; contrato v0.7); antes `ex_fuzzy==3.3.1` de PyPI. Ver `docs/reproduce.md` |
+| Motor de reglas | `ex-fuzzy==3.5.0` de PyPI (condiciones ordinales «al menos / como mucho» y términos compuestos, PR 45; contrato v0.8; la 3.4.0 fue la primera con la mezcla de reglas y su poda, PR 44; contrato v0.7); antes `ex_fuzzy==3.3.1` de PyPI. Ver `docs/reproduce.md` |
 | Datos | Parquet + DuckDB (+ pyarrow, pandas). Particionado hive `year=/month=` |
 | Contratos | Pydantic v2 → JSON Schema exportado (`make schemas`) |
 | API | FastAPI, solo GET por ahora; servicio de artefactos precalculados |

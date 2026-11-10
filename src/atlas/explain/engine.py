@@ -89,6 +89,27 @@ def rule_modifier(rule, feature_index: int) -> float | None:
     return float(modifiers[feature_index])
 
 
+def trace_antecedents(rule, variables, names, memberships, k: int, *, hedged: bool = False) -> list[m.AntecedentTrace]:
+    """The ``AntecedentTrace`` of every condition of ``rule`` for sample ``k`` (contract v0.8).
+
+    The membership of a condition is the number ex_fuzzy computed for its code in ``memberships`` (the output of
+    ``compute_antecedents_memberships``): the term's own membership for ``is``, the bounded sum
+    ``min(1, sum of the covered terms)`` for ``at_least`` / ``at_most`` / ``any_of``. It is read, never recomputed.
+    ``hedged``: the rule base has hedge exponents (the TSK regressor), applied to the membership.
+    """
+    from atlas.ml.exfuzzy_features import rule_conditions  # atlas.ml imports atlas.explain: import at call time
+
+    out = []
+    for c in rule_conditions(rule, variables):
+        membership = float(memberships[c.feature][c.code][k])
+        modifier = rule_modifier(rule, c.feature) if hedged else None
+        out.append(m.AntecedentTrace(
+            feature=names[c.feature], term=c.term, operator=c.operator, terms=list(c.terms), membership=membership,
+            modifier=modifier, effective_membership=membership if modifier is None else membership**modifier,
+        ))
+    return out
+
+
 def duplicate_groups(rulebase: RuleBaseT1Regression) -> list[list[int]]:
     """Groups (positions, ascending) of rules sharing identical antecedents and modifiers.
 

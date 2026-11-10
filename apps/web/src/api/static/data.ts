@@ -28,12 +28,15 @@ export interface Model {
   classifier: boolean;
   winningRule: boolean;
   mixture: boolean;
-  /** `feature\u0000term` -> position in `meta.mem_pairs` (axis P). */
+  /** `feature\u0000operator\u0000term` -> position in `meta.mem_pairs` (axis P). */
   pairIndex: ReadonlyMap<string, number>;
   domainOf: ReadonlyMap<string, [number, number] | null>;
 }
 
-export const pairKey = (feature: string, term: string): string => `${feature}\u0000${term}`;
+/** `fmt.FORMAT_VERSION` of the exporter (docs/static_export.md). 2: a `mem_pairs` entry is `[feature, operator, term]`. */
+export const FORMAT_VERSION = 2;
+
+export const pairKey = (feature: string, operator: string, term: string): string => `${feature}\u0000${operator}\u0000${term}`;
 
 function buildModel(meta: Meta, rules: ModelRules, entities: EntityCollection, schemaVersion: string, texts: ApiTexts): Model {
   const unmodelled = new Set(entities.features.filter((f) => f.properties.modelled === false).map((f) => f.properties.entity_id));
@@ -56,7 +59,7 @@ function buildModel(meta: Meta, rules: ModelRules, entities: EntityCollection, s
     classifier: meta.family === "winning_rule_classifier" || meta.family === "rule_mixture_classifier",
     winningRule: meta.family === "winning_rule_classifier",
     mixture: meta.family === "rule_mixture_classifier",
-    pairIndex: new Map(meta.mem_pairs.map(([f, t], p) => [pairKey(f, t), p])),
+    pairIndex: new Map(meta.mem_pairs.map(([f, op, t], p) => [pairKey(f, op, t), p])),
     domainOf,
   };
 }
@@ -117,7 +120,13 @@ export class Data {
   }
 
   meta(modelId: string, signal?: AbortSignal): Promise<Meta> {
-    return this.once(`meta:${modelId}`, async () => this.exact<Meta>(paths.metaPath(modelId), `unknown model_id ${modelId}`, signal));
+    return this.once(`meta:${modelId}`, async () => {
+      const meta = await this.exact<Meta>(paths.metaPath(modelId), `unknown model_id ${modelId}`, signal);
+      if (meta.format_version !== FORMAT_VERSION) {
+        throw new ApiError(tr(`Formato de export ${meta.format_version}; esta web lee el ${FORMAT_VERSION}`, `Export format ${meta.format_version}; this web reads ${FORMAT_VERSION}`), null);
+      }
+      return meta;
+    });
   }
 
   model(modelId: string, signal?: AbortSignal): Promise<Model> {

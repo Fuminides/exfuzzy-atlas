@@ -631,6 +631,16 @@ The bare URL opens a landing page (`components/Landing.tsx`, outside `App`): Ste
 - **Gutter.** `--lp-gutter: clamp(20px, 5vw, 80px)` on every landing block (top bar, hero, sections, footer, floating
   artifacts): 20 px at 390 px, 72 px at 1440 px. The app's own `--gutter` (16–40 px) is unchanged.
 
+### Conditions on a rule (contract v0.8, 2026-11-10)
+
+- **Sentences.** «al menos» / «como mucho» (at least / at most) sit between the verb and the term in running text; a compound
+  term is its display name in the same italic phrase as a term («es Noche larga»), with its constituents and, for an hour of
+  the day, its hours («Tarde-noche o Noche, 17–5 h») in the tooltip or the rule detail. In the rule matrix and in compact
+  lists they shrink to ≥ and ≤ before the term.
+- **Partitions.** The shape of an ordinal or compound condition that a rule uses is the bounded sum of its terms' trapezoids,
+  drawn as a dashed Ink line (2.4 px, 7/4) over the base terms and labelled in italic Ink. It is a drawing of the published
+  parameters; a variable with no such condition looks as before.
+
 ### Not followed
 
 - Signifier and Söhne themselves (commercial): the substitutes above.

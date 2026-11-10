@@ -10,7 +10,7 @@ Most of the project documents are in Spanish; the ML reports in `docs/ml/` are i
 
 ## Status
 
-Data and API contract v0.7 (`CONTRACTS.md`), with ex-fuzzy 3.4.0 from PyPI. The published models are fitted on real data. They are not in git: the chain in `docs/reproduce.md` builds them. Without them, the API serves the synthetic fixtures in `fixtures/synthetic/`, which carry `synthetic: true`.
+Data and API contract v0.8 (`CONTRACTS.md`), with ex-fuzzy 3.5.0 from PyPI. The published models are fitted on real data. They are not in git: the chain in `docs/reproduce.md` builds them. Without them, the API serves the synthetic fixtures in `fixtures/synthetic/`, which carry `synthetic: true`.
 
 ## Quick start
 

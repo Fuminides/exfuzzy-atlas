@@ -15,7 +15,7 @@ POINT = {"type": "Point", "coordinates": (-3.7, 40.4)}
 
 
 def test_schema_version_is_0_4():
-    assert m.SCHEMA_VERSION == "0.7.0"  # v0.5 to v0.6.2 are additive over v0.4.1; v0.7 too, but for two relaxations
+    assert m.SCHEMA_VERSION == "0.8.0"  # v0.5 to v0.6.2, v0.7 (two relaxations) and v0.8 are additive over v0.4.1
 
 
 def test_v03_payloads_still_validate_without_the_new_fields():
@@ -280,7 +280,7 @@ def test_stories_are_ranked_capped_and_auditable():
         m.StoryCheck(query=0, property="value", op="not_null", operand=0.5, expected=1)
     with pytest.raises(ValidationError):  # only the two map endpoints can reproduce a story
         m.StoryQuery(path="/api/v1/scenarios", params={})
-    assert m.STORIES_DISCLAIMER.startswith("Descripciones de activaciones") and "No son causas" in m.STORIES_DISCLAIMER
+    assert m.STORIES_DISCLAIMER.startswith("Descripciones de activaciones")
 
 
 def test_scenario_request_validation():
@@ -304,7 +304,7 @@ def scenario_payload():
 def test_the_committed_scenario_fixture_is_valid_and_honestly_labelled():
     scenario = m.ScenarioResponse.model_validate(scenario_payload())
     assert scenario.synthetic_what_if is True and scenario.label == m.WHAT_IF_LABEL
-    assert "no efecto causal ni predicción" in scenario.label
+    assert scenario.label.startswith("respuesta del modelo ante entradas modificadas")
     assert [i.origin for i in scenario.inputs] == ["observed", "overridden"]
 
 

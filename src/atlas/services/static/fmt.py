@@ -14,7 +14,7 @@ from pathlib import Path
 
 from atlas.contracts import models as m
 
-FORMAT_VERSION = 1
+FORMAT_VERSION = 2  # 2: a P entry is a condition (feature, operator, term), contract v0.8
 EXPORTER = f"atlas.services.static {FORMAT_VERSION}"
 TAUS = [round(0.05 * k, 2) for k in range(1, 21)]
 STORIES_TAU = 0.5

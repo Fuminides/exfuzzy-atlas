@@ -10,10 +10,11 @@ readme = "README.md"
 license = "AGPL-3.0-or-later"
 requires-python = ">=3.10"
 dependencies = [
-    # Contract v0.7 serves mixture-of-rules classifiers (inference='mixture'): ex-fuzzy 3.4.0 is the first release with
-    # them (PR 44; the code of commit 5409bb8 plus the version bump, docs/reproduce.md). Its default (winning-rule)
-    # inference is bit-for-bit that of 3.3.1 on the served models.
-    "ex-fuzzy==3.4.0",
+    # Contract v0.7 serves mixture-of-rules classifiers (inference='mixture'; ex-fuzzy 3.4.0 is the first release with
+    # them, PR 44) and contract v0.8 the ordinal ("at least / at most") and compound conditions of ex-fuzzy 3.5.0
+    # (PR 45; the code of commit 7a0844a plus the version bump, docs/reproduce.md). With the options off 3.5.0 is
+    # bit-for-bit 3.4.0, which is bit-for-bit 3.3.1 in the default (winning-rule) inference of the served models.
+    "ex-fuzzy==3.5.0",
     "numpy>=1.26",
     "pandas>=2.1",
     "pyarrow>=15",

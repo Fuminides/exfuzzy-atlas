@@ -1,5 +1,5 @@
 {
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/Health.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/Health.schema.json",
   "additionalProperties": false,
   "properties": {
     "mode": {
@@ -11,7 +11,7 @@
       "type": "string"
     },
     "schema_version": {
-      "default": "0.7.0",
+      "default": "0.8.0",
       "title": "Schema Version",
       "type": "string"
     },

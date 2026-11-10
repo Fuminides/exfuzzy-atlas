@@ -86,6 +86,21 @@ and the prediction is the category with the largest total once all the rules tha
   suma a una categoría»), never "contribution" / «contribución».
 - Use only the figures CONTEXT gives for the mixture; if it gives none about a rule, say nothing about that rule's part.
 
+## Only for rules with `operator` in their conditions (ordinal and compound conditions)
+
+Skip this section when no condition of any rule has an `operator`. A condition without one is a plain term: «NO₂ es
+Moderado».
+
+- `"operator": "at_least"` means the input is at that term or any higher one (`covers` lists them, low to high):
+  «el NO₂ de hace 3 h es al menos Moderado» / "NO₂ 3 h ago is at least Moderate". `"operator": "at_most"` means that term
+  or any lower one: «es como mucho Media» / "is at most Medium". Name the term as in CONTEXT and write the condition as
+  one phrase; never rewrite it as a list of terms or as a comparison of numbers.
+- `"operator": "any_of"` is a named stretch of the clock or the week that unites the terms in `covers`. Use its name as
+  given («es Noche larga» / "is Long night") and, when it helps, say once what it covers, in the words of `covers`
+  («la tarde-noche o la noche»). The name is a label for that stretch; do not explain it further or invent hours.
+- These conditions are about the order of the terms of an input. Do not say they make a rule stronger, more general or
+  more accurate, and do not compare the rule with one that uses plain terms unless CONTEXT gives a figure.
+
 ## CONTEXT
 
 The script appends the JSON here.

@@ -4,7 +4,7 @@
     "path": "/api/v1/models/exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3/rules",
     "query": {},
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -20,7 +20,7 @@
         "allow_unknown": true,
         "mixture_weights": "non_negative",
         "mixture_C": 1.0,
-        "exfuzzy_version": "3.4.0"
+        "exfuzzy_version": "3.5.0"
       },
       "target_scheme": {
         "name": "Synthetic bands (invented, not an official index)",
@@ -280,7 +280,13 @@
             {
               "feature": "y_t",
               "term": "Low",
-              "modifier": null
+              "modifier": null,
+              "operator": "is",
+              "terms": [
+                "Low"
+              ],
+              "label": null,
+              "label_en": null
             }
           ],
           "consequent": {
@@ -317,7 +323,13 @@
             {
               "feature": "y_t",
               "term": "Medium",
-              "modifier": null
+              "modifier": null,
+              "operator": "is",
+              "terms": [
+                "Medium"
+              ],
+              "label": null,
+              "label_en": null
             }
           ],
           "consequent": {
@@ -354,7 +366,13 @@
             {
               "feature": "y_lag3",
               "term": "High",
-              "modifier": null
+              "modifier": null,
+              "operator": "is",
+              "terms": [
+                "High"
+              ],
+              "label": null,
+              "label_en": null
             }
           ],
           "consequent": {
@@ -400,7 +418,7 @@
       "at": "2024-01-05T00:00:00Z"
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -418,7 +436,7 @@
         "allow_unknown": true,
         "mixture_weights": "non_negative",
         "mixture_C": 1.0,
-        "exfuzzy_version": "3.4.0"
+        "exfuzzy_version": "3.5.0"
       },
       "feature_values": [
         {
@@ -461,6 +479,10 @@
             {
               "feature": "y_t",
               "term": "Low",
+              "operator": "is",
+              "terms": [
+                "Low"
+              ],
               "membership": 0.7744297910825073,
               "modifier": null,
               "effective_membership": 0.7744297910825073
@@ -492,6 +514,10 @@
             {
               "feature": "y_t",
               "term": "Medium",
+              "operator": "is",
+              "terms": [
+                "Medium"
+              ],
               "membership": 0.22557020891749274,
               "modifier": null,
               "effective_membership": 0.22557020891749274
@@ -523,6 +549,10 @@
             {
               "feature": "y_lag3",
               "term": "High",
+              "operator": "is",
+              "terms": [
+                "High"
+              ],
               "membership": 0.0,
               "modifier": null,
               "effective_membership": 0.0
@@ -586,7 +616,7 @@
       "at": "2024-01-14T11:00:00Z"
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -604,7 +634,7 @@
         "allow_unknown": true,
         "mixture_weights": "non_negative",
         "mixture_C": 1.0,
-        "exfuzzy_version": "3.4.0"
+        "exfuzzy_version": "3.5.0"
       },
       "feature_values": [
         {
@@ -647,6 +677,10 @@
             {
               "feature": "y_t",
               "term": "Low",
+              "operator": "is",
+              "terms": [
+                "Low"
+              ],
               "membership": 0.0,
               "modifier": null,
               "effective_membership": 0.0
@@ -678,6 +712,10 @@
             {
               "feature": "y_t",
               "term": "Medium",
+              "operator": "is",
+              "terms": [
+                "Medium"
+              ],
               "membership": 0.35217721986945866,
               "modifier": null,
               "effective_membership": 0.35217721986945866
@@ -709,6 +747,10 @@
             {
               "feature": "y_lag3",
               "term": "High",
+              "operator": "is",
+              "terms": [
+                "High"
+              ],
               "membership": 0.0,
               "modifier": null,
               "effective_membership": 0.0
@@ -772,7 +814,7 @@
       "at": "2024-01-05T20:00:00Z"
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -790,7 +832,7 @@
         "allow_unknown": true,
         "mixture_weights": "non_negative",
         "mixture_C": 1.0,
-        "exfuzzy_version": "3.4.0"
+        "exfuzzy_version": "3.5.0"
       },
       "feature_values": [
         {
@@ -858,7 +900,7 @@
       "time": "2024-01-05T00:00:00Z"
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -1008,14 +1050,14 @@
     "path": "/api/v1/scenarios",
     "query": {},
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
       "entity_id": "E0",
       "issued_at_utc": "2024-01-05T00:00:00Z",
       "synthetic_what_if": true,
-      "label": "respuesta del modelo ante entradas modificadas — no efecto causal ni predicción",
+      "label": "respuesta del modelo ante entradas modificadas",
       "inputs": [
         {
           "feature": "y_t",
@@ -1067,7 +1109,7 @@
         }
       ],
       "original": {
-        "schema_version": "0.7.0",
+        "schema_version": "0.8.0",
         "data_version": "synthetic-test",
         "synthetic": true,
         "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -1085,7 +1127,7 @@
           "allow_unknown": true,
           "mixture_weights": "non_negative",
           "mixture_C": 1.0,
-          "exfuzzy_version": "3.4.0"
+          "exfuzzy_version": "3.5.0"
         },
         "feature_values": [
           {
@@ -1128,6 +1170,10 @@
               {
                 "feature": "y_t",
                 "term": "Low",
+                "operator": "is",
+                "terms": [
+                  "Low"
+                ],
                 "membership": 0.7744297910825073,
                 "modifier": null,
                 "effective_membership": 0.7744297910825073
@@ -1159,6 +1205,10 @@
               {
                 "feature": "y_t",
                 "term": "Medium",
+                "operator": "is",
+                "terms": [
+                  "Medium"
+                ],
                 "membership": 0.22557020891749274,
                 "modifier": null,
                 "effective_membership": 0.22557020891749274
@@ -1190,6 +1240,10 @@
               {
                 "feature": "y_lag3",
                 "term": "High",
+                "operator": "is",
+                "terms": [
+                  "High"
+                ],
                 "membership": 0.0,
                 "modifier": null,
                 "effective_membership": 0.0
@@ -1245,7 +1299,7 @@
         }
       },
       "modified": {
-        "schema_version": "0.7.0",
+        "schema_version": "0.8.0",
         "data_version": "synthetic-test",
         "synthetic": true,
         "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -1263,7 +1317,7 @@
           "allow_unknown": true,
           "mixture_weights": "non_negative",
           "mixture_C": 1.0,
-          "exfuzzy_version": "3.4.0"
+          "exfuzzy_version": "3.5.0"
         },
         "feature_values": [
           {
@@ -1306,6 +1360,10 @@
               {
                 "feature": "y_t",
                 "term": "Low",
+                "operator": "is",
+                "terms": [
+                  "Low"
+                ],
                 "membership": 0.0,
                 "modifier": null,
                 "effective_membership": 0.0
@@ -1337,6 +1395,10 @@
               {
                 "feature": "y_t",
                 "term": "Medium",
+                "operator": "is",
+                "terms": [
+                  "Medium"
+                ],
                 "membership": 0.0,
                 "modifier": null,
                 "effective_membership": 0.0
@@ -1368,6 +1430,10 @@
               {
                 "feature": "y_lag3",
                 "term": "High",
+                "operator": "is",
+                "terms": [
+                  "High"
+                ],
                 "membership": 0.0,
                 "modifier": null,
                 "effective_membership": 0.0
@@ -1420,7 +1486,7 @@
         "quality": {
           "status": "warning",
           "warnings": [
-            "what-if: inputs overridden (y_t); respuesta del modelo ante entradas modificadas — no efecto causal ni predicción"
+            "what-if: inputs overridden (y_t); respuesta del modelo ante entradas modificadas"
           ]
         }
       },
@@ -1480,7 +1546,7 @@
     "path": "/api/v1/models/exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3/importance",
     "query": {},
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",

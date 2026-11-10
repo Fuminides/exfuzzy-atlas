@@ -26,7 +26,7 @@ export function matchesRule(rule: RuleDefinition, query: string, label: (feature
   return (
     rule.rule_id.toLowerCase().includes(q) ||
     rule.text.toLowerCase().includes(q) ||
-    rule.antecedents.some((a) => a.feature.toLowerCase().includes(q) || label(a.feature).toLowerCase().includes(q) || a.term.toLowerCase().includes(q))
+    rule.antecedents.some((a) => a.feature.toLowerCase().includes(q) || label(a.feature).toLowerCase().includes(q) || a.term.toLowerCase().includes(q) || (a.label ?? "").toLowerCase().includes(q) || (a.label_en ?? "").toLowerCase().includes(q))
   );
 }
 

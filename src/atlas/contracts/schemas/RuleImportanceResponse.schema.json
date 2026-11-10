@@ -358,7 +358,7 @@
       "type": "object"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/RuleImportanceResponse.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/RuleImportanceResponse.schema.json",
   "additionalProperties": false,
   "description": "Rule and input importance over the published period of a model (precomputed at publish time).",
   "properties": {
@@ -448,7 +448,7 @@
       "type": "array"
     },
     "schema_version": {
-      "default": "0.7.0",
+      "default": "0.8.0",
       "title": "Schema Version",
       "type": "string"
     },

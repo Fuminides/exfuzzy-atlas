@@ -164,6 +164,55 @@ describe("rule trace of a TSK regressor", () => {
   });
 });
 
+describe("rule trace with v0.8 conditions", () => {
+  /** R02 of the TSK model reads `temp <operator> <term>`; its membership (mem pair 1) is the number the export carries. */
+  const withCondition = (condition: Record<string, unknown>) => {
+    const files = testExport();
+    const rules = files.get("models/m-tsk/rules.json.gz") as { rules: { antecedents: unknown[] }[] };
+    rules.rules[1]!.antecedents = [{ feature: "temp", ...condition }];
+    const meta = files.get("models/m-tsk/meta.json.gz") as { mem_pairs: string[][] };
+    meta.mem_pairs[1] = ["temp", String(condition.operator), String(condition.term)];
+    return new StaticStore(memorySource(files));
+  };
+
+  it("places the bounded sum of an at_least condition with its operator and terms", async () => {
+    const t = await withCondition({ operator: "at_least", term: "Low", terms: ["Low", "High"] }).ruleTrace("W2", "m-tsk", "2024-05-03T12:00:00Z");
+    expect(t.rules[1]!.antecedents).toEqual([
+      { feature: "temp", term: "Low", operator: "at_least", terms: ["Low", "High"], membership: 1, modifier: null, effective_membership: 1 },
+    ]);
+  });
+
+  it("places an at_most condition and a compound that wraps (internal name as term)", async () => {
+    const atMost = await withCondition({ operator: "at_most", term: "High", terms: ["Low", "High"] }).ruleTrace("W2", "m-tsk", "2024-05-03T12:00:00Z");
+    expect(atMost.rules[1]!.antecedents[0]).toMatchObject({ operator: "at_most", term: "High", terms: ["Low", "High"], membership: 1 });
+    const compound = await withCondition({ operator: "any_of", term: "Night", terms: ["Low", "High"], label: "Noche larga" }).ruleTrace("W2", "m-tsk", "2024-05-03T12:00:00Z");
+    expect(compound.rules[1]!.antecedents[0]).toEqual({
+      feature: "temp", term: "Night", operator: "any_of", terms: ["Low", "High"], membership: 1, modifier: null, effective_membership: 1,
+    });
+  });
+
+  it("applies the modifier to the membership of a condition and keeps plain conditions as is", async () => {
+    const t = await withCondition({ operator: "at_least", term: "Low", terms: ["Low", "High"], modifier: 2 }).ruleTrace("W2", "m-tsk", "2024-05-03T12:00:00Z");
+    expect(t.rules[1]!.antecedents[0]).toMatchObject({ membership: 1, modifier: 2, effective_membership: 1 });
+    const plain = await store().ruleTrace("W2", "m-tsk", "2024-05-03T12:00:00Z");
+    expect(plain.rules[0]!.antecedents[0]).toMatchObject({ operator: "is", term: "Low", terms: ["Low"] });
+  });
+
+  it("stops with a 404 when a condition has no exported membership", async () => {
+    const files = testExport();
+    (files.get("models/m-tsk/meta.json.gz") as { mem_pairs: string[][] }).mem_pairs[1] = ["temp", "at_least", "Low"];
+    const s = new StaticStore(memorySource(files));
+    expect(await status(s.ruleTrace("W2", "m-tsk", "2024-05-03T12:00:00Z"))).toMatchObject({ status: 404 });
+  });
+
+  it("refuses an export of another format", async () => {
+    const files = testExport();
+    (files.get("models/m-tsk/meta.json.gz") as { format_version: number }).format_version = 1;
+    const s = new StaticStore(memorySource(files));
+    expect(await status(s.ruleTrace("W2", "m-tsk", "2024-05-03T12:00:00Z"))).toMatchObject({ status: null });
+  });
+});
+
 describe("scenario", () => {
   const request = { model_id: "m-win", entity_id: "A", at: "2025-03-05T22:00:00Z" };
 

@@ -1,6 +1,6 @@
 [
   {
-    "schema_version": "0.7.0",
+    "schema_version": "0.8.0",
     "data_version": "synthetic-test",
     "synthetic": true,
     "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
@@ -16,7 +16,7 @@
       "allow_unknown": true,
       "mixture_weights": null,
       "mixture_C": null,
-      "exfuzzy_version": "3.4.0"
+      "exfuzzy_version": "3.5.0"
     },
     "target_scheme": {
       "name": "Synthetic bands (invented, not an official index)",
@@ -276,7 +276,13 @@
           {
             "feature": "y_lag3",
             "term": "Low",
-            "modifier": null
+            "modifier": null,
+            "operator": "is",
+            "terms": [
+              "Low"
+            ],
+            "label": null,
+            "label_en": null
           }
         ],
         "consequent": {
@@ -304,7 +310,13 @@
           {
             "feature": "y_lag3",
             "term": "Medium",
-            "modifier": null
+            "modifier": null,
+            "operator": "is",
+            "terms": [
+              "Medium"
+            ],
+            "label": null,
+            "label_en": null
           }
         ],
         "consequent": {
@@ -332,7 +344,13 @@
           {
             "feature": "hour",
             "term": "Low",
-            "modifier": null
+            "modifier": null,
+            "operator": "is",
+            "terms": [
+              "Low"
+            ],
+            "label": null,
+            "label_en": null
           }
         ],
         "consequent": {
@@ -360,7 +378,13 @@
           {
             "feature": "exo_t",
             "term": "Low",
-            "modifier": null
+            "modifier": null,
+            "operator": "is",
+            "terms": [
+              "Low"
+            ],
+            "label": null,
+            "label_en": null
           }
         ],
         "consequent": {
@@ -385,7 +409,7 @@
     "class_bias": null
   },
   {
-    "schema_version": "0.7.0",
+    "schema_version": "0.8.0",
     "data_version": "synthetic-test",
     "synthetic": true,
     "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -401,7 +425,7 @@
       "allow_unknown": true,
       "mixture_weights": "non_negative",
       "mixture_C": 1.0,
-      "exfuzzy_version": "3.4.0"
+      "exfuzzy_version": "3.5.0"
     },
     "target_scheme": {
       "name": "Synthetic bands (invented, not an official index)",
@@ -661,7 +685,13 @@
           {
             "feature": "y_t",
             "term": "Low",
-            "modifier": null
+            "modifier": null,
+            "operator": "is",
+            "terms": [
+              "Low"
+            ],
+            "label": null,
+            "label_en": null
           }
         ],
         "consequent": {
@@ -698,7 +728,13 @@
           {
             "feature": "y_t",
             "term": "Medium",
-            "modifier": null
+            "modifier": null,
+            "operator": "is",
+            "terms": [
+              "Medium"
+            ],
+            "label": null,
+            "label_en": null
           }
         ],
         "consequent": {
@@ -735,7 +771,13 @@
           {
             "feature": "y_lag3",
             "term": "High",
-            "modifier": null
+            "modifier": null,
+            "operator": "is",
+            "terms": [
+              "High"
+            ],
+            "label": null,
+            "label_en": null
           }
         ],
         "consequent": {

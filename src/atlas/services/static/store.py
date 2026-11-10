@@ -75,6 +75,9 @@ class _Model:
         meta = r.get(f"models/{model_id}/meta.json.gz")
         if meta is None:
             raise NotFound(f"unknown model_id {model_id}")
+        if meta.get("format_version") != fmt.FORMAT_VERSION:
+            raise ValueError(f"{model_id}: export format {meta.get('format_version')}, this reader reads "
+                             f"{fmt.FORMAT_VERSION}")
         self.meta, self.model_id = meta, model_id
         self.rules = m.ModelRules.model_validate(r.get(f"models/{model_id}/rules.json.gz"))
         self.task_id = meta["task_id"]
@@ -589,13 +592,16 @@ class StaticStore:
 
     @staticmethod
     def _antecedent_traces(M: _Model, rule: m.RuleDefinition, mem) -> list[m.AntecedentTrace]:
-        """The antecedent entries of a rule's trace. With ``extract.antecedent_pairs``, the only reader of the
-        antecedent shape (feature, term, modifier); a richer antecedent (contract v0.8) is refused at export time."""
+        """The antecedent entries of a rule's trace. With ``extract.antecedent_pairs`` and
+        ``engine.pair_positions``, the only readers of the shape of an antecedent. The membership of a condition is
+        read from ``mem`` (ex_fuzzy's number: the term's own for ``is``, the bounded sum of ``terms`` for the other
+        operators); ``operator`` and ``terms`` are those of ``rules.json``."""
         ants = []
         for a in rule.antecedents:
-            membership = mem[M.pair_index[(a.feature, a.term)]]
+            membership = mem[M.pair_index[(a.feature, a.operator, a.term)]]
             ants.append(m.AntecedentTrace(
-                feature=a.feature, term=a.term, membership=membership, modifier=a.modifier,
+                feature=a.feature, term=a.term, operator=a.operator, terms=list(a.terms), membership=membership,
+                modifier=a.modifier,
                 effective_membership=membership if a.modifier is None else membership ** a.modifier))
         return ants
 
@@ -646,7 +652,7 @@ class StaticStore:
 
     @staticmethod
     def _pairs_of(M: _Model, feature: str) -> list[int]:
-        return [p for p, (f, _) in enumerate(M.meta["mem_pairs"]) if f == feature]
+        return [p for p, (f, _, _) in enumerate(M.meta["mem_pairs"]) if f == feature]
 
     @staticmethod
     def _nearest_instant(doc, at: datetime):

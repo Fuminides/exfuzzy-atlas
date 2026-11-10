@@ -391,7 +391,7 @@
       "type": "string"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/PredictionsResponse.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/PredictionsResponse.schema.json",
   "additionalProperties": false,
   "description": "All entities at one issue time (``issued_at_utc``) or, for irregular tasks, the latest sample in a window.",
   "properties": {
@@ -430,7 +430,7 @@
       "type": "string"
     },
     "schema_version": {
-      "default": "0.7.0",
+      "default": "0.8.0",
       "title": "Schema Version",
       "type": "string"
     },

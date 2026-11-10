@@ -23,6 +23,11 @@ export function RuleDetail({ rule, onVariable, scheme, weighting, weightScale = 
   const label = useFeatureLabel();
   const names = useNames();
   const metrics = ruleMetrics(rule);
+  // a compound condition (v0.8) is a display name: what it covers goes beside the sentence
+  const compounds = rule.antecedents.flatMap((a) => {
+    const detail = names.detail(a.feature, a);
+    return detail ? [{ key: `${a.feature}|${a.term}`, name: names.label(a.feature, a), detail }] : [];
+  });
   return (
     <section className="rule-detail" aria-label={tr(`Regla ${rule.rule_id}`, `Rule ${rule.rule_id}`)}>
       <h2>
@@ -30,6 +35,16 @@ export function RuleDetail({ rule, onVariable, scheme, weighting, weightScale = 
         {rule.duplicate_of && <span className="badge-dup">{tr(`mismas condiciones que ${rule.duplicate_of} (dispara igual)`, `same conditions as ${rule.duplicate_of} (fires the same)`)}</span>}
       </h2>
       <RuleSentenceView sentence={ruleSentence(rule, label, scheme, names)} />
+      {compounds.length > 0 && (
+        <p className="muted" data-testid="rule-compounds">
+          {compounds.map((c, i) => (
+            <span key={c.key}>
+              {i > 0 && "; "}
+              <em className="term-phrase">{c.name}</em>: {c.detail}
+            </span>
+          ))}
+        </p>
+      )}
       {rule.class_weights_centred && scheme && (
         <div data-testid="rule-weights">
           <p className="rule-class">{tr("Lo que suma a cada categoría cuando se cumple del todo (peso centrado):", "What it adds to each category when it fully holds (centred weight):")}</p>

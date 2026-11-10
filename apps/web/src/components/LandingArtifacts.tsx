@@ -109,7 +109,7 @@ function RuleArtifact({ rules, importance, colours, task, where }: { rules: Mode
         <RuleSentenceView sentence={ruleSentence(rule, label, scheme, namesFor(rules.variables, scheme, task.target))} testId="landing-rule-sentence" />
         {variable && range && first && (
           <p className="lp-glyph">
-            <TermGlyph variable={variable} term={first.term} range={range} fill={scheme?.classes.find((c) => c.label === first.term)?.color ?? ACCENT} />
+            <TermGlyph variable={variable} term={first.term} range={range} fill={scheme?.classes.find((c) => c.label === first.term)?.color ?? ACCENT} condition={first} />
           </p>
         )}
         {share !== null && (
@@ -214,9 +214,9 @@ function RowArtifact({ rules, importance, colours, task }: { rules: ModelRules; 
           const part = sentence.parts.find((p) => p.feature === a.feature && p.term === a.term);
           return (
             <span key={`${a.feature}|${a.term}`} className="rmx-tile lp-row-tile">
-              {v && range && <TermGlyph variable={v} term={a.term} range={range} fill={part?.color ?? ACCENT} compact />}
+              {v && range && <TermGlyph variable={v} term={a.term} range={range} fill={part?.color ?? ACCENT} compact condition={a} />}
               <span className="rmx-term">
-                <em className="term-phrase">{names.phrase(a.feature, a.term)}</em>
+                <em className="term-phrase">{names.phrase(a.feature, a.term, a)}</em>
               </span>
             </span>
           );

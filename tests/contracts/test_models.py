@@ -113,7 +113,7 @@ def test_split_must_be_chronological_with_embargo():
 
 def test_model_rules_reject_unknown_terms():
     rules = json.loads((FIXTURES / "model_rules.json").read_text())
-    rules["rules"][0]["antecedents"][0]["term"] = "Extreme"
+    rules["rules"][0]["antecedents"][0].update(term="Extreme", terms=["Extreme"])
     with pytest.raises(ValidationError, match="unknown term"):
         m.ModelRules.model_validate(rules)
 

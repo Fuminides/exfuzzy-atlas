@@ -1,4 +1,4 @@
-import type { RuleTrace, ScenarioResponse } from "../api/types";
+import type { AntecedentTrace, RuleTrace, ScenarioResponse } from "../api/types";
 import { dec } from "./format";
 
 /** Memberships (and effective memberships) closer than this are the same number. */
@@ -8,6 +8,9 @@ export interface MembershipChange {
   ruleId: string;
   feature: string;
   term: string;
+  /** v0.8: how the condition reads (`at_least`, a compound...), as the trace carries it. */
+  operator?: AntecedentTrace["operator"];
+  terms?: AntecedentTrace["terms"];
   before: number;
   after: number;
   /** after - before, from the two traces the API returned. */
@@ -26,7 +29,7 @@ export function membershipChanges(r: Pick<ScenarioResponse, "original" | "modifi
     for (const a of rule.antecedents) {
       const b = before.get(`${rule.rule_id}|${a.feature}|${a.term}`);
       if (b === undefined || Math.abs(a.membership - b) <= EPS) continue;
-      out.push({ ruleId: rule.rule_id, feature: a.feature, term: a.term, before: b, after: a.membership, delta: a.membership - b });
+      out.push({ ruleId: rule.rule_id, feature: a.feature, term: a.term, operator: a.operator, terms: a.terms, before: b, after: a.membership, delta: a.membership - b });
     }
   }
   return out.sort((x, y) => Math.abs(y.delta) - Math.abs(x.delta));

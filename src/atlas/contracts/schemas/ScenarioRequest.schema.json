@@ -1,5 +1,5 @@
 {
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ScenarioRequest.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/ScenarioRequest.schema.json",
   "additionalProperties": false,
   "properties": {
     "at": {

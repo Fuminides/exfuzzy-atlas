@@ -81,6 +81,7 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from atlas import compound_terms
 from atlas.contracts import models as m
 from atlas.explain import iter_classifier_firing_tables, iter_firing_tables, iter_mixture_firing_tables
 from atlas.explain.mixture import mixture_top_rules
@@ -296,9 +297,15 @@ def _patch_published_rules(
 
     Returns the ``publish.json`` record or None when the metadata has neither block.
     """
-    if meta.target_scheme is None and not meta.features:
-        return None
     rules, reasons, fields = run.rules, [], []
+    # v0.8: the display names of the compound conditions come from the config, whatever the run directory has
+    named = compound_terms.apply_labels(rules)
+    if named != rules:
+        rules = named
+        reasons.append("contract v0.8 display names of the compound conditions (configs/compound_terms.json)")
+        fields += ["rules[].antecedents[].label", "rules[].antecedents[].label_en"]
+    if meta.target_scheme is None and not meta.features and not fields:
+        return None
     if meta.target_scheme is not None:
         if rules.target_scheme is None:
             raise ValueError("the metadata has a target_scheme block but the model is not a classifier")

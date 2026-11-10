@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.8.0",
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-nyc_pickups_h6-level-rel7-ordinal-seed0",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.322",
+    "model": "claude-opus-5-5"
+  },
+  "generated_at_utc": "2026-11-10T13:40:45Z",
+  "input_sha256": "4e21bbe2e85eb3d2c2e9f65137ce4e4a37238987261539f2c2cae94b2da353c3",
+  "reviewed": false,
+  "es": {
+    "headline": "Las 4 reglas que usan el «Nivel medio, 24 h previas (razón)» deciden el 99 % de las predicciones.",
+    "summary": [
+      "Las reglas miran sobre todo el «Nivel medio, 24 h previas (razón)», que aparece en 4 de las 5 reglas. El «Nivel hace 2 h (percentil)» aparece en 2. «Nivel hace 1 h (percentil)», «Nivel hace 24 h (percentil)», «Nivel hace 168 h (percentil)» y «Hora local (Nueva York)» aparecen en 1 cada una. Ninguna regla usa el «Día de la semana (local)».",
+      "Tres reglas deciden el 95 % de las predicciones. R05 decide el 41 % (el «Nivel medio, 24 h previas (razón)» es al menos como lo habitual → muy alta). Acierta el 31 %, y muy alta se observa el 21 % de las veces. R04 predice alta y acierta el 31 %, con alta observada el 28 %. R02 predice normal y acierta el 51 %. Esa clase se observa el 38 %.",
+      "Del 8 de febrero de 2025 al 31 de marzo de 2025, el modelo acierta el 36 % y obtiene un F1 macro de 0,34. Es mejor que repetir la última categoría (34 %, 0,31). Queda por debajo de la regresión logística (42 %, 0,35) y está a la par del Random Forest (36 %, 0,34)."
+    ],
+    "points": [
+      "El modelo predice muy alta el 41 % de las veces, y esa categoría se observa el 21 %.",
+      "Solo R01 predice baja, y lo hace el 4,7 % de las veces. Baja se observa el 13 %.",
+      "De las tres reglas que más deciden, R02 es la que más acierta. Predice normal y acierta el 51 %.",
+      "R03 es la única regla que usa la «Hora local (Nueva York)», con el término Madrugada, y decide el 0,8 % de las predicciones.",
+      "En el 15 % de los casos una regla se cumple, pero no se publica predicción porque falta el nivel de referencia."
+    ]
+  },
+  "en": {
+    "headline": "The 4 rules that use “Mean level, previous 24 h (ratio)” decide 99% of the predictions.",
+    "summary": [
+      "The rules mostly look at “Mean level, previous 24 h (ratio)”, which appears in 4 of the 5 rules. “Level 2 h ago (percentile)” appears in 2. “Level 1 h ago (percentile)”, “Level 24 h ago (percentile)”, “Level 168 h ago (percentile)” and “Local hour (New York)” appear in 1 each. No rule uses “Weekday (local)”.",
+      "Three rules decide 95% of the predictions. R05 decides 41% (“Mean level, previous 24 h (ratio)” is at least as usual → very high). It is right 31% of the time, while very high is observed 21% of the time. R04 predicts high and is right 31% of the time, with high observed 28%. R02 predicts normal, which is observed 38% of the time, and it is right 51%.",
+      "From 8 February 2025 to 31 March 2025, the model is right 36% of the time, with a macro-F1 of 0.34. It does better than repeating the last category (34%, 0.31). It is worse than logistic regression (42%, 0.35) and on a par with the random forest (36%, 0.34)."
+    ],
+    "points": [
+      "The model predicts very high 41% of the time, and that class is observed 21% of the time.",
+      "Only R01 predicts low, which it does 4.7% of the time. Low is observed 13% of the time.",
+      "Of the three rules that decide most, R02 is right most often. It predicts normal and is right 51% of the time.",
+      "R03 is the only rule that uses “Local hour (New York)”, with the term Small hours, and it decides 0.8% of the predictions.",
+      "For 15% of cases a rule holds but no prediction is published, as the reference level is missing."
+    ]
+  }
+}

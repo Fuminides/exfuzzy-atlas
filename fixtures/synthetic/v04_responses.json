@@ -7,7 +7,7 @@
       "time": "2025-01-15T06:00:00Z"
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -160,7 +160,7 @@
       "time": "2025-01-15T08:00:00Z"
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -314,7 +314,7 @@
       "to": "2025-01-15T12:00:00Z"
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -467,7 +467,7 @@
       "time": "2025-01-15T08:00:00Z"
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -701,7 +701,7 @@
       "tau": 0.5
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -917,7 +917,7 @@
       "tau": 0.5
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -1133,7 +1133,7 @@
       "limit": 10
     },
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "model_id": "synthetic-no2-h6-v0",
@@ -1143,7 +1143,7 @@
       "limit": 10,
       "n_candidates": 2,
       "score_definition": "co_activation_burst: peak_share x (1 - baseline_share) x min(1, hours / 12); localized_rule: 0.8 x (1 - k / n) x mean frequency of the k entities; territory_leader: 0.5 x entities_led / n. Ordering heuristic, not a statistical test and not a probability. Ties: kind order, then lowest rule position.",
-      "disclaimer": "Descripciones de activaciones del modelo en la ventana pedida. No son causas, probabilidades, riesgos ni contribuciones a la predicción.",
+      "disclaimer": "Descripciones de activaciones del modelo en la ventana pedida.",
       "stories": [
         {
           "story_id": "territory_leader:R01:2025-01-15T06:00:00Z",
@@ -1239,14 +1239,14 @@
     "path": "/api/v1/scenarios",
     "query": {},
     "response": {
-      "schema_version": "0.7.0",
+      "schema_version": "0.8.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "model_id": "synthetic-no2-h6-v0",
       "entity_id": "SYN_A",
       "issued_at_utc": "2025-01-15T07:00:00Z",
       "synthetic_what_if": true,
-      "label": "respuesta del modelo ante entradas modificadas — no efecto causal ni predicción",
+      "label": "respuesta del modelo ante entradas modificadas",
       "inputs": [
         {
           "feature": "no2_t",
@@ -1274,7 +1274,7 @@
         }
       ],
       "original": {
-        "schema_version": "0.7.0",
+        "schema_version": "0.8.0",
         "data_version": "synthetic-fixture-v0",
         "synthetic": true,
         "model_id": "synthetic-no2-h6-v0",
@@ -1292,7 +1292,7 @@
           "allow_unknown": null,
           "mixture_weights": null,
           "mixture_C": null,
-          "exfuzzy_version": "3.4.0"
+          "exfuzzy_version": "3.5.0"
         },
         "feature_values": [
           {
@@ -1319,6 +1319,10 @@
               {
                 "feature": "no2_t",
                 "term": "High",
+                "operator": "is",
+                "terms": [
+                  "High"
+                ],
                 "membership": 0.7,
                 "modifier": null,
                 "effective_membership": 0.7
@@ -1326,6 +1330,10 @@
               {
                 "feature": "wind_speed_t",
                 "term": "Low",
+                "operator": "is",
+                "terms": [
+                  "Low"
+                ],
                 "membership": 0.4000000000000001,
                 "modifier": null,
                 "effective_membership": 0.4000000000000001
@@ -1345,6 +1353,10 @@
               {
                 "feature": "no2_t",
                 "term": "Medium",
+                "operator": "is",
+                "terms": [
+                  "Medium"
+                ],
                 "membership": 0.3,
                 "modifier": null,
                 "effective_membership": 0.3
@@ -1364,6 +1376,10 @@
               {
                 "feature": "wind_speed_t",
                 "term": "High",
+                "operator": "is",
+                "terms": [
+                  "High"
+                ],
                 "membership": 0.0,
                 "modifier": null,
                 "effective_membership": 0.0
@@ -1399,7 +1415,7 @@
         }
       },
       "modified": {
-        "schema_version": "0.7.0",
+        "schema_version": "0.8.0",
         "data_version": "synthetic-fixture-v0",
         "synthetic": true,
         "model_id": "synthetic-no2-h6-v0",
@@ -1417,7 +1433,7 @@
           "allow_unknown": null,
           "mixture_weights": null,
           "mixture_C": null,
-          "exfuzzy_version": "3.4.0"
+          "exfuzzy_version": "3.5.0"
         },
         "feature_values": [
           {
@@ -1444,6 +1460,10 @@
               {
                 "feature": "no2_t",
                 "term": "High",
+                "operator": "is",
+                "terms": [
+                  "High"
+                ],
                 "membership": 0.7,
                 "modifier": null,
                 "effective_membership": 0.7
@@ -1451,6 +1471,10 @@
               {
                 "feature": "wind_speed_t",
                 "term": "Low",
+                "operator": "is",
+                "terms": [
+                  "Low"
+                ],
                 "membership": 0.0,
                 "modifier": null,
                 "effective_membership": 0.0
@@ -1470,6 +1494,10 @@
               {
                 "feature": "no2_t",
                 "term": "Medium",
+                "operator": "is",
+                "terms": [
+                  "Medium"
+                ],
                 "membership": 0.3,
                 "modifier": null,
                 "effective_membership": 0.3
@@ -1489,6 +1517,10 @@
               {
                 "feature": "wind_speed_t",
                 "term": "High",
+                "operator": "is",
+                "terms": [
+                  "High"
+                ],
                 "membership": 0.3333333333333333,
                 "modifier": null,
                 "effective_membership": 0.3333333333333333
@@ -1521,7 +1553,7 @@
         "quality": {
           "status": "warning",
           "warnings": [
-            "what-if: inputs overridden (wind_speed_t); respuesta del modelo ante entradas modificadas — no efecto causal ni predicción"
+            "what-if: inputs overridden (wind_speed_t); respuesta del modelo ante entradas modificadas"
           ]
         }
       },

@@ -43,7 +43,7 @@ const inference = (family: string, extra: Record<string, unknown> = {}) => ({
 
 function winning(files: Map<string, unknown>) {
   const meta = {
-    format_version: 1, model_id: "m-win", task_id: "t-win", domain: "air", territory: "x", task_type: "classification",
+    format_version: 2, model_id: "m-win", task_id: "t-win", domain: "air", territory: "x", task_type: "classification",
     family: "winning_rule_classifier", data_version: "dv1", synthetic: false, target: "no2", unit: "ug/m3", target_unit: "ug/m3",
     horizon_hours: 6, regular: true, step_hours: 1,
     coverage: { from: "2025-03-05T22:00:00Z", to: "2025-03-06T00:00:00Z" },
@@ -53,7 +53,7 @@ function winning(files: Map<string, unknown>) {
       { name: "x", obs_unit: "ug/m3", trace_unit: "µg/m³", source_id: null, lag_hours: 0, input: "inputs/x/x" },
       { name: "y", obs_unit: "m/s", trace_unit: "m/s", source_id: "src-y", lag_hours: 1, input: "inputs/x/y" },
     ],
-    mem_pairs: [["x", "Low"], ["x", "High"], ["y", "Low"]],
+    mem_pairs: [["x", "is", "Low"], ["x", "is", "High"], ["y", "is", "Low"]],
     inference: inference("winning_rule_classifier", { rule_weighting: "weight", allow_unknown: true }),
     windows: { day: ["2025-03-05", "2025-03-06"], week: ["2025-03-03"], month: ["2025-03-01"], year: [], coverage: true },
     stories: { tau: 0.5, limit: 10 }, taus: [0.25, 0.5, 0.75, 1],
@@ -126,13 +126,13 @@ function winning(files: Map<string, unknown>) {
 
 function mixture(files: Map<string, unknown>) {
   const meta = {
-    format_version: 1, model_id: "m-mix", task_id: "t-mix", domain: "air", territory: "m", task_type: "classification",
+    format_version: 2, model_id: "m-mix", task_id: "t-mix", domain: "air", territory: "m", task_type: "classification",
     family: "rule_mixture_classifier", data_version: "dv1", synthetic: false, target: "no2", unit: "ug/m3", target_unit: "ug/m3",
     horizon_hours: 1, regular: true, step_hours: 1,
     coverage: { from: "2025-03-05T10:00:00Z", to: "2025-03-05T10:00:00Z" },
     keys: ["2025-03-05"], entities: ["M"], rules: ["R01", "R02"], classes: ["Good", "Bad"], decides: false, mixture: true,
     features: [{ name: "x", obs_unit: "ug/m3", trace_unit: "ug/m3", source_id: null, lag_hours: 0, input: "inputs/m/x" }],
-    mem_pairs: [["x", "Low"], ["x", "High"]],
+    mem_pairs: [["x", "is", "Low"], ["x", "is", "High"]],
     inference: inference("rule_mixture_classifier", { allow_unknown: true }),
     windows: {}, stories: null, taus: [0.5], whatif: null, missing_reasons: REASONS,
     texts: { no_reference_warning: noReference("class scores") },
@@ -162,13 +162,13 @@ function mixture(files: Map<string, unknown>) {
 
 function tsk(files: Map<string, unknown>) {
   const meta = {
-    format_version: 1, model_id: "m-tsk", task_id: "t-tsk", domain: "water", territory: "w", task_type: "regression",
+    format_version: 2, model_id: "m-tsk", task_id: "t-tsk", domain: "water", territory: "w", task_type: "regression",
     family: "tsk_zero_order", data_version: "dv1", synthetic: false, target: "do", unit: "mg/l", target_unit: "mg/l",
     horizon_hours: 0, regular: false, step_hours: 1,
     coverage: { from: "2024-05-01T10:00:00Z", to: "2024-05-03T12:00:00Z" },
     keys: ["all"], entities: ["W1", "W2"], rules: ["R01", "R02"], classes: [], decides: true, mixture: false,
     features: [{ name: "temp", obs_unit: "°C", trace_unit: "°C", source_id: null, lag_hours: 0, input: "models/m-tsk/inputs/temp" }],
-    mem_pairs: [["temp", "Low"], ["temp", "High"]],
+    mem_pairs: [["temp", "is", "Low"], ["temp", "is", "High"]],
     inference: inference("tsk_zero_order", { rule_mode: "additive" }),
     windows: { day: [], week: [], month: ["2024-05-01"], year: [], coverage: false },
     stories: null, taus: [0.25, 0.5], whatif: null, missing_reasons: REASONS,
@@ -225,7 +225,7 @@ const noReference = (what: string) =>
 /** The whole export as `path -> parsed file`. */
 export function testExport(): Map<string, unknown> {
   const files = new Map<string, unknown>();
-  files.set("manifest.json", { format: "exfuzzy-atlas-static", format_version: 1, export_id: ID, created_at_utc: "2026-11-10T00:00:00Z", schema_version: "0.7.0", texts: TEXTS });
+  files.set("manifest.json", { format: "exfuzzy-atlas-static", format_version: 2, export_id: ID, created_at_utc: "2026-11-10T00:00:00Z", schema_version: "0.7.0", texts: TEXTS });
   const task = (task_id: string, model_id: string, task_type: string, horizon_hours: number, unit: string) => ({
     task_id, model_id, task_type, target: task_id === "t-tsk" ? "do" : "no2", unit, horizon_hours, status: "available",
   });

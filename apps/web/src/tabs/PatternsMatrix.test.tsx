@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { App } from "../App";
 import { Naming } from "../components/Naming";
 import { RuleMatrix } from "../components/RuleMatrix";
+import type { ModelRules } from "../api/types";
 import { setLang } from "../i18n";
 import { installApi } from "../test/fakeApi";
 import { served, servedAsClassifier } from "../test/fixturesPatterns";
@@ -177,6 +178,44 @@ describe("the rule matrix on its own", () => {
     expect(screen.getByTestId("rule-matrix-key")).toHaveTextContent("Columnas: primero la variable que usan más reglas.");
     await userEvent.setup().click(screen.getByRole("button", { name: "Ver las 10 reglas en la matriz" }));
     expect(toggle).toHaveBeenCalledOnce();
+  });
+
+  it("an ordinal condition shows ≥ with its term and a compound its display name, and the tooltips carry the full sentence (v0.8)", () => {
+    const nyc = served("nyc_h1");
+    const model: ModelRules = {
+      ...nyc.rules,
+      rules: nyc.rules.rules.map((r) =>
+        r.rule_id === "R01"
+          ? { ...r, antecedents: [{ feature: "rel_lag1", term: "normal", operator: "at_least", terms: ["normal", "alta", "muy alta"] }] }
+          : r.rule_id === "R08"
+            ? { ...r, antecedents: [...r.antecedents, { feature: "local_hour", term: "early_hours", operator: "any_of", terms: ["Madrugada", "Mañana"], label: "Primeras horas", label_en: "Early hours" }] }
+            : r,
+      ),
+    };
+    const show = () =>
+      render(
+        <Naming variables={model.variables} scheme={model.target_scheme ?? null} rules={model.rules}>
+          <RuleMatrix model={model} importance={nyc.importance} scheme={model.target_scheme ?? null} regression={false} unit="" selected={null} onSelect={() => {}} showAll onToggleAll={() => {}} />
+        </Naming>,
+      );
+    const { unmount } = show();
+    const table = screen.getByRole("table", { name: /Matriz de reglas/ });
+    const atLeast = rowOf(table, "R01").querySelector<HTMLElement>('td[data-term="normal"]')!;
+    expect(spoken(atLeast).trim()).toBe("≥ demanda normal");
+    expect(atLeast).toHaveAttribute("title", "La demanda hace 1 h es al menos normal");
+    expect(atLeast.querySelectorAll("polygon.rmx-glyph-used")).toHaveLength(1);
+    const compound = rowOf(table, "R08").querySelector<HTMLElement>('td[data-term="early_hours"]')!;
+    expect(spoken(compound).trim()).toBe("Primeras horas");
+    expect(compound).toHaveAttribute("title", "La hora local (Nueva York) es Primeras horas (Madrugada o Mañana, 0–10 h)");
+    expect(table.textContent).not.toContain("early_hours");
+    expect(within(table).getByRole("button", { name: /^R01: Si la demanda hace 1 h es al menos normal → / })).toBeInTheDocument();
+    unmount();
+    setLang("en");
+    show();
+    const tableEn = screen.getByRole("table", { name: /Rule matrix/ });
+    expect(spoken(rowOf(tableEn, "R08").querySelector<HTMLElement>('td[data-term="early_hours"]')!).trim()).toBe("Early hours");
+    expect(spoken(rowOf(tableEn, "R01").querySelector<HTMLElement>('td[data-term="normal"]')!).trim()).toBe("≥ normal demand");
+    expect(rowOf(tableEn, "R01").querySelector('td[data-term="normal"]')).toHaveAttribute("title", "Demand 1 h ago is at least normal");
   });
 
   it("Home and End jump to the first and the last row", async () => {

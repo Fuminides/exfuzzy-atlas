@@ -30,7 +30,7 @@
       "type": "string"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ObservationRecord.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/ObservationRecord.schema.json",
   "additionalProperties": false,
   "description": "One canonical (long-format) observation; ``atlas.contracts.observations`` holds the Arrow form.",
   "properties": {

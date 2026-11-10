@@ -1,6 +1,7 @@
 import type { LinguisticVariable, RuleDefinition } from "../api/types";
 import { tr } from "../i18n";
 import { fmtNum } from "../lib/format";
+import { boundedSumPoints, isExtra, termsOf } from "../lib/conditions";
 import { labelWithUnit, useFeatureLabel, useNames } from "../lib/labels";
 import { COLORS, isDrawn, vertices } from "./PartitionsPanel";
 
@@ -37,7 +38,10 @@ export function RuleTermsPlot({ rule, variables }: { rule: RuleDefinition; varia
       {features.map((feature) => {
         const variable = variables.find((v) => v.feature === feature);
         if (!variable) return null;
-        const used = rule.antecedents.find((a) => a.feature === feature)?.term ?? null;
+        const condition = rule.antecedents.find((a) => a.feature === feature);
+        // an ordinal or compound condition (v0.8) is drawn as the bounded sum of the terms it covers, not as one of them
+        const extra = condition && isExtra(condition) ? condition : null;
+        const used = extra ? null : (condition?.term ?? null);
         const drawn = variable.terms.filter(isDrawn);
         const dom = variable.domain as [number, number] | null | undefined;
         const xs = drawn.flatMap((t) => t.params);
@@ -48,7 +52,7 @@ export function RuleTermsPlot({ rule, variables }: { rule: RuleDefinition; varia
         return (
           <figure key={feature} className="terms-plot">
             <figcaption>{name}</figcaption>
-            <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={tr(`Términos de ${name} entre ${fmtNum(lo)} y ${fmtNum(hi)}; la regla usa ${used ? names.phrase(feature, used) : "ninguno"}`, `Terms of ${name} between ${fmtNum(lo)} and ${fmtNum(hi)}; the rule uses ${used ? names.phrase(feature, used) : "none"}`)}>
+            <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={tr(`Términos de ${name} entre ${fmtNum(lo)} y ${fmtNum(hi)}; la regla usa ${condition ? names.phrase(feature, condition.term, condition) : "ninguno"}`, `Terms of ${name} between ${fmtNum(lo)} and ${fmtNum(hi)}; the rule uses ${condition ? names.phrase(feature, condition.term, condition) : "none"}`)}>
               <line x1={M.l} x2={W - M.r} y1={Y(0)} y2={Y(0)} className="axis-line" />
               {variable.terms.map((t, i) => {
                 if (!isDrawn(t)) return null;
@@ -63,6 +67,12 @@ export function RuleTermsPlot({ rule, variables }: { rule: RuleDefinition; varia
                   </g>
                 );
               })}
+              {extra && (
+                <g data-condition={extra.operator}>
+                  <polyline className="term term--sum" points={boundedSumPoints(variable.terms.filter((t) => termsOf(extra).includes(t.name)), lo, hi).map(([x, m]) => `${X(x)},${Y(m)}`).join(" ")} />
+                  <text x={M.l} y={Y(1) + 11} className="axis" style={{ fill: "var(--ink)", fontWeight: 700, fontStyle: "italic" }}>{names.label(feature, extra)}</text>
+                </g>
+              )}
               <text x={M.l} y={H - 3} className="axis">{fmtNum(lo)}</text>
               <text x={W - M.r} y={H - 3} textAnchor="end" className="axis">{fmtNum(hi)}</text>
             </svg>

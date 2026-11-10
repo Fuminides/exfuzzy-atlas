@@ -14,7 +14,7 @@ from typing import Annotated, Any, Literal
 
 from pydantic import AfterValidator, AwareDatetime, BaseModel, ConfigDict, Field, model_validator
 
-SCHEMA_VERSION = "0.7.0"
+SCHEMA_VERSION = "0.8.0"
 PARITY_TOLERANCE = 1e-9
 
 
@@ -422,10 +422,57 @@ class InferenceSpec(_Model):
         return self
 
 
+ConditionOperator = Literal["is", "at_least", "at_most", "any_of"]
+
+
+def _check_condition(operator: str, term: str, terms: list[str]) -> list[str]:
+    """Shared by ``Antecedent`` and ``AntecedentTrace``: the ``terms`` of a condition, filled in for ``is``."""
+    if operator == "is":
+        if terms and terms != [term]:
+            raise ValueError("an 'is' condition covers exactly its term")
+        return [term]
+    if len(terms) < 2 or len(set(terms)) != len(terms):
+        raise ValueError(f"'{operator}' covers at least two distinct terms, listed once")
+    if operator == "at_least" and terms[0] != term:
+        raise ValueError("'at_least' names the lowest term it covers")
+    if operator == "at_most" and terms[-1] != term:
+        raise ValueError("'at_most' names the highest term it covers")
+    return terms
+
+
 class Antecedent(_Model):
     feature: str
-    term: str
+    term: str = Field(
+        description="The term the condition refers to: for `is` the term itself, for `at_least` / `at_most` the "
+        "threshold term (the lowest / the highest term covered), for `any_of` the compound's internal name (the key "
+        "of `label`), which is not a term of the variable."
+    )
     modifier: float | None = Field(None, description="Hedge exponent applied to the membership, if any.")
+    operator: ConditionOperator = Field(
+        "is", description="v0.8: `is` one term; `at_least` / `at_most` a term of the ordered terms of a quantity input "
+        "('x is at least Fair'); `any_of` a named compound of terms (a stretch of the clock or the week). The "
+        "membership of the last three is the bounded sum min(1, sum of the memberships of `terms`) (ex_fuzzy)."
+    )
+    terms: list[str] = Field(
+        [], description="v0.8: names of the base terms of the variable that the condition covers, in the variable's "
+        "order (low to high). A compound may cover non-adjacent terms: the first and the last term of a clock are the "
+        "two ends of one stretch of the day that wraps midnight. `[term]` for `is`; filled in when absent."
+    )
+    label: str | None = Field(
+        None, description="v0.8, `any_of` only: Spanish display name of the compound, e.g. 'Noche larga', from an "
+        "Atlas config keyed by `term` (configs/compound_terms.json); display only, so names can change without "
+        "refitting."
+    )
+    label_en: str | None = Field(
+        None, description="v0.8, `any_of` only: English display name of the compound, e.g. 'Long night'."
+    )
+
+    @model_validator(mode="after")
+    def _consistent(self) -> Antecedent:
+        self.terms = _check_condition(self.operator, self.term, self.terms)
+        if (self.label is not None or self.label_en is not None) and self.operator != "any_of":
+            raise ValueError("label and label_en are for compound ('any_of') conditions only")
+        return self
 
 
 class Consequent(_Model):
@@ -560,11 +607,23 @@ class ModelRules(_Envelope):
         for i, rule in enumerate(self.rules):
             if rule.duplicate_of is not None and rule.duplicate_of not in ids[:i]:
                 raise ValueError(f"{rule.rule_id}: duplicate_of must name an earlier rule")
-        terms = {var.feature: {term.name for term in var.terms} for var in self.variables}
+        order = {var.feature: [term.name for term in var.terms] for var in self.variables}
         for rule in self.rules:
             for ant in rule.antecedents:
-                if ant.term not in terms.get(ant.feature, set()):
+                names = order.get(ant.feature, [])
+                if ant.operator == "any_of":
+                    if ant.term in names or any(t not in names for t in ant.terms):
+                        raise ValueError(f"{rule.rule_id}: compound {ant.feature}={ant.term} must have its own name "
+                                         "and cover terms of the variable")
+                elif ant.term not in names:
                     raise ValueError(f"{rule.rule_id}: unknown term {ant.feature}={ant.term}")
+                elif ant.operator != "is":  # a run of consecutive terms, from the threshold to the end of the scale
+                    at = [names.index(t) for t in ant.terms]
+                    expected = (list(range(at[0], len(names))) if ant.operator == "at_least"
+                                else list(range(0, at[-1] + 1)))
+                    if at != expected:
+                        raise ValueError(f"{rule.rule_id}: {ant.feature} {ant.operator} {ant.term} must cover "
+                                         "the terms from the threshold to that end of the scale")
         family = self.inference.family
         mixture = family == InferenceFamily.RULE_MIXTURE_CLASSIFIER
         if not mixture and (self.class_bias is not None or any(
@@ -712,10 +771,20 @@ class FeatureValue(_Model):
 
 class AntecedentTrace(_Model):
     feature: str
-    term: str
+    term: str = Field(description="As `Antecedent.term` (v0.8: for a compound, its internal name).")
+    operator: ConditionOperator = Field(
+        "is", description="v0.8: as `Antecedent.operator`. For `at_least`, `at_most` and `any_of`, `membership` is "
+        "the bounded sum of the memberships of `terms` that ex_fuzzy computes."
+    )
+    terms: list[str] = Field([], description="v0.8: as `Antecedent.terms`; `[term]` for `is`, filled in when absent.")
     membership: UnitInterval = Field(description="Membership of the input value, as computed by ex_fuzzy.")
     modifier: float | None = None
     effective_membership: UnitInterval = Field(description="membership ** modifier; equals membership without one.")
+
+    @model_validator(mode="after")
+    def _consistent(self) -> AntecedentTrace:
+        self.terms = _check_condition(self.operator, self.term, self.terms)
+        return self
 
 
 class RuleTraceEntry(_Model):
@@ -1110,11 +1179,8 @@ class Health(_Model):
 # ------------------------------------------------- v0.4: map views, territories, stories, what-if
 
 TIE_TOLERANCE = 1e-12
-WHAT_IF_LABEL = "respuesta del modelo ante entradas modificadas — no efecto causal ni predicción"
-STORIES_DISCLAIMER = (
-    "Descripciones de activaciones del modelo en la ventana pedida. No son causas, probabilidades, riesgos ni "
-    "contribuciones a la predicción."
-)
+WHAT_IF_LABEL = "respuesta del modelo ante entradas modificadas"
+STORIES_DISCLAIMER = "Descripciones de activaciones del modelo en la ventana pedida."
 
 
 class TerritoryMeasure(str, Enum):

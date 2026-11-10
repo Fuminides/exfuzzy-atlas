@@ -5,7 +5,8 @@ import { pct, sig3 } from "../lib/format";
 import { rankedRules } from "../lib/importance";
 import { classColor } from "../lib/classifier";
 import { isMixture, leadShare, weightScale } from "../lib/mixture";
-import { labelWithUnit, ruleSentence, sentenceText, useFeatureLabel, useNames } from "../lib/labels";
+import { isExtra } from "../lib/conditions";
+import { fullCondition, labelWithUnit, ruleSentence, sentenceText, useFeatureLabel, useNames } from "../lib/labels";
 import { colourOf, ruleColours } from "../lib/ruleColours";
 import { ruleMatrix } from "../lib/ruleMatrix";
 import { RuleSentenceView } from "./RuleSentenceView";
@@ -218,12 +219,12 @@ export function RuleMatrix({ model, importance, scheme, regression, unit, select
                     const r = ranges[i];
                     const part = sentence.parts.find((p) => p.feature === a.feature && p.term === a.term);
                     return (
-                      <td key={c.feature} className="rmx-cell" data-term={a.term}>
+                      <td key={c.feature} className="rmx-cell" data-term={a.term} title={isExtra(a) ? fullCondition(a, label, names) : undefined}>
                         <span className="rmx-tile">
-                          {v && r && <TermGlyph variable={v} term={a.term} range={r} fill={part?.color ?? ACCENT} compact={compact} />}
+                          {v && r && <TermGlyph variable={v} term={a.term} range={r} fill={part?.color ?? ACCENT} compact={compact} condition={a} />}
                           <span className="rmx-term">
                             {part?.color && <span className="class-swatch" style={{ background: part.color }} aria-hidden="true" />}
-                            <em className="term-phrase">{names.phrase(a.feature, a.term)}</em>
+                            <em className="term-phrase">{names.phrase(a.feature, a.term, a)}</em>
                             {a.modifier != null && a.modifier !== 1 && <span className="muted"> ^{a.modifier}</span>}
                           </span>
                         </span>

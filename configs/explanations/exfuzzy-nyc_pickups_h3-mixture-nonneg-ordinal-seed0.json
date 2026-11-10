@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.8.0",
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-nyc_pickups_h3-mixture-nonneg-ordinal-seed0",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.322",
+    "model": "claude-fable-5-2"
+  },
+  "generated_at_utc": "2026-11-10T13:41:28Z",
+  "input_sha256": "6460101738d1cdff3d24c9cbe2c0dd6624f24dcbe74fd6e7ecb13ace06a609c2",
+  "reviewed": false,
+  "es": {
+    "headline": "En el 93 % de las predicciones, la regla que más suma a la categoría predicha mira el Nivel hace 1 h (percentil).",
+    "summary": [
+      "El modelo tiene 9 reglas cortas, con 1,3 condiciones de media. El Nivel hace 1 h (percentil) aparece en 2 reglas, el Nivel hace 2 h (percentil) en 3 y el Nivel medio, 24 h previas (razón) en 3. El Nivel hace 24 h (percentil), el Nivel hace 168 h (percentil), la Hora local (Nueva York) y el Día de la semana (local) aparecen en 1 regla cada uno.",
+      "R09 es la que más suma a la categoría predicha en el 53 % de las predicciones. Se cumple cuando el Nivel hace 1 h (percentil) es al menos normal y el Nivel medio, 24 h previas (razón) es al menos como lo habitual. Su peso mayor va a muy alta y esas predicciones aciertan el 36 %. R07 lo es en el 40 % y acierta el 49 %.",
+      "Del 8 de febrero de 2025 al 31 de marzo de 2025 el modelo alcanza un F1 macro de 0,38 y un acierto del 42 %. Es mejor que repetir la última categoría (0,35 y 38 %) y mejor que el Random Forest (0,36 y 37 %). Queda por debajo de la regresión logística, que llega a 0,39 y 44 %."
+    ],
+    "points": [
+      "R07 se cumple cuando el Nivel hace 1 h (percentil) es como mucho alta. Sin ella cambiaría la categoría del 59 % de las predicciones.",
+      "La categoría baja se observa el 13 % de las veces y es la categoría más fuerte de R07, R02, R06, R01 y R05.",
+      "R04 nunca es la regla que más suma a la categoría predicha, pero sin ella cambiaría el 13 % de las predicciones.",
+      "R05 mira la hora: se cumple en Primeras horas (la madrugada o la mañana). Sus pesos son casi nulos, con +0,02 para baja.",
+      "En el 15 % de los casos una regla se cumple pero no se publica predicción, porque falta el nivel de referencia."
+    ]
+  },
+  "en": {
+    "headline": "In 93% of predictions, the rule that adds the most to the predicted category looks at Level 1 h ago (percentile).",
+    "summary": [
+      "The model has 9 short rules, with 1.3 conditions on average. Level 1 h ago (percentile) appears in 2 rules, Level 2 h ago (percentile) in 3 and Mean level, previous 24 h (ratio) in 3. Level 24 h ago (percentile), Level 168 h ago (percentile), Local hour (New York) and Weekday (local) each appear in 1 rule.",
+      "R09 adds the most to the predicted category 53% of the time. It holds when Level 1 h ago (percentile) is at least normal and Mean level, previous 24 h (ratio) is at least as usual. Its largest weight goes to very high, and those predictions are right 36% of the time. R07 does so 40% of the time, favours low, and is right in 49%.",
+      "From 8 February 2025 to 31 March 2025 the model reaches a macro-F1 of 0.38 and an accuracy of 42%. It is better than repeating the last category (0.35 and 38%) and better than the random forest (0.36 and 37%). It is worse than logistic regression, which reaches 0.39 and 44%."
+    ],
+    "points": [
+      "R07 holds when Level 1 h ago (percentile) is at most high. Without it, the category would change in 59% of predictions.",
+      "The low category is observed 13% of the time, and it is the strongest category of R07, R02, R06, R01 and R05.",
+      "R04 is never the rule that adds the most to the predicted category, yet 13% of predictions would change without it.",
+      "R05 looks at the clock and holds in Early hours (small hours or morning). Its weights are close to zero, with +0.02 for low.",
+      "In 15% of cases a rule holds but no prediction is published, as the reference level is missing."
+    ]
+  }
+}

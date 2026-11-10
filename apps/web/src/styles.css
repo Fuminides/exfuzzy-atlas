@@ -304,6 +304,9 @@ button.link:hover, button.link:focus-visible { text-decoration: underline; text-
 .partitions .axis-line { stroke: var(--slate); stroke-width: 1; }
 .partitions .term { fill: none; stroke-width: 1.8; stroke-linejoin: round; }
 .partitions .term--rule { stroke-width: 3.6; }
+/* an ordinal or compound condition (v0.8): the bounded sum of the terms it covers, dashed ink over the base terms */
+.partitions .term--sum, .terms-plot .term--sum { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-dasharray: 7 4; stroke-linejoin: round; }
+.partitions .sum-label { fill: var(--ink); font-weight: var(--w-strong); font-style: italic; }
 .partitions .input-line { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 3; }
 .partitions .input-text { fill: var(--ink); font-weight: var(--w-strong); }
 .partitions circle { stroke: var(--paper); stroke-width: 1.5; }

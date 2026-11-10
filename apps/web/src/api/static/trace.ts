@@ -74,18 +74,21 @@ export const notModelledTrace = (h: Model, entityId: string, t: number): RuleTra
 
 /**
  * The conditions of a rule with the membership of each (`StaticStore._antecedent_traces`): the only reader of how a rule's
- * antecedent is written, besides `pairKey` of the model. Today it is a feature, a term and an optional modifier; a
- * contract that adds more (v0.8 operators) must extend this and the exporter together, so anything else stops here.
+ * antecedent is written, besides `pairKey` of the model. A condition is one membership of `mem`, which ex_fuzzy computed:
+ * the term's own for `is`, the bounded sum `min(1, sum of the memberships of terms)` for `at_least`, `at_most` and
+ * `any_of` (contract v0.8; for a compound `term` is its internal name). The operator and the terms are those of `rules.json`.
  */
 function antecedentTraces(h: Model, rule: Model["rules"]["rules"][number], mem: readonly (number | null)[]): AntecedentTrace[] {
   return rule.antecedents.map((a) => {
-    const operator = (a as { operator?: string }).operator;
-    if (operator !== undefined && operator !== "is") throw notFound(`no trace: the condition operator ${operator} is not supported by this export`);
-    const p = h.pairIndex.get(pairKey(a.feature, a.term));
+    const operator = a.operator ?? "is";
+    const p = h.pairIndex.get(pairKey(a.feature, operator, a.term));
     const membership = p === undefined ? null : (mem[p] ?? null);
-    if (membership === null) throw notFound(`no trace: the membership of ${a.feature} / ${a.term} is not exported`);
+    if (membership === null) throw notFound(`no trace: the membership of ${a.feature} ${operator} ${a.term} is not exported`);
     const modifier = a.modifier ?? null;
-    return { feature: a.feature, term: a.term, membership, modifier, effective_membership: modifier === null ? membership : membership ** modifier };
+    return {
+      feature: a.feature, term: a.term, operator, terms: a.terms && a.terms.length > 0 ? [...a.terms] : [a.term], membership, modifier,
+      effective_membership: modifier === null ? membership : membership ** modifier,
+    };
   });
 }
 

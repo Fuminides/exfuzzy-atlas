@@ -33,9 +33,31 @@
           "default": null,
           "title": "Modifier"
         },
+        "operator": {
+          "default": "is",
+          "description": "v0.8: as `Antecedent.operator`. For `at_least`, `at_most` and `any_of`, `membership` is the bounded sum of the memberships of `terms` that ex_fuzzy computes.",
+          "enum": [
+            "is",
+            "at_least",
+            "at_most",
+            "any_of"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
         "term": {
+          "description": "As `Antecedent.term` (v0.8: for a compound, its internal name).",
           "title": "Term",
           "type": "string"
+        },
+        "terms": {
+          "default": [],
+          "description": "v0.8: as `Antecedent.terms`; `[term]` for `is`, filled in when absent.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Terms",
+          "type": "array"
         }
       },
       "required": [
@@ -553,7 +575,7 @@
       "type": "object"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/RuleTrace.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/RuleTrace.schema.json",
   "additionalProperties": false,
   "properties": {
     "data_version": {
@@ -635,7 +657,7 @@
       "type": "array"
     },
     "schema_version": {
-      "default": "0.7.0",
+      "default": "0.8.0",
       "title": "Schema Version",
       "type": "string"
     },

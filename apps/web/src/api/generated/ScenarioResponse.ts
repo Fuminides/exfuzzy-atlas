@@ -114,7 +114,18 @@ export type Feature2 = string;
  */
 export type Membership = number;
 export type Modifier = number | null;
+/**
+ * v0.8: as `Antecedent.operator`. For `at_least`, `at_most` and `any_of`, `membership` is the bounded sum of the memberships of `terms` that ex_fuzzy computes.
+ */
+export type Operator = "is" | "at_least" | "at_most" | "any_of";
+/**
+ * As `Antecedent.term` (v0.8: for a compound, its internal name).
+ */
 export type Term = string;
+/**
+ * v0.8: as `Antecedent.terms`; `[term]` for `is`, filled in when absent.
+ */
+export type Terms = string[];
 /**
  * Winning-rule classifier: firing x weight; the rule with the largest one decides the class.
  */
@@ -295,7 +306,9 @@ export interface AntecedentTrace {
   feature: Feature2;
   membership: Membership;
   modifier?: Modifier;
+  operator?: Operator;
   term: Term;
+  terms?: Terms;
 }
 export interface PredictionChange {
   label_changed?: LabelChanged;

@@ -3,7 +3,8 @@ import { createPortal } from "react-dom";
 import type { LinguisticVariable, ModelRules, RuleDefinition, RuleImportanceResponse, TargetScheme } from "../api/types";
 import { tr } from "../i18n";
 import { importancePeriod, rankedRules } from "../lib/importance";
-import { ruleSentence, useFeatureLabel, useNames } from "../lib/labels";
+import { isExtra } from "../lib/conditions";
+import { fullCondition, ruleSentence, useFeatureLabel, useNames } from "../lib/labels";
 import { colourOf, ruleColours } from "../lib/ruleColours";
 import { ruleFigures } from "../lib/ruleFigures";
 import { placeCard } from "../lib/ruleRefs";
@@ -313,11 +314,11 @@ function RuleHovercard({ id, cardId, rule, lookup, colour, hint, anchor, cardRef
             const range = columnRange(v);
             const part = sentence.parts.find((p) => p.feature === a.feature && p.term === a.term);
             return (
-              <li key={`${a.feature}|${a.term}`} className="rhc-term">
+              <li key={`${a.feature}|${a.term}`} className="rhc-term" title={isExtra(a) ? fullCondition(a, label, names) : undefined}>
                 <span className="rhc-var">{label(a.feature)}</span>
-                {v && range && <TermGlyph variable={v} term={a.term} range={range} fill={part?.color ?? ACCENT} />}
+                {v && range && <TermGlyph variable={v} term={a.term} range={range} fill={part?.color ?? ACCENT} condition={a} />}
                 <span className="rmx-term">
-                  <em className="term-phrase">{names.phrase(a.feature, a.term)}</em>
+                  <em className="term-phrase">{names.phrase(a.feature, a.term, a)}</em>
                 </span>
               </li>
             );

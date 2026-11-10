@@ -133,7 +133,7 @@ export function PatternsTab({ domain, task, territoryTitle, onProvenance, onOpen
   ];
 
   return (
-    <Naming variables={model.variables} scheme={scheme} target={task.target}>
+    <Naming variables={model.variables} scheme={scheme} target={task.target} rules={model.rules}>
       <RuleLookupProvider model={model} importance={imp} scheme={scheme} unit={unit}>
       <div className="page page--wide" data-task={task.task_id}>
         <PageHead title={tr("Patrones: las reglas del modelo", "Patterns: the model's rules")}>

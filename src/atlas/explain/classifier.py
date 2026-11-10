@@ -23,7 +23,7 @@ from ex_fuzzy import rules as fz_rules
 from ex_fuzzy.rules import MasterRuleBase
 
 from atlas.contracts import models as m
-from atlas.explain.engine import UnsupportedModelError, rule_modifier
+from atlas.explain.engine import UnsupportedModelError, rule_modifier, trace_antecedents
 from atlas.explain.traces import _as_utc_datetimes, _check_lengths
 
 
@@ -145,17 +145,8 @@ def duplicate_groups(rb: MasterRuleBase) -> list[list[int]]:
     return [g for g in groups.values() if len(g) > 1]
 
 
-def _trace_entry(rb, act: ClassifierActivations, r: int, rule_id: str, k: int, names, term_names):
-    rule = rb.get_rules()[r]
-    antecedents = []
-    for f, term in enumerate(rule.antecedents):
-        if term < 0:
-            continue
-        membership = float(act.memberships[f][term][k])
-        antecedents.append(m.AntecedentTrace(
-            feature=names[f], term=term_names[f][term], membership=membership, modifier=None,
-            effective_membership=membership,
-        ))
+def _trace_entry(rb, act: ClassifierActivations, r: int, rule_id: str, k: int, names):
+    antecedents = trace_antecedents(rb.get_rules()[r], rb.antecedents, names, act.memberships, k)
     firing = float(act.firing[k, r])
     return m.RuleTraceEntry(
         rule_id=rule_id, antecedents=antecedents, firing_strength=firing, effective_firing=firing,
@@ -198,7 +189,6 @@ def build_classifier_traces(
     ids = rule_ids(rb)
     units = {n: getattr(v, "units", None) for n, v in zip(names, rb.antecedents, strict=True)}
     units.update(feature_units or {})
-    term_names = [v.linguistic_variable_names() for v in rb.antecedents]
     finite = np.isfinite(values).all(axis=1)
     index = np.full(values.shape[0], -1, dtype=int)
     index[finite] = np.arange(int(finite.sum()))
@@ -230,7 +220,7 @@ def build_classifier_traces(
             ))
             continue
         k = index[row]
-        entries = [_trace_entry(rb, act, r, ids[r], k, names, term_names) for r in range(len(ids))]
+        entries = [_trace_entry(rb, act, r, ids[r], k, names) for r in range(len(ids))]
         winner, cls = int(act.winner[k]), int(act.prediction[k])
         if winner < 0:
             prediction = m.TracePrediction(value=None, unit=target_unit, fallback_used=True,

@@ -78,7 +78,7 @@
       "type": "object"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ModelExplanation.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/ModelExplanation.schema.json",
   "additionalProperties": false,
   "description": "v0.6.2: a short explanation of one published model's rule base, in Spanish and English, written by an AI from\na template (``configs/explanations/TEMPLATE.md``) and the model's published files. Every number in it is one of\nthe published figures; the text describes how the model maps inputs to outputs and claims no causes.",
   "properties": {
@@ -116,7 +116,7 @@
       "type": "boolean"
     },
     "schema_version": {
-      "default": "0.7.0",
+      "default": "0.8.0",
       "title": "Schema Version",
       "type": "string"
     },

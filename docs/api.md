@@ -111,10 +111,10 @@ viejos). Lo que no hay que hacer es publicar dos modelos a la vez en el mismo di
 |---|---|
 | `/domains` | `registry.json`; los dominios sin tareas salen `planned` |
 | `/entities?domain=&task_id=` | `entities.geojson` del modelo de la tarea (ver «Varias tareas en un dominio»); 404 si no hay ninguna |
-| `/models/{id}`, `/models/{id}/rules` | `card.json`, `rules.json` (con `synthetic` del `card.json`) |
+| `/models/{id}`, `/models/{id}/rules` | `card.json`, `rules.json` (con `synthetic` del `card.json`). Contrato v0.8: cada antecedente lleva `operator` (`is` / `at_least` / `at_most` / `any_of`), `terms` (términos base que cubre) y, en un compuesto, `label` / `label_en` (`CONTRACTS.md` §19) |
 | `/series` | `predictions.parquet`; `from`/`to` semiabierto `[from, to)` por emisión |
 | `/rule-map` | DuckDB sobre `activations/` (ver abajo) |
-| `/entities/{id}/rule-trace` | fila de `inputs.parquet` + `atlas.explain.build_rule_traces` con el modelo publicado; `observed_at_utc` y `source_id` salen de `feature_spec.json` |
+| `/entities/{id}/rule-trace` | fila de `inputs.parquet` + `atlas.explain.build_rule_traces` con el modelo publicado; `observed_at_utc` y `source_id` salen de `feature_spec.json`. v0.8: cada antecedente de la traza lleva `operator` y `terms`, y su `membership` es la suma acotada que calcula ex_fuzzy para una condición `at_least` / `at_most` / `any_of` |
 
 **Varias tareas en un dominio.** La unidad que se elige es la tarea, no el dominio: `/entities` acepta `task_id` opcional
 y sirve exactamente las entidades de esa tarea (nunca la unión de varias: dos países en un mapa serían dos modelos
@@ -290,7 +290,7 @@ incluidos). Se parte de la fila publicada de `(entity_id, at)`: sin ella, 404. S
 `rule-trace`) sobre la fila modificada; nada se escribe en disco ni se toca el conjunto de datos. `inputs[].origin` marca
 cada entrada como `observed` o `overridden`; una entrada ausente que no se sobrescribe sigue ausente (sin inferencia). Sin
 overrides, `modified == original`. Un clasificador con fila «sin referencia» (NYC) conserva la etiqueta retenida en las dos
-trazas. El `label` obligatorio de la UI es «respuesta del modelo ante entradas modificadas — no efecto causal ni predicción».
+trazas. El `label` obligatorio de la UI es «respuesta del modelo ante entradas modificadas».
 El CORS del desarrollo local admite ahora `POST`.
 
 **Pruebas.** `tests/contracts/test_models_v04.py`; `tests/services/test_publish_v04.py` y

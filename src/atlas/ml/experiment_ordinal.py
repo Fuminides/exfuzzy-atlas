@@ -32,6 +32,7 @@ from typing import Literal
 import numpy as np
 from pydantic import BaseModel, ConfigDict
 
+from atlas import compound_terms
 from atlas.explain import feature_names
 from atlas.explain.classifier import feature_names as classifier_feature_names
 from atlas.explain.classifier import get_master_rulebase, rule_classes, rule_weights
@@ -570,8 +571,26 @@ def test(cfg: OrdinalConfig, artifacts: Path, workers: int) -> None:
 # ------------------------------------------------------------------------------------------------ report
 
 
-def rule_lines(model, kind: str, labels: list[str], limit: int = 3) -> list[str]:
-    """The ``limit`` rules with an ``at least`` / ``at most`` condition that have the largest effect, as text."""
+def term_labels(task: str) -> dict[str, dict[str, str]]:
+    """English display label of each term of each input of ``task`` (the ``terms_en`` of its metadata file), by feature.
+    A term name such as ``<=L`` or ``Medio>L`` is a key of the fitted model, not something to print."""
+    domain = {"de": "air/attribution_de.json", "nyc": "mobility/attribution.json", "uk": "water/attribution.json"}
+    path = REPO_ROOT / "configs" / domain[task.split("_")[0]]
+    features = json.loads(path.read_text()).get("features", {})
+    return {f: {**v.get("terms", {}), **v.get("terms_en", {})} for f, v in features.items()}
+
+
+def condition_sentence(c, feature: str, labels: dict[str, str], compounds: dict) -> str:
+    """``feature IS <operator> <term>`` with the display label of the term (a compound: its English name)."""
+    named = c.operator == "any_of" and c.term in compounds
+    shown = compounds[c.term].label_en if named else labels.get(c.term, c.term)
+    word = {"at_least": "at least ", "at_most": "at most "}.get(c.operator, "")
+    return f"{feature} IS {word}{shown}"
+
+
+def rule_lines(model, kind: str, labels: list[str], limit: int = 3, task: str | None = None) -> list[str]:
+    """The ``limit`` rules with an ``at least`` / ``at most`` condition that have the largest effect, as text; with
+    ``task`` the terms are written with their display labels and not with the names the fit gave them."""
     if kind == "water":
         rb = model.get_rulebase()
         rules, antecedents, names = rb.rules, rb.antecedents, feature_names(rb)
@@ -591,9 +610,14 @@ def rule_lines(model, kind: str, labels: list[str], limit: int = 3) -> list[str]
             effect = [float(w) for w in weights]
             tail = [f"THEN {labels[c]} (weight {w:.2g})" for c, w in zip(classes, weights, strict=True)]
     used = [r for r, rule in enumerate(rules) if any(c.operator != "is" for c in rule_conditions(rule, antecedents))]
+    shown, compounds = (term_labels(task), compound_terms.load_labels()) if task else ({}, {})
     lines = []
     for r in sorted(used, key=lambda r: -effect[r])[:limit]:
-        text = " AND ".join(f"{names[c.feature]} IS {c.text}" for c in rule_conditions(rules[r], antecedents))
+        if task is None:
+            text = " AND ".join(f"{names[c.feature]} IS {c.text}" for c in rule_conditions(rules[r], antecedents))
+        else:
+            text = " AND ".join(condition_sentence(c, names[c.feature], shown.get(names[c.feature], {}), compounds)
+                                for c in rule_conditions(rules[r], antecedents))
         lines.append(f"IF {text}: {tail[r]}")
     return lines
 
@@ -635,7 +659,7 @@ def report(cfg: OrdinalConfig, artifacts: Path) -> str:
     labels = list(getattr(model, "class_labels", []))
     verdict = "a winning task" if wins else "no task won"
     md += ["", f"Example rules, {task} B seed {d['B']['selected_seed']} ({verdict}):"]
-    md += [f"    {line}" for line in rule_lines(model, spec.kind, labels)]
+    md += [f"    {line}" for line in rule_lines(model, spec.kind, labels, task=task)]
     text = "\n".join(md) + "\n"
     (out / "report.md").write_text(text)
     return text

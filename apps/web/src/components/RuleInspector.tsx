@@ -1,6 +1,7 @@
 import type { ModelRules, RuleTrace, SeriesPoint, TargetScheme } from "../api/types";
 import type { AsyncState } from "../hooks/useAsync";
 import type { TimeWindow } from "../lib/windows";
+import { extraConditions, isExtra } from "../lib/conditions";
 import { PartitionsPanel } from "./PartitionsPanel";
 import { RuleDetail } from "./RuleDetail";
 import { RuleRail } from "./RuleRail";
@@ -42,6 +43,7 @@ export function RuleInspector(p: Props) {
   const { rules, ruleId, scheme, entityId, entityName, unmodelled, trace, staleInstant, irregular, window, sample } = p;
   const rule = rules.rules.find((r) => r.rule_id === ruleId);
   const variable = p.partitionFeature ? rules.variables.find((v) => v.feature === p.partitionFeature) : undefined;
+  const ruleCondition = variable ? (rule?.antecedents.find((a) => a.feature === variable.feature) ?? null) : null;
   return (
     <>
       <RuleRail rules={rules.rules} selectedId={ruleId} onSelect={p.onSelectRule} scheme={scheme} weighting={rules.inference.rule_weighting} />
@@ -49,7 +51,9 @@ export function RuleInspector(p: Props) {
       {variable && (
         <PartitionsPanel
           variable={variable}
-          ruleTerm={rule?.antecedents.find((a) => a.feature === variable.feature)?.term ?? null}
+          ruleTerm={ruleCondition && !isExtra(ruleCondition) ? ruleCondition.term : null}
+          conditions={extraConditions(rules.rules, variable.feature)}
+          ruleCondition={ruleCondition}
           ruleId={rule?.rule_id ?? null}
           siblings={[...new Set(rule?.antecedents.map((a) => a.feature) ?? [])]}
           onVariable={p.onPartitionFeature}

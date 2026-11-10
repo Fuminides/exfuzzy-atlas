@@ -37,7 +37,7 @@ export function PredictionTab({ domain, task, territoryTitle, horizons, onDate, 
   const regular = ready && coverage.regular !== false;
   const predicts = predictsText(task, scheme);
   return (
-    <Naming variables={rules.status === "ok" ? rules.data.variables : NO_VARIABLES} scheme={scheme} target={task.target}>
+    <Naming variables={rules.status === "ok" ? rules.data.variables : NO_VARIABLES} scheme={scheme} target={task.target} rules={rules.status === "ok" ? rules.data.rules : NO_VARIABLES}>
       <div className="page page--wide" data-task={task.task_id}>
         <PageHead title={tr(`Predicción: ${predicts} en ${territoryTitle}`, `Prediction: ${predicts} in ${territoryTitle}`)}>
           {ready && regular && task.horizon_hours > 0 ? (

@@ -34,7 +34,7 @@ import pandas as pd
 
 from atlas.contracts import models as m
 from atlas.explain.classifier import duplicate_groups, feature_names, get_master_rulebase, rule_ids, tnorm_of
-from atlas.explain.engine import UnsupportedModelError, rule_modifier
+from atlas.explain.engine import UnsupportedModelError, rule_modifier, trace_antecedents
 from atlas.explain.traces import _as_utc_datetimes, _check_lengths
 
 
@@ -238,7 +238,6 @@ def build_mixture_traces(
     order = list(class_labels)
     units = {n: getattr(v, "units", None) for n, v in zip(names, rb.antecedents, strict=True)}
     units.update(feature_units or {})
-    term_names = [v.linguistic_variable_names() for v in rb.antecedents]
     finite = np.isfinite(values).all(axis=1)
     index = np.full(values.shape[0], -1, dtype=int)
     index[finite] = np.arange(int(finite.sum()))
@@ -274,14 +273,7 @@ def build_mixture_traces(
         k = index[row]
         entries = []
         for r, rule_id in enumerate(ids):
-            antecedents = []
-            for f, term in enumerate(rules[r].antecedents):
-                if term < 0:
-                    continue
-                membership = float(act.memberships[f][term][k])
-                antecedents.append(m.AntecedentTrace(
-                    feature=names[f], term=term_names[f][term], membership=membership, modifier=None,
-                    effective_membership=membership))
+            antecedents = trace_antecedents(rules[r], rb.antecedents, names, act.memberships, k)
             firing = float(act.firing[k, r])
             entries.append(m.RuleTraceEntry(
                 rule_id=rule_id, antecedents=antecedents, firing_strength=firing, effective_firing=firing,

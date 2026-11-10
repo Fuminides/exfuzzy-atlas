@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.7.0",
+  "schema_version": "0.8.0",
   "data_version": "synthetic-fixture-v0",
   "synthetic": true,
   "model_id": "synthetic-no2-h6-v0",
@@ -15,7 +15,7 @@
     "allow_unknown": null,
     "mixture_weights": null,
     "mixture_C": null,
-    "exfuzzy_version": "3.4.0"
+    "exfuzzy_version": "3.5.0"
   },
   "target_scheme": null,
   "variables": [
@@ -128,12 +128,24 @@
         {
           "feature": "no2_t",
           "term": "High",
-          "modifier": null
+          "modifier": null,
+          "operator": "is",
+          "terms": [
+            "High"
+          ],
+          "label": null,
+          "label_en": null
         },
         {
           "feature": "wind_speed_t",
           "term": "Low",
-          "modifier": null
+          "modifier": null,
+          "operator": "is",
+          "terms": [
+            "Low"
+          ],
+          "label": null,
+          "label_en": null
         }
       ],
       "consequent": {
@@ -159,7 +171,13 @@
         {
           "feature": "no2_t",
           "term": "Medium",
-          "modifier": null
+          "modifier": null,
+          "operator": "is",
+          "terms": [
+            "Medium"
+          ],
+          "label": null,
+          "label_en": null
         }
       ],
       "consequent": {
@@ -185,7 +203,13 @@
         {
           "feature": "wind_speed_t",
           "term": "High",
-          "modifier": null
+          "modifier": null,
+          "operator": "is",
+          "terms": [
+            "High"
+          ],
+          "label": null,
+          "label_en": null
         }
       ],
       "consequent": {

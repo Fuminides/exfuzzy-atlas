@@ -62,7 +62,8 @@ export interface Meta {
   decides: boolean;
   mixture: boolean;
   features: MetaFeature[];
-  mem_pairs: [string, string][];
+  /** Axis P (format 2): the conditions the rules use, `[feature, operator, term]`; one membership each. */
+  mem_pairs: [string, string, string][];
   inference: InferenceSpec;
   windows: MetaWindows;
   stories: { tau: number; limit: number } | null;

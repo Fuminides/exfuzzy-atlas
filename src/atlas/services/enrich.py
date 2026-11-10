@@ -49,6 +49,7 @@ from pathlib import Path
 
 import duckdb
 
+from atlas import compound_terms
 from atlas.contracts import models as m
 from atlas.ml import artifacts
 from atlas.services import layout, verify
@@ -312,6 +313,10 @@ def backfill(
         patched_rules, labelled = apply_feature_labels(patched_rules, metadata.features, spec)
         fields += ["variables[].label", "variables[].description", "variables[].terms[].label",
                    "variables[].label_en", "variables[].description_en", "variables[].terms[].label_en"]
+    named = compound_terms.apply_labels(patched_rules)  # v0.8: the compound conditions' names, from the config
+    if named != patched_rules:
+        patched_rules = named
+        fields += ["rules[].antecedents[].label", "rules[].antecedents[].label_en"]
     if metadata.target_scheme is not None and patched_rules.target_scheme is not None:
         scheme = apply_class_display_labels(patched_rules.target_scheme, metadata.target_scheme)
         class_labels = [c.label for c in scheme.classes

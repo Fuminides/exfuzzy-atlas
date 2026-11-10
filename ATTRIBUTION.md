@@ -32,7 +32,7 @@ probabilidad.
 | Componente | Licencia | Comprobado |
 |---|---|---|
 | ExFuzzy Atlas (este repositorio) | **AGPL-3.0-or-later** (`LICENSE` es el texto de la AGPL v3; `pyproject.toml` y `README.md` declaran «or later») | `LICENSE`, `pyproject.toml` |
-| [ex_fuzzy](https://github.com/Fuminides/ex-fuzzy) 3.4.0 (motor de inferencia, fijado `ex-fuzzy==3.4.0`) | **AGPL-3.0-or-later** | metadatos del paquete instalado (`License-Expression`, 3.4.0) |
+| [ex_fuzzy](https://github.com/Fuminides/ex-fuzzy) 3.5.0 (motor de inferencia, fijado `ex-fuzzy==3.5.0`) | **AGPL-3.0-or-later** | metadatos del paquete instalado (`License-Expression`, 3.5.0) |
 | numpy, pandas, scikit-learn (esta última llega vía ex_fuzzy y se usa en los baselines) | BSD | metadatos instalados |
 | pyarrow | Apache-2.0 | metadatos instalados |
 | duckdb, pydantic, fastapi, pytz, pyproj, pyshp | MIT | metadatos instalados |

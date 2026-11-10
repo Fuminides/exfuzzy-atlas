@@ -78,7 +78,7 @@ def _trace(firing=(0.8, 0.4), **prediction):
 
 
 def test_v061_payloads_still_validate():
-    assert m.SCHEMA_VERSION == "0.7.0"
+    assert m.SCHEMA_VERSION == "0.8.0"
     m.ModelRules.model_validate_json((FIXTURES / "model_rules.json").read_text())
     regression = m.InferenceFamily.TSK_ZERO_ORDER
     for item in json.loads((FIXTURES / "model_rules_extra.json").read_text()):

@@ -8,7 +8,6 @@ import numpy as np
 import pytest
 from ml_helpers import fit_fuzzy
 
-from atlas.explain import UnsupportedModelError
 from atlas.explain.classifier import get_master_rulebase
 from atlas.ml import consensus as cons
 from atlas.ml import exfuzzy_features as xf
@@ -28,7 +27,7 @@ from atlas.ml.experiment_ordinal import (
 from atlas.ml.fuzzy import FuzzyParams
 from atlas.ml.fuzzy_classifier import FuzzyClassifier, FuzzyClassifierParams
 from atlas.ml.fx_checks import classifier_term_usage
-from atlas.ml.rules_export import _single_terms
+from atlas.ml.rules_export import _conditions
 from atlas.ml.synthetic import FEATURE_UNITS, FEATURES, TARGET
 from atlas.paths import REPO_ROOT
 
@@ -145,8 +144,8 @@ def test_a_model_fitted_with_the_option_reads_its_ordinal_conditions(complete_ro
     usage = classifier_term_usage(model)
     assert usage[name0][f"at least {term0}"] >= 1 and usage[name1][f"at most {term1}"] >= 1
     assert sum(sum(t.values()) for t in usage.values()) == sum(len(a) for a, _ in sets)
-    with pytest.raises(UnsupportedModelError, match="ordinal conditions cannot be exported"):
-        _single_terms(rules[0], rb.antecedents, [str(v.name) for v in rb.antecedents])
+    exported = dict(_conditions(rules[0], rb.antecedents, [str(v.name) for v in rb.antecedents], {}))
+    assert (exported[0].operator, exported[0].term, exported[0].terms) == ("at_least", term0, [term0, "High"])
     key = (((name0, f"at least {term0}"),), "mid")  # the consensus finds the condition by its text, as a code
     consensus = cons.build_consensus_model(model, [key], {key: 1.0})
     assert classifier_rule_sets(consensus, LABELS) == [key]
@@ -161,8 +160,8 @@ def test_a_regressor_fitted_with_the_option_has_ordinal_variables(complete_rows)
     assert all(v.ordinal for v in rb.antecedents)
     rb.rules[0].antecedents[0] = 3
     assert any("at least" in term for _, term in rule_signatures(rb)[0])
-    with pytest.raises(UnsupportedModelError):
-        _single_terms(rb.rules[0], rb.antecedents, [str(v.name) for v in rb.antecedents])
+    exported = dict(_conditions(rb.rules[0], rb.antecedents, [str(v.name) for v in rb.antecedents], {}))
+    assert exported[0].operator == "at_least" and len(exported[0].terms) == 2
 
 
 # ------------------------------------------------------------------------------------ the decision rule
@@ -322,5 +321,22 @@ def test_a_fit_with_per_variable_options_and_compound_terms_reads_any_of(complet
     assert [c.operator for c in conds if c.feature == hour] == ["any_of"]
     stats = condition_stats(rules, rb.antecedents, [str(v.name) for v in rb.antecedents], clock=["hour"])
     assert stats["n_conditions_compound"] >= 1 and stats["n_ordinal_on_clock_inputs"] == 0
-    with pytest.raises(UnsupportedModelError):
-        _single_terms(rules[0], rb.antecedents, [str(v.name) for v in rb.antecedents])
+    exported = dict(_conditions(rules[0], rb.antecedents, [str(v.name) for v in rb.antecedents], {}))
+    assert (exported[hour].operator, exported[hour].term, exported[hour].terms) == (
+        "any_of", "Low or Medium", ["Low", "Medium"])
+
+
+def test_the_report_writes_terms_with_their_labels_and_not_the_names_the_fit_gave_them():
+    from atlas.compound_terms import CompoundLabel
+    from atlas.ml.experiment_ordinal import condition_sentence, term_labels
+
+    water = term_labels("uk_water_do")["ammoniacal_nitrogen"]
+    at_most = xf.RuleCondition(0, "at_most", "Medio>L", "at most Medio>L", ("<=L", "Bajo>L", "Medio>L"), 5)
+    limit = xf.RuleCondition(0, "is", "<=L", "<=L", ("<=L",), 0)
+    assert condition_sentence(at_most, "ammoniacal_nitrogen", water, {}) == (
+        "ammoniacal_nitrogen IS at most medium (above the limit)")
+    assert condition_sentence(limit, "ammoniacal_nitrogen", water, {}) == "ammoniacal_nitrogen IS ≤ detection limit"
+    hour = xf.RuleCondition(1, "any_of", "Early hours", "Early hours", ("Night", "Morning rush"), 4)
+    named = {"Early hours": CompoundLabel(label="Madrugada y mañana", label_en="Night and morning")}
+    assert condition_sentence(hour, "valid_hour_local", {}, named) == "valid_hour_local IS Night and morning"
+    assert condition_sentence(hour, "valid_hour_local", {}, {}) == "valid_hour_local IS Early hours"

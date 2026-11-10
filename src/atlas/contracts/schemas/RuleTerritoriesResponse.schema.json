@@ -382,7 +382,7 @@
       "type": "object"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/RuleTerritoriesResponse.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/RuleTerritoriesResponse.schema.json",
   "additionalProperties": false,
   "description": "Empirical territory of every rule over a window ``[from, to)``. Territories overlap: they are not a partition.",
   "properties": {
@@ -426,7 +426,7 @@
       "type": "array"
     },
     "schema_version": {
-      "default": "0.7.0",
+      "default": "0.8.0",
       "title": "Schema Version",
       "type": "string"
     },

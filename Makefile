@@ -1,8 +1,8 @@
 # PYTHON: the interpreter of the environment where the project is installed (make test PYTHON=/path/to/python).
 PYTHON ?= python
 
-# Contract v0.7: the dependency is ex-fuzzy 3.4.0 from PyPI (pyproject.toml; the first release with the mixture of
-# rules), installed in CI and in the dev env. EXFUZZY_SRC = an ex-fuzzy checkout to use instead (docs/reproduce.md): it
+# Contract v0.8: the dependency is ex-fuzzy 3.5.0 from PyPI (pyproject.toml; with the mixture of rules since 3.4.0 and
+# the ordinal and compound conditions), installed in CI and in the dev env. EXFUZZY_SRC = an ex-fuzzy checkout to use instead (docs/reproduce.md): it
 # goes first on PYTHONPATH of every target and its commit is recorded in every manifest. Empty = the installed ex_fuzzy.
 EXFUZZY_SRC ?=
 export EXFUZZY_SRC
@@ -89,8 +89,8 @@ export-static:
 	$(PYTHON) -u -m atlas.services.static.export --published-dir $(PUBLISHED) --out $(OUT) $(ARGS)
 
 # Which ex_fuzzy these targets import and the version string Atlas records for it:
-#   make exfuzzy-info                                  the pinned PyPI library: 3.4.0
-#   make exfuzzy-info EXFUZZY_SRC=<ex-fuzzy checkout>  e.g. 3.4.0+g10d811b (".dirty" if the checkout has local changes)
+#   make exfuzzy-info                                  the pinned PyPI library: 3.5.0
+#   make exfuzzy-info EXFUZZY_SRC=<ex-fuzzy checkout>  e.g. 3.5.0+g7a0844a (".dirty" if the checkout has local changes)
 exfuzzy-info:
 	PYTHONPATH=$(FIT_PYTHONPATH) $(PYTHON) -c "import ex_fuzzy; from atlas.ml.exfuzzy_features import exfuzzy_version; print(ex_fuzzy.__file__, exfuzzy_version())"
 

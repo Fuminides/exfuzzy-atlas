@@ -77,7 +77,7 @@
       "type": "object"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/RunManifest.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/RunManifest.schema.json",
   "additionalProperties": false,
   "properties": {
     "artifacts": {
@@ -158,7 +158,7 @@
       "type": "string"
     },
     "schema_version": {
-      "default": "0.7.0",
+      "default": "0.8.0",
       "title": "Schema Version",
       "type": "string"
     },

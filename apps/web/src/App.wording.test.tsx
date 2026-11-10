@@ -6,6 +6,7 @@ import { resetMaps } from "./test/maplibreMock";
 import userEvent from "@testing-library/user-event";
 import { mixtureV07 } from "./test/fixturesMixture";
 import { classifierV05, regressionV05 } from "./test/v05";
+import { withAtLeast } from "./test/fixturesConditions";
 
 vi.mock("maplibre-gl", async () => (await import("./test/maplibreMock")).maplibreFactory());
 
@@ -44,6 +45,15 @@ describe("wording guard", () => {
       expect(text).not.toMatch(/activaci[oó]n/i); // activation belongs to Explorar
     });
   }
+
+  it("patrones (v0.8, a condition read as «al menos»): same guard, and the cards say «es al menos»", async () => {
+    installApi({}, withAtLeast(classifierV05()));
+    render(<App initialTab="patrones" />);
+    await ready.patrones();
+    await waitFor(() => expect(owned("patrones")).toMatch(/ es al menos /));
+    expect(owned("patrones")).not.toMatch(FORBIDDEN);
+    expect(owned("patrones")).not.toMatch(/activaci[oó]n/i);
+  });
 
   it("patrones (regression): same guard", async () => {
     installApi({}, regressionV05());

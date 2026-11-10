@@ -189,6 +189,8 @@ export interface ConditionWords {
   article: string;
   subject: string;
   verb: string;
+  /** «al menos», «como mucho» (an ordinal condition, contract v0.8): between the verb and the value; absent for «es alta». */
+  qualifier?: string;
   value: string;
 }
 
@@ -211,4 +213,4 @@ export function conditionWords(variable: string, term: string, label: string, te
 }
 
 /** The condition as plain text: «la humedad relativa hace 1 h es alta». */
-export const conditionText = (c: ConditionWords): string => `${c.article ? `${c.article} ` : ""}${c.subject} ${c.verb} ${c.value}`;
+export const conditionText = (c: ConditionWords): string => `${c.article ? `${c.article} ` : ""}${c.subject} ${c.verb} ${c.qualifier ? `${c.qualifier} ` : ""}${c.value}`;

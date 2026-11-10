@@ -22,7 +22,7 @@ from atlas.explain.engine import (
     get_rulebase,
     inference_spec,
     rule_ids,
-    rule_modifier,
+    trace_antecedents,
 )
 
 
@@ -80,7 +80,6 @@ def build_rule_traces(
     units = {name: getattr(var, "units", None) for name, var in zip(names, rulebase.antecedents, strict=True)}
     units.update(feature_units or {})
     spec = inference_spec(rulebase)
-    term_names = [var.linguistic_variable_names() for var in rulebase.antecedents]
 
     finite = np.isfinite(values).all(axis=1)
     act, index = _activations_for_finite_rows(rulebase, values, finite, with_prediction=True)
@@ -115,7 +114,7 @@ def build_rule_traces(
             continue
         k = index[row]
         entries = [
-            _trace_entry(rulebase, act, r, ids[r], k, names, term_names) for r in range(len(rulebase.rules))
+            _trace_entry(rulebase, act, r, ids[r], k, names) for r in range(len(rulebase.rules))
         ]
         traces.append(m.RuleTrace(
             **common, rules=entries,
@@ -126,18 +125,8 @@ def build_rule_traces(
     return traces
 
 
-def _trace_entry(rulebase, act: RuleActivations, r: int, rule_id: str, k: int, names, term_names) -> m.RuleTraceEntry:
-    rule = rulebase.rules[r]
-    antecedents = []
-    for f, term in enumerate(rule.antecedents):
-        if term < 0:
-            continue
-        membership = float(act.memberships[f][term][k])
-        modifier = rule_modifier(rule, f)
-        antecedents.append(m.AntecedentTrace(
-            feature=names[f], term=term_names[f][term], membership=membership, modifier=modifier,
-            effective_membership=membership if modifier is None else membership**modifier,
-        ))
+def _trace_entry(rulebase, act: RuleActivations, r: int, rule_id: str, k: int, names) -> m.RuleTraceEntry:
+    antecedents = trace_antecedents(rulebase.rules[r], rulebase.antecedents, names, act.memberships, k, hedged=True)
     return m.RuleTraceEntry(
         rule_id=rule_id, antecedents=antecedents,
         firing_strength=float(act.raw[k, r]), effective_firing=float(act.effective[k, r]),

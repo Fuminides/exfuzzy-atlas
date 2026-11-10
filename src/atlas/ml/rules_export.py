@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 from ex_fuzzy import fuzzy_sets as fs
 
+from atlas import compound_terms
 from atlas.contracts import models as m
 from atlas.explain import (
     UnsupportedModelError,
@@ -38,20 +39,26 @@ _MEMBERSHIP = {
 ACTIVATION_TAU = 0.5
 
 
-def _single_terms(rule, variables, names: Sequence[str]) -> list[tuple[int, str]]:
-    """``(feature index, term)`` of every condition of ``rule``; refuses an ``at least`` / ``at most`` / compound one.
+def _conditions(rule, variables, names: Sequence[str], labels: dict) -> list[tuple[int, m.Antecedent]]:
+    """``(feature index, Antecedent)`` of every condition of ``rule`` (contract v0.8).
 
-    The contract (v0.7) has no operator on an ``Antecedent``: exporting "x IS at least Fair" as the term "Fair" would
-    state another rule, so a model with ordinal or compound conditions (ex_fuzzy PR 45) is not exportable until
-    the contract has one (``docs/ml/ordinal_conditions.md``).
+    ``is`` / ``at_least`` / ``at_most`` / ``any_of`` and the base terms they cover come from ``rule.conditions()``
+    (``rule_conditions``), never from the printed rule; a compound takes its display names from ``labels``
+    (``atlas.compound_terms``, keyed by its internal name).
     """
     out = []
     for c in rule_conditions(rule, variables):
-        if c.operator != "is":
-            raise UnsupportedModelError(
-                f"{names[c.feature]} IS {c.text}: ordinal conditions cannot be exported, the contract has no operator")  # noqa: E501
-        out.append((c.feature, c.term))
+        antecedent = m.Antecedent(feature=names[c.feature], term=c.term, operator=c.operator, terms=list(c.terms))
+        out.append((c.feature, compound_terms.label_antecedent(antecedent, labels)))
     return out
+
+
+_OPERATOR_WORDS = {"is": "", "at_least": "at least ", "at_most": "at most ", "any_of": ""}
+
+
+def condition_text(antecedents: Sequence[m.Antecedent]) -> str:
+    """"a IS x AND b IS at least y AND c IS <compound>": the rule's conditions as ex_fuzzy prints them."""
+    return " AND ".join(f"{a.feature} IS {_OPERATOR_WORDS[a.operator]}{a.term}" for a in antecedents)
 
 
 def _term(fuzzy_set) -> m.LinguisticTerm:
@@ -121,15 +128,16 @@ def export_model_rules(
                 f"activation_frequency_tau{ACTIVATION_TAU:g}": (act.raw >= ACTIVATION_TAU).mean(axis=0),
             }
 
+    compound_labels = compound_terms.load_labels()
     rules = []
     for position, rule in enumerate(rulebase.rules):
         antecedents = [
-            m.Antecedent(feature=names[f], term=term, modifier=rule_modifier(rule, f))
-            for f, term in _single_terms(rule, rulebase.antecedents, names)
+            a.model_copy(update={"modifier": rule_modifier(rule, f)})
+            for f, a in _conditions(rule, rulebase.antecedents, names, compound_labels)
         ]
         value = float(rulebase.scalar_consequents[position])
         text = (
-            "IF " + " AND ".join(f"{a.feature} IS {a.term}" for a in antecedents)
+            "IF " + condition_text(antecedents)
             + f" THEN {target}({_valid_time(horizon_hours)}) = {value:.4g} {target_unit}"
         )
         metrics = {"n_antecedents": float(len(antecedents))}
@@ -218,13 +226,13 @@ def export_classifier_rules(
         mixture_fields = {"class_bias": {c: float(b) for c, b in zip(labels, fitted.intercept_, strict=True)}}
     else:
         mixture_fields = {}
+    compound_labels = compound_terms.load_labels()
     rules = []
     for position, rule in enumerate(rb.get_rules()):
-        antecedents = [m.Antecedent(feature=names[f], term=term, modifier=None)
-                       for f, term in _single_terms(rule, rb.antecedents, names)]
+        antecedents = [a for _, a in _conditions(rule, rb.antecedents, names, compound_labels)]
         label = labels[classes[position]]
         weight = float(weights[position])
-        condition = "IF " + " AND ".join(f"{a.feature} IS {a.term}" for a in antecedents)
+        condition = "IF " + condition_text(antecedents)
         extra = {}
         if mixture:
             strongest = mix_engine.strongest_class(coef[position])

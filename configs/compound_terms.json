@@ -1,0 +1,10 @@
+{
+  "status": "names chosen by the maintainer on 2026-11-10 (the Germany hour ones; the others are those of AT-041k, configs/ml/ordinal_conditions_experiment.json) and open to further polishing. They are display names only, keyed by the compound's internal name in the fitted model, so changing one needs no refit: edit it here and run python -m atlas.services.enrich --labels-only on the published model.",
+  "compound_terms": {
+    "Early hours": {"label": "Madrugada y mañana", "label_en": "Night and morning"},
+    "Afternoon": {"label": "Segunda mitad del día", "label_en": "Second half of the day"},
+    "Primeras horas": {"label": "Primeras horas", "label_en": "Early hours"},
+    "Fin de semana": {"label": "Fin de semana", "label_en": "Weekend"},
+    "Low or Medium": {"label": "baja o media", "label_en": "low or medium"}
+  }
+}

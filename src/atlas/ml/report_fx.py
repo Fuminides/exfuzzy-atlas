@@ -23,6 +23,7 @@ import numpy as np
 
 from atlas.explain.classifier import feature_names as classifier_feature_names
 from atlas.explain.classifier import get_master_rulebase, rule_classes, rule_weights
+from atlas.ml.exfuzzy_features import rule_conditions
 from atlas.ml.fx_checks import classifier_term_usage
 from atlas.ml.report_class import _f, _md
 from atlas.paths import ARTIFACTS_DIR
@@ -112,11 +113,10 @@ def classifier_rule_texts(model, class_labels: list[str], target_label: str) -> 
     """``IF f IS term AND ... THEN target = class (peso w)`` per rule, features in input order, rules by class."""
     rb = get_master_rulebase(model)
     names = classifier_feature_names(rb)
-    terms = [v.linguistic_variable_names() for v in rb.antecedents]
     weights = rule_weights(rb)
     out = []
     for rule, cls, weight in zip(rb.get_rules(), rule_classes(rb), weights, strict=True):
-        ants = " AND ".join(f"{names[f]} IS {terms[f][int(t)]}" for f, t in enumerate(rule.antecedents) if t >= 0)
+        ants = " AND ".join(f"{names[c.feature]} IS {c.text}" for c in rule_conditions(rule, rb.antecedents))
         out.append(f"IF {ants} THEN {target_label} = {class_labels[cls]} (peso {float(weight):.3g})")
     return out
 
@@ -170,12 +170,11 @@ def water_support(config_path: Path, artifacts_dir: Path) -> tuple[dict, dict[in
         rulebase = model.get_rulebase()
         support[run["seed"]] = consequent_support(rulebase, X, y)
         names = [v.name for v in rulebase.antecedents]
-        terms = [v.linguistic_variable_names() for v in rulebase.antecedents]
-        season[run["seed"]] = [
-            f"{names[f]} IS {terms[f][t]} -> {c:.3f}"
-            for rule, c in zip(rulebase.rules, rulebase.scalar_consequents, strict=True)
-            for f, t in enumerate(rule.antecedents)
-            if t >= 0 and names[f] == "days_from_midwinter" and sum(a >= 0 for a in rule.antecedents) == 1]
+        season[run["seed"]] = []
+        for rule, c in zip(rulebase.rules, rulebase.scalar_consequents, strict=True):
+            conditions = rule_conditions(rule, rulebase.antecedents)
+            if len(conditions) == 1 and names[conditions[0].feature] == "days_from_midwinter":
+                season[run["seed"]].append(f"{names[conditions[0].feature]} IS {conditions[0].text} -> {c:.3f}")
     return summary, support, season
 
 

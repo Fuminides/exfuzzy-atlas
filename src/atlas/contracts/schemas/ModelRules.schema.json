@@ -7,6 +7,32 @@
           "title": "Feature",
           "type": "string"
         },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.8, `any_of` only: Spanish display name of the compound, e.g. 'Noche larga', from an Atlas config keyed by `term` (configs/compound_terms.json); display only, so names can change without refitting.",
+          "title": "Label"
+        },
+        "label_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.8, `any_of` only: English display name of the compound, e.g. 'Long night'.",
+          "title": "Label En"
+        },
         "modifier": {
           "anyOf": [
             {
@@ -20,9 +46,31 @@
           "description": "Hedge exponent applied to the membership, if any.",
           "title": "Modifier"
         },
+        "operator": {
+          "default": "is",
+          "description": "v0.8: `is` one term; `at_least` / `at_most` a term of the ordered terms of a quantity input ('x is at least Fair'); `any_of` a named compound of terms (a stretch of the clock or the week). The membership of the last three is the bounded sum min(1, sum of the memberships of `terms`) (ex_fuzzy).",
+          "enum": [
+            "is",
+            "at_least",
+            "at_most",
+            "any_of"
+          ],
+          "title": "Operator",
+          "type": "string"
+        },
         "term": {
+          "description": "The term the condition refers to: for `is` the term itself, for `at_least` / `at_most` the threshold term (the lowest / the highest term covered), for `any_of` the compound's internal name (the key of `label`), which is not a term of the variable.",
           "title": "Term",
           "type": "string"
+        },
+        "terms": {
+          "default": [],
+          "description": "v0.8: names of the base terms of the variable that the condition covers, in the variable's order (low to high). A compound may cover non-adjacent terms: the first and the last term of a clock are the two ends of one stretch of the day that wraps midnight. `[term]` for `is`; filled in when absent.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Terms",
+          "type": "array"
         }
       },
       "required": [
@@ -754,7 +802,7 @@
       "type": "object"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ModelRules.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.8.0/ModelRules.schema.json",
   "additionalProperties": false,
   "properties": {
     "class_bias": {
@@ -795,7 +843,7 @@
       "type": "array"
     },
     "schema_version": {
-      "default": "0.7.0",
+      "default": "0.8.0",
       "title": "Schema Version",
       "type": "string"
     },

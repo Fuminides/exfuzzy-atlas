@@ -1,9 +1,9 @@
 {
-  "schema_version": "0.7.0",
+  "schema_version": "0.8.0",
   "data_version": "synthetic-fixture-v0",
   "synthetic": true,
   "manifest": {
-    "schema_version": "0.7.0",
+    "schema_version": "0.8.0",
     "run_id": "synthetic-run-0",
     "model_id": "synthetic-no2-h6-v0",
     "task_id": "madrid_no2_h6",
@@ -11,7 +11,7 @@
     "created_at_utc": "2026-10-30T00:00:00Z",
     "git_commit": null,
     "git_dirty": false,
-    "exfuzzy_version": "3.4.0",
+    "exfuzzy_version": "3.5.0",
     "python_version": "n/a",
     "seed": 20261030,
     "split": {
