@@ -1,0 +1,223 @@
+{
+  "$defs": {
+    "Domain": {
+      "enum": [
+        "air",
+        "water",
+        "mobility"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "MissingReason": {
+      "enum": [
+        "no_observation",
+        "invalid_observation",
+        "censored",
+        "missing_input",
+        "prediction_unavailable",
+        "not_modelled"
+      ],
+      "title": "MissingReason",
+      "type": "string"
+    },
+    "PredictionExplanation": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_firings": {
+          "items": {
+            "$ref": "#/$defs/RuleFiring"
+          },
+          "title": "Rule Firings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "rule_firings"
+      ],
+      "title": "PredictionExplanation",
+      "type": "object"
+    },
+    "Quality": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/QualityStatus",
+          "default": "valid"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "title": "Quality",
+      "type": "object"
+    },
+    "QualityStatus": {
+      "enum": [
+        "valid",
+        "warning",
+        "invalid"
+      ],
+      "title": "QualityStatus",
+      "type": "string"
+    },
+    "RuleFiring": {
+      "additionalProperties": false,
+      "properties": {
+        "firing_strength": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Firing Strength",
+          "type": "number"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "firing_strength"
+      ],
+      "title": "RuleFiring",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/PredictionRecord.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "domain": {
+      "$ref": "#/$defs/Domain"
+    },
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "explanation": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PredictionExplanation"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "issued_at_utc": {
+      "format": "date-time",
+      "title": "Issued At Utc",
+      "type": "string"
+    },
+    "missing_reason": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MissingReason"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "observed": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Filled only when observed; says nothing about availability at issue time.",
+      "title": "Observed"
+    },
+    "prediction": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Prediction"
+    },
+    "prediction_label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Predicted class (classification tasks).",
+      "title": "Prediction Label"
+    },
+    "quality": {
+      "$ref": "#/$defs/Quality",
+      "default": {
+        "status": "valid",
+        "warnings": []
+      }
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "target": {
+      "title": "Target",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "unit": {
+      "title": "Unit",
+      "type": "string"
+    },
+    "valid_at_utc": {
+      "format": "date-time",
+      "title": "Valid At Utc",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "domain",
+    "task_id",
+    "entity_id",
+    "issued_at_utc",
+    "valid_at_utc",
+    "target",
+    "unit",
+    "prediction",
+    "model_id"
+  ],
+  "title": "PredictionRecord",
+  "type": "object"
+}

@@ -1,0 +1,195 @@
+{
+  "$defs": {
+    "Domain": {
+      "enum": [
+        "air",
+        "water",
+        "mobility"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "DomainInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "domain": {
+          "$ref": "#/$defs/Domain"
+        },
+        "status": {
+          "enum": [
+            "planned",
+            "etl",
+            "available"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "tasks": {
+          "items": {
+            "$ref": "#/$defs/TaskInfo"
+          },
+          "title": "Tasks",
+          "type": "array"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "domain",
+        "title",
+        "status",
+        "tasks"
+      ],
+      "title": "DomainInfo",
+      "type": "object"
+    },
+    "TaskInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "horizon_hours": {
+          "description": "0 for same-time inference (no forecast).",
+          "minimum": 0,
+          "title": "Horizon Hours",
+          "type": "integer"
+        },
+        "model_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Model the API serves for this task; null while none exists.",
+          "title": "Model Id"
+        },
+        "status": {
+          "enum": [
+            "planned",
+            "available"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        },
+        "task_type": {
+          "default": "regression",
+          "enum": [
+            "regression",
+            "classification"
+          ],
+          "title": "Task Type",
+          "type": "string"
+        },
+        "territory": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.5: territory id shared by the tasks that differ only in horizon_hours, e.g. 'madrid'. The UI offers one territory with a horizon selector over its tasks.",
+          "title": "Territory"
+        },
+        "territory_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.5: display name of the territory, e.g. 'Madrid'.",
+          "title": "Territory Title"
+        },
+        "territory_title_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English display name of the territory, e.g. 'Germany' for 'Alemania'; the UI shows it when the interface is in English, else falls back to `territory_title`.",
+          "title": "Territory Title En"
+        },
+        "title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Title of the task (its territory), e.g. 'Madrid air quality'; v0.4.1.",
+          "title": "Title"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "target",
+        "unit",
+        "horizon_hours",
+        "status"
+      ],
+      "title": "TaskInfo",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/DomainsResponse.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "domains": {
+      "items": {
+        "$ref": "#/$defs/DomainInfo"
+      },
+      "title": "Domains",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "data_version",
+    "domains"
+  ],
+  "title": "DomainsResponse",
+  "type": "object"
+}

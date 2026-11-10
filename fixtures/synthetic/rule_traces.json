@@ -1,0 +1,2939 @@
+[
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_A",
+    "issued_at_utc": "2025-01-15T06:00:00Z",
+    "valid_at_utc": "2025-01-15T12:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 74.0,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T06:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 3.0,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T06:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.7,
+            "modifier": null,
+            "effective_membership": 0.7
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.3,
+            "modifier": null,
+            "effective_membership": 0.3
+          }
+        ],
+        "firing_strength": 0.3,
+        "effective_firing": 0.3,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 44.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 32.7,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_A",
+    "issued_at_utc": "2025-01-15T07:00:00Z",
+    "valid_at_utc": "2025-01-15T13:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 74.0,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T07:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 2.4,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T07:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.7,
+            "modifier": null,
+            "effective_membership": 0.7
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.4000000000000001,
+            "modifier": null,
+            "effective_membership": 0.4000000000000001
+          }
+        ],
+        "firing_strength": 0.28,
+        "effective_firing": 0.28,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.3,
+            "modifier": null,
+            "effective_membership": 0.3
+          }
+        ],
+        "firing_strength": 0.3,
+        "effective_firing": 0.3,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 57.517241379310335,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 52.8,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_A",
+    "issued_at_utc": "2025-01-15T08:00:00Z",
+    "valid_at_utc": "2025-01-15T14:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 86.4,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T08:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 2.0,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T08:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.6666666666666666,
+            "modifier": null,
+            "effective_membership": 0.6666666666666666
+          }
+        ],
+        "firing_strength": 0.6666666666666666,
+        "effective_firing": 0.6666666666666666,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 72.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 52.0,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_A",
+    "issued_at_utc": "2025-01-15T09:00:00Z",
+    "valid_at_utc": "2025-01-15T15:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 85.7,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T09:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 1.9,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T09:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.7333333333333334,
+            "modifier": null,
+            "effective_membership": 0.7333333333333334
+          }
+        ],
+        "firing_strength": 0.7333333333333334,
+        "effective_firing": 0.7333333333333334,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 72.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 74.5,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_A",
+    "issued_at_utc": "2025-01-15T10:00:00Z",
+    "valid_at_utc": "2025-01-15T16:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 84.1,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T10:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 1.8,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T10:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.7999999999999999,
+            "modifier": null,
+            "effective_membership": 0.7999999999999999
+          }
+        ],
+        "firing_strength": 0.7999999999999999,
+        "effective_firing": 0.7999999999999999,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 72.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 64.5,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_A",
+    "issued_at_utc": "2025-01-15T11:00:00Z",
+    "valid_at_utc": "2025-01-15T17:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 75.1,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T11:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 0.3,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T11:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.7549999999999997,
+            "modifier": null,
+            "effective_membership": 0.7549999999999997
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 0.7549999999999997,
+        "effective_firing": 0.7549999999999997,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.24500000000000027,
+            "modifier": null,
+            "effective_membership": 0.24500000000000027
+          }
+        ],
+        "firing_strength": 0.24500000000000027,
+        "effective_firing": 0.24500000000000027,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 65.13999999999999,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 51.4,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_B",
+    "issued_at_utc": "2025-01-15T06:00:00Z",
+    "valid_at_utc": "2025-01-15T12:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 53.1,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T06:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 3.4,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T06:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 1.0,
+        "effective_firing": 1.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 44.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 77.0,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_B",
+    "issued_at_utc": "2025-01-15T07:00:00Z",
+    "valid_at_utc": "2025-01-15T13:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 63.2,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T07:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 3.3,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T07:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.16000000000000014,
+            "modifier": null,
+            "effective_membership": 0.16000000000000014
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.8399999999999999,
+            "modifier": null,
+            "effective_membership": 0.8399999999999999
+          }
+        ],
+        "firing_strength": 0.8399999999999999,
+        "effective_firing": 0.8399999999999999,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 44.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 57.2,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_B",
+    "issued_at_utc": "2025-01-15T08:00:00Z",
+    "valid_at_utc": "2025-01-15T14:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 55.4,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T08:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 3.7,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T08:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 1.0,
+        "effective_firing": 1.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 44.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 52.4,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_B",
+    "issued_at_utc": "2025-01-15T09:00:00Z",
+    "valid_at_utc": "2025-01-15T15:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 49.5,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T09:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 3.1,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T09:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 1.0,
+        "effective_firing": 1.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 44.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 58.5,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_B",
+    "issued_at_utc": "2025-01-15T10:00:00Z",
+    "valid_at_utc": "2025-01-15T16:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 47.5,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T10:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 2.9,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T10:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.06666666666666672,
+            "modifier": null,
+            "effective_membership": 0.06666666666666672
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 1.0,
+        "effective_firing": 1.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 44.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 17.8,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_B",
+    "issued_at_utc": "2025-01-15T11:00:00Z",
+    "valid_at_utc": "2025-01-15T17:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 40.2,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T11:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 1.5,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T11:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 1.0,
+        "effective_firing": 1.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 44.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 27.1,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_C",
+    "issued_at_utc": "2025-01-15T06:00:00Z",
+    "valid_at_utc": "2025-01-15T12:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 42.7,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T06:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 5.3,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T06:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 1.0,
+        "effective_firing": 1.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.5333333333333332,
+            "modifier": null,
+            "effective_membership": 0.5333333333333332
+          }
+        ],
+        "firing_strength": 0.5333333333333332,
+        "effective_firing": 0.5333333333333332,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 34.95652173913044,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 62.5,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_C",
+    "issued_at_utc": "2025-01-15T07:00:00Z",
+    "valid_at_utc": "2025-01-15T13:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 39.4,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T07:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 4.6,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T07:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.97,
+            "modifier": null,
+            "effective_membership": 0.97
+          }
+        ],
+        "firing_strength": 0.97,
+        "effective_firing": 0.97,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.06666666666666643,
+            "modifier": null,
+            "effective_membership": 0.06666666666666643
+          }
+        ],
+        "firing_strength": 0.06666666666666643,
+        "effective_firing": 0.06666666666666643,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 42.327974276527335,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 31.2,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_C",
+    "issued_at_utc": "2025-01-15T08:00:00Z",
+    "valid_at_utc": "2025-01-15T14:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 31.8,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T08:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 4.5,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T08:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.5900000000000001,
+            "modifier": null,
+            "effective_membership": 0.5900000000000001
+          }
+        ],
+        "firing_strength": 0.5900000000000001,
+        "effective_firing": 0.5900000000000001,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 44.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 57.3,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_C",
+    "issued_at_utc": "2025-01-15T09:00:00Z",
+    "valid_at_utc": "2025-01-15T15:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 25.6,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T09:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 5.0,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T09:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.2800000000000001,
+            "modifier": null,
+            "effective_membership": 0.2800000000000001
+          }
+        ],
+        "firing_strength": 0.2800000000000001,
+        "effective_firing": 0.2800000000000001,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.3333333333333333,
+            "modifier": null,
+            "effective_membership": 0.3333333333333333
+          }
+        ],
+        "firing_strength": 0.3333333333333333,
+        "effective_firing": 0.3333333333333333,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 29.869565217391308,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 51.8,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_C",
+    "issued_at_utc": "2025-01-15T10:00:00Z",
+    "valid_at_utc": "2025-01-15T16:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 20.9,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T10:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 4.3,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T10:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.04499999999999993,
+            "modifier": null,
+            "effective_membership": 0.04499999999999993
+          }
+        ],
+        "firing_strength": 0.04499999999999993,
+        "effective_firing": 0.04499999999999993,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 44.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 59.4,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_C",
+    "issued_at_utc": "2025-01-15T11:00:00Z",
+    "valid_at_utc": "2025-01-15T17:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 19.4,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T11:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 4.4,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T11:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 35.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": true,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 21.3,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_D",
+    "issued_at_utc": "2025-01-15T06:00:00Z",
+    "valid_at_utc": "2025-01-15T12:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 86.3,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T06:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 1.0,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T06:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 1.0,
+        "effective_firing": 1.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 72.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 43.8,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_D",
+    "issued_at_utc": "2025-01-15T07:00:00Z",
+    "valid_at_utc": "2025-01-15T13:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 82.3,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T07:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 0.7,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T07:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 1.0,
+        "effective_firing": 1.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 72.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 47.9,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_D",
+    "issued_at_utc": "2025-01-15T08:00:00Z",
+    "valid_at_utc": "2025-01-15T14:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 74.5,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T08:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": null,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T08:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": "no_observation"
+      }
+    ],
+    "rules": [],
+    "prediction": {
+      "value": null,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": "missing_input",
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 23.7,
+    "observed_label": null,
+    "quality": {
+      "status": "warning",
+      "warnings": [
+        "missing input: wind_speed_t"
+      ]
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_D",
+    "issued_at_utc": "2025-01-15T09:00:00Z",
+    "valid_at_utc": "2025-01-15T15:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 67.5,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T09:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 1.0,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T09:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.375,
+            "modifier": null,
+            "effective_membership": 0.375
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          }
+        ],
+        "firing_strength": 0.375,
+        "effective_firing": 0.375,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.625,
+            "modifier": null,
+            "effective_membership": 0.625
+          }
+        ],
+        "firing_strength": 0.625,
+        "effective_firing": 0.625,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 54.5,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 74.8,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_D",
+    "issued_at_utc": "2025-01-15T10:00:00Z",
+    "valid_at_utc": "2025-01-15T16:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 74.1,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T10:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 2.1,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T10:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 0.7049999999999997,
+            "modifier": null,
+            "effective_membership": 0.7049999999999997
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.6,
+            "modifier": null,
+            "effective_membership": 0.6
+          }
+        ],
+        "firing_strength": 0.4229999999999998,
+        "effective_firing": 0.4229999999999998,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.29500000000000026,
+            "modifier": null,
+            "effective_membership": 0.29500000000000026
+          }
+        ],
+        "firing_strength": 0.29500000000000026,
+        "effective_firing": 0.29500000000000026,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 60.49582172701949,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 55.5,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_D",
+    "issued_at_utc": "2025-01-15T11:00:00Z",
+    "valid_at_utc": "2025-01-15T17:00:00Z",
+    "inference": {
+      "family": "tsk_zero_order",
+      "tnorm": "product",
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "fallback": "train_target_mean",
+      "rule_weighting": null,
+      "allow_unknown": null,
+      "mixture_weights": null,
+      "mixture_C": null,
+      "exfuzzy_version": "3.4.0"
+    },
+    "feature_values": [
+      {
+        "feature": "no2_t",
+        "value": 81.6,
+        "unit": "ug/m3",
+        "observed_at_utc": "2025-01-15T11:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "value": 2.1,
+        "unit": "m/s",
+        "observed_at_utc": "2025-01-15T11:00:00Z",
+        "source_id": "synthetic",
+        "missing_reason": null
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "R01",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "High",
+            "membership": 1.0,
+            "modifier": null,
+            "effective_membership": 1.0
+          },
+          {
+            "feature": "wind_speed_t",
+            "term": "Low",
+            "membership": 0.6,
+            "modifier": null,
+            "effective_membership": 0.6
+          }
+        ],
+        "firing_strength": 0.6,
+        "effective_firing": 0.6,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R02",
+        "antecedents": [
+          {
+            "feature": "no2_t",
+            "term": "Medium",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      },
+      {
+        "rule_id": "R03",
+        "antecedents": [
+          {
+            "feature": "wind_speed_t",
+            "term": "High",
+            "membership": 0.0,
+            "modifier": null,
+            "effective_membership": 0.0
+          }
+        ],
+        "firing_strength": 0.0,
+        "effective_firing": 0.0,
+        "weight": null,
+        "association_degree": null,
+        "class_weights": null,
+        "class_contributions": null,
+        "class_contributions_centred": null
+      }
+    ],
+    "prediction": {
+      "value": 72.0,
+      "label": null,
+      "winning_rule_id": null,
+      "unit": "ug/m3",
+      "fallback_used": false,
+      "missing_reason": null,
+      "class_scores": null,
+      "class_bias": null,
+      "top_rule_id": null,
+      "top_rule_share": null
+    },
+    "observation_ids": [],
+    "observed": 40.6,
+    "observed_label": null,
+    "quality": {
+      "status": "valid",
+      "warnings": []
+    }
+  }
+]

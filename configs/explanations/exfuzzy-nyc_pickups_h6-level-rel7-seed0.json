@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.6.2",
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-nyc_pickups_h6-level-rel7-seed0",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.319",
+    "model": "claude-opus-5-5"
+  },
+  "generated_at_utc": "2026-11-09T11:50:42Z",
+  "input_sha256": "20a312ccf783222bc9728ccaa6340756a740f821dfccabf72ab69ec2573e2722",
+  "reviewed": false,
+  "es": {
+    "headline": "Tres reglas de una sola condición deciden el 78 % de las predicciones, y el modelo acierta más que repetir la última categoría.",
+    "summary": [
+      "Las 8 reglas, con 1,1 condiciones de media, miran estas entradas: Nivel medio, 24 h previas (razón) y Hora local (Nueva York), en 3 reglas cada una; Nivel hace 2 h (percentil), en 2, y Nivel hace 1 h (percentil), en 1. Ninguna regla usa Nivel hace 24 h (percentil), Nivel hace 168 h (percentil) ni Día de la semana (local). Predicen el Nivel relativo a +6 h.",
+      "Decide la regla cuyo grado de cumplimiento multiplicado por su peso es mayor. R06 y R03 deciden el 55 %. R06 (si Nivel hace 2 h (percentil) es normal, alta) decide el 29 % y acierta el 32 % (alta se observa el 28 %). R03 (si Nivel medio, 24 h previas (razón) es como lo habitual, normal) decide el 26 % y acierta el 51 % (normal se observa el 38 %).",
+      "En el periodo de prueba el modelo logra F1 macro de 0,35 y acierto del 39 %. Es mejor que Repetir la última categoría (0,31 y 34 %) en ambas medidas. Frente a la regresión logística está a la par en F1 macro (0,35) y es peor en acierto (42 %). Frente al Random Forest está a la par en F1 macro (0,34) y es mejor en acierto (36 %)."
+    ],
+    "points": [
+      "R08 (Nivel medio, 24 h previas (razón) por encima de lo habitual → muy alta) decide el 23 % y acierta el 35 %, frente al 21 % observado.",
+      "Solo R01 predice la clase baja, en el 4,4 % de las predicciones, aunque se observa el 13 % de las veces.",
+      "La clase alta se predice en el 40 % de los casos y se observa el 28 %. La predicen R06, R07 y R05.",
+      "R05 decide solo el 0,1 % de las predicciones y acierta el 18 %, por debajo del 28 % en que se observa alta.",
+      "En el 15 % de los casos una regla se cumple pero no se publica predicción porque falta el nivel de referencia."
+    ]
+  },
+  "en": {
+    "headline": "Three one-condition rules decide 78% of the predictions, and the model does better than repeating the last category.",
+    "summary": [
+      "The 8 rules, with 1.1 conditions on average, look at these inputs: Mean level, previous 24 h (ratio) and Local hour (New York), in 3 rules each; Level 2 h ago (percentile), in 2; and Level 1 h ago (percentile), in 1. No rule uses Level 24 h ago (percentile), Level 168 h ago (percentile) or Weekday (local). They predict the Relative level at +6 h.",
+      "The rule with the highest degree × weight decides. R06 and R03 decide 55%. R06 (if Level 2 h ago (percentile) is normal, then high) decides 29% and is right 32% of the time (high is observed 28%). R03 (if Mean level, previous 24 h (ratio) is as usual, then normal) decides 26% and is right 51% of the time (normal is observed 38%).",
+      "Over the test period the model reaches a macro-F1 of 0.35 and 39% accuracy. It is better than Repeat the last category (0.31 and 34%) on both. Compared with logistic regression it is on a par on macro-F1 (0.35) and worse on accuracy (42%). Compared with the random forest it is on a par on macro-F1 (0.34) and better on accuracy (36%)."
+    ],
+    "points": [
+      "R08 (Mean level, previous 24 h (ratio) above what is usual → very high) decides 23% and is right 35%, compared with 21% observed.",
+      "Only R01 predicts low: 4.4% of the predictions, although low is observed 13% of the time.",
+      "The model predicts high 40% of the time while high is observed 28%; R06, R07 and R05 predict it.",
+      "R05 decides only 0.1% of the predictions and is right 18% of the time, below the 28% at which high is observed.",
+      "In 15% of cases a rule holds but no prediction is published, as the reference level is missing."
+    ]
+  }
+}

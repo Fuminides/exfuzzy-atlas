@@ -1,0 +1,209 @@
+{
+  "schema_version": "0.7.0",
+  "data_version": "synthetic-fixture-v0",
+  "synthetic": true,
+  "model_id": "synthetic-no2-h6-v0",
+  "task_id": "madrid_no2_h6",
+  "domain": "air",
+  "inference": {
+    "family": "tsk_zero_order",
+    "tnorm": "product",
+    "rule_mode": "additive",
+    "tolerance": 0.0,
+    "fallback": "train_target_mean",
+    "rule_weighting": null,
+    "allow_unknown": null,
+    "mixture_weights": null,
+    "mixture_C": null,
+    "exfuzzy_version": "3.4.0"
+  },
+  "target_scheme": null,
+  "variables": [
+    {
+      "feature": "no2_t",
+      "unit": "ug/m3",
+      "label": "NO₂ en la emisión (inventado)",
+      "description": "Concentración inventada de NO₂ (µg/m³) a la hora de emisión; no es una fuente real.",
+      "label_en": "NO₂ at the issue time (made up)",
+      "description_en": "Made-up NO₂ concentration (µg/m³) at the issue time; not a real source.",
+      "domain": [
+        0.0,
+        200.0
+      ],
+      "terms": [
+        {
+          "name": "Low",
+          "label": "baja (inventada)",
+          "label_en": "low (made up)",
+          "membership_type": "trapezoidal",
+          "params": [
+            0.0,
+            0.0,
+            20.0,
+            40.0
+          ]
+        },
+        {
+          "name": "Medium",
+          "label": "media (inventada)",
+          "label_en": "medium (made up)",
+          "membership_type": "trapezoidal",
+          "params": [
+            20.0,
+            40.0,
+            60.0,
+            80.0
+          ]
+        },
+        {
+          "name": "High",
+          "label": "alta (inventada)",
+          "label_en": "high (made up)",
+          "membership_type": "trapezoidal",
+          "params": [
+            60.0,
+            80.0,
+            200.0,
+            200.0
+          ]
+        }
+      ]
+    },
+    {
+      "feature": "wind_speed_t",
+      "unit": "m/s",
+      "label": "Viento en la emisión (m/s, inventado)",
+      "description": "Velocidad inventada del viento (m/s) a la hora de emisión; no es una fuente real.",
+      "label_en": "Wind at the issue time (m/s, made up)",
+      "description_en": "Made-up wind speed (m/s) at the issue time; not a real source.",
+      "domain": [
+        0.0,
+        20.0
+      ],
+      "terms": [
+        {
+          "name": "Low",
+          "label": "baja (inventada)",
+          "label_en": "low (made up)",
+          "membership_type": "trapezoidal",
+          "params": [
+            0.0,
+            0.0,
+            1.5,
+            3.0
+          ]
+        },
+        {
+          "name": "Medium",
+          "label": "media (inventada)",
+          "label_en": "medium (made up)",
+          "membership_type": "trapezoidal",
+          "params": [
+            1.5,
+            3.0,
+            4.5,
+            6.0
+          ]
+        },
+        {
+          "name": "High",
+          "label": "alta (inventada)",
+          "label_en": "high (made up)",
+          "membership_type": "trapezoidal",
+          "params": [
+            4.5,
+            6.0,
+            20.0,
+            20.0
+          ]
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "R01",
+      "position": 0,
+      "antecedents": [
+        {
+          "feature": "no2_t",
+          "term": "High",
+          "modifier": null
+        },
+        {
+          "feature": "wind_speed_t",
+          "term": "Low",
+          "modifier": null
+        }
+      ],
+      "consequent": {
+        "type": "crisp",
+        "value": 72.0,
+        "term": null,
+        "unit": "ug/m3"
+      },
+      "text": "IF no2_t IS High AND wind_speed_t IS Low THEN no2(t+6h) = 72 ug/m3",
+      "duplicate_of": null,
+      "weight": null,
+      "class_weights": null,
+      "class_weights_centred": null,
+      "strongest_class": null,
+      "metrics": {
+        "n_antecedents": 2.0
+      }
+    },
+    {
+      "rule_id": "R02",
+      "position": 1,
+      "antecedents": [
+        {
+          "feature": "no2_t",
+          "term": "Medium",
+          "modifier": null
+        }
+      ],
+      "consequent": {
+        "type": "crisp",
+        "value": 44.0,
+        "term": null,
+        "unit": "ug/m3"
+      },
+      "text": "IF no2_t IS Medium THEN no2(t+6h) = 44 ug/m3",
+      "duplicate_of": null,
+      "weight": null,
+      "class_weights": null,
+      "class_weights_centred": null,
+      "strongest_class": null,
+      "metrics": {
+        "n_antecedents": 1.0
+      }
+    },
+    {
+      "rule_id": "R03",
+      "position": 2,
+      "antecedents": [
+        {
+          "feature": "wind_speed_t",
+          "term": "High",
+          "modifier": null
+        }
+      ],
+      "consequent": {
+        "type": "crisp",
+        "value": 18.0,
+        "term": null,
+        "unit": "ug/m3"
+      },
+      "text": "IF wind_speed_t IS High THEN no2(t+6h) = 18 ug/m3",
+      "duplicate_of": null,
+      "weight": null,
+      "class_weights": null,
+      "class_weights_centred": null,
+      "strongest_class": null,
+      "metrics": {
+        "n_antecedents": 1.0
+      }
+    }
+  ],
+  "class_bias": null
+}

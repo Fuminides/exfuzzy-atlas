@@ -1,0 +1,23 @@
+{
+  "task_id": "nyc_pickups_h3_level",
+  "table_dirname": "nyc_pickups_h3_level",
+  "domain": "mobility",
+  "base_config": "configs/mobility/nyc_pickups_h3.json",
+  "scheme": "configs/mobility/nyc_level_scheme.json",
+  "target": {
+    "name": "target_level",
+    "relative_quantity": "target_rel",
+    "unit": "percentile of the target in its zone x week-hour train cell (0-100, mid-rank)"
+  },
+  "reference": {
+    "period": "split.train of base_config (issue hours in [train_from, train_to), target known)",
+    "slot": "America/New_York day of week x clock hour of the target hour (168 week-hours)",
+    "min_samples": 30,
+    "min_cell_mean_pickups_per_hour": 1.0
+  },
+  "volume_groups": {
+    "rule": "mean pickups per known hour of the zone in the train period",
+    "edges": [3, 10, 50],
+    "labels": ["lt_3", "3_10", "10_50", "ge_50"]
+  }
+}

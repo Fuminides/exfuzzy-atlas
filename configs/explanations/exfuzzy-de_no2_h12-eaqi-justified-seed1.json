@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.6.2",
+  "data_version": "de-no2-h12-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-de_no2_h12-eaqi-justified-seed1",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.319",
+    "model": "claude-opus-5-5"
+  },
+  "generated_at_utc": "2026-11-09T11:55:09Z",
+  "input_sha256": "8a9e5ce9cecf9fa324f72af4721e731545abf90a4a55dfe7c163e71ce8134de4",
+  "reviewed": false,
+  "es": {
+    "headline": "Tres reglas que repiten la última categoría de NO₂ deciden el 89 % de las predicciones, y el modelo rinde a la par de esa repetición",
+    "summary": [
+      "Las 21 reglas predicen la categoría EAQI del NO₂ horario observado a +12 h. «NO₂ hace 1 h (último dato)» aparece en 7 reglas, que deciden el 93 % de las predicciones; «NO₂ hace 4 h», en 6, que deciden el 54 %. «Hora de validez (local)» está en 8 reglas, pero estas deciden solo el 1,6 %. Las demás entradas intervienen en muy pocas predicciones.",
+      "Cada predicción la decide una sola regla, la de mayor grado de cumplimiento por su peso. Tres reglas deciden el 89 %. R02 (NO₂ hace 1 h y hace 4 h Buena → Buena) acierta el 76 %, con Buena observada en el 46 %. R08 (NO₂ hace 1 h Aceptable → Aceptable) acierta el 48 %, con Aceptable observada en el 35 %. R15 (como R02, con Moderada) acierta el 49 %, con Moderada en el 18 %.",
+      "En 2025 el modelo logra un F1 macro de 0,44 y un acierto del 58 %. Está a la par de «Repetir la última categoría» (0,44 y 57 %), así que en la práctica las reglas han aprendido a repetir la última categoría. Es peor que la regresión logística (0,46 y 60 %) y que el Random Forest (0,50 y 61 %)."
+    ],
+    "points": [
+      "R02 decide el 39 % de las predicciones y es la regla que más acierta, un 76 %, con Buena observada en el 46 %.",
+      "Mala o peor se observa en el 0,9 % de los casos. R21, la regla de esa clase que más predicciones decide, acierta el 12 %.",
+      "El modelo predice Aceptable en el 42 % de los casos, aunque esa categoría se observa en el 35 %.",
+      "«Hora de validez (local)» aparece en 8 reglas, más que ninguna otra entrada, pero esas reglas deciden solo el 1,6 % de las predicciones.",
+      "En menos del 0,1 % de los casos no se cumple ninguna regla y el modelo no da predicción."
+    ]
+  },
+  "en": {
+    "headline": "Three rules that repeat the latest NO₂ category decide 89% of the predictions, and the model performs on a par with that repetition",
+    "summary": [
+      "The 21 rules predict the EAQI category of Observed hourly NO₂ at +12 h. \"NO₂ 1 h ago (latest value)\" appears in 7 rules, which decide 93% of the predictions; \"NO₂ 4 h ago\" in 6, which decide 54%. \"Hour of the valid time (local)\" is in 8 rules, but they decide only 1.6%. The other inputs take part in very few predictions.",
+      "Each prediction is decided by a single rule, the one with the highest degree × weight. Three rules decide 89%. R02 (NO₂ 1 h ago and 4 h ago Good → Good) is right 76% of the time, with Good observed 46%. R08 (NO₂ 1 h ago Fair → Fair) is right 48% of the time, with Fair observed 35%. R15 (like R02, with Moderate) is right 49%, with Moderate observed 18%.",
+      "In 2025 the model reaches a macro-F1 of 0.44 and an accuracy of 58%. It is on a par with \"Repeat the last category\" (0.44 and 57%), so in practice the rules have learned to repeat the last category. It is worse than logistic regression (0.46 and 60%) and the random forest (0.50 and 61%)."
+    ],
+    "points": [
+      "R02 decides 39% of the predictions and has the highest accuracy of any rule: 76%, with Good observed 46% of the time.",
+      "Poor or worse is observed in 0.9% of cases. R21, the rule of that class deciding the most predictions, is right 12% of the time.",
+      "The model predicts Fair in 42% of cases, although that category is observed in 35%.",
+      "\"Hour of the valid time (local)\" appears in 8 rules, more than any other input, yet those rules decide only 1.6% of the predictions.",
+      "In <0.1% of cases no rule holds and the model gives no prediction."
+    ]
+  }
+}

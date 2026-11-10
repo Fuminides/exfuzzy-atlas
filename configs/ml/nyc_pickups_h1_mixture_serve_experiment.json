@@ -1,0 +1,28 @@
+{
+  "experiment_id": "mixture-serve",
+  "kind": "nyc",
+  "task_config": "configs/ml/nyc_pickups_h1_level_rel7_experiment.json",
+  "served_experiment": "nyc_pickups_h1/experiments/level-rel7",
+  "served_run": "nyc_pickups_h1/level-rel7-seed0",
+  "served_seed": 0,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "mixture_C": 1.0,
+  "reference_baselines": [
+    "persistence",
+    "persistence_rel_lag24",
+    "logistic_regression_subsample",
+    "random_forest_subsample"
+  ],
+  "serve": {
+    "arms": [
+      "mix_search_nonneg",
+      "mix_search_free"
+    ],
+    "tie": 0.005,
+    "run_prefix": "mixture"
+  }
+}

@@ -1,0 +1,72 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: make lint PYTHON=python
+      - run: make test PYTHON=python
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci
+      - name: generated types match the contract schemas
+        run: npm run gen:types && git diff --exit-code -- src/api/generated
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+
+  # Integration tests over the real published models (tests/integration, `make qa`). The models are not in git: they are
+  # the asset of the release `qa-artifacts` of a separate private repo, built with scripts/qa/qa_bundle.py
+  # (docs/qa/README.md). The repo variable QA_DATA_REPO names that repo, and the secret QA_DATA_TOKEN is a fine-grained,
+  # read-only token for it. Without them, the release of this repo is read with the job's own token.
+  # Pull requests from forks get no secrets, so the job is skipped there (a skipped job does not fail the run). In the
+  # public repository it also waits until QA_DATA_REPO is set, since that repository has no release of its own.
+  qa-real:
+    if: >-
+      (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+      && (github.repository != 'Fuminides/exfuzzy-atlas' || vars.QA_DATA_REPO != '')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      GH_TOKEN: ${{ secrets.QA_DATA_TOKEN || github.token }}
+      QA_DATA_REPO: ${{ vars.QA_DATA_REPO || github.repository }}
+      ATLAS_PUBLISHED_DIR: ${{ github.workspace }}/../qa/published
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - name: published models of the QA tasks (release qa-artifacts of QA_DATA_REPO)
+        run: |
+          mkdir -p ../qa
+          gh release download qa-artifacts --repo "$QA_DATA_REPO" --pattern 'qa-published.tar.gz*' --dir ../qa
+          (cd ../qa && sha256sum -c qa-published.tar.gz.sha256)
+          tar -xzf ../qa/qa-published.tar.gz -C ../qa
+          test -f "$ATLAS_PUBLISHED_DIR/registry.json"
+      - run: make qa PYTHON=python

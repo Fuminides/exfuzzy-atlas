@@ -1,0 +1,83 @@
+{
+  "data_version": "de-dwd-2019-2025-v1",
+  "default_years": [
+    2019,
+    2025
+  ],
+  "timezone": "Europe/Berlin",
+  "meteo": {
+    "source_id": "dwd-meteo-de",
+    "title": "DWD Climate Data Center: hourly station observations (air temperature and humidity, wind, pressure), Germany",
+    "landing_url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/",
+    "base_url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly",
+    "license": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/) with source attribution; DWD CDC Terms_of_use.pdf (status May 2024) and the dataset descriptions: 'The Creative Commons BY 4.0 - Licence CC BY 4.0 apply'",
+    "attribution": "Deutscher Wetterdienst (DWD), Climate Data Center (CDC): historical and recent hourly station observations of air temperature and relative humidity, wind and air pressure for Germany. https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/",
+    "period_start": "2019-01-01",
+    "period_end": "2025-12-31",
+    "products": [
+      {
+        "key": "tu",
+        "directory": "air_temperature",
+        "code": "TU",
+        "product_file": "produkt_tu_stunde",
+        "columns": {
+          "TT_TU": "temperature",
+          "RF_TU": "relative_humidity"
+        },
+        "description": "2 m air temperature (degC) and relative humidity (%), generated from SYNOP reports"
+      },
+      {
+        "key": "ff",
+        "directory": "wind",
+        "code": "FF",
+        "product_file": "produkt_ff_stunde",
+        "columns": {
+          "F": "wind_speed"
+        },
+        "description": "hourly mean wind speed (m/s) from 10-minute means"
+      },
+      {
+        "key": "p0",
+        "directory": "pressure",
+        "code": "P0",
+        "product_file": "produkt_p0_stunde",
+        "columns": {
+          "P0": "pressure"
+        },
+        "description": "air pressure at station level (hPa)"
+      }
+    ],
+    "units": {
+      "temperature": "degC",
+      "relative_humidity": "%",
+      "wind_speed": "m/s",
+      "pressure": "hPa"
+    },
+    "documents": [
+      {
+        "path": "docs/DESCRIPTION_air_temperature.pdf",
+        "url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/air_temperature/DESCRIPTION_obsgermany_climate_hourly_air_temperature_en.pdf",
+        "role": "interpreter"
+      },
+      {
+        "path": "docs/DESCRIPTION_wind.pdf",
+        "url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/wind/DESCRIPTION_obsgermany_climate_hourly_wind_en.pdf",
+        "role": "interpreter"
+      },
+      {
+        "path": "docs/DESCRIPTION_pressure.pdf",
+        "url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/pressure/DESCRIPTION_obsgermany_climate_hourly_pressure_en.pdf",
+        "role": "interpreter"
+      },
+      {
+        "path": "docs/Terms_of_use.pdf",
+        "url": "https://opendata.dwd.de/climate_environment/CDC/Terms_of_use.pdf",
+        "role": "license"
+      }
+    ],
+    "accepted_time_references": [
+      "UTC"
+    ],
+    "accepted_time_references_note": "Only series whose Metadaten_Parameter says UTC are used. 17 wind series of analogue-recording stations say MEZ; compared with their nearest UTC-labelled neighbours, their hourly values align best at offsets of -1 h (14 of 17 stations) and -2 or -3 h (3) after the documented MEZ->UTC conversion, against 0 h among UTC-labelled neighbours, so their clock cannot be verified and they are excluded rather than guessed."
+  }
+}

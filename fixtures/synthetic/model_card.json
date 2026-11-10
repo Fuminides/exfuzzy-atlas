@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.7.0",
+  "data_version": "synthetic-fixture-v0",
+  "synthetic": true,
+  "manifest": {
+    "schema_version": "0.7.0",
+    "run_id": "synthetic-run-0",
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "domain": "air",
+    "created_at_utc": "2026-10-30T00:00:00Z",
+    "git_commit": null,
+    "git_dirty": false,
+    "exfuzzy_version": "3.4.0",
+    "python_version": "n/a",
+    "seed": 20261030,
+    "split": {
+      "train_from_utc": "2019-01-01T00:00:00Z",
+      "train_to_utc": "2023-01-01T00:00:00Z",
+      "validation_from_utc": "2023-01-02T00:00:00Z",
+      "validation_to_utc": "2024-01-01T00:00:00Z",
+      "test_from_utc": "2024-01-02T00:00:00Z",
+      "test_to_utc": "2026-01-01T00:00:00Z",
+      "embargo_hours": 24
+    },
+    "data_version": "synthetic-fixture-v0",
+    "data_checksums": {},
+    "target": "no2",
+    "horizon_hours": 6,
+    "features": [
+      "no2_t",
+      "wind_speed_t"
+    ],
+    "hyperparameters": {
+      "hand_written_rules": 3
+    },
+    "artifacts": {},
+    "warnings": [
+      "hand-written toy rule base for UI and contract tests; not trained"
+    ]
+  },
+  "target_scheme": null,
+  "metrics": null,
+  "coverage": {
+    "issued_from_utc": "2025-01-15T06:00:00Z",
+    "issued_to_utc": "2025-01-15T11:00:00Z",
+    "step_hours": 1,
+    "regular": true
+  },
+  "attribution": [
+    {
+      "text": "Synthetic fixtures: invented stations and values, not a real source.",
+      "text_en": null,
+      "license": null,
+      "url": null
+    }
+  ]
+}

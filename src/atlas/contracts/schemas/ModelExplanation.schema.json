@@ -1,0 +1,148 @@
+{
+  "$defs": {
+    "ExplanationAuthor": {
+      "additionalProperties": false,
+      "description": "Who wrote the text. It was written by an AI (Claude, called through the Claude Code CLI) from the model's\npublished files only (rules, importance, card metrics, summary, registry), and is not a human analysis.",
+      "properties": {
+        "model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The AI model as the tool reported it (e.g. 'claude-opus-5-5').",
+          "title": "Model"
+        },
+        "tool": {
+          "description": "What produced the text, e.g. 'Claude Code' (the CLI that called the model).",
+          "title": "Tool",
+          "type": "string"
+        },
+        "tool_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Version of that tool, as it reports it (e.g. '2.1.319').",
+          "title": "Tool Version"
+        }
+      },
+      "required": [
+        "tool"
+      ],
+      "title": "ExplanationAuthor",
+      "type": "object"
+    },
+    "ExplanationText": {
+      "additionalProperties": false,
+      "description": "The explanation in one language: a headline, a few short paragraphs and a few points to check on the page.",
+      "properties": {
+        "headline": {
+          "minLength": 1,
+          "title": "Headline",
+          "type": "string"
+        },
+        "points": {
+          "description": "Things the reader can check in the rules below.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Points",
+          "type": "array"
+        },
+        "summary": {
+          "description": "Short paragraphs, in reading order.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Summary",
+          "type": "array"
+        }
+      },
+      "required": [
+        "headline",
+        "summary",
+        "points"
+      ],
+      "title": "ExplanationText",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ModelExplanation.schema.json",
+  "additionalProperties": false,
+  "description": "v0.6.2: a short explanation of one published model's rule base, in Spanish and English, written by an AI from\na template (``configs/explanations/TEMPLATE.md``) and the model's published files. Every number in it is one of\nthe published figures; the text describes how the model maps inputs to outputs and claims no causes.",
+  "properties": {
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "en": {
+      "$ref": "#/$defs/ExplanationText"
+    },
+    "es": {
+      "$ref": "#/$defs/ExplanationText"
+    },
+    "generated_at_utc": {
+      "format": "date-time",
+      "title": "Generated At Utc",
+      "type": "string"
+    },
+    "generated_by": {
+      "$ref": "#/$defs/ExplanationAuthor"
+    },
+    "input_sha256": {
+      "description": "sha256 of the context JSON built from the published files; a republished model no longer matches.",
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Input Sha256",
+      "type": "string"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "reviewed": {
+      "description": "True once a person has read the text against the rules and metrics.",
+      "title": "Reviewed",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "template_version": {
+      "description": "Version of the template the text was written from.",
+      "title": "Template Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "model_id",
+    "template_version",
+    "generated_by",
+    "generated_at_utc",
+    "input_sha256",
+    "reviewed",
+    "es",
+    "en"
+  ],
+  "title": "ModelExplanation",
+  "type": "object"
+}

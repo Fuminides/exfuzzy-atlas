@@ -1,0 +1,24 @@
+{
+  "features": {
+    "traffic_intensity_last": {
+      "unit": "veh/h",
+      "source_id": "madrid-traffic",
+      "lag_hours": 1
+    },
+    "traffic_intensity_lag24h": {
+      "unit": "veh/h",
+      "source_id": "madrid-traffic",
+      "lag_hours": 25
+    },
+    "traffic_n_points": {
+      "unit": "count",
+      "source_id": "madrid-traffic",
+      "lag_hours": 1
+    },
+    "traffic_n_associated": {
+      "unit": "count",
+      "source_id": "madrid-traffic",
+      "lag_hours": 1
+    }
+  }
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "template_version": "1",
+    "generated_by": {
+      "tool": "synthetic fixture (scripts/make_fixtures.py)",
+      "tool_version": null,
+      "model": null
+    },
+    "generated_at_utc": "2026-11-09T00:00:00Z",
+    "input_sha256": "d9d54310c1a787c377a00624c2f1671ba747aafae241e161f5a08c0c0da53764",
+    "reviewed": false,
+    "es": {
+      "headline": "Ejemplo sintético: tres reglas inventadas estiman el NO₂ con el NO₂ y el viento en la emisión",
+      "summary": [
+        "Texto de ejemplo para la API simulada: no describe un modelo real. Las tres reglas miran dos entradas, NO₂ en la emisión (inventado) y Viento en la emisión (m/s, inventado).",
+        "Cada estimación es un promedio ponderado de las reglas que se cumplen. Cuando el viento es alto, se cumple R03, la regla con el valor más bajo."
+      ],
+      "points": [
+        "R01 es la única regla con dos condiciones: NO₂ alto y viento bajo.",
+        "R02 solo mira el NO₂ en la emisión.",
+        "Los datos son inventados: no sirven para sacar conclusiones."
+      ]
+    },
+    "en": {
+      "headline": "Synthetic example: three made-up rules estimate NO₂ from NO₂ and wind at the issue time",
+      "summary": [
+        "Example text for the mock API: it describes no real model. The three rules look at two inputs, NO₂ at the issue time (made up) and Wind at the issue time (m/s, made up).",
+        "Each estimate is a weighted average of the rules that hold. When the wind is high, R03 holds, the rule with the lowest value."
+      ],
+      "points": [
+        "R01 is the only rule with two conditions: high NO₂ and low wind.",
+        "R02 only looks at NO₂ at the issue time.",
+        "The data are made up: no conclusion can be drawn from them."
+      ]
+    }
+  }
+]

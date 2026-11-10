@@ -1,0 +1,142 @@
+{
+  "$defs": {
+    "Domain": {
+      "enum": [
+        "air",
+        "water",
+        "mobility"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "SourceFile": {
+      "additionalProperties": false,
+      "properties": {
+        "bytes": {
+          "minimum": 0,
+          "title": "Bytes",
+          "type": "integer"
+        },
+        "path": {
+          "description": "Relative to the source's raw directory.",
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "title": "SourceFile",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/SourceManifest.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "attribution": {
+      "title": "Attribution",
+      "type": "string"
+    },
+    "domain": {
+      "$ref": "#/$defs/Domain"
+    },
+    "downloaded_at_utc": {
+      "format": "date-time",
+      "title": "Downloaded At Utc",
+      "type": "string"
+    },
+    "files": {
+      "items": {
+        "$ref": "#/$defs/SourceFile"
+      },
+      "title": "Files",
+      "type": "array"
+    },
+    "landing_url": {
+      "title": "Landing Url",
+      "type": "string"
+    },
+    "license": {
+      "title": "License",
+      "type": "string"
+    },
+    "notes": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "period_end": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Period End"
+    },
+    "period_start": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Period Start"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_id": {
+      "title": "Source Id",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_id",
+    "domain",
+    "title",
+    "landing_url",
+    "license",
+    "attribution",
+    "downloaded_at_utc",
+    "files"
+  ],
+  "title": "SourceManifest",
+  "type": "object"
+}

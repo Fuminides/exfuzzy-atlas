@@ -1,0 +1,72 @@
+# Builds the static site (apps/web in static mode) and deploys it to GitHub Pages, at
+# https://fuminides.github.io/exfuzzy-atlas/. Nothing runs live on the site: the data are a precomputed export
+# (docs/static_export.md), published as a release asset of this repository and named in deploy/static-data.json.
+# Runs only in the public repository.
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.repository == 'Fuminides/exfuzzy-atlas'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - name: export named in deploy/static-data.json
+        id: data
+        run: |
+          echo "export_id=$(jq -r .export_id deploy/static-data.json)" >> "$GITHUB_OUTPUT"
+          echo "release=$(jq -r .release deploy/static-data.json)" >> "$GITHUB_OUTPUT"
+          echo "asset=$(jq -r .asset deploy/static-data.json)" >> "$GITHUB_OUTPUT"
+          echo "sha256=$(jq -r .sha256 deploy/static-data.json)" >> "$GITHUB_OUTPUT"
+      - name: build the web in static mode
+        working-directory: apps/web
+        env:
+          VITE_ATLAS_EXPORT_ID: ${{ steps.data.outputs.export_id }}
+        run: |
+          npm ci
+          npx vite build --mode static
+      - name: add the data export
+        run: |
+          gh release download "${{ steps.data.outputs.release }}" --repo "$GITHUB_REPOSITORY" \
+            --pattern "${{ steps.data.outputs.asset }}" --dir "$RUNNER_TEMP"
+          echo "${{ steps.data.outputs.sha256 }}  $RUNNER_TEMP/${{ steps.data.outputs.asset }}" | sha256sum -c -
+          mkdir -p apps/web/dist/data
+          tar -xf "$RUNNER_TEMP/${{ steps.data.outputs.asset }}" -C apps/web/dist/data
+          test -f "apps/web/dist/data/${{ steps.data.outputs.export_id }}/manifest.json"
+          touch apps/web/dist/.nojekyll
+          cp apps/web/dist/index.html apps/web/dist/404.html
+          du -sh apps/web/dist
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

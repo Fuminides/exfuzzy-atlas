@@ -1,0 +1,258 @@
+{
+  "task_id": "nyc_pickups_h1_level",
+  "description": "Linguistic variables of the NYC yellow-taxi demand-level classifier (AT-041e). Same file format as madrid_partitions.json (loaded by atlas.ml.partitions.load_partition_file, which refuses written params that the cores and shoulders do not give). Variables of kind 'quantile' are data-driven and carry no authority beyond that. FX retrain variant: identical to nyc_partitions.json except the hour variable, which has more terms than the others (needs the ex_fuzzy term-index bound fix, upstream PR 32; refused by the experiment on ex_fuzzy 3.3.1).",
+  "variables": [
+    {
+      "features": [
+        "rel_lag1",
+        "rel_lag2",
+        "rel_lag24",
+        "rel_lag168"
+      ],
+      "unit": "percentile",
+      "kind": "fixed",
+      "domain": [
+        0,
+        100
+      ],
+      "shoulders": [
+        7.0,
+        7.0,
+        3.5
+      ],
+      "terms": [
+        {
+          "name": "baja",
+          "core": [
+            0,
+            24.9
+          ],
+          "params": [
+            0.0,
+            0.0,
+            24.9,
+            31.9
+          ]
+        },
+        {
+          "name": "normal",
+          "core": [
+            25,
+            74.9
+          ],
+          "params": [
+            18.0,
+            25.0,
+            74.9,
+            81.9
+          ]
+        },
+        {
+          "name": "alta",
+          "core": [
+            75,
+            94.9
+          ],
+          "params": [
+            68.0,
+            75.0,
+            94.9,
+            98.4
+          ]
+        },
+        {
+          "name": "muy alta",
+          "core": [
+            95,
+            100
+          ],
+          "params": [
+            91.5,
+            95.0,
+            100.0,
+            100.0
+          ]
+        }
+      ],
+      "rationale": "Cores are the classes of the target (configs/mobility/nyc_level_scheme.json: baja <25, normal 25-75, alta 75-95, muy alta >=95, percentile of the value in its zone x week-hour train cell), so a rule reads in the language of the target: IF rel_lag1 IS alta ... THEN nivel = muy alta. The scheme is lower-inclusive over a continuous percentile, so the upper end of each core is written 0.1 percentile points below the next lower bound (24.9, 74.9, 94.9); the percentile of a cell with n = 30-40 reference values moves in steps of 100/(2n) >= 1.25 points, so no value falls in the 0.1 gap. Shoulder at each cut = the binomial standard error of an empirical percentile estimated from n = 39 reference values (median n of the 18,480 cells): sqrt(p(1-p)/n) = 6.9 points at p = 0.25 and 0.75 (rounded to 7) and 3.5 points at p = 0.95. Reading: a lagged value 2-3 points from a cut is as likely to belong to either class given the sampling noise of its own cell, so it keeps partial membership in both neighbours. This is a statistical rationale (precision of the cut), not a physical one. The four rel_lag inputs share one partition. The cut points 25/75/95 are the product decision of AT-031b, not estimated here.",
+      "source_url": "docs/mobility/nyc_pickups_h1_level.md",
+      "source_status": "Internal: cut points from configs/mobility/nyc_level_scheme.json (AT-031b); n = 39 median cell size from data/processed/mobility/features/nyc_pickups_h1_level_report.json. No external source.",
+      "follows_target_scheme": true
+    },
+    {
+      "features": [
+        "local_hour"
+      ],
+      "unit": "h",
+      "kind": "fixed",
+      "domain": [
+        0,
+        23
+      ],
+      "shoulders": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "terms": [
+        {
+          "name": "Madrugada",
+          "core": [
+            0,
+            6
+          ],
+          "params": [
+            0.0,
+            0.0,
+            6.0,
+            7.0
+          ]
+        },
+        {
+          "name": "Mañana",
+          "core": [
+            7,
+            10
+          ],
+          "params": [
+            6.0,
+            7.0,
+            10.0,
+            11.0
+          ]
+        },
+        {
+          "name": "Mediodía",
+          "core": [
+            11,
+            14
+          ],
+          "params": [
+            10.0,
+            11.0,
+            14.0,
+            15.0
+          ]
+        },
+        {
+          "name": "Tarde",
+          "core": [
+            15,
+            16
+          ],
+          "params": [
+            14.0,
+            15.0,
+            16.0,
+            17.0
+          ]
+        },
+        {
+          "name": "Punta de tarde",
+          "core": [
+            17,
+            19
+          ],
+          "params": [
+            16.0,
+            17.0,
+            19.0,
+            20.0
+          ]
+        },
+        {
+          "name": "Noche",
+          "core": [
+            20,
+            23
+          ],
+          "params": [
+            19.0,
+            20.0,
+            23.0,
+            23.0
+          ]
+        }
+      ],
+      "rationale": "Same profile and first three periods as nyc_partitions.json; the evening is read with its peak: Tarde = 15-16 (1.485, 1.503), Punta de tarde = 17-19 (1.691, 1.803, 1.551: the three highest hours of the workday profile) and Noche = 20-23 (1.437, 1.502, 1.373, 1.010: after the peak the profile does not exceed 1.50 again). Cut fixed from this reading before any fit. Hours are whole numbers, so a one-hour shoulder is crisp. SIX terms; the relative inputs have four, so the fifth and sixth terms need the ex_fuzzy term-index bound fix (PR 32). The profile describes the train period; it is not a validated driver of demand.",
+      "source_url": null,
+      "source_status": "No external source: cut points computed from the train period of data/processed/mobility/features/nyc_pickups_h1_level by `python -m atlas.ml.experiment_nyc profile`."
+    },
+    {
+      "features": [
+        "local_dow"
+      ],
+      "unit": "day",
+      "kind": "fixed",
+      "domain": [
+        0,
+        6
+      ],
+      "shoulders": [
+        1.0,
+        1.0
+      ],
+      "terms": [
+        {
+          "name": "Laborable",
+          "core": [
+            0,
+            4
+          ],
+          "params": [
+            0.0,
+            0.0,
+            4.0,
+            5.0
+          ]
+        },
+        {
+          "name": "Sábado",
+          "core": [
+            5,
+            5
+          ],
+          "params": [
+            4.0,
+            5.0,
+            5.0,
+            6.0
+          ]
+        },
+        {
+          "name": "Domingo",
+          "core": [
+            6,
+            6
+          ],
+          "params": [
+            5.0,
+            6.0,
+            6.0,
+            6.0
+          ]
+        }
+      ],
+      "rationale": "Calendar day types (0 = Monday ... 6 = Sunday, America/New_York). A one-day shoulder is crisp on whole numbers. Holidays are not encoded (a holiday counts as the weekday it falls on); the train period holds them inside the reference cells.",
+      "source_url": null,
+      "source_status": "Calendar convention."
+    },
+    {
+      "features": [
+        "rel_mean24h",
+        "pickups_lag1",
+        "pickups_lag2",
+        "pickups_lag24",
+        "pickups_lag168",
+        "pickups_mean24h"
+      ],
+      "unit": "mixed",
+      "kind": "quantile",
+      "rationale": "Data-driven: ex_fuzzy trapezoids anchored at the 20/40/60/80 % quantiles of the training rows (Low / Medium / High), pooled over zones. rel_mean24h is a ratio (1 = the last 24 h were as busy as normal) and the raw counts are trips per hour, whose scale differs by two orders of magnitude between zones; no defensible categorical scheme exists for either, so nothing was invented and the terms carry no authority beyond describing the training distribution. The raw counts are an experimental arm (see the document): they are dropped if the relative inputs suffice on validation.",
+      "source_url": null,
+      "source_status": "Data-driven (train quantiles)."
+    }
+  ]
+}

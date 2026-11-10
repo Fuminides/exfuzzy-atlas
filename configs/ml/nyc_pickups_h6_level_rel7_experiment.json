@@ -1,0 +1,152 @@
+{
+  "experiment_id": "level-rel7",
+  "table": "processed/mobility/features/nyc_pickups_h6_level",
+  "complete_column": "complete",
+  "base": {
+    "task_id": "nyc_pickups_h6",
+    "domain": "mobility",
+    "target": "pickups",
+    "target_column": "target",
+    "unit": "trips",
+    "horizon_hours": 6,
+    "features": [
+      "rel_lag1",
+      "rel_lag2",
+      "rel_lag24",
+      "rel_lag168",
+      "local_hour",
+      "local_dow",
+      "rel_mean24h"
+    ],
+    "feature_units": {
+      "rel_lag1": "percentile",
+      "rel_lag2": "percentile",
+      "rel_lag24": "percentile",
+      "rel_lag168": "percentile",
+      "local_hour": "hour",
+      "local_dow": "weekday_index",
+      "rel_mean24h": "ratio"
+    },
+    "persistence_feature": "rel_lag1",
+    "split": {
+      "train_from_utc": "2024-04-01T04:00:00Z",
+      "train_to_utc": "2025-01-01T05:00:00Z",
+      "validation_from_utc": "2025-01-08T05:00:00Z",
+      "validation_to_utc": "2025-02-01T05:00:00Z",
+      "test_from_utc": "2025-02-08T05:00:00Z",
+      "test_to_utc": "2025-04-01T04:00:00Z",
+      "embargo_hours": 168
+    },
+    "seed": 0,
+    "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+    "data_checksums": {
+      "nyc_pickups_h6_level_report.json": "b20dce352a424091c373250f816886c5772f542413ccce8a4cc91e15853b6c67",
+      "nyc_pickups_h6_level_reference.parquet": "44bdddd058968373f35849610934af79a848a64b946c4b4e73cbb9c6c59d2a33",
+      "taxi_zones_simplified.geojson": "25282596024fbd0dafe52e5130c4233e79efef0d68943d000a909c121fe540e3"
+    },
+    "synthetic": false,
+    "timezone": "America/New_York",
+    "ridge_alpha": 1.0,
+    "gbm_max_iter": 200
+  },
+  "scheme": "configs/mobility/nyc_level_scheme.json",
+  "label_column": "target_level",
+  "status_column": "level_status",
+  "group_column": "volume_group",
+  "baseline_features": [
+    "rel_lag1",
+    "rel_lag2",
+    "rel_lag24",
+    "rel_lag168",
+    "local_hour",
+    "local_dow",
+    "rel_mean24h",
+    "pickups_lag1",
+    "pickups_lag2",
+    "pickups_lag24",
+    "pickups_lag168",
+    "pickups_mean24h"
+  ],
+  "require_columns": [
+    "rel_lag1",
+    "rel_lag2",
+    "rel_lag24",
+    "rel_lag168",
+    "local_hour",
+    "local_dow",
+    "rel_mean24h",
+    "pickups_lag1",
+    "pickups_lag2",
+    "pickups_lag24",
+    "pickups_lag168",
+    "pickups_mean24h"
+  ],
+  "subsample": {
+    "n_rows": 30000,
+    "seed": 20260101,
+    "partition_rows": null
+  },
+  "selection": {
+    "candidates": [
+      {
+        "nRules": 30,
+        "nAnts": 2,
+        "n_linguistic_variables": 3,
+        "rule_weighting": "dominance_score",
+        "sampling_power": 0.5
+      },
+      {
+        "nRules": 30,
+        "nAnts": 3,
+        "n_linguistic_variables": 3,
+        "rule_weighting": "dominance_score",
+        "sampling_power": 0.5
+      },
+      {
+        "nRules": 30,
+        "nAnts": 4,
+        "n_linguistic_variables": 3,
+        "rule_weighting": "dominance_score",
+        "sampling_power": 0.5
+      },
+      {
+        "nRules": 60,
+        "nAnts": 2,
+        "n_linguistic_variables": 3,
+        "rule_weighting": "dominance_score",
+        "sampling_power": 0.5
+      },
+      {
+        "nRules": 60,
+        "nAnts": 3,
+        "n_linguistic_variables": 3,
+        "rule_weighting": "dominance_score",
+        "sampling_power": 0.5
+      },
+      {
+        "nRules": 60,
+        "nAnts": 4,
+        "n_linguistic_variables": 3,
+        "rule_weighting": "dominance_score",
+        "sampling_power": 0.5
+      }
+    ],
+    "n_gen": 150,
+    "pop_size": 60,
+    "patience": null,
+    "seed": 0
+  },
+  "final": {
+    "n_gen": 150,
+    "pop_size": 60,
+    "patience": null,
+    "seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "partitions": {
+    "file": "configs/ml/nyc_partitions.json"
+  }
+}

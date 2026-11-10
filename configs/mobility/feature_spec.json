@@ -1,0 +1,64 @@
+{
+  "features": {
+    "pickups_lag1": {
+      "unit": "trips",
+      "source_id": "nyc-tlc-yellow",
+      "lag_hours": 1
+    },
+    "pickups_lag2": {
+      "unit": "trips",
+      "source_id": "nyc-tlc-yellow",
+      "lag_hours": 2
+    },
+    "pickups_lag24": {
+      "unit": "trips",
+      "source_id": "nyc-tlc-yellow",
+      "lag_hours": 24
+    },
+    "pickups_lag168": {
+      "unit": "trips",
+      "source_id": "nyc-tlc-yellow",
+      "lag_hours": 168
+    },
+    "pickups_mean24h": {
+      "unit": "trips/hour",
+      "source_id": "nyc-tlc-yellow",
+      "lag_hours": 1
+    },
+    "local_hour": {
+      "unit": "hour",
+      "source_id": "calendar-america-new-york",
+      "lag_hours": 0
+    },
+    "local_dow": {
+      "unit": "weekday_index",
+      "source_id": "calendar-america-new-york",
+      "lag_hours": 0
+    },
+    "rel_lag1": {
+      "unit": "percentile",
+      "source_id": "nyc-tlc-yellow",
+      "lag_hours": 1
+    },
+    "rel_lag2": {
+      "unit": "percentile",
+      "source_id": "nyc-tlc-yellow",
+      "lag_hours": 2
+    },
+    "rel_lag24": {
+      "unit": "percentile",
+      "source_id": "nyc-tlc-yellow",
+      "lag_hours": 24
+    },
+    "rel_lag168": {
+      "unit": "percentile",
+      "source_id": "nyc-tlc-yellow",
+      "lag_hours": 168
+    },
+    "rel_mean24h": {
+      "unit": "ratio",
+      "source_id": "nyc-tlc-yellow",
+      "lag_hours": 1
+    }
+  }
+}

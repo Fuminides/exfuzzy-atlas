@@ -1,0 +1,244 @@
+{
+  "attribution": [
+    {
+      "text": "European Environment Agency (EEA), Air Quality Download Service: hourly NO₂ reported by Germany (Umweltbundesamt and the Länder authorities) under Commission Implementing Decision 2011/850/EU, verified data (E1a) and up-to-date data (E2a). Processed by Atlas: time converted from UTC+01 to UTC, invalid values removed, one value per station and hour.",
+      "license": "CC BY 4.0",
+      "url": "https://www.eea.europa.eu/en/datahub/datahubitem-view/778ef9f5-6293-4846-badd-56a29c70880d"
+    },
+    {
+      "text": "European Environment Agency (EEA), e-Reporting station and sampling-point metadata (PanEuropean_metadata.csv) and Air Quality Download Service monitoring-stations layer (coordinates, station type and area, station names).",
+      "license": "CC BY 4.0",
+      "url": "https://discomap.eea.europa.eu/map/fme/metadata/PanEuropean_metadata.csv"
+    },
+    {
+      "text": "Deutscher Wetterdienst (DWD), Climate Data Center (CDC): historical and recent hourly station observations of air temperature and relative humidity, wind speed and air pressure for Germany. Processed by Atlas: station assignment by distance, hourly alignment to UTC.",
+      "license": "CC BY 4.0",
+      "url": "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/"
+    },
+    {
+      "text": "European Environment Agency, European Air Quality Index (EAQI): bands of NO₂ hourly concentrations (Good 0-10, Fair 11-25, Moderate 26-60, Poor 61-100, Very poor 101-150, Extremely poor >150 µg/m³). The page does not state a licence for the index table; EEA web content is published under CC BY (https://www.eea.europa.eu/en/legal-notice).",
+      "license": "CC BY 4.0",
+      "url": "https://airindex.eea.europa.eu/AQI/index.html"
+    }
+  ],
+  "target_scheme": {
+    "kind": "official_index",
+    "name_en": "European Air Quality Index (EAQI) - NO2, hourly concentration",
+    "short_name": "EAQI",
+    "short_name_en": "EAQI",
+    "classes": {
+      "Good": {
+        "display_label": "Buena",
+        "display_label_en": "Good"
+      },
+      "Fair": {
+        "display_label": "Aceptable",
+        "display_label_en": "Fair"
+      },
+      "Moderate": {
+        "display_label": "Moderada",
+        "display_label_en": "Moderate"
+      },
+      "Poor or worse": {
+        "display_label": "Mala o peor",
+        "display_label_en": "Poor or worse",
+        "merged_from": [
+          "Poor",
+          "Very poor",
+          "Extremely poor"
+        ],
+        "description": "Agrupa tres bandas oficiales del EAQI para NO₂ que el modelo no distingue: «Poor» (61-100 µg/m³), «Very poor» (101-150 µg/m³) y «Extremely poor» (más de 150 µg/m³). Juntas son el 1,9 % de las horas de entrenamiento (2019-2023).",
+        "description_en": "Groups three official EAQI bands for NO₂ that the model does not tell apart: “Poor” (61-100 µg/m³), “Very poor” (101-150 µg/m³) and “Extremely poor” (above 150 µg/m³). Together they are 1.9% of the training hours (2019-2023)."
+      }
+    }
+  },
+  "features": {
+    "no2_last": {
+      "label": "NO₂ hace 1 h (último dato)",
+      "label_en": "NO₂ 1 h ago (latest value)",
+      "description": "Concentración horaria de NO₂ (µg/m³) en la estación, de la hora [t−1 h, t): la última hora completa; conocida a la hora de emisión t. Fuente: EEA, datos de Alemania.",
+      "description_en": "Hourly NO₂ concentration (µg/m³) at the station for the hour [t−1 h, t): the last complete hour; known at the issue time t. Source: EEA, data for Germany.",
+      "lag_hours": 1,
+      "terms": {
+        "Good": "Buena",
+        "Fair": "Aceptable",
+        "Moderate": "Moderada",
+        "Poor or worse": "Mala o peor"
+      },
+      "terms_en": {
+        "Good": "Good",
+        "Fair": "Fair",
+        "Moderate": "Moderate",
+        "Poor or worse": "Poor or worse"
+      }
+    },
+    "no2_lag1h": {
+      "label": "NO₂ hace 2 h",
+      "label_en": "NO₂ 2 h ago",
+      "description": "Concentración horaria de NO₂ (µg/m³) en la estación, de la hora [t−2 h, t−1 h): una hora antes del último dato; conocida a la hora de emisión t. Fuente: EEA, datos de Alemania.",
+      "description_en": "Hourly NO₂ concentration (µg/m³) at the station for the hour [t−2 h, t−1 h): one hour before the latest value; known at the issue time t. Source: EEA, data for Germany.",
+      "lag_hours": 2,
+      "terms": {
+        "Good": "Buena",
+        "Fair": "Aceptable",
+        "Moderate": "Moderada",
+        "Poor or worse": "Mala o peor"
+      },
+      "terms_en": {
+        "Good": "Good",
+        "Fair": "Fair",
+        "Moderate": "Moderate",
+        "Poor or worse": "Poor or worse"
+      }
+    },
+    "no2_lag3h": {
+      "label": "NO₂ hace 4 h",
+      "label_en": "NO₂ 4 h ago",
+      "description": "Concentración horaria de NO₂ (µg/m³) en la estación, de la hora [t−4 h, t−3 h): tres horas antes del último dato; conocida a la hora de emisión t. Fuente: EEA, datos de Alemania.",
+      "description_en": "Hourly NO₂ concentration (µg/m³) at the station for the hour [t−4 h, t−3 h): three hours before the latest value; known at the issue time t. Source: EEA, data for Germany.",
+      "lag_hours": 4,
+      "terms": {
+        "Good": "Buena",
+        "Fair": "Aceptable",
+        "Moderate": "Moderada",
+        "Poor or worse": "Mala o peor"
+      },
+      "terms_en": {
+        "Good": "Good",
+        "Fair": "Fair",
+        "Moderate": "Moderate",
+        "Poor or worse": "Poor or worse"
+      }
+    },
+    "no2_lag24h": {
+      "label": "NO₂ hace 25 h (misma franja, un día antes)",
+      "label_en": "NO₂ 25 h ago (same slot, one day earlier)",
+      "description": "Concentración horaria de NO₂ (µg/m³) en la estación, de la hora [t−25 h, t−24 h): la misma franja que el último dato, un día antes; conocida a la hora de emisión t. Fuente: EEA, datos de Alemania.",
+      "description_en": "Hourly NO₂ concentration (µg/m³) at the station for the hour [t−25 h, t−24 h): the same slot as the latest value, one day earlier; known at the issue time t. Source: EEA, data for Germany.",
+      "lag_hours": 25,
+      "terms": {
+        "Good": "Buena",
+        "Fair": "Aceptable",
+        "Moderate": "Moderada",
+        "Poor or worse": "Mala o peor"
+      },
+      "terms_en": {
+        "Good": "Good",
+        "Fair": "Fair",
+        "Moderate": "Moderate",
+        "Poor or worse": "Poor or worse"
+      }
+    },
+    "no2_yday_valid": {
+      "label": "NO₂ ayer a la hora de validez",
+      "label_en": "NO₂ yesterday at the valid time",
+      "description": "Concentración horaria de NO₂ (µg/m³) en la estación 24 h antes de la hora de validez: la misma hora del día anterior. Para un horizonte de h horas es la hora [t+h−24 h, t+h−23 h), terminada antes de la hora de emisión t (a +6 h, la hora [t−18 h, t−17 h)). Fuente: EEA, datos de Alemania.",
+      "description_en": "Hourly NO₂ concentration (µg/m³) at the station 24 h before the valid time: the same hour on the previous day. For a horizon of h hours it is the hour [t+h−24 h, t+h−23 h), finished before the issue time t (at +6 h, the hour [t−18 h, t−17 h)). Source: EEA, data for Germany.",
+      "terms": {
+        "Good": "Buena",
+        "Fair": "Aceptable",
+        "Moderate": "Moderada",
+        "Poor or worse": "Mala o peor"
+      },
+      "terms_en": {
+        "Good": "Good",
+        "Fair": "Fair",
+        "Moderate": "Moderate",
+        "Poor or worse": "Poor or worse"
+      }
+    },
+    "wind_speed": {
+      "label": "Viento hace 1 h (m/s)",
+      "label_en": "Wind 1 h ago (m/s)",
+      "description": "Velocidad del viento (m/s) de la hora [t−1 h, t) en la estación meteorológica asociada (a 25 km o menos de la estación); conocida a la hora de emisión t. Fuente: DWD, observaciones horarias.",
+      "description_en": "Wind speed (m/s) for the hour [t−1 h, t) at the associated weather station (within 25 km of the station); known at the issue time t. Source: DWD, hourly observations.",
+      "lag_hours": 1,
+      "terms": {
+        "Calm to light air": "Calma o aire ligero",
+        "Light breeze": "Brisa ligera",
+        "Gentle to moderate breeze": "Brisa gentil-moderada",
+        "Fresh breeze or stronger": "Brisa fresca o más"
+      },
+      "terms_en": {
+        "Calm to light air": "Calm to light air",
+        "Light breeze": "Light breeze",
+        "Gentle to moderate breeze": "Gentle to moderate breeze",
+        "Fresh breeze or stronger": "Fresh breeze or stronger"
+      }
+    },
+    "temperature": {
+      "label": "Temperatura hace 1 h (°C)",
+      "label_en": "Temperature 1 h ago (°C)",
+      "description": "Temperatura del aire (°C) de la hora [t−1 h, t) en la estación meteorológica asociada (a 25 km o menos de la estación); conocida a la hora de emisión t. Fuente: DWD, observaciones horarias.",
+      "description_en": "Air temperature (°C) for the hour [t−1 h, t) at the associated weather station (within 25 km of the station); known at the issue time t. Source: DWD, hourly observations.",
+      "lag_hours": 1,
+      "terms": {
+        "Low": "baja",
+        "Medium": "media",
+        "High": "alta"
+      },
+      "terms_en": {
+        "Low": "low",
+        "Medium": "medium",
+        "High": "high"
+      }
+    },
+    "relative_humidity": {
+      "label": "Humedad relativa hace 1 h (%)",
+      "label_en": "Relative humidity 1 h ago (%)",
+      "description": "Humedad relativa del aire (%) de la hora [t−1 h, t) en la estación meteorológica asociada (a 25 km o menos de la estación); conocida a la hora de emisión t. Fuente: DWD, observaciones horarias.",
+      "description_en": "Relative humidity of the air (%) for the hour [t−1 h, t) at the associated weather station (within 25 km of the station); known at the issue time t. Source: DWD, hourly observations.",
+      "lag_hours": 1,
+      "terms": {
+        "Low": "baja",
+        "Medium": "media",
+        "High": "alta"
+      },
+      "terms_en": {
+        "Low": "low",
+        "Medium": "medium",
+        "High": "high"
+      }
+    },
+    "valid_hour_local": {
+      "label": "Hora de validez (local)",
+      "label_en": "Hour of the valid time (local)",
+      "description": "Hora del reloj local (Berlín), de 0 a 23, de la hora que se predice (emisión más el horizonte); es calendario, se conoce de antemano.",
+      "description_en": "Local clock hour (Berlin), from 0 to 23, of the hour being predicted (the issue time plus the horizon); it is calendar information, known in advance.",
+      "lag_hours": 0,
+      "terms": {
+        "Night": "Noche",
+        "Morning rush": "Punta de mañana",
+        "Midday": "Mediodía",
+        "Evening": "Tarde-noche"
+      },
+      "terms_en": {
+        "Night": "Night",
+        "Morning rush": "Morning rush",
+        "Midday": "Midday",
+        "Evening": "Evening"
+      }
+    },
+    "valid_weekday": {
+      "label": "Día de la semana (validez)",
+      "label_en": "Weekday (valid time)",
+      "description": "Día de la semana local (Berlín) de la hora que se predice, de 0 = lunes a 6 = domingo; es calendario, se conoce de antemano y no modela festivos.",
+      "description_en": "Local weekday (Berlin) of the hour being predicted, from 0 = Monday to 6 = Sunday; it is calendar information, known in advance, and does not model public holidays.",
+      "lag_hours": 0,
+      "terms": {
+        "Weekday": "Laborable",
+        "Saturday": "Sábado",
+        "Sunday": "Domingo"
+      },
+      "terms_en": {
+        "Weekday": "Weekday",
+        "Saturday": "Saturday",
+        "Sunday": "Sunday"
+      }
+    }
+  },
+  "summary": {
+    "label": "NO₂ horario observado",
+    "label_en": "Observed hourly NO₂"
+  }
+}

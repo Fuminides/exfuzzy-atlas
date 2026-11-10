@@ -1,0 +1,672 @@
+{
+  "$defs": {
+    "AntecedentTrace": {
+      "additionalProperties": false,
+      "properties": {
+        "effective_membership": {
+          "description": "membership ** modifier; equals membership without one.",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Effective Membership",
+          "type": "number"
+        },
+        "feature": {
+          "title": "Feature",
+          "type": "string"
+        },
+        "membership": {
+          "description": "Membership of the input value, as computed by ex_fuzzy.",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Membership",
+          "type": "number"
+        },
+        "modifier": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Modifier"
+        },
+        "term": {
+          "title": "Term",
+          "type": "string"
+        }
+      },
+      "required": [
+        "feature",
+        "term",
+        "membership",
+        "effective_membership"
+      ],
+      "title": "AntecedentTrace",
+      "type": "object"
+    },
+    "FeatureValue": {
+      "additionalProperties": false,
+      "properties": {
+        "feature": {
+          "title": "Feature",
+          "type": "string"
+        },
+        "missing_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "observed_at_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Time of the source observation used.",
+          "title": "Observed At Utc"
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Id"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "feature",
+        "value"
+      ],
+      "title": "FeatureValue",
+      "type": "object"
+    },
+    "InferenceFamily": {
+      "enum": [
+        "tsk_zero_order",
+        "mamdani",
+        "winning_rule_classifier",
+        "rule_mixture_classifier"
+      ],
+      "title": "InferenceFamily",
+      "type": "string"
+    },
+    "InferenceSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "allow_unknown": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Classifier only: no class when no rule fires.",
+          "title": "Allow Unknown"
+        },
+        "exfuzzy_version": {
+          "title": "Exfuzzy Version",
+          "type": "string"
+        },
+        "fallback": {
+          "anyOf": [
+            {
+              "enum": [
+                "train_target_mean",
+                "unknown",
+                "largest_bias"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Output when no rule fires. 'largest_bias' (v0.7, rule mixture without allow_unknown): the class of the largest class_bias.",
+          "title": "Fallback"
+        },
+        "family": {
+          "$ref": "#/$defs/InferenceFamily"
+        },
+        "mixture_C": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture only: inverse strength of the L2 penalty ||W||^2 / 2 of the multinomial logistic fit of the weights on the firing strengths of the fitting rows (scikit-learn's C).",
+          "title": "Mixture C"
+        },
+        "mixture_weights": {
+          "anyOf": [
+            {
+              "enum": [
+                "non_negative",
+                "unconstrained"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture only: how the class weights were fitted. Both describe the same family of decision functions (adding a constant to all the class weights of one rule changes no prediction); only the L2 penalty differs. Compare rules with RuleDefinition.class_weights_centred.",
+          "title": "Mixture Weights"
+        },
+        "rule_mode": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuleMode"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "TSK/Mamdani only: how many rules take part."
+        },
+        "rule_weighting": {
+          "anyOf": [
+            {
+              "enum": [
+                "dominance_score",
+                "weight",
+                "none"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Winning-rule classifier only: association degree = firing x this rule weight (ex_fuzzy ds_mode).",
+          "title": "Rule Weighting"
+        },
+        "tnorm": {
+          "$ref": "#/$defs/TNorm"
+        },
+        "tolerance": {
+          "default": 0.0,
+          "minimum": 0,
+          "title": "Tolerance",
+          "type": "number"
+        }
+      },
+      "required": [
+        "family",
+        "tnorm",
+        "fallback",
+        "exfuzzy_version"
+      ],
+      "title": "InferenceSpec",
+      "type": "object"
+    },
+    "MissingReason": {
+      "enum": [
+        "no_observation",
+        "invalid_observation",
+        "censored",
+        "missing_input",
+        "prediction_unavailable",
+        "not_modelled"
+      ],
+      "title": "MissingReason",
+      "type": "string"
+    },
+    "Quality": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/QualityStatus",
+          "default": "valid"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "title": "Quality",
+      "type": "object"
+    },
+    "QualityStatus": {
+      "enum": [
+        "valid",
+        "warning",
+        "invalid"
+      ],
+      "title": "QualityStatus",
+      "type": "string"
+    },
+    "RuleMode": {
+      "enum": [
+        "additive",
+        "sufficient"
+      ],
+      "title": "RuleMode",
+      "type": "string"
+    },
+    "RuleTraceEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "antecedents": {
+          "items": {
+            "$ref": "#/$defs/AntecedentTrace"
+          },
+          "minItems": 1,
+          "title": "Antecedents",
+          "type": "array"
+        },
+        "association_degree": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Winning-rule classifier: firing x weight; the rule with the largest one decides the class.",
+          "title": "Association Degree"
+        },
+        "class_contributions": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: W[r, c] x firing_strength for every class, what this rule adds to each class score (ex_fuzzy mixture_contributions). Not a probability, a share of evidence or a cause.",
+          "title": "Class Contributions"
+        },
+        "class_contributions_centred": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: class_weights_centred[c] x firing_strength. They differ from class_contributions by the same amount for every class, so they change no comparison between classes: positive = the rule supports the class here, negative = it suppresses it, relative to the other classes.",
+          "title": "Class Contributions Centred"
+        },
+        "class_weights": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: the rule's class weights W[r, c] (as in rules.json).",
+          "title": "Class Weights"
+        },
+        "effective_firing": {
+          "description": "Firing after rule_mode; used by the inference.",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Effective Firing",
+          "type": "number"
+        },
+        "firing_strength": {
+          "description": "T-norm of the effective memberships.",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Firing Strength",
+          "type": "number"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "weight": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Winning-rule classifier: the rule weight in the association degree.",
+          "title": "Weight"
+        }
+      },
+      "required": [
+        "rule_id",
+        "antecedents",
+        "firing_strength",
+        "effective_firing"
+      ],
+      "title": "RuleTraceEntry",
+      "type": "object"
+    },
+    "TNorm": {
+      "enum": [
+        "product",
+        "minimum"
+      ],
+      "title": "TNorm",
+      "type": "string"
+    },
+    "TracePrediction": {
+      "additionalProperties": false,
+      "properties": {
+        "class_bias": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: b_c (as in rules.json).",
+          "title": "Class Bias"
+        },
+        "class_scores": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: b_c + sum of the rules' class_contributions, per class (ex_fuzzy mixture_scores); the predicted class is the first of largest score. Scores of a fitted linear model: not probabilities (no softmax is served).",
+          "title": "Class Scores"
+        },
+        "fallback_used": {
+          "description": "True when no rule fired and the model returned its fallback.",
+          "title": "Fallback Used",
+          "type": "boolean"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Predicted class (classifier).",
+          "title": "Label"
+        },
+        "missing_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "top_rule_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: the rule with the largest positive centred contribution to the predicted class (first in rule order on ties): the rule that supports this prediction the most. It did not decide it alone. Null without a label or when no rule supports the predicted class.",
+          "title": "Top Rule Id"
+        },
+        "top_rule_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: the top rule's centred contribution to the predicted class over the sum of the positive centred contributions to it (the bias is not counted).",
+          "title": "Top Rule Share"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        },
+        "winning_rule_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Winning-rule classifier: the rule that decided the class. Always null for the rule mixture, where no single rule decides.",
+          "title": "Winning Rule Id"
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "fallback_used"
+      ],
+      "title": "TracePrediction",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/RuleTrace.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "feature_values": {
+      "items": {
+        "$ref": "#/$defs/FeatureValue"
+      },
+      "title": "Feature Values",
+      "type": "array"
+    },
+    "inference": {
+      "$ref": "#/$defs/InferenceSpec"
+    },
+    "issued_at_utc": {
+      "format": "date-time",
+      "title": "Issued At Utc",
+      "type": "string"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "observation_ids": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Observation Ids",
+      "type": "array"
+    },
+    "observed": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "v0.4: target value observed at valid_at_utc, when known; not available at issue time.",
+      "title": "Observed"
+    },
+    "observed_label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "v0.4: class of the observed value (classification tasks).",
+      "title": "Observed Label"
+    },
+    "prediction": {
+      "$ref": "#/$defs/TracePrediction"
+    },
+    "quality": {
+      "$ref": "#/$defs/Quality",
+      "default": {
+        "status": "valid",
+        "warnings": []
+      }
+    },
+    "rules": {
+      "items": {
+        "$ref": "#/$defs/RuleTraceEntry"
+      },
+      "title": "Rules",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "valid_at_utc": {
+      "format": "date-time",
+      "title": "Valid At Utc",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "model_id",
+    "task_id",
+    "entity_id",
+    "issued_at_utc",
+    "valid_at_utc",
+    "inference",
+    "feature_values",
+    "rules",
+    "prediction"
+  ],
+  "title": "RuleTrace",
+  "type": "object"
+}

@@ -1,0 +1,468 @@
+{
+  "$defs": {
+    "GeometrySupport": {
+      "description": "Spatial meaning of a geometry. ``estimated_surface`` is deliberately absent in v0.1.",
+      "enum": [
+        "observed_point",
+        "observed_polygon",
+        "derived_aggregate"
+      ],
+      "title": "GeometrySupport",
+      "type": "string"
+    },
+    "MissingReason": {
+      "enum": [
+        "no_observation",
+        "invalid_observation",
+        "censored",
+        "missing_input",
+        "prediction_unavailable",
+        "not_modelled"
+      ],
+      "title": "MissingReason",
+      "type": "string"
+    },
+    "MultiPolygonGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "items": {
+            "items": {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 180,
+                    "minimum": -180,
+                    "type": "number"
+                  },
+                  {
+                    "maximum": 90,
+                    "minimum": -90,
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "MultiPolygon",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "MultiPolygonGeometry",
+      "type": "object"
+    },
+    "PointGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "maximum": 180,
+              "minimum": -180,
+              "type": "number"
+            },
+            {
+              "maximum": 90,
+              "minimum": -90,
+              "type": "number"
+            }
+          ],
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "Point",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "PointGeometry",
+      "type": "object"
+    },
+    "PolygonGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "items": {
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "maximum": 180,
+                  "minimum": -180,
+                  "type": "number"
+                },
+                {
+                  "maximum": 90,
+                  "minimum": -90,
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "Polygon",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "PolygonGeometry",
+      "type": "object"
+    },
+    "Quality": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/QualityStatus",
+          "default": "valid"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "title": "Quality",
+      "type": "object"
+    },
+    "QualityStatus": {
+      "enum": [
+        "valid",
+        "warning",
+        "invalid"
+      ],
+      "title": "QualityStatus",
+      "type": "string"
+    },
+    "RuleMapFeature": {
+      "additionalProperties": false,
+      "properties": {
+        "geometry": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "MultiPolygon": "#/$defs/MultiPolygonGeometry",
+                  "Point": "#/$defs/PointGeometry",
+                  "Polygon": "#/$defs/PolygonGeometry"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/PointGeometry"
+                },
+                {
+                  "$ref": "#/$defs/PolygonGeometry"
+                },
+                {
+                  "$ref": "#/$defs/MultiPolygonGeometry"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Geometry"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/$defs/RuleMapProperties"
+        },
+        "type": {
+          "const": "Feature",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "geometry",
+        "properties"
+      ],
+      "title": "RuleMapFeature",
+      "type": "object"
+    },
+    "RuleMapMetric": {
+      "enum": [
+        "firing_strength",
+        "mean_activation",
+        "activation_frequency"
+      ],
+      "title": "RuleMapMetric",
+      "type": "string"
+    },
+    "RuleMapProperties": {
+      "additionalProperties": false,
+      "properties": {
+        "data_version": {
+          "title": "Data Version",
+          "type": "string"
+        },
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "geometry_support": {
+          "$ref": "#/$defs/GeometrySupport"
+        },
+        "issued_at_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Issued At Utc"
+        },
+        "metric": {
+          "$ref": "#/$defs/RuleMapMetric"
+        },
+        "missing_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "n_valid": {
+          "description": "Records the value is computed from (the denominator).",
+          "minimum": 0,
+          "title": "N Valid",
+          "type": "integer"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": {
+            "status": "valid",
+            "warnings": []
+          }
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "tau": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tau"
+        },
+        "time_from_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time From Utc"
+        },
+        "time_to_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time To Utc"
+        },
+        "valid_at_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid At Utc"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "entity_id",
+        "rule_id",
+        "metric",
+        "value",
+        "n_valid",
+        "time_from_utc",
+        "time_to_utc",
+        "model_id",
+        "data_version",
+        "geometry_support"
+      ],
+      "title": "RuleMapProperties",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/RuleMapResponse.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "features": {
+      "items": {
+        "$ref": "#/$defs/RuleMapFeature"
+      },
+      "title": "Features",
+      "type": "array"
+    },
+    "metric": {
+      "$ref": "#/$defs/RuleMapMetric"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "rule_id": {
+      "title": "Rule Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "tau": {
+      "anyOf": [
+        {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Tau"
+    },
+    "time_from_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Time From Utc"
+    },
+    "time_to_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Time To Utc"
+    },
+    "type": {
+      "const": "FeatureCollection",
+      "title": "Type",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "type",
+    "model_id",
+    "rule_id",
+    "metric",
+    "time_from_utc",
+    "time_to_utc",
+    "features"
+  ],
+  "title": "RuleMapResponse",
+  "type": "object"
+}

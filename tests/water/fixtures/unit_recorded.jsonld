@@ -1,0 +1,30 @@
+{
+ "@context": "https://environment.data.gov.uk/water-quality/context/wqa_codelist_context.json-ld",
+ "@type": "hydra:Collection",
+ "totalItems": 2,
+ "view": {
+  "first": null,
+  "last": null,
+  "next": null
+ },
+ "member": [
+  {
+   "@id": "_:unit#205",
+   "@type": [
+    "skos:Concept"
+   ],
+   "notation": "205",
+   "prefLabel": "MILLIGRAM PER LITRE",
+   "altLabel": "mg/l"
+  },
+  {
+   "@id": "_:unit#912",
+   "@type": [
+    "skos:Concept"
+   ],
+   "notation": "912",
+   "prefLabel": "PH UNITS",
+   "altLabel": "PHUNITS"
+  }
+ ]
+}

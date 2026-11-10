@@ -1,0 +1,113 @@
+{
+ "task_id": "uk_water_do",
+ "description": "Linguistic variables of the UK river dissolved-oxygen TSK regressor (AT-041f). 'variables' follow madrid_partitions.json (atlas.ml.partitions.load_partition_file); 'censored' (read by atlas.ml.experiment_water) are variables with a term exactly for 'at or below the detection limit' plus data-driven terms above it. Everything data-driven is built from the training rows of the split in use.",
+ "variables": [
+  {
+   "features": [
+    "days_from_midwinter"
+   ],
+   "unit": "days",
+   "kind": "fixed",
+   "domain": [
+    0,
+    183
+   ],
+   "shoulders": [
+    15.0,
+    15.0
+   ],
+   "terms": [
+    {
+     "name": "Invierno",
+     "core": [
+      0,
+      45
+     ],
+     "params": [
+      0.0,
+      0.0,
+      45.0,
+      60.0
+     ]
+    },
+    {
+     "name": "Primavera-otoño",
+     "core": [
+      46,
+      137
+     ],
+     "params": [
+      31.0,
+      46.0,
+      137.0,
+      152.0
+     ]
+    },
+    {
+     "name": "Verano",
+     "core": [
+      138,
+      183
+     ],
+     "params": [
+      123.0,
+      138.0,
+      183.0,
+      183.0
+     ]
+    }
+   ],
+   "rationale": "days_from_midwinter is the distance in days between the local sample date and the nearest 21 December (0 = midwinter, 183 = midsummer, no seam at the new year). Three terms centred on the solstices and the equinoxes, each about a quarter of the astronomical year wide: Invierno = 0-45 days (about 6 Nov - 4 Feb, centred on the winter solstice), Primavera-otoño = 46-137 days (about 5 Feb - 5 May and 8 Aug - 5 Nov, centred on the two equinoxes, which the distance to midwinter cannot tell apart), Verano = 138-183 days (about 6 May - 7 Aug, centred on the summer solstice). The cuts 45.5 and 137.5 are the midpoints between the solstice/equinox centres (0, 91.5, 183). Shoulder 15 days (about half a month) at both boundaries is a convention for a gradual change of season, not a measured quantity. The terms are not the meteorological or the astronomical seasons (autumn and spring share a term because the feature is a distance). Sensitivity to the shoulder was not studied.",
+   "source_url": null,
+   "source_status": "No external source: solstice/equinox-centred thirds of the half-year distance; documented convention."
+  },
+  {
+   "features": [
+    "water_temperature",
+    "ph",
+    "local_hour"
+   ],
+   "unit": "mixed",
+   "kind": "quantile",
+   "rationale": "Data-driven: ex_fuzzy trapezoids anchored at the 20/40/60/80 % quantiles of the training rows of the split in use (Low / Medium / High). No citable categorical scheme for an individual river sample was verified for temperature or pH (the river-type standards of the Water Framework Directive are percentile standards by water-body type and were not checked here, see docs/water/water_feasibility.md section 1), and the sampling hour clusters in working hours (median 10.25 h, interquartile range 9.15-11.5 h), so nothing was invented and the terms carry no authority beyond describing the training distribution.",
+   "source_url": null,
+   "source_status": "Data-driven (train quantiles)."
+  }
+ ],
+ "censored": [
+  {
+   "features": [
+    "ammoniacal_nitrogen"
+   ],
+   "unit": "mg/l",
+   "limit": 0.03,
+   "n_above": 3,
+   "terms": [
+    "<=L",
+    "Bajo>L",
+    "Medio>L",
+    "Alto>L"
+   ],
+   "rationale": "The feature table harmonises every ammonia result that is known to be at or below the dominant detection limit to L = 0.03 mg/l (docs/water/water_feasibility.md section 3): 70.6 % of the non-missing values are exactly L, and below L the table knows nothing. Term '<=L' is therefore exactly the set of values equal to L: membership 1 at L, falling to 0 at the smallest measured value above L (0.0304 mg/l, the reporting resolution), i.e. crisp on the data; a rule that says ammoniacal_nitrogen IS <=L means 'not above the detection limit', never 'zero'. Above L three data-driven terms (Bajo>L, Medio>L, Alto>L) are the ex_fuzzy quantile terms (20/40/60/80 %) of the training values strictly above L. The first term does not overlap the others. Feature order puts the two 4-term variables first because ex_fuzzy 3.3.1 bounds the term index of the k-th antecedent slot by the number of terms of the k-th feature.",
+   "source_url": "docs/water/water_feasibility.md",
+   "source_status": "Internal: limit from AT-021 harmonisation; no external source."
+  },
+  {
+   "features": [
+    "orthophosphate_reactive"
+   ],
+   "unit": "mg/l",
+   "limit": 0.01,
+   "n_above": 3,
+   "terms": [
+    "<=L",
+    "Bajo>L",
+    "Medio>L",
+    "Alto>L"
+   ],
+   "rationale": "The feature table harmonises every orthophosphate result that is known to be at or below the dominant detection limit to L = 0.01 mg/l (docs/water/water_feasibility.md section 3): 39.3 % of the rows are exactly L, and below L the table knows nothing. Term '<=L' is therefore exactly the set of values equal to L: membership 1 at L, falling to 0 at the smallest measured value above L (0.0101 mg/l, the reporting resolution), i.e. crisp on the data; a rule that says orthophosphatecal_nitrogen IS <=L means 'not above the detection limit', never 'zero'. Above L three data-driven terms (Bajo>L, Medio>L, Alto>L) are the ex_fuzzy quantile terms (20/40/60/80 %) of the training values strictly above L. The first term does not overlap the others. Feature order puts the two 4-term variables first because ex_fuzzy 3.3.1 bounds the term index of the k-th antecedent slot by the number of terms of the k-th feature.",
+   "source_url": "docs/water/water_feasibility.md",
+   "source_status": "Internal: limit from AT-021 harmonisation; no external source."
+  }
+ ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.7.0",
+  "features": {
+    "no2_last": {
+      "unit": "ug/m3",
+      "source_id": "eea-air-de",
+      "lag_hours": 1.0
+    },
+    "no2_lag1h": {
+      "unit": "ug/m3",
+      "source_id": "eea-air-de",
+      "lag_hours": 2.0
+    },
+    "no2_lag3h": {
+      "unit": "ug/m3",
+      "source_id": "eea-air-de",
+      "lag_hours": 4.0
+    },
+    "no2_lag24h": {
+      "unit": "ug/m3",
+      "source_id": "eea-air-de",
+      "lag_hours": 25.0
+    },
+    "no2_yday_valid": {
+      "unit": "ug/m3",
+      "source_id": "eea-air-de",
+      "lag_hours": 18.0
+    },
+    "wind_speed": {
+      "unit": "m/s",
+      "source_id": "dwd-meteo-de",
+      "lag_hours": 1.0
+    },
+    "temperature": {
+      "unit": "degC",
+      "source_id": "dwd-meteo-de",
+      "lag_hours": 1.0
+    },
+    "relative_humidity": {
+      "unit": "%",
+      "source_id": "dwd-meteo-de",
+      "lag_hours": 1.0
+    },
+    "valid_hour_local": {
+      "unit": "h",
+      "source_id": "calendar",
+      "lag_hours": 0.0
+    },
+    "valid_weekday": {
+      "unit": "day",
+      "source_id": "calendar",
+      "lag_hours": 0.0
+    }
+  }
+}

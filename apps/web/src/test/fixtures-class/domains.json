@@ -1,0 +1,35 @@
+{
+ "schema_version": "0.3.0",
+ "data_version": "synthetic-test",
+ "synthetic": true,
+ "domains": [
+  {
+   "domain": "air",
+   "title": "Air quality",
+   "status": "available",
+   "tasks": [
+    {
+     "task_id": "synthetic_class_h6",
+     "task_type": "classification",
+     "target": "y",
+     "unit": "u",
+     "horizon_hours": 6,
+     "status": "available",
+     "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3"
+    }
+   ]
+  },
+  {
+   "domain": "water",
+   "title": "Water quality",
+   "status": "planned",
+   "tasks": []
+  },
+  {
+   "domain": "mobility",
+   "title": "Urban mobility",
+   "status": "planned",
+   "tasks": []
+  }
+ ]
+}

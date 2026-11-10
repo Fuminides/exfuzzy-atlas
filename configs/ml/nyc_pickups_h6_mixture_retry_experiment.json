@@ -1,0 +1,35 @@
+{
+  "experiment_id": "mixture-retry-r60a2",
+  "kind": "nyc",
+  "task_config": "configs/ml/nyc_pickups_h6_level_rel7_experiment.json",
+  "served_experiment": "nyc_pickups_h6/experiments/level-rel7",
+  "served_run": "nyc_pickups_h6/level-rel7-seed0",
+  "served_seed": 0,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "mixture_C": 1.0,
+  "reference_baselines": [
+    "persistence",
+    "persistence_rel_lag24",
+    "logistic_regression_subsample",
+    "random_forest_subsample"
+  ],
+  "serve": {
+    "arms": [
+      "mix_search_nonneg",
+      "mix_search_free"
+    ],
+    "tie": 0.005,
+    "run_prefix": "mixture-r60a2",
+    "params": {
+      "nRules": 60,
+      "nAnts": 2
+    },
+    "serve_if_validation_mean_at_least": 0.324
+  }
+}

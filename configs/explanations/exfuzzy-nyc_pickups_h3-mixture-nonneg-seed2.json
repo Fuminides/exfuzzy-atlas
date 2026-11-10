@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.7.0",
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-nyc_pickups_h3-mixture-nonneg-seed2",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.321",
+    "model": "claude-fable-5-2"
+  },
+  "generated_at_utc": "2026-11-09T23:08:50Z",
+  "input_sha256": "09bafdbda99bd4d9845e6dd84da85ef923f4228dee8bfb05777d1c1c5a1fe5ab",
+  "reviewed": false,
+  "es": {
+    "headline": "En el 46 % de las predicciones, la categoría cambiaría sin alguna de las reglas que miran Nivel medio, 24 h previas (razón).",
+    "summary": [
+      "El modelo tiene 15 reglas, casi todas con una sola condición. Nivel hace 2 h (percentil) y Nivel hace 168 h (percentil) aparecen en 4 reglas cada una. Nivel hace 1 h (percentil), Nivel hace 24 h (percentil) y Nivel medio, 24 h previas (razón) aparecen en 2 cada una. Hora local (Nueva York) y Día de la semana (local) aparecen en 1 cada una.",
+      "Las reglas que se cumplen suman su apoyo a cada categoría y gana el total mayor. Ninguna regla decide sola. R02 es la que más suma a la categoría predicha en el 32 % de las predicciones, y ahí el modelo acierta el 34 %. R08 lo es en el 29 % (acierta el 48 %) y R13 en el 16 % (acierta el 42 %).",
+      "En el periodo de prueba, del 8 de febrero de 2025 al 31 de marzo de 2025, el modelo alcanza un F1 macro de 0,37 y un acierto del 42 %. Es mejor que Repetir la última categoría (0,35 y 38 %) y mejor que el Random Forest (0,36 y 37 %). Es peor que la regresión logística (0,39 y 44 %)."
+    ],
+    "points": [
+      "Sin R02 [Nivel medio, 24 h previas (razón) por encima de lo habitual → alta y muy alta], el 42 % de las predicciones cambiaría de categoría.",
+      "R08 es la que más suma en el 29 % de las predicciones, pero solo el 4,9 % cambiaría de categoría sin ella.",
+      "R04 da a baja un peso centrado de +0,83, pero solo en el 4,4 % de las predicciones es la que más suma.",
+      "Las reglas de Hora local (Nueva York) y Día de la semana (local) nunca son las que más suman.",
+      "En el 15 % de los casos no se publica predicción, ya que falta el nivel de referencia."
+    ]
+  },
+  "en": {
+    "headline": "In 46% of predictions, the category would change without one of the rules that look at Mean level, previous 24 h (ratio).",
+    "summary": [
+      "The model has 15 rules, nearly all with a single condition. Level 2 h ago (percentile) and Level 168 h ago (percentile) appear in 4 rules each. Level 1 h ago (percentile), Level 24 h ago (percentile) and Mean level, previous 24 h (ratio) appear in 2 each. Local hour (New York) and Weekday (local) appear in 1 each.",
+      "The rules that hold add up their support for each category, and the largest total wins. No single rule decides. R02 adds the most to the predicted category in 32% of predictions, and the model is right 34% of the time there. R08 does so in 29% (right 48% of the time) and R13 in 16% (right 42% of the time).",
+      "Over the test period, 8 February 2025 to 31 March 2025, the model reaches a macro-F1 of 0.37 and an accuracy of 42%. It is better than Repeat the last category (0.35 and 38%) and better than the random forest (0.36 and 37%). It is worse than logistic regression (0.39 and 44%)."
+    ],
+    "points": [
+      "Without R02 [Mean level, previous 24 h (ratio) above what is usual → high and very high], 42% of predictions would change category.",
+      "R08 adds the most to the predicted category in 29% of predictions, yet only 4.9% would change category without it.",
+      "R04 gives low a centred weight of +0.83, but it adds the most to the predicted category in only 4.4% of predictions.",
+      "The rules on Local hour (New York) and Weekday (local) are never the ones adding most to the predicted category.",
+      "In 15% of cases no prediction is published, as the reference level is missing."
+    ]
+  }
+}

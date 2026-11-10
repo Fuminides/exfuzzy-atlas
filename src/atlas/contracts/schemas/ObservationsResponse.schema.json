@@ -1,0 +1,516 @@
+{
+  "$defs": {
+    "FeatureValue": {
+      "additionalProperties": false,
+      "properties": {
+        "feature": {
+          "title": "Feature",
+          "type": "string"
+        },
+        "missing_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "observed_at_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Time of the source observation used.",
+          "title": "Observed At Utc"
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Id"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "feature",
+        "value"
+      ],
+      "title": "FeatureValue",
+      "type": "object"
+    },
+    "GeometrySupport": {
+      "description": "Spatial meaning of a geometry. ``estimated_surface`` is deliberately absent in v0.1.",
+      "enum": [
+        "observed_point",
+        "observed_polygon",
+        "derived_aggregate"
+      ],
+      "title": "GeometrySupport",
+      "type": "string"
+    },
+    "MissingReason": {
+      "enum": [
+        "no_observation",
+        "invalid_observation",
+        "censored",
+        "missing_input",
+        "prediction_unavailable",
+        "not_modelled"
+      ],
+      "title": "MissingReason",
+      "type": "string"
+    },
+    "MultiPolygonGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "items": {
+            "items": {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 180,
+                    "minimum": -180,
+                    "type": "number"
+                  },
+                  {
+                    "maximum": 90,
+                    "minimum": -90,
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "MultiPolygon",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "MultiPolygonGeometry",
+      "type": "object"
+    },
+    "ObservationFeature": {
+      "additionalProperties": false,
+      "properties": {
+        "geometry": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "MultiPolygon": "#/$defs/MultiPolygonGeometry",
+                  "Point": "#/$defs/PointGeometry",
+                  "Polygon": "#/$defs/PolygonGeometry"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/PointGeometry"
+                },
+                {
+                  "$ref": "#/$defs/PolygonGeometry"
+                },
+                {
+                  "$ref": "#/$defs/MultiPolygonGeometry"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Geometry"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/$defs/ObservationProperties"
+        },
+        "type": {
+          "const": "Feature",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "geometry",
+        "properties"
+      ],
+      "title": "ObservationFeature",
+      "type": "object"
+    },
+    "ObservationProperties": {
+      "additionalProperties": false,
+      "description": "Observed target and model inputs of one entity at one issue time. Not a prediction, not an interpolation.",
+      "properties": {
+        "data_version": {
+          "title": "Data Version",
+          "type": "string"
+        },
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "geometry_support": {
+          "$ref": "#/$defs/GeometrySupport"
+        },
+        "inputs": {
+          "description": "Model input values at issue time; observed_at_utc <= issued_at_utc.",
+          "items": {
+            "$ref": "#/$defs/FeatureValue"
+          },
+          "title": "Inputs",
+          "type": "array"
+        },
+        "issued_at_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Issued At Utc"
+        },
+        "missing_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Set when the entity has no row at all (no_observation) or no model (not_modelled)."
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": {
+            "status": "valid",
+            "warnings": []
+          }
+        },
+        "target": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FeatureValue"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The target observed at valid_at_utc (= issued + horizon), so not known at issue time unless the horizon is 0. value null = missing, with its reason."
+        },
+        "target_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Class of the observed target (classification tasks).",
+          "title": "Target Label"
+        },
+        "valid_at_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Valid At Utc"
+        }
+      },
+      "required": [
+        "entity_id",
+        "model_id",
+        "data_version",
+        "issued_at_utc",
+        "valid_at_utc",
+        "target",
+        "inputs",
+        "geometry_support"
+      ],
+      "title": "ObservationProperties",
+      "type": "object"
+    },
+    "PointGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "maximum": 180,
+              "minimum": -180,
+              "type": "number"
+            },
+            {
+              "maximum": 90,
+              "minimum": -90,
+              "type": "number"
+            }
+          ],
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "Point",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "PointGeometry",
+      "type": "object"
+    },
+    "PolygonGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "items": {
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "maximum": 180,
+                  "minimum": -180,
+                  "type": "number"
+                },
+                {
+                  "maximum": 90,
+                  "minimum": -90,
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "Polygon",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "PolygonGeometry",
+      "type": "object"
+    },
+    "Quality": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/QualityStatus",
+          "default": "valid"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "title": "Quality",
+      "type": "object"
+    },
+    "QualityStatus": {
+      "enum": [
+        "valid",
+        "warning",
+        "invalid"
+      ],
+      "title": "QualityStatus",
+      "type": "string"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ObservationsResponse.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "features": {
+      "items": {
+        "$ref": "#/$defs/ObservationFeature"
+      },
+      "title": "Features",
+      "type": "array"
+    },
+    "horizon_hours": {
+      "minimum": 0,
+      "title": "Horizon Hours",
+      "type": "integer"
+    },
+    "issued_at_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Issued At Utc"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "note": {
+      "default": "Valores observados publicados (entradas del modelo y objetivo en valid_at_utc), no predicciones ni interpolaciones; null = ausente, con su motivo.",
+      "title": "Note",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "target": {
+      "title": "Target",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "time_from_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Time From Utc"
+    },
+    "time_to_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Time To Utc"
+    },
+    "type": {
+      "const": "FeatureCollection",
+      "title": "Type",
+      "type": "string"
+    },
+    "unit": {
+      "title": "Unit",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "type",
+    "task_id",
+    "model_id",
+    "target",
+    "unit",
+    "horizon_hours",
+    "features"
+  ],
+  "title": "ObservationsResponse",
+  "type": "object"
+}

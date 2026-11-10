@@ -1,0 +1,338 @@
+[
+ {
+  "schema_version": "0.3.0",
+  "data_version": "synthetic-test",
+  "synthetic": true,
+  "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+  "task_id": "synthetic_class_h6",
+  "entity_id": "E0",
+  "issued_at_utc": "2024-01-06T09:00:00Z",
+  "valid_at_utc": "2024-01-06T15:00:00Z",
+  "inference": {
+   "family": "winning_rule_classifier",
+   "tnorm": "product",
+   "rule_mode": null,
+   "tolerance": 0,
+   "fallback": "unknown",
+   "rule_weighting": "dominance_score",
+   "allow_unknown": true,
+   "exfuzzy_version": "3.3.1"
+  },
+  "feature_values": [
+   {
+    "feature": "y_t",
+    "value": 41.93619865665682,
+    "unit": "u",
+    "observed_at_utc": "2024-01-06T09:00:00Z",
+    "source_id": "synthetic-y_t",
+    "missing_reason": null
+   },
+   {
+    "feature": "y_lag3",
+    "value": 35.57507870434549,
+    "unit": "u",
+    "observed_at_utc": "2024-01-06T06:00:00Z",
+    "source_id": "synthetic-y_lag3",
+    "missing_reason": null
+   },
+   {
+    "feature": "exo_t",
+    "value": null,
+    "unit": "m/s",
+    "observed_at_utc": null,
+    "source_id": "synthetic-exo_t",
+    "missing_reason": "no_observation"
+   },
+   {
+    "feature": "hour",
+    "value": 9,
+    "unit": "h",
+    "observed_at_utc": "2024-01-06T09:00:00Z",
+    "source_id": "synthetic-hour",
+    "missing_reason": null
+   }
+  ],
+  "rules": [],
+  "prediction": {
+   "value": null,
+   "label": null,
+   "winning_rule_id": null,
+   "unit": "u",
+   "fallback_used": false,
+   "missing_reason": "missing_input"
+  },
+  "observation_ids": [],
+  "quality": {
+   "status": "warning",
+   "warnings": [
+    "missing input: exo_t"
+   ]
+  }
+ },
+ {
+  "schema_version": "0.3.0",
+  "data_version": "synthetic-test",
+  "synthetic": true,
+  "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+  "task_id": "synthetic_class_h6",
+  "entity_id": "E0",
+  "issued_at_utc": "2024-01-06T10:00:00Z",
+  "valid_at_utc": "2024-01-06T16:00:00Z",
+  "inference": {
+   "family": "winning_rule_classifier",
+   "tnorm": "product",
+   "rule_mode": null,
+   "tolerance": 0,
+   "fallback": "unknown",
+   "rule_weighting": "dominance_score",
+   "allow_unknown": true,
+   "exfuzzy_version": "3.3.1"
+  },
+  "feature_values": [
+   {
+    "feature": "y_t",
+    "value": 43.66861450688028,
+    "unit": "u",
+    "observed_at_utc": "2024-01-06T10:00:00Z",
+    "source_id": "synthetic-y_t",
+    "missing_reason": null
+   },
+   {
+    "feature": "y_lag3",
+    "value": 35.84988901685133,
+    "unit": "u",
+    "observed_at_utc": "2024-01-06T07:00:00Z",
+    "source_id": "synthetic-y_lag3",
+    "missing_reason": null
+   },
+   {
+    "feature": "exo_t",
+    "value": 0.9150931684283896,
+    "unit": "m/s",
+    "observed_at_utc": "2024-01-06T09:00:00Z",
+    "source_id": "synthetic-exo_t",
+    "missing_reason": null
+   },
+   {
+    "feature": "hour",
+    "value": 10,
+    "unit": "h",
+    "observed_at_utc": "2024-01-06T10:00:00Z",
+    "source_id": "synthetic-hour",
+    "missing_reason": null
+   }
+  ],
+  "rules": [
+   {
+    "rule_id": "R01",
+    "antecedents": [
+     {
+      "feature": "y_lag3",
+      "term": "Low",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.2218508077836796,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R02",
+    "antecedents": [
+     {
+      "feature": "y_lag3",
+      "term": "Medium",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": 0.08646940615863576,
+    "association_degree": 0.08646940615863576
+   },
+   {
+    "rule_id": "R03",
+    "antecedents": [
+     {
+      "feature": "hour",
+      "term": "Low",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.025097456920817343,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R04",
+    "antecedents": [
+     {
+      "feature": "exo_t",
+      "term": "Low",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": 0.11196007267879568,
+    "association_degree": 0.11196007267879568
+   }
+  ],
+  "prediction": {
+   "value": null,
+   "label": "high",
+   "winning_rule_id": "R04",
+   "unit": "u",
+   "fallback_used": false,
+   "missing_reason": null
+  },
+  "observation_ids": [],
+  "quality": {
+   "status": "valid",
+   "warnings": []
+  }
+ },
+ {
+  "schema_version": "0.3.0",
+  "data_version": "synthetic-test",
+  "synthetic": true,
+  "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+  "task_id": "synthetic_class_h6",
+  "entity_id": "E1",
+  "issued_at_utc": "2024-01-06T10:00:00Z",
+  "valid_at_utc": "2024-01-06T16:00:00Z",
+  "inference": {
+   "family": "winning_rule_classifier",
+   "tnorm": "product",
+   "rule_mode": null,
+   "tolerance": 0,
+   "fallback": "unknown",
+   "rule_weighting": "dominance_score",
+   "allow_unknown": true,
+   "exfuzzy_version": "3.3.1"
+  },
+  "feature_values": [
+   {
+    "feature": "y_t",
+    "value": 55.62274672631892,
+    "unit": "u",
+    "observed_at_utc": "2024-01-06T10:00:00Z",
+    "source_id": "synthetic-y_t",
+    "missing_reason": null
+   },
+   {
+    "feature": "y_lag3",
+    "value": 61.36024686085983,
+    "unit": "u",
+    "observed_at_utc": "2024-01-06T07:00:00Z",
+    "source_id": "synthetic-y_lag3",
+    "missing_reason": null
+   },
+   {
+    "feature": "exo_t",
+    "value": 1.5081463112199047,
+    "unit": "m/s",
+    "observed_at_utc": "2024-01-06T09:00:00Z",
+    "source_id": "synthetic-exo_t",
+    "missing_reason": null
+   },
+   {
+    "feature": "hour",
+    "value": 10,
+    "unit": "h",
+    "observed_at_utc": "2024-01-06T10:00:00Z",
+    "source_id": "synthetic-hour",
+    "missing_reason": null
+   }
+  ],
+  "rules": [
+   {
+    "rule_id": "R01",
+    "antecedents": [
+     {
+      "feature": "y_lag3",
+      "term": "Low",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.2218508077836796,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R02",
+    "antecedents": [
+     {
+      "feature": "y_lag3",
+      "term": "Medium",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.08646940615863576,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R03",
+    "antecedents": [
+     {
+      "feature": "hour",
+      "term": "Low",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.025097456920817343,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R04",
+    "antecedents": [
+     {
+      "feature": "exo_t",
+      "term": "Low",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": 0.11196007267879568,
+    "association_degree": 0.11196007267879568
+   }
+  ],
+  "prediction": {
+   "value": null,
+   "label": "high",
+   "winning_rule_id": "R04",
+   "unit": "u",
+   "fallback_used": false,
+   "missing_reason": null
+  },
+  "observation_ids": [],
+  "quality": {
+   "status": "valid",
+   "warnings": []
+  }
+ }
+]

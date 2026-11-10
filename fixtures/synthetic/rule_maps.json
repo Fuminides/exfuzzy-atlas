@@ -1,0 +1,3521 @@
+[
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "time": "2025-01-15T06:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T06:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 1.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "time": "2025-01-15T07:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T07:00:00Z",
+      "time_to_utc": "2025-01-15T07:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.28,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 1.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "time": "2025-01-15T08:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T08:00:00Z",
+      "time_to_utc": "2025-01-15T08:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.6666666666666666,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": null,
+            "n_valid": 0,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": "missing_input",
+            "quality": {
+              "status": "warning",
+              "warnings": [
+                "missing input: wind_speed_t"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "time": "2025-01-15T09:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T09:00:00Z",
+      "time_to_utc": "2025-01-15T09:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.7333333333333334,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.375,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "time": "2025-01-15T10:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T10:00:00Z",
+      "time_to_utc": "2025-01-15T10:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.7999999999999999,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.4229999999999998,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "time": "2025-01-15T11:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T11:00:00Z",
+      "time_to_utc": "2025-01-15T11:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.7549999999999997,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R01",
+            "metric": "firing_strength",
+            "value": 0.6,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "mean_activation",
+      "from": "2025-01-15T06:00:00Z",
+      "to": "2025-01-15T12:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "mean_activation",
+      "tau": null,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T12:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R01",
+            "metric": "mean_activation",
+            "value": 0.5391666666666666,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R01",
+            "metric": "mean_activation",
+            "value": 0.0,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R01",
+            "metric": "mean_activation",
+            "value": 0.0,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R01",
+            "metric": "mean_activation",
+            "value": 0.6796,
+            "n_valid": 5,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "activation_frequency",
+      "from": "2025-01-15T06:00:00Z",
+      "to": "2025-01-15T12:00:00Z",
+      "tau": 0.5
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R01",
+      "metric": "activation_frequency",
+      "tau": 0.5,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T12:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R01",
+            "metric": "activation_frequency",
+            "value": 0.6666666666666666,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R01",
+            "metric": "activation_frequency",
+            "value": 0.0,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R01",
+            "metric": "activation_frequency",
+            "value": 0.0,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R01",
+            "metric": "activation_frequency",
+            "value": 0.6,
+            "n_valid": 5,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "time": "2025-01-15T06:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T06:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.3,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 1.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 1.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "time": "2025-01-15T07:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T07:00:00Z",
+      "time_to_utc": "2025-01-15T07:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.3,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.8399999999999999,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.97,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "time": "2025-01-15T08:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T08:00:00Z",
+      "time_to_utc": "2025-01-15T08:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 1.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.5900000000000001,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": null,
+            "n_valid": 0,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": "missing_input",
+            "quality": {
+              "status": "warning",
+              "warnings": [
+                "missing input: wind_speed_t"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "time": "2025-01-15T09:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T09:00:00Z",
+      "time_to_utc": "2025-01-15T09:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 1.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.2800000000000001,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.625,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "time": "2025-01-15T10:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T10:00:00Z",
+      "time_to_utc": "2025-01-15T10:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 1.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.04499999999999993,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.29500000000000026,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "time": "2025-01-15T11:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T11:00:00Z",
+      "time_to_utc": "2025-01-15T11:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.24500000000000027,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 1.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R02",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "mean_activation",
+      "from": "2025-01-15T06:00:00Z",
+      "to": "2025-01-15T12:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "mean_activation",
+      "tau": null,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T12:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R02",
+            "metric": "mean_activation",
+            "value": 0.14083333333333337,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R02",
+            "metric": "mean_activation",
+            "value": 0.9733333333333333,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R02",
+            "metric": "mean_activation",
+            "value": 0.4808333333333334,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R02",
+            "metric": "mean_activation",
+            "value": 0.18400000000000005,
+            "n_valid": 5,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "activation_frequency",
+      "from": "2025-01-15T06:00:00Z",
+      "to": "2025-01-15T12:00:00Z",
+      "tau": 0.5
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R02",
+      "metric": "activation_frequency",
+      "tau": 0.5,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T12:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R02",
+            "metric": "activation_frequency",
+            "value": 0.0,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R02",
+            "metric": "activation_frequency",
+            "value": 1.0,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R02",
+            "metric": "activation_frequency",
+            "value": 0.5,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R02",
+            "metric": "activation_frequency",
+            "value": 0.2,
+            "n_valid": 5,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "time": "2025-01-15T06:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T06:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.5333333333333332,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T06:00:00Z",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "time": "2025-01-15T07:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T07:00:00Z",
+      "time_to_utc": "2025-01-15T07:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.06666666666666643,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T07:00:00Z",
+            "time_to_utc": "2025-01-15T07:00:00Z",
+            "issued_at_utc": "2025-01-15T07:00:00Z",
+            "valid_at_utc": "2025-01-15T13:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "time": "2025-01-15T08:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T08:00:00Z",
+      "time_to_utc": "2025-01-15T08:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": null,
+            "n_valid": 0,
+            "time_from_utc": "2025-01-15T08:00:00Z",
+            "time_to_utc": "2025-01-15T08:00:00Z",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": "missing_input",
+            "quality": {
+              "status": "warning",
+              "warnings": [
+                "missing input: wind_speed_t"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "time": "2025-01-15T09:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T09:00:00Z",
+      "time_to_utc": "2025-01-15T09:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.3333333333333333,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T09:00:00Z",
+            "time_to_utc": "2025-01-15T09:00:00Z",
+            "issued_at_utc": "2025-01-15T09:00:00Z",
+            "valid_at_utc": "2025-01-15T15:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "time": "2025-01-15T10:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T10:00:00Z",
+      "time_to_utc": "2025-01-15T10:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T10:00:00Z",
+            "time_to_utc": "2025-01-15T10:00:00Z",
+            "issued_at_utc": "2025-01-15T10:00:00Z",
+            "valid_at_utc": "2025-01-15T16:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "time": "2025-01-15T11:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "firing_strength",
+      "tau": null,
+      "time_from_utc": "2025-01-15T11:00:00Z",
+      "time_to_utc": "2025-01-15T11:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R03",
+            "metric": "firing_strength",
+            "value": 0.0,
+            "n_valid": 1,
+            "time_from_utc": "2025-01-15T11:00:00Z",
+            "time_to_utc": "2025-01-15T11:00:00Z",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "mean_activation",
+      "from": "2025-01-15T06:00:00Z",
+      "to": "2025-01-15T12:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "mean_activation",
+      "tau": null,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T12:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R03",
+            "metric": "mean_activation",
+            "value": 0.0,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R03",
+            "metric": "mean_activation",
+            "value": 0.0,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R03",
+            "metric": "mean_activation",
+            "value": 0.15555555555555547,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R03",
+            "metric": "mean_activation",
+            "value": 0.0,
+            "n_valid": 5,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": null,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "activation_frequency",
+      "from": "2025-01-15T06:00:00Z",
+      "to": "2025-01-15T12:00:00Z",
+      "tau": 0.5
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "rule_id": "R03",
+      "metric": "activation_frequency",
+      "tau": 0.5,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T12:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "rule_id": "R03",
+            "metric": "activation_frequency",
+            "value": 0.0,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "rule_id": "R03",
+            "metric": "activation_frequency",
+            "value": 0.0,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "rule_id": "R03",
+            "metric": "activation_frequency",
+            "value": 0.16666666666666666,
+            "n_valid": 6,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "rule_id": "R03",
+            "metric": "activation_frequency",
+            "value": 0.0,
+            "n_valid": 5,
+            "time_from_utc": "2025-01-15T06:00:00Z",
+            "time_to_utc": "2025-01-15T12:00:00Z",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "tau": 0.5,
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  }
+]

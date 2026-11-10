@@ -1,0 +1,316 @@
+{
+ "schema_version": "0.3.0",
+ "data_version": "synthetic-test",
+ "synthetic": true,
+ "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+ "task_id": "synthetic_class_h6",
+ "domain": "air",
+ "inference": {
+  "family": "winning_rule_classifier",
+  "tnorm": "product",
+  "rule_mode": null,
+  "tolerance": 0,
+  "fallback": "unknown",
+  "rule_weighting": "dominance_score",
+  "allow_unknown": true,
+  "exfuzzy_version": "3.3.1"
+ },
+ "target_scheme": {
+  "name": "Synthetic bands (invented, not an official index)",
+  "source_url": "https://example.org/synthetic",
+  "unit": "u",
+  "boundary": "upper_inclusive",
+  "classes": [
+   {
+    "label": "low",
+    "lower": null,
+    "upper": 34,
+    "color": "#00FFFF",
+    "description": "invented",
+    "merged_from": []
+   },
+   {
+    "label": "mid",
+    "lower": 34,
+    "upper": 50,
+    "color": "#FFCC00",
+    "description": "invented",
+    "merged_from": []
+   },
+   {
+    "label": "high",
+    "lower": 50,
+    "upper": 1000,
+    "color": "#FF3300",
+    "description": "invented",
+    "merged_from": []
+   }
+  ],
+  "kind": "analytical",
+  "short_name": null
+ },
+ "variables": [
+  {
+   "feature": "y_t",
+   "unit": "u",
+   "domain": [
+    -0.5513443693790216,
+    82.96277753024067
+   ],
+   "terms": [
+    {
+     "name": "Low",
+     "membership_type": "trapezoidal",
+     "params": [
+      -0.5514443693790216,
+      -0.5514443693790216,
+      24.238622080368394,
+      33.716138429437656
+     ]
+    },
+    {
+     "name": "Medium",
+     "membership_type": "trapezoidal",
+     "params": [
+      24.238622080368394,
+      33.716138429437656,
+      43.33154160432075,
+      55.394502816007574
+     ]
+    },
+    {
+     "name": "High",
+     "membership_type": "trapezoidal",
+     "params": [
+      43.33154160432075,
+      55.394502816007574,
+      82.96287753024068,
+      82.96287753024068
+     ]
+    }
+   ]
+  },
+  {
+   "feature": "y_lag3",
+   "unit": "u",
+   "domain": [
+    -0.5513443693790216,
+    82.96277753024067
+   ],
+   "terms": [
+    {
+     "name": "Low",
+     "membership_type": "trapezoidal",
+     "params": [
+      -0.5514443693790216,
+      -0.5514443693790216,
+      24.287443345847077,
+      33.733591694694034
+     ]
+    },
+    {
+     "name": "Medium",
+     "membership_type": "trapezoidal",
+     "params": [
+      24.287443345847077,
+      33.733591694694034,
+      43.31893288630616,
+      54.98770726642847
+     ]
+    },
+    {
+     "name": "High",
+     "membership_type": "trapezoidal",
+     "params": [
+      43.31893288630616,
+      54.98770726642847,
+      82.96287753024068,
+      82.96287753024068
+     ]
+    }
+   ]
+  },
+  {
+   "feature": "exo_t",
+   "unit": "m/s",
+   "domain": [
+    0,
+    8.407449283932516
+   ],
+   "terms": [
+    {
+     "name": "Low",
+     "membership_type": "trapezoidal",
+     "params": [
+      -0.0001,
+      -0.0001,
+      1.5087931684216886,
+      2.5231621805065836
+     ]
+    },
+    {
+     "name": "Medium",
+     "membership_type": "trapezoidal",
+     "params": [
+      1.5087931684216886,
+      2.5231621805065836,
+      3.6786285682544717,
+      4.618808666426912
+     ]
+    },
+    {
+     "name": "High",
+     "membership_type": "trapezoidal",
+     "params": [
+      3.6786285682544717,
+      4.618808666426912,
+      8.407549283932516,
+      8.407549283932516
+     ]
+    }
+   ]
+  },
+  {
+   "feature": "hour",
+   "unit": "h",
+   "domain": [
+    0,
+    23
+   ],
+   "terms": [
+    {
+     "name": "Low",
+     "membership_type": "trapezoidal",
+     "params": [
+      -0.0001,
+      -0.0001,
+      4,
+      9
+     ]
+    },
+    {
+     "name": "Medium",
+     "membership_type": "trapezoidal",
+     "params": [
+      4,
+      9,
+      14,
+      19
+     ]
+    },
+    {
+     "name": "High",
+     "membership_type": "trapezoidal",
+     "params": [
+      14,
+      19,
+      23.0001,
+      23.0001
+     ]
+    }
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "rule_id": "R01",
+   "position": 0,
+   "antecedents": [
+    {
+     "feature": "y_lag3",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "class",
+    "value": null,
+    "term": "low",
+    "unit": null
+   },
+   "text": "IF y_lag3 IS Low THEN Y = low (peso 0.22)",
+   "duplicate_of": null,
+   "weight": 0.2218508077836796,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.3040331982788339,
+    "activation_frequency_tau0.5": 0.30960086299892126
+   }
+  },
+  {
+   "rule_id": "R02",
+   "position": 1,
+   "antecedents": [
+    {
+     "feature": "y_lag3",
+     "term": "Medium",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "class",
+    "value": null,
+    "term": "mid",
+    "unit": null
+   },
+   "text": "IF y_lag3 IS Medium THEN Y = mid (peso 0.086)",
+   "duplicate_of": null,
+   "weight": 0.08646940615863576,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.3933866453707124,
+    "activation_frequency_tau0.5": 0.3851132686084142
+   }
+  },
+  {
+   "rule_id": "R03",
+   "position": 2,
+   "antecedents": [
+    {
+     "feature": "hour",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "class",
+    "value": null,
+    "term": "mid",
+    "unit": null
+   },
+   "text": "IF hour IS Low THEN Y = mid (peso 0.025)",
+   "duplicate_of": null,
+   "weight": 0.025097456920817343,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.29600862998921257,
+    "activation_frequency_tau0.5": 0.2961165048543689
+   }
+  },
+  {
+   "rule_id": "R04",
+   "position": 3,
+   "antecedents": [
+    {
+     "feature": "exo_t",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "class",
+    "value": null,
+    "term": "high",
+    "unit": null
+   },
+   "text": "IF exo_t IS Low THEN Y = high (peso 0.11)",
+   "duplicate_of": null,
+   "weight": 0.11196007267879568,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.29952369928102746,
+    "activation_frequency_tau0.5": 0.2977346278317152
+   }
+  }
+ ]
+}

@@ -1,0 +1,171 @@
+{
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/QualityReport.schema.json",
+  "additionalProperties": false,
+  "description": "Audit table required for every source (DATA_SOURCES.md).",
+  "properties": {
+    "date_range_utc": {
+      "anyOf": [
+        {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "format": "date-time",
+              "type": "string"
+            }
+          ],
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Date Range Utc"
+    },
+    "downloaded_at_utc": {
+      "format": "date-time",
+      "title": "Downloaded At Utc",
+      "type": "string"
+    },
+    "duplicate_rows": {
+      "minimum": 0,
+      "title": "Duplicate Rows",
+      "type": "integer"
+    },
+    "geographic_coverage": {
+      "additionalProperties": true,
+      "title": "Geographic Coverage",
+      "type": "object"
+    },
+    "input_sha256": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "title": "Input Sha256",
+      "type": "object"
+    },
+    "invalid_codes": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "default": {},
+      "title": "Invalid Codes",
+      "type": "object"
+    },
+    "known_limitations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Known Limitations",
+      "type": "array"
+    },
+    "license": {
+      "title": "License",
+      "type": "string"
+    },
+    "missing_by_column": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Missing By Column",
+      "type": "object"
+    },
+    "outliers_flagged": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Outliers Flagged",
+      "type": "integer"
+    },
+    "period_end": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Period End"
+    },
+    "period_start": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Period Start"
+    },
+    "raw_rows": {
+      "minimum": 0,
+      "title": "Raw Rows",
+      "type": "integer"
+    },
+    "sampling_frequency": {
+      "title": "Sampling Frequency",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_id": {
+      "title": "Source Id",
+      "type": "string"
+    },
+    "source_url": {
+      "title": "Source Url",
+      "type": "string"
+    },
+    "uniqueness_key": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Uniqueness Key",
+      "type": "array"
+    },
+    "valid_rows": {
+      "minimum": 0,
+      "title": "Valid Rows",
+      "type": "integer"
+    },
+    "value_units": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Value Units",
+      "type": "object"
+    }
+  },
+  "required": [
+    "source_id",
+    "source_url",
+    "downloaded_at_utc",
+    "period_start",
+    "period_end",
+    "license",
+    "input_sha256",
+    "raw_rows",
+    "valid_rows",
+    "duplicate_rows",
+    "uniqueness_key",
+    "missing_by_column",
+    "date_range_utc",
+    "geographic_coverage",
+    "sampling_frequency",
+    "value_units",
+    "known_limitations"
+  ],
+  "title": "QualityReport",
+  "type": "object"
+}

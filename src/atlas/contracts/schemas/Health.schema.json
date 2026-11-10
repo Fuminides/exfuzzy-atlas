@@ -1,0 +1,30 @@
+{
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/Health.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "enum": [
+        "mock",
+        "artifacts"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "status": {
+      "const": "ok",
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "status",
+    "mode"
+  ],
+  "title": "Health",
+  "type": "object"
+}

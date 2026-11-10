@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use ExFuzzy Atlas, please cite it as below, and cite ex-fuzzy, the library it builds on."
+type: software
+title: "ExFuzzy Atlas"
+abstract: >-
+  An atlas of fuzzy rules over open environmental and urban data. It learns rules with the ex-fuzzy library and shows
+  where and when each rule fires, on official geometries and with verifiable traces.
+authors:
+  - given-names: Javier
+    family-names: Fumanal Idocin
+    orcid: "https://orcid.org/0000-0002-0644-1355"
+version: 0.1.0
+license: AGPL-3.0-or-later
+repository-code: "https://github.com/Fuminides/exfuzzy-atlas"
+url: "https://fuminides.github.io/exfuzzy-atlas/"
+keywords:
+  - fuzzy rules
+  - explainable AI
+  - open data
+  - air quality
+  - water quality
+  - mobility
+references:
+  - type: software
+    title: "ex-fuzzy"
+    authors:
+      - given-names: Javier
+        family-names: Fumanal-Idocin
+      - given-names: Javier
+        family-names: Andreu-Perez
+    version: 3.4.0
+    repository-code: "https://github.com/Fuminides/ex-fuzzy"
+  - type: article
+    title: "Ex-Fuzzy: A library for symbolic explainable AI through fuzzy logic programming"
+    authors:
+      - given-names: Javier
+        family-names: Fumanal-Idocin
+      - given-names: Javier
+        family-names: Andreu-Perez
+    journal: Neurocomputing
+    year: 2024
+    start: 128048
+    issn: 0925-2312
+    doi: 10.1016/j.neucom.2024.128048

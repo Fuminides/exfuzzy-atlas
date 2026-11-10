@@ -1,0 +1,661 @@
+{
+  "$defs": {
+    "Attribution": {
+      "additionalProperties": false,
+      "description": "Credit and licence of a data source (v0.4); the text is what a redistribution must show.",
+      "properties": {
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Licence name; null when the source declares none (say so in text).",
+          "title": "License"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "text_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6.1: the same credit in English; the UI shows it when the interface is in English, else falls back to `text`. The licence and the URL are the same in both languages.",
+          "title": "Text En"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "title": "Attribution",
+      "type": "object"
+    },
+    "Domain": {
+      "enum": [
+        "air",
+        "water",
+        "mobility"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "MetricRow": {
+      "additionalProperties": false,
+      "properties": {
+        "estimator": {
+          "title": "Estimator",
+          "type": "string"
+        },
+        "metric": {
+          "title": "Metric",
+          "type": "string"
+        },
+        "n": {
+          "minimum": 0,
+          "title": "N",
+          "type": "integer"
+        },
+        "slice": {
+          "default": "all",
+          "title": "Slice",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "estimator",
+        "metric",
+        "value",
+        "n"
+      ],
+      "title": "MetricRow",
+      "type": "object"
+    },
+    "MetricsReport": {
+      "additionalProperties": false,
+      "description": "Every estimator in one report is evaluated on the same split.",
+      "properties": {
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "rows": {
+          "items": {
+            "$ref": "#/$defs/MetricRow"
+          },
+          "title": "Rows",
+          "type": "array"
+        },
+        "schema_version": {
+          "default": "0.7.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "split": {
+          "$ref": "#/$defs/SplitSpec"
+        },
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model_id",
+        "task_id",
+        "split",
+        "rows"
+      ],
+      "title": "MetricsReport",
+      "type": "object"
+    },
+    "RunManifest": {
+      "additionalProperties": false,
+      "properties": {
+        "artifacts": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Name -> path relative to the run directory.",
+          "title": "Artifacts",
+          "type": "object"
+        },
+        "created_at_utc": {
+          "format": "date-time",
+          "title": "Created At Utc",
+          "type": "string"
+        },
+        "data_checksums": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "title": "Data Checksums",
+          "type": "object"
+        },
+        "data_version": {
+          "title": "Data Version",
+          "type": "string"
+        },
+        "domain": {
+          "$ref": "#/$defs/Domain"
+        },
+        "exfuzzy_version": {
+          "title": "Exfuzzy Version",
+          "type": "string"
+        },
+        "features": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Features",
+          "type": "array"
+        },
+        "git_commit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Git Commit"
+        },
+        "git_dirty": {
+          "title": "Git Dirty",
+          "type": "boolean"
+        },
+        "horizon_hours": {
+          "description": "0 for same-time inference (no forecast).",
+          "minimum": 0,
+          "title": "Horizon Hours",
+          "type": "integer"
+        },
+        "hyperparameters": {
+          "additionalProperties": true,
+          "title": "Hyperparameters",
+          "type": "object"
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "python_version": {
+          "title": "Python Version",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "0.7.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "seed": {
+          "title": "Seed",
+          "type": "integer"
+        },
+        "split": {
+          "$ref": "#/$defs/SplitSpec"
+        },
+        "target": {
+          "title": "Target",
+          "type": "string"
+        },
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "run_id",
+        "model_id",
+        "task_id",
+        "domain",
+        "created_at_utc",
+        "git_commit",
+        "git_dirty",
+        "exfuzzy_version",
+        "python_version",
+        "seed",
+        "split",
+        "data_version",
+        "data_checksums",
+        "target",
+        "horizon_hours",
+        "features",
+        "hyperparameters",
+        "artifacts"
+      ],
+      "title": "RunManifest",
+      "type": "object"
+    },
+    "SchemeKind": {
+      "description": "What a classification scheme is (v0.4); the UI words the classes differently for each.",
+      "enum": [
+        "official_index",
+        "percentile_reference",
+        "analytical"
+      ],
+      "title": "SchemeKind",
+      "type": "string"
+    },
+    "SplitSpec": {
+      "additionalProperties": false,
+      "description": "Chronological split. Periods are half-open [from, to) and must not overlap.",
+      "properties": {
+        "embargo_hours": {
+          "description": "Gap between consecutive periods, at least the horizon.",
+          "minimum": 0,
+          "title": "Embargo Hours",
+          "type": "integer"
+        },
+        "test_from_utc": {
+          "format": "date-time",
+          "title": "Test From Utc",
+          "type": "string"
+        },
+        "test_to_utc": {
+          "format": "date-time",
+          "title": "Test To Utc",
+          "type": "string"
+        },
+        "train_from_utc": {
+          "format": "date-time",
+          "title": "Train From Utc",
+          "type": "string"
+        },
+        "train_to_utc": {
+          "format": "date-time",
+          "title": "Train To Utc",
+          "type": "string"
+        },
+        "validation_from_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Validation From Utc"
+        },
+        "validation_to_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Validation To Utc"
+        }
+      },
+      "required": [
+        "train_from_utc",
+        "train_to_utc",
+        "test_from_utc",
+        "test_to_utc",
+        "embargo_hours"
+      ],
+      "title": "SplitSpec",
+      "type": "object"
+    },
+    "TargetClass": {
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "anyOf": [
+            {
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Official colour, if any.",
+          "title": "Color"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "description_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English version of `description`; the UI shows it when the interface is in English, else falls back to `description`.",
+          "title": "Description En"
+        },
+        "display_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.5.1: name shown in the UI language when the official `label` is in another one, e.g. EAQI 'Good' -> 'Buena'. `label` stays the key and the official name.",
+          "title": "Display Label"
+        },
+        "display_label_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English display name of the class, e.g. ICA 'Buena' -> 'Good' (EAQI: its own official name); the UI shows it when the interface is in English, else falls back to `display_label` (then `label`).",
+          "title": "Display Label En"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "lower": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Lower bound in the scheme unit; null = unbounded.",
+          "title": "Lower"
+        },
+        "merged_from": {
+          "default": [],
+          "description": "v0.4: labels of the official classes this one groups (e.g. ICA 'Desfavorable o peor').",
+          "items": {
+            "type": "string"
+          },
+          "title": "Merged From",
+          "type": "array"
+        },
+        "upper": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Upper bound in the scheme unit; null = unbounded.",
+          "title": "Upper"
+        }
+      },
+      "required": [
+        "label",
+        "lower",
+        "upper"
+      ],
+      "title": "TargetClass",
+      "type": "object"
+    },
+    "TargetScheme": {
+      "additionalProperties": false,
+      "description": "Ordered categories of a classification target, taken from a cited source (e.g. an official index).",
+      "properties": {
+        "boundary": {
+          "default": "lower_inclusive",
+          "description": "Which bound a value exactly on a boundary belongs to.",
+          "enum": [
+            "lower_inclusive",
+            "upper_inclusive"
+          ],
+          "title": "Boundary",
+          "type": "string"
+        },
+        "classes": {
+          "items": {
+            "$ref": "#/$defs/TargetClass"
+          },
+          "minItems": 2,
+          "title": "Classes",
+          "type": "array"
+        },
+        "kind": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SchemeKind"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.4: official index, percentile reference or analytical."
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "name_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English display name of the scheme; the UI shows it when the interface is in English, else falls back to `name`.",
+          "title": "Name En"
+        },
+        "short_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.4: compact name for legends, e.g. 'ICA'.",
+          "title": "Short Name"
+        },
+        "short_name_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English compact name, e.g. 'Relative level' for 'Nivel relativo'; the UI shows it when the interface is in English, else falls back to `short_name`.",
+          "title": "Short Name En"
+        },
+        "source_url": {
+          "title": "Source Url",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "source_url",
+        "unit",
+        "classes"
+      ],
+      "title": "TargetScheme",
+      "type": "object"
+    },
+    "TimeCoverage": {
+      "additionalProperties": false,
+      "description": "Issue times with precomputed outputs; drives the timeline.",
+      "properties": {
+        "issued_from_utc": {
+          "format": "date-time",
+          "title": "Issued From Utc",
+          "type": "string"
+        },
+        "issued_to_utc": {
+          "format": "date-time",
+          "title": "Issued To Utc",
+          "type": "string"
+        },
+        "regular": {
+          "default": true,
+          "description": "v0.4. False: issue times are irregular sample times (step_hours=1 is only the finest step the contract expresses); use window aggregates, not issue-time instants.",
+          "title": "Regular",
+          "type": "boolean"
+        },
+        "step_hours": {
+          "exclusiveMinimum": 0,
+          "title": "Step Hours",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "issued_from_utc",
+        "issued_to_utc",
+        "step_hours"
+      ],
+      "title": "TimeCoverage",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ModelCard.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "attribution": {
+      "default": [],
+      "description": "v0.4: credits and licences of the model's data.",
+      "items": {
+        "$ref": "#/$defs/Attribution"
+      },
+      "title": "Attribution",
+      "type": "array"
+    },
+    "coverage": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TimeCoverage"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "manifest": {
+      "$ref": "#/$defs/RunManifest"
+    },
+    "metrics": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MetricsReport"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "target_scheme": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TargetScheme"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Class labels, bounds and colours (classifiers)."
+    }
+  },
+  "required": [
+    "data_version",
+    "manifest"
+  ],
+  "title": "ModelCard",
+  "type": "object"
+}

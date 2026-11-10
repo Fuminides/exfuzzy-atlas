@@ -1,0 +1,108 @@
+{
+  "experiment_id": "ica2-traffic-with",
+  "table": "processed/air/features/madrid_no2_h6/table",
+  "complete_column": "complete",
+  "base": {
+    "task_id": "madrid_no2_h6",
+    "domain": "air",
+    "target": "no2",
+    "target_column": "target",
+    "unit": "ug/m3",
+    "horizon_hours": 6,
+    "features": [
+      "no2_last",
+      "no2_lag1h",
+      "no2_lag3h",
+      "no2_lag24h",
+      "wind_speed",
+      "temperature",
+      "relative_humidity",
+      "valid_hour_local",
+      "valid_weekday",
+      "traffic_intensity_last",
+      "traffic_intensity_lag24h"
+    ],
+    "feature_units": {
+      "no2_last": "ug/m3",
+      "no2_lag1h": "ug/m3",
+      "no2_lag3h": "ug/m3",
+      "no2_lag24h": "ug/m3",
+      "wind_speed": "m/s",
+      "temperature": "degC",
+      "relative_humidity": "%",
+      "valid_hour_local": "h",
+      "valid_weekday": "day",
+      "traffic_intensity_last": "veh/h",
+      "traffic_intensity_lag24h": "veh/h"
+    },
+    "persistence_feature": "no2_last",
+    "split": {
+      "train_from_utc": "2019-01-01T00:00:00Z",
+      "train_to_utc": "2023-12-31T00:00:00Z",
+      "validation_from_utc": "2024-01-01T00:00:00Z",
+      "validation_to_utc": "2024-12-31T00:00:00Z",
+      "test_from_utc": "2025-01-01T00:00:00Z",
+      "test_to_utc": "2026-01-01T00:00:00Z",
+      "embargo_hours": 24
+    },
+    "seed": 0,
+    "data_version": "madrid-no2-h6-traffic-v1",
+    "data_checksums": {
+      "feature_card.json": "3f78005cc0b64af17ff09944a7e0484567ad98a86bf82d699a41a820f06167fb",
+      "stations.geojson": "5080137932fee2c30b4bed687c16f32a03bd1507d126ecfdac97597f04db5d01",
+      "traffic/feature_card.json": "289296c1f1c56ec7e1b1eead2c396909868de0529f761326a8b100405980ab41"
+    },
+    "synthetic": false,
+    "timezone": "Europe/Madrid",
+    "ridge_alpha": 1.0,
+    "gbm_max_iter": 200
+  },
+  "scheme": "configs/ml/ica_no2_scheme.json",
+  "merge_min_train_rows": 500,
+  "subsample": {
+    "n_rows": 30000,
+    "seed": 20260101,
+    "partition_rows": null
+  },
+  "selection": {
+    "candidates": [
+      {
+        "nRules": 30,
+        "nAnts": 2,
+        "n_linguistic_variables": 3,
+        "rule_weighting": "dominance_score",
+        "sampling_power": 0.5
+      }
+    ],
+    "n_gen": 150,
+    "pop_size": 60,
+    "patience": null,
+    "seed": 0
+  },
+  "final": {
+    "n_gen": 150,
+    "pop_size": 60,
+    "patience": null,
+    "seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "partitions": {
+    "file": "configs/ml/madrid_partitions.json"
+  },
+  "extra_tables": [
+    {
+      "table": "processed/air/features/madrid_no2_h6_traffic/table",
+      "columns": [
+        "traffic_intensity_last",
+        "traffic_intensity_lag24h"
+      ]
+    }
+  ],
+  "require_columns": [
+    "traffic_intensity_last",
+    "traffic_intensity_lag24h"
+  ]
+}

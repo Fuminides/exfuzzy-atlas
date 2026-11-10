@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.7.0",
+  "data_version": "synthetic-fixture-v0",
+  "synthetic": true,
+  "type": "FeatureCollection",
+  "domain": "air",
+  "attribution": [
+    {
+      "text": "Synthetic fixtures: invented stations and values, not a real source.",
+      "text_en": null,
+      "license": null,
+      "url": null
+    }
+  ],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "SYN_A",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.703,
+          40.417
+        ]
+      },
+      "properties": {
+        "entity_id": "SYN_A",
+        "domain": "air",
+        "name": "Synthetic station A (not real)",
+        "geometry_support": "observed_point",
+        "geometry_source": "synthetic-fixture",
+        "timezone": "Europe/Madrid",
+        "modelled": true,
+        "attributes": {
+          "synthetic": true
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SYN_B",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.668,
+          40.452
+        ]
+      },
+      "properties": {
+        "entity_id": "SYN_B",
+        "domain": "air",
+        "name": "Synthetic station B (not real)",
+        "geometry_support": "observed_point",
+        "geometry_source": "synthetic-fixture",
+        "timezone": "Europe/Madrid",
+        "modelled": true,
+        "attributes": {
+          "synthetic": true
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SYN_C",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.741,
+          40.388
+        ]
+      },
+      "properties": {
+        "entity_id": "SYN_C",
+        "domain": "air",
+        "name": "Synthetic station C (not real)",
+        "geometry_support": "observed_point",
+        "geometry_source": "synthetic-fixture",
+        "timezone": "Europe/Madrid",
+        "modelled": true,
+        "attributes": {
+          "synthetic": true
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "SYN_D",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.632,
+          40.401
+        ]
+      },
+      "properties": {
+        "entity_id": "SYN_D",
+        "domain": "air",
+        "name": "Synthetic station D (not real)",
+        "geometry_support": "observed_point",
+        "geometry_source": "synthetic-fixture",
+        "timezone": "Europe/Madrid",
+        "modelled": true,
+        "attributes": {
+          "synthetic": true
+        }
+      }
+    }
+  ]
+}

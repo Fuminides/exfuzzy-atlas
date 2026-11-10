@@ -1,0 +1,675 @@
+{
+  "data_version": "madrid-traffic-2023-2025-v1",
+  "default_months": [
+    "2023-01",
+    "2025-12"
+  ],
+  "aggregation": {
+    "min_valid_quarters": 3,
+    "intensity_max_veh_h": 20000,
+    "note": "A 15-minute record is valid if error='N' and 0 <= intensidad <= intensity_max_veh_h. The hourly value is the mean of the valid records of the local hour, only if at least min_valid_quarters of 4 are valid."
+  },
+  "association": {
+    "study_radii_m": [
+      250,
+      500,
+      1000
+    ],
+    "radius_m": 500,
+    "kinds": [
+      "urban",
+      "m30",
+      "other"
+    ],
+    "note": "Points of the location file of the same month within radius_m of the air station, of the listed kinds. Only the points of the association are aggregated (the volume stays small); association.parquet lists every point up to max(study_radii_m) with in_rule marking the members. Changing radius_m needs a new run over the raw files (about 8 s per month)."
+  },
+  "traffic": {
+    "source_id": "madrid-traffic",
+    "title": "Trafico. Historico de datos del trafico desde 2013, puntos de medida (Ayuntamiento de Madrid)",
+    "landing_url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico",
+    "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/legalcode.es",
+    "attribution": "Ayuntamiento de Madrid, Area de Medio Ambiente y Movilidad. Datos abiertos: https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico",
+    "period_start": "2023-01-01",
+    "files": [
+      {
+        "path": "estructura_ds_contenido_trafico_historico.pdf",
+        "role": "documentation",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-81-transporte-ptomedida-historico/download/estructura_ds_contenido_trafico_historico.pdf"
+      },
+      {
+        "path": "traffic-2023-01.zip",
+        "role": "data",
+        "month": "2023-01",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-74-transporte-ptomedida-historico-zip/download/208627-74-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Enero 2023",
+        "portal_byte_size": 80574979
+      },
+      {
+        "path": "traffic-2023-02.zip",
+        "role": "data",
+        "month": "2023-02",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-138-transporte-ptomedida-historico-zip/download/208627-138-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Febrero 2023",
+        "portal_byte_size": 73541095
+      },
+      {
+        "path": "traffic-2023-03.zip",
+        "role": "data",
+        "month": "2023-03",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-61-transporte-ptomedida-historico-zip/download/208627-61-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Marzo 2023",
+        "portal_byte_size": 81551731
+      },
+      {
+        "path": "traffic-2023-04.zip",
+        "role": "data",
+        "month": "2023-04",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-55-transporte-ptomedida-historico-zip/download/208627-55-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Abril 2023",
+        "portal_byte_size": 78783575
+      },
+      {
+        "path": "traffic-2023-05.zip",
+        "role": "data",
+        "month": "2023-05",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-139-transporte-ptomedida-historico-zip/download/208627-139-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Mayo 2023",
+        "portal_byte_size": 82853838
+      },
+      {
+        "path": "traffic-2023-06.zip",
+        "role": "data",
+        "month": "2023-06",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-140-transporte-ptomedida-historico-zip/download/208627-140-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Junio 2023",
+        "portal_byte_size": 80129057
+      },
+      {
+        "path": "traffic-2023-07.zip",
+        "role": "data",
+        "month": "2023-07",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-37-transporte-ptomedida-historico-zip/download/208627-37-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Julio 2023",
+        "portal_byte_size": 81170992
+      },
+      {
+        "path": "traffic-2023-08.zip",
+        "role": "data",
+        "month": "2023-08",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-30-transporte-ptomedida-historico-zip/download/208627-30-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Agosto 2023",
+        "portal_byte_size": 77432956
+      },
+      {
+        "path": "traffic-2023-09.zip",
+        "role": "data",
+        "month": "2023-09",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-23-transporte-ptomedida-historico-zip/download/208627-23-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Septiembre 2023",
+        "portal_byte_size": 79919187
+      },
+      {
+        "path": "traffic-2023-10.zip",
+        "role": "data",
+        "month": "2023-10",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-84-transporte-ptomedida-historico-zip/download/208627-84-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Octubre 2023",
+        "portal_byte_size": 82839150
+      },
+      {
+        "path": "traffic-2023-11.zip",
+        "role": "data",
+        "month": "2023-11",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-125-transporte-ptomedida-historico-zip/download/208627-125-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Noviembre 2023",
+        "portal_byte_size": 81652175
+      },
+      {
+        "path": "traffic-2023-12.zip",
+        "role": "data",
+        "month": "2023-12",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-2-transporte-ptomedida-historico-zip/download/208627-2-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Diciembre 2023",
+        "portal_byte_size": 96229341
+      },
+      {
+        "path": "traffic-2024-01.zip",
+        "role": "data",
+        "month": "2024-01",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-141-transporte-ptomedida-historico-zip/download/208627-141-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Enero 2024",
+        "portal_byte_size": 84696327
+      },
+      {
+        "path": "traffic-2024-02.zip",
+        "role": "data",
+        "month": "2024-02",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-67-transporte-ptomedida-historico-zip/download/208627-67-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Febrero 2024",
+        "portal_byte_size": 79867231
+      },
+      {
+        "path": "traffic-2024-03.zip",
+        "role": "data",
+        "month": "2024-03",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-60-transporte-ptomedida-historico-zip/download/208627-60-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Marzo 2024",
+        "portal_byte_size": 85161449
+      },
+      {
+        "path": "traffic-2024-04.zip",
+        "role": "data",
+        "month": "2024-04",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-54-transporte-ptomedida-historico-zip/download/208627-54-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Abril 2024",
+        "portal_byte_size": 83234952
+      },
+      {
+        "path": "traffic-2024-05.zip",
+        "role": "data",
+        "month": "2024-05",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-49-transporte-ptomedida-historico-zip/download/208627-49-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Mayo 2024",
+        "portal_byte_size": 85452280
+      },
+      {
+        "path": "traffic-2024-06.zip",
+        "role": "data",
+        "month": "2024-06",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-43-transporte-ptomedida-historico-zip/download/208627-43-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Junio 2024",
+        "portal_byte_size": 82547303
+      },
+      {
+        "path": "traffic-2024-07.zip",
+        "role": "data",
+        "month": "2024-07",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-36-transporte-ptomedida-historico-zip/download/208627-36-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Julio 2024",
+        "portal_byte_size": 83759652
+      },
+      {
+        "path": "traffic-2024-08.zip",
+        "role": "data",
+        "month": "2024-08",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-29-transporte-ptomedida-historico-zip/download/208627-29-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Agosto 2024",
+        "portal_byte_size": 80343465
+      },
+      {
+        "path": "traffic-2024-09.zip",
+        "role": "data",
+        "month": "2024-09",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-85-transporte-ptomedida-historico-zip/download/208627-85-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Septiembre 2024",
+        "portal_byte_size": 81007299
+      },
+      {
+        "path": "traffic-2024-10.zip",
+        "role": "data",
+        "month": "2024-10",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-16-transporte-ptomedida-historico-zip/download/208627-16-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Octubre 2024",
+        "portal_byte_size": 92070742
+      },
+      {
+        "path": "traffic-2024-11.zip",
+        "role": "data",
+        "month": "2024-11",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-9-transporte-ptomedida-historico-zip/download/208627-9-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Noviembre 2024",
+        "portal_byte_size": 88791574
+      },
+      {
+        "path": "traffic-2024-12.zip",
+        "role": "data",
+        "month": "2024-12",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-1-transporte-ptomedida-historico-zip/download/208627-1-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Diciembre 2024",
+        "portal_byte_size": 93722309
+      },
+      {
+        "path": "traffic-2025-01.zip",
+        "role": "data",
+        "month": "2025-01",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-73-transporte-ptomedida-historico-zip/download/208627-73-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Enero 2025",
+        "portal_byte_size": 93223315
+      },
+      {
+        "path": "traffic-2025-02.zip",
+        "role": "data",
+        "month": "2025-02",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-103-transporte-ptomedida-historico-zip/download/208627-103-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Febrero 2025",
+        "portal_byte_size": 84996341
+      },
+      {
+        "path": "traffic-2025-03.zip",
+        "role": "data",
+        "month": "2025-03",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-131-transporte-ptomedida-historico-zip/download/208627-131-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Marzo 2025",
+        "portal_byte_size": 93815413
+      },
+      {
+        "path": "traffic-2025-04.zip",
+        "role": "data",
+        "month": "2025-04",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-86-transporte-ptomedida-historico-zip/download/208627-86-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Abril 2025",
+        "portal_byte_size": 84763515
+      },
+      {
+        "path": "traffic-2025-05.zip",
+        "role": "data",
+        "month": "2025-05",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-112-transporte-ptomedida-historico-zip/download/208627-112-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Mayo 2025",
+        "portal_byte_size": 94732575
+      },
+      {
+        "path": "traffic-2025-06.zip",
+        "role": "data",
+        "month": "2025-06",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-42-transporte-ptomedida-historico-zip/download/208627-42-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Junio 2025",
+        "portal_byte_size": 91653323
+      },
+      {
+        "path": "traffic-2025-07.zip",
+        "role": "data",
+        "month": "2025-07",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-123-transporte-ptomedida-historico-zip/download/208627-123-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Julio 2025",
+        "portal_byte_size": 94405477
+      },
+      {
+        "path": "traffic-2025-08.zip",
+        "role": "data",
+        "month": "2025-08",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-98-transporte-ptomedida-historico-zip/download/208627-98-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Agosto 2025",
+        "portal_byte_size": 90453440
+      },
+      {
+        "path": "traffic-2025-09.zip",
+        "role": "data",
+        "month": "2025-09",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-130-transporte-ptomedida-historico-zip/download/208627-130-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Septiembre 2025",
+        "portal_byte_size": 91914182
+      },
+      {
+        "path": "traffic-2025-10.zip",
+        "role": "data",
+        "month": "2025-10",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-15-transporte-ptomedida-historico-zip/download/208627-15-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Octubre 2025",
+        "portal_byte_size": 96237559
+      },
+      {
+        "path": "traffic-2025-11.zip",
+        "role": "data",
+        "month": "2025-11",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-100-transporte-ptomedida-historico-zip/download/208627-100-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Noviembre 2025",
+        "portal_byte_size": 92510027
+      },
+      {
+        "path": "traffic-2025-12.zip",
+        "role": "data",
+        "month": "2025-12",
+        "url": "https://datos.madrid.es/dataset/208627-0-transporte-ptomedida-historico/resource/208627-113-transporte-ptomedida-historico-zip/download/208627-113-transporte-ptomedida-historico-zip.zip",
+        "portal_description": "Histórico de datos del tráfico. Diciembre 2025",
+        "portal_byte_size": 94505325
+      }
+    ],
+    "notes": [
+      "Monthly zip with one CSV of 15-minute records per measurement point (about 12.6 million rows, 750 MB uncompressed); local Europe/Madrid wall-clock time.",
+      "The portal also lists the 2013-2022 and 2026 months, not downloaded."
+    ]
+  },
+  "points": {
+    "source_id": "madrid-traffic-points",
+    "title": "Trafico. Ubicacion de los puntos de medida del trafico, un fichero por mes (Ayuntamiento de Madrid)",
+    "landing_url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico",
+    "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/legalcode.es",
+    "attribution": "Ayuntamiento de Madrid, Area de Medio Ambiente y Movilidad. Datos abiertos: https://datos.madrid.es/dataset/202468-0-intensidad-trafico",
+    "files": [
+      {
+        "path": "informacionubicacionpuntosmedida.pdf",
+        "role": "documentation",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-186-intensidad-trafico/download/informacionubicacionpuntosmedida.pdf"
+      },
+      {
+        "path": "points-2023-01.csv",
+        "role": "data",
+        "month": "2023-01",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-268-intensidad-trafico-csv/download/202468-268-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Enero 2023",
+        "portal_byte_size": 653506
+      },
+      {
+        "path": "points-2023-02.csv",
+        "role": "data",
+        "month": "2023-02",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-242-intensidad-trafico-csv/download/202468-242-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Febrero 2023",
+        "portal_byte_size": 653506
+      },
+      {
+        "path": "points-2023-03.csv",
+        "role": "data",
+        "month": "2023-03",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-151-intensidad-trafico-csv/download/202468-151-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Marzo 2023",
+        "portal_byte_size": 654002
+      },
+      {
+        "path": "points-2023-04.csv",
+        "role": "data",
+        "month": "2023-04",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-136-intensidad-trafico-csv/download/202468-136-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Abril 2023",
+        "portal_byte_size": 657909
+      },
+      {
+        "path": "points-2023-05.csv",
+        "role": "data",
+        "month": "2023-05",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-247-intensidad-trafico-csv/download/202468-247-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Mayo 2023",
+        "portal_byte_size": 657907
+      },
+      {
+        "path": "points-2023-06.csv",
+        "role": "data",
+        "month": "2023-06",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-197-intensidad-trafico-csv/download/202468-197-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Junio 2023",
+        "portal_byte_size": 658242
+      },
+      {
+        "path": "points-2023-07.csv",
+        "role": "data",
+        "month": "2023-07",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-269-intensidad-trafico-csv/download/202468-269-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Julio 2023",
+        "portal_byte_size": 665942
+      },
+      {
+        "path": "points-2023-08.csv",
+        "role": "data",
+        "month": "2023-08",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-236-intensidad-trafico-csv/download/202468-236-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Agosto 2023",
+        "portal_byte_size": 669148
+      },
+      {
+        "path": "points-2023-09.csv",
+        "role": "data",
+        "month": "2023-09",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-270-intensidad-trafico-csv/download/202468-270-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Septiembre 2023",
+        "portal_byte_size": 670055
+      },
+      {
+        "path": "points-2023-10.csv",
+        "role": "data",
+        "month": "2023-10",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-47-intensidad-trafico-csv/download/202468-47-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Octubre 2023",
+        "portal_byte_size": 680924
+      },
+      {
+        "path": "points-2023-11.csv",
+        "role": "data",
+        "month": "2023-11",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-28-intensidad-trafico-csv/download/202468-28-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Noviembre 2023",
+        "portal_byte_size": 681005
+      },
+      {
+        "path": "points-2023-12.csv",
+        "role": "data",
+        "month": "2023-12",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-0-intensidad-trafico-csv/download/202468-0-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Diciembre 2023",
+        "portal_byte_size": 681125
+      },
+      {
+        "path": "points-2024-01.csv",
+        "role": "data",
+        "month": "2024-01",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-175-intensidad-trafico-csv/download/202468-175-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Enero 2024",
+        "portal_byte_size": 683291
+      },
+      {
+        "path": "points-2024-02.csv",
+        "role": "data",
+        "month": "2024-02",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-229-intensidad-trafico-csv/download/202468-229-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Febrero 2024",
+        "portal_byte_size": 683275
+      },
+      {
+        "path": "points-2024-03.csv",
+        "role": "data",
+        "month": "2024-03",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-150-intensidad-trafico-csv/download/202468-150-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Marzo 2024",
+        "portal_byte_size": 683659
+      },
+      {
+        "path": "points-2024-04.csv",
+        "role": "data",
+        "month": "2024-04",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-211-intensidad-trafico-csv/download/202468-211-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Abril 2024",
+        "portal_byte_size": 684792
+      },
+      {
+        "path": "points-2024-05.csv",
+        "role": "data",
+        "month": "2024-05",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-124-intensidad-trafico-csv/download/202468-124-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Mayo 2024",
+        "portal_byte_size": 685254
+      },
+      {
+        "path": "points-2024-06.csv",
+        "role": "data",
+        "month": "2024-06",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-109-intensidad-trafico-csv/download/202468-109-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Junio 2024",
+        "portal_byte_size": 685254
+      },
+      {
+        "path": "points-2024-07.csv",
+        "role": "data",
+        "month": "2024-07",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-271-intensidad-trafico-csv/download/202468-271-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Julio 2024",
+        "portal_byte_size": 684824
+      },
+      {
+        "path": "points-2024-08.csv",
+        "role": "data",
+        "month": "2024-08",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-86-intensidad-trafico-csv/download/202468-86-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Agosto 2024",
+        "portal_byte_size": 684824
+      },
+      {
+        "path": "points-2024-09.csv",
+        "role": "data",
+        "month": "2024-09",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-64-intensidad-trafico-csv/download/202468-64-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Septiembre 2024",
+        "portal_byte_size": 692516
+      },
+      {
+        "path": "points-2024-10.csv",
+        "role": "data",
+        "month": "2024-10",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-46-intensidad-trafico-csv/download/202468-46-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Octubre 2024",
+        "portal_byte_size": 693842
+      },
+      {
+        "path": "points-2024-11.csv",
+        "role": "data",
+        "month": "2024-11",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-27-intensidad-trafico-csv/download/202468-27-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Noviembre 2024",
+        "portal_byte_size": 696549
+      },
+      {
+        "path": "points-2024-12.csv",
+        "role": "data",
+        "month": "2024-12",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-1-intensidad-trafico-csv/download/202468-1-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Diciembre 2024",
+        "portal_byte_size": 697557
+      },
+      {
+        "path": "points-2025-01.csv",
+        "role": "data",
+        "month": "2025-01",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-174-intensidad-trafico-csv/download/202468-174-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Enero 2025",
+        "portal_byte_size": 697268
+      },
+      {
+        "path": "points-2025-02.csv",
+        "role": "data",
+        "month": "2025-02",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-164-intensidad-trafico-csv/download/202468-164-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Febrero 2025",
+        "portal_byte_size": 696512
+      },
+      {
+        "path": "points-2025-03.csv",
+        "role": "data",
+        "month": "2025-03",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-149-intensidad-trafico-csv/download/202468-149-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Marzo 2025",
+        "portal_byte_size": 697603
+      },
+      {
+        "path": "points-2025-04.csv",
+        "role": "data",
+        "month": "2025-04",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-134-intensidad-trafico-csv/download/202468-134-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Abril 2025",
+        "portal_byte_size": 699258
+      },
+      {
+        "path": "points-2025-05.csv",
+        "role": "data",
+        "month": "2025-05",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-272-intensidad-trafico-csv/download/202468-272-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Mayo 2025",
+        "portal_byte_size": 701598
+      },
+      {
+        "path": "points-2025-06.csv",
+        "role": "data",
+        "month": "2025-06",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-231-intensidad-trafico-csv/download/202468-231-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Junio 2025",
+        "portal_byte_size": 703537
+      },
+      {
+        "path": "points-2025-07.csv",
+        "role": "data",
+        "month": "2025-07",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-243-intensidad-trafico-csv/download/202468-243-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Julio 2025",
+        "portal_byte_size": 703807
+      },
+      {
+        "path": "points-2025-08.csv",
+        "role": "data",
+        "month": "2025-08",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-85-intensidad-trafico-csv/download/202468-85-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Agosto 2025",
+        "portal_byte_size": 704281
+      },
+      {
+        "path": "points-2025-09.csv",
+        "role": "data",
+        "month": "2025-09",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-65-intensidad-trafico-csv/download/202468-65-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Septiembre 2025",
+        "portal_byte_size": 704615
+      },
+      {
+        "path": "points-2025-10.csv",
+        "role": "data",
+        "month": "2025-10",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-45-intensidad-trafico-csv/download/202468-45-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Octubre 2025",
+        "portal_byte_size": 704846
+      },
+      {
+        "path": "points-2025-11.csv",
+        "role": "data",
+        "month": "2025-11",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-26-intensidad-trafico-csv/download/202468-26-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Noviembre 2025",
+        "portal_byte_size": 705286
+      },
+      {
+        "path": "points-2025-12.csv",
+        "role": "data",
+        "month": "2025-12",
+        "url": "https://datos.madrid.es/dataset/202468-0-intensidad-trafico/resource/202468-2-intensidad-trafico-csv/download/202468-2-intensidad-trafico-csv.csv",
+        "portal_description": "Ubicación de los puntos de medida del tráfico. Diciembre 2025",
+        "portal_byte_size": 706391
+      }
+    ],
+    "notes": [
+      "One location CSV per month (the dataset also lists xlsx and, before 2021, zip versions); coordinates in WGS84 decimal degrees and UTM 30N."
+    ]
+  },
+  "feature_table": {
+    "task_id": "madrid_no2_h6_traffic",
+    "base_task_id": "madrid_no2_h6",
+    "data_version": "madrid-no2-h6-traffic-v1",
+    "timezone": "Europe/Madrid",
+    "grid": {
+      "start_utc": "2023-01-01T00:00:00Z",
+      "end_utc": "2025-12-31T16:00:00Z",
+      "note": "Same keys (entity_id, issued_at_utc) as madrid_no2_h6, restricted to the traffic period; the first 24 issue hours have no lag24h value because the traffic series starts at 2022-12-31T23:00Z."
+    },
+    "features": [
+      {
+        "name": "traffic_intensity_last",
+        "kind": "intensity",
+        "key_offset_hours": -1,
+        "recommended": true
+      },
+      {
+        "name": "traffic_intensity_lag24h",
+        "kind": "intensity",
+        "key_offset_hours": -25,
+        "recommended": true
+      },
+      {
+        "name": "traffic_n_points",
+        "kind": "n_points",
+        "key_offset_hours": -1,
+        "recommended": false
+      },
+      {
+        "name": "traffic_n_associated",
+        "kind": "n_associated",
+        "key_offset_hours": -1,
+        "recommended": false
+      }
+    ]
+  }
+}

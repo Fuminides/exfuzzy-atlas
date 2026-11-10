@@ -1,0 +1,130 @@
+{
+  "attribution": [
+    {
+      "text": "Contains public sector information licensed under the Open Government Licence v3.0. © Environment Agency copyright and/or database right 2025. All rights reserved.",
+      "license": "Open Government Licence v3.0",
+      "url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+    }
+  ],
+  "features": {
+    "ammoniacal_nitrogen": {
+      "label": "Nitrógeno amoniacal de la muestra (mg/l)",
+      "label_en": "Ammoniacal nitrogen in the sample (mg/l)",
+      "description": "Nitrógeno amoniacal (mg/l) medido en la misma muestra de agua cuyo oxígeno disuelto se estima, sin retraso; los resultados bajo el límite de detección se armonizan al límite común de 0,03 mg/l. Fuente: Environment Agency (calidad del agua).",
+      "description_en": "Ammoniacal nitrogen (mg/l) measured in the same water sample whose dissolved oxygen is estimated, with no delay; results below the detection limit are harmonised to the common limit of 0.03 mg/l. Source: Environment Agency (water quality).",
+      "lag_hours": 0,
+      "terms": {
+        "<=L": "≤ límite de detección",
+        "Bajo>L": "baja (sobre el límite)",
+        "Medio>L": "media (sobre el límite)",
+        "Alto>L": "alta (sobre el límite)"
+      },
+      "terms_en": {
+        "<=L": "≤ detection limit",
+        "Bajo>L": "low (above the limit)",
+        "Medio>L": "medium (above the limit)",
+        "Alto>L": "high (above the limit)"
+      }
+    },
+    "orthophosphate_reactive": {
+      "label": "Ortofosfato de la muestra (mg/l)",
+      "label_en": "Orthophosphate in the sample (mg/l)",
+      "description": "Ortofosfato reactivo (mg/l) medido en la misma muestra de agua, sin retraso; los resultados bajo el límite de detección se armonizan al límite común de 0,01 mg/l. Fuente: Environment Agency (calidad del agua).",
+      "description_en": "Reactive orthophosphate (mg/l) measured in the same water sample, with no delay; results below the detection limit are harmonised to the common limit of 0.01 mg/l. Source: Environment Agency (water quality).",
+      "lag_hours": 0,
+      "terms": {
+        "<=L": "≤ límite de detección",
+        "Bajo>L": "baja (sobre el límite)",
+        "Medio>L": "media (sobre el límite)",
+        "Alto>L": "alta (sobre el límite)"
+      },
+      "terms_en": {
+        "<=L": "≤ detection limit",
+        "Bajo>L": "low (above the limit)",
+        "Medio>L": "medium (above the limit)",
+        "Alto>L": "high (above the limit)"
+      }
+    },
+    "water_temperature": {
+      "label": "Temperatura del agua de la muestra (°C)",
+      "label_en": "Water temperature of the sample (°C)",
+      "description": "Temperatura del agua (°C) medida en la misma muestra, sin retraso. Fuente: Environment Agency (calidad del agua).",
+      "description_en": "Water temperature (°C) measured in the same sample, with no delay. Source: Environment Agency (water quality).",
+      "lag_hours": 0,
+      "terms": {
+        "Low": "baja",
+        "Medium": "media",
+        "High": "alta"
+      },
+      "terms_en": {
+        "Low": "low",
+        "Medium": "medium",
+        "High": "high"
+      }
+    },
+    "ph": {
+      "label": "pH de la muestra",
+      "label_en": "pH of the sample",
+      "description": "pH medido en la misma muestra de agua, sin retraso. Fuente: Environment Agency (calidad del agua).",
+      "description_en": "pH measured in the same water sample, with no delay. Source: Environment Agency (water quality).",
+      "lag_hours": 0,
+      "terms": {
+        "Low": "bajo",
+        "Medium": "medio",
+        "High": "alto"
+      },
+      "terms_en": {
+        "Low": "low",
+        "Medium": "medium",
+        "High": "high"
+      }
+    },
+    "days_from_midwinter": {
+      "label": "Días desde pleno invierno",
+      "label_en": "Days from midwinter",
+      "description": "Días entre la fecha local de la muestra y el 21 de diciembre más cercano (0 = pleno invierno, unos 183 = pleno verano); es calendario, sin retraso.",
+      "description_en": "Days between the local date of the sample and the nearest 21 December (0 = midwinter, about 183 = midsummer); it is calendar information, with no delay.",
+      "lag_hours": 0,
+      "terms_en": {
+        "Invierno": "Winter",
+        "Primavera-otoño": "Spring-autumn",
+        "Verano": "Summer"
+      }
+    },
+    "local_hour": {
+      "label": "Hora local de la muestra (h)",
+      "label_en": "Local hour of the sample (h)",
+      "description": "Hora del reloj de Londres de la muestra en horas decimales (10,5 = 10:30), de 0 a 24; es calendario, sin retraso.",
+      "description_en": "London clock time of the sample in decimal hours (10.5 = 10:30), from 0 to 24; it is calendar information, with no delay.",
+      "lag_hours": 0,
+      "terms": {
+        "Low": "temprana",
+        "Medium": "a media mañana",
+        "High": "tardía"
+      },
+      "terms_en": {
+        "Low": "early",
+        "Medium": "mid-morning",
+        "High": "late"
+      }
+    },
+    "local_day_of_year": {
+      "label": "Día del año de la muestra",
+      "label_en": "Day of the year of the sample",
+      "description": "Día del año (1-366) de la fecha local de la muestra; es calendario, sin retraso.",
+      "description_en": "Day of the year (1-366) of the local date of the sample; it is calendar information, with no delay.",
+      "lag_hours": 0
+    },
+    "point_median_phosphate_train": {
+      "label": "Ortofosfato mediano del punto (entrenamiento)",
+      "label_en": "Median orthophosphate of the point (training)",
+      "description": "Mediana del ortofosfato (mg/l) del punto de muestreo en el periodo de entrenamiento (nunca usa el oxígeno disuelto); vacío si el punto tiene menos de 5 muestras. Fuente: Environment Agency (calidad del agua).",
+      "description_en": "Median orthophosphate (mg/l) of the sampling point over the training period (never uses dissolved oxygen); empty if the point has fewer than 5 samples. Source: Environment Agency (water quality).",
+      "lag_hours": 0
+    }
+  },
+  "summary": {
+    "label": "Oxígeno disuelto observado",
+    "label_en": "Observed dissolved oxygen"
+  }
+}

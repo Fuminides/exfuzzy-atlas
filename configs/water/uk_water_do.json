@@ -1,0 +1,24 @@
+{
+  "task_id": "uk_water_do",
+  "domain": "water",
+  "kind": "descriptive same-sample inference, not a forecast",
+  "horizon_hours": 0,
+  "horizon_note": "No horizon: valid_at_utc == issued_at_utc (the sample time). RunManifest/TaskInfo/RegistryEntry require horizon_hours > 0 today; if A4's pipeline needs it, use 1 in the run config and state in the manifest warnings that it is not a real horizon.",
+  "timezone": "Europe/London",
+  "target": {"feature_name": "dissolved_oxygen", "column": "target", "unit": "mg/l", "determinand": "9924", "plausible_max": 20.0},
+  "sample_material": "RIVER / RUNNING SURFACE WATER",
+  "inputs": {
+    "ammoniacal_nitrogen": {"determinand": "0111", "unit": "mg/l", "common_limit": 0.03},
+    "orthophosphate_reactive": {"determinand": "0180", "unit": "mg/l", "common_limit": 0.01},
+    "water_temperature": {"determinand": "0076", "unit": "degC", "common_limit": null},
+    "ph": {"determinand": "0061", "unit": "pH", "common_limit": null}
+  },
+  "point_context": {"input": "orthophosphate_reactive", "min_train_samples": 5},
+  "split": {
+    "train": ["2015-01-01T00:00:00Z", "2021-12-01T00:00:00Z"],
+    "validation": ["2022-01-01T00:00:00Z", "2023-12-01T00:00:00Z"],
+    "test": ["2024-01-01T00:00:00Z", "2026-01-01T00:00:00Z"],
+    "embargo_hours": 720
+  },
+  "spatial_split": {"seed": 20261030, "fractions": {"train": 0.7, "validation": 0.1, "test": 0.2}}
+}

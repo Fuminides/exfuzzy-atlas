@@ -1,0 +1,210 @@
+{
+  "$defs": {
+    "MissingReason": {
+      "enum": [
+        "no_observation",
+        "invalid_observation",
+        "censored",
+        "missing_input",
+        "prediction_unavailable",
+        "not_modelled"
+      ],
+      "title": "MissingReason",
+      "type": "string"
+    },
+    "Quality": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/QualityStatus",
+          "default": "valid"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "title": "Quality",
+      "type": "object"
+    },
+    "QualityStatus": {
+      "enum": [
+        "valid",
+        "warning",
+        "invalid"
+      ],
+      "title": "QualityStatus",
+      "type": "string"
+    },
+    "SeriesPoint": {
+      "additionalProperties": false,
+      "properties": {
+        "issued_at_utc": {
+          "format": "date-time",
+          "title": "Issued At Utc",
+          "type": "string"
+        },
+        "missing_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why the prediction is null, if it is."
+        },
+        "observed": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Observed"
+        },
+        "observed_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Class of the observed value (classification tasks).",
+          "title": "Observed Label"
+        },
+        "predicted_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Predicted class (classification tasks).",
+          "title": "Predicted Label"
+        },
+        "prediction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Prediction"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": {
+            "status": "valid",
+            "warnings": []
+          }
+        },
+        "valid_at_utc": {
+          "format": "date-time",
+          "title": "Valid At Utc",
+          "type": "string"
+        }
+      },
+      "required": [
+        "issued_at_utc",
+        "valid_at_utc",
+        "observed",
+        "prediction"
+      ],
+      "title": "SeriesPoint",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/SeriesResponse.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "horizon_hours": {
+      "description": "0 for same-time inference (no forecast).",
+      "minimum": 0,
+      "title": "Horizon Hours",
+      "type": "integer"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "next_cursor": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Next Cursor"
+    },
+    "points": {
+      "items": {
+        "$ref": "#/$defs/SeriesPoint"
+      },
+      "title": "Points",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "target": {
+      "title": "Target",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "unit": {
+      "title": "Unit",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "task_id",
+    "entity_id",
+    "model_id",
+    "target",
+    "unit",
+    "horizon_hours",
+    "points"
+  ],
+  "title": "SeriesResponse",
+  "type": "object"
+}

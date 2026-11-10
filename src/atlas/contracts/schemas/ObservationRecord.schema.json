@@ -1,0 +1,180 @@
+{
+  "$defs": {
+    "Censoring": {
+      "enum": [
+        "left",
+        "right"
+      ],
+      "title": "Censoring",
+      "type": "string"
+    },
+    "Domain": {
+      "enum": [
+        "air",
+        "water",
+        "mobility"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "MissingReason": {
+      "enum": [
+        "no_observation",
+        "invalid_observation",
+        "censored",
+        "missing_input",
+        "prediction_unavailable",
+        "not_modelled"
+      ],
+      "title": "MissingReason",
+      "type": "string"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ObservationRecord.schema.json",
+  "additionalProperties": false,
+  "description": "One canonical (long-format) observation; ``atlas.contracts.observations`` holds the Arrow form.",
+  "properties": {
+    "aggregation_window_end_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Aggregation Window End Utc"
+    },
+    "aggregation_window_start_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Aggregation Window Start Utc"
+    },
+    "censoring": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Censoring"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "domain": {
+      "$ref": "#/$defs/Domain"
+    },
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "feature_name": {
+      "title": "Feature Name",
+      "type": "string"
+    },
+    "missing_reason": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MissingReason"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "n_records": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "N Records"
+    },
+    "source_id": {
+      "title": "Source Id",
+      "type": "string"
+    },
+    "source_timestamp_local": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Timestamp Local"
+    },
+    "timestamp_utc": {
+      "format": "date-time",
+      "title": "Timestamp Utc",
+      "type": "string"
+    },
+    "timezone": {
+      "title": "Timezone",
+      "type": "string"
+    },
+    "unit": {
+      "title": "Unit",
+      "type": "string"
+    },
+    "validity_flag": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Original source code, kept verbatim.",
+      "title": "Validity Flag"
+    },
+    "value": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Value"
+    }
+  },
+  "required": [
+    "domain",
+    "entity_id",
+    "timestamp_utc",
+    "timezone",
+    "feature_name",
+    "value",
+    "unit",
+    "source_id",
+    "data_version"
+  ],
+  "title": "ObservationRecord",
+  "type": "object"
+}

@@ -1,0 +1,371 @@
+{
+ "schema_version": "0.3.0",
+ "data_version": "synthetic-test",
+ "synthetic": true,
+ "manifest": {
+  "schema_version": "0.3.0",
+  "run_id": "synthetic-class-seed3",
+  "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+  "task_id": "synthetic_class_h6",
+  "domain": "air",
+  "created_at_utc": "2026-10-30T20:06:46.201391Z",
+  "git_commit": "35469c4e23644cbbb1ceaa8406290cecec932aa3",
+  "git_dirty": false,
+  "exfuzzy_version": "3.3.1",
+  "python_version": "3.12.3",
+  "seed": 3,
+  "split": {
+   "train_from_utc": "2024-01-01T00:00:00Z",
+   "train_to_utc": "2024-01-27T16:00:00Z",
+   "validation_from_utc": "2024-01-27T22:00:00Z",
+   "validation_to_utc": "2024-02-05T19:00:00Z",
+   "test_from_utc": "2024-02-06T01:00:00Z",
+   "test_to_utc": "2024-02-14T23:00:01Z",
+   "embargo_hours": 6
+  },
+  "data_version": "synthetic-test",
+  "data_checksums": {},
+  "target": "y",
+  "horizon_hours": 6,
+  "features": [
+   "y_t",
+   "y_lag3",
+   "exo_t",
+   "hour"
+  ],
+  "hyperparameters": {
+   "nRules": 9,
+   "nAnts": 2,
+   "n_linguistic_variables": 3,
+   "rule_weighting": "dominance_score",
+   "allow_unknown": true,
+   "tolerance": 0,
+   "n_gen": 8,
+   "pop_size": 16,
+   "patience": null,
+   "backend": "pymoo",
+   "task_type": "classification",
+   "class_labels": [
+    "low",
+    "mid",
+    "high"
+   ],
+   "n_train_rows": 1854,
+   "fit_info": {
+    "train_fitness_macro_f1_penalised": 0.6458287130662077,
+    "n_generations_run": 8,
+    "stopped_early": false,
+    "backend": "pymoo",
+    "n_train_rows": 1854,
+    "train_class_counts": [
+     755,
+     574,
+     525
+    ]
+   },
+   "run_config": {
+    "task_id": "synthetic_class_h6",
+    "domain": "air",
+    "target": "y",
+    "target_column": "y_target",
+    "unit": "u",
+    "horizon_hours": 6,
+    "features": [
+     "y_t",
+     "y_lag3",
+     "exo_t",
+     "hour"
+    ],
+    "feature_units": {
+     "y_t": "u",
+     "y_lag3": "u",
+     "exo_t": "m/s",
+     "hour": "h"
+    },
+    "persistence_feature": "y_t",
+    "split": {
+     "train_from_utc": "2024-01-01T00:00:00Z",
+     "train_to_utc": "2024-01-27T16:00:00Z",
+     "validation_from_utc": "2024-01-27T22:00:00Z",
+     "validation_to_utc": "2024-02-05T19:00:00Z",
+     "test_from_utc": "2024-02-06T01:00:00Z",
+     "test_to_utc": "2024-02-14T23:00:01Z",
+     "embargo_hours": 6
+    },
+    "seed": 3,
+    "data_version": "synthetic-test",
+    "data_checksums": {},
+    "synthetic": true,
+    "timezone": "UTC",
+    "fuzzy": {
+     "nRules": 8,
+     "nAnts": 3,
+     "n_linguistic_variables": 3,
+     "rule_mode": "additive",
+     "tolerance": 0,
+     "n_gen": 8,
+     "pop_size": 16,
+     "backend": "pymoo"
+    },
+    "ridge_alpha": 1,
+    "gbm_max_iter": 20,
+    "run_id": "synthetic-class-seed3",
+    "model_id": null
+   }
+  },
+  "artifacts": {
+   "model": "model.pkl",
+   "metrics": "metrics.json",
+   "rules": "rules.json",
+   "checksums": "SHA256SUMS"
+  },
+  "warnings": [
+   "synthetic data",
+   "published period overlaps the training/validation period: predictions there are in-sample"
+  ]
+ },
+ "target_scheme": {
+  "name": "Synthetic bands (invented, not an official index)",
+  "source_url": "https://example.org/synthetic",
+  "unit": "u",
+  "boundary": "upper_inclusive",
+  "classes": [
+   {
+    "label": "low",
+    "lower": null,
+    "upper": 34,
+    "color": "#00FFFF",
+    "description": "invented",
+    "merged_from": []
+   },
+   {
+    "label": "mid",
+    "lower": 34,
+    "upper": 50,
+    "color": "#FFCC00",
+    "description": "invented",
+    "merged_from": []
+   },
+   {
+    "label": "high",
+    "lower": 50,
+    "upper": 1000,
+    "color": "#FF3300",
+    "description": "invented",
+    "merged_from": []
+   }
+  ],
+  "kind": "analytical",
+  "short_name": null
+ },
+ "metrics": {
+  "schema_version": "0.3.0",
+  "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+  "task_id": "synthetic_class_h6",
+  "split": {
+   "train_from_utc": "2024-01-01T00:00:00Z",
+   "train_to_utc": "2024-01-27T16:00:00Z",
+   "validation_from_utc": "2024-01-27T22:00:00Z",
+   "validation_to_utc": "2024-02-05T19:00:00Z",
+   "test_from_utc": "2024-02-06T01:00:00Z",
+   "test_to_utc": "2024-02-14T23:00:01Z",
+   "embargo_hours": 6
+  },
+  "rows": [
+   {
+    "estimator": "exfuzzy",
+    "metric": "macro_f1",
+    "value": 0.6144239055232528,
+    "n": 602,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "balanced_accuracy",
+    "value": 0.6019448260598347,
+    "n": 602,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "accuracy",
+    "value": 0.6212624584717608,
+    "n": 602,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "mae_class_index",
+    "value": 0.36678200692041524,
+    "n": 602,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "share_off_by_2plus",
+    "value": 0.01384083044982699,
+    "n": 602,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "share_unknown",
+    "value": 0.03986710963455149,
+    "n": 602,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "recall[low]",
+    "value": 0.6707818930041153,
+    "n": 243,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "f1[low]",
+    "value": 0.7342342342342343,
+    "n": 243,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "precision[low]",
+    "value": 0.8109452736318408,
+    "n": 201,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[low>low]",
+    "value": 163,
+    "n": 243,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[low>mid]",
+    "value": 67,
+    "n": 243,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[low>high]",
+    "value": 8,
+    "n": 243,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[low>no_prediction]",
+    "value": 5,
+    "n": 243,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "recall[mid]",
+    "value": 0.3987341772151899,
+    "n": 158,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "f1[mid]",
+    "value": 0.38532110091743116,
+    "n": 158,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "precision[mid]",
+    "value": 0.3727810650887574,
+    "n": 169,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[mid>low]",
+    "value": 38,
+    "n": 158,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[mid>mid]",
+    "value": 63,
+    "n": 158,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[mid>high]",
+    "value": 52,
+    "n": 158,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[mid>no_prediction]",
+    "value": 5,
+    "n": 158,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "recall[high]",
+    "value": 0.736318407960199,
+    "n": 201,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "f1[high]",
+    "value": 0.7237163814180929,
+    "n": 201,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "precision[high]",
+    "value": 0.7115384615384616,
+    "n": 208,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[high>low]",
+    "value": 0,
+    "n": 201,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[high>mid]",
+    "value": 39,
+    "n": 201,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[high>high]",
+    "value": 148,
+    "n": 201,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy",
+    "metric": "confusion[high>no_prediction]",
+    "value": 14,
+    "n": 201,
+    "slice": "all"
+   }
+  ]
+ },
+ "coverage": {
+  "issued_from_utc": "2024-01-05T00:00:00Z",
+  "issued_to_utc": "2024-02-14T22:00:00Z",
+  "step_hours": 1
+ }
+}

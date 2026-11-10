@@ -1,0 +1,299 @@
+{
+  "task_id": "de_no2_h6",
+  "description": "Linguistic variables of the Germany NO2 t+6h EAQI classifier (AT-070), in the style of configs/ml/madrid_partitions.json. Every variable has a rationale; a source is given only where one was found AND read (source_status says what was checked). Terms of a fixed variable have a core [lower, upper] (membership 1) and trapezoids [a, b, c, d] = (lower - w_below, lower, upper, upper + w_above), see atlas.ml.partitions. Variables of kind 'quantile' are data-driven (ex_fuzzy trapezoids anchored at the 20/40/60/80 % quantiles of the training rows) and carry no authority beyond that. Term names are in English. The classes are EAQI NO2 bands, which are NOT the Spanish ICA bands of Madrid.",
+  "variables": [
+    {
+      "features": [
+        "no2_last",
+        "no2_lag1h",
+        "no2_lag3h",
+        "no2_lag24h"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        -10.0,
+        1100.0
+      ],
+      "shoulders": [
+        1.5,
+        3.75,
+        9.0
+      ],
+      "terms": [
+        {
+          "name": "Good",
+          "core": [
+            -10,
+            10.0
+          ],
+          "params": [
+            -10.0,
+            -10.0,
+            10.0,
+            11.5
+          ]
+        },
+        {
+          "name": "Fair",
+          "core": [
+            11.0,
+            25.0
+          ],
+          "params": [
+            9.5,
+            11.0,
+            25.0,
+            28.75
+          ]
+        },
+        {
+          "name": "Moderate",
+          "core": [
+            26.0,
+            60.0
+          ],
+          "params": [
+            22.25,
+            26.0,
+            60.0,
+            69.0
+          ]
+        },
+        {
+          "name": "Poor or worse",
+          "core": [
+            61.0,
+            1100.0
+          ],
+          "params": [
+            52.0,
+            61.0,
+            1100.0,
+            1100.0
+          ]
+        }
+      ],
+      "rationale": "Cores are the EAQI hourly NO2 bands of configs/air/eaqi_no2_scheme.json after the AT-070 merge rule (a class with fewer than 1 % of the complete training rows is merged into the one below it, from the top): Good 0-10, Fair 11-25, Moderate 26-60 and 'Poor or worse' 61 and above (Poor 1.84 % of the training rows; Very poor 0.077 % and Extremely poor 0.0018 % are merged into it), so a rule reads in the language of the target. The two ends are domain choices, not EAQI facts: (1) values below 0 are instrument noise under the detection limit (26,205 valid values in the table, minimum -9.9 ug/m3; 0.28 % of the training rows have a negative NO2 input); the scheme convention classifies them Good, so the Good core starts at -10 (the domain minimum) instead of leaving them outside every term; (2) the EAQI top band is open ('>150'), so the last core ends at 1100, above the largest value in the table (1015.1 ug/m3, one hour in the training period), only so that no value falls outside the domain. Shoulder at each boundary = 15 % of the boundary value (10 -> 1.5, 25 -> 3.75, 60 -> 9 ug/m3), the same rule as Madrid: the data quality objective for the uncertainty of fixed NO2 measurements (95 % confidence, individual measurements averaged over the limit-value period). CAVEATS: (1) the directive states this uncertainty 'in the region of the appropriate limit value' (hourly limit value 200 ug/m3), so applying 15 % at 10-60 ug/m3 is an extrapolation, a stronger one than in Madrid (40-120), and at low concentrations the real instrument uncertainty is relatively larger; (2) Directive (EU) 2024/2881 Annex V is reported (secondary source only) to give NO2 hourly 15 % or 30 ug/m3 absolute; the absolute figure would make the shoulders 3 to 30 times wider and was not used. The term 'Poor or worse' is the merged class (61 and above); the experiment refuses the partition if the target scheme differs.",
+      "source_url": "https://legislation.gov.uk/cy/eudr/2008/50/annex/I/adopted/data.htm",
+      "source_status": "Bands: EEA European Air Quality Index, https://airindex.eea.europa.eu/AQI/index.html, section 2 'Bands of concentrations and index levels', row 'Nitrogen dioxide (NO2)': 0-10, 11-25, 26-60, 61-100, 101-150, >150 ug/m3 (snapshot data/raw/eea-air-de/docs/eaqi_airindex.html, row text re-read for AT-070 on 2026-11-02). Shoulder: Directive 2008/50/EC Annex I 'Data quality objectives' (fixed measurements, uncertainty 15 %, applicable in the region of the limit value) as READ on 2026-10-30 for the Madrid partitions in the legislation.gov.uk copy of the original text; it was not re-read for Germany. Directive (EU) 2024/2881 Annex V NOT verified against the Official Journal (secondary table only: https://aq-framework-snpa.readthedocs.io/en/stable/tables/t_data_quality/ lists NO2 1 h fixed measurements as 30 ug/m3 / 15 %).",
+      "follows_target_scheme": true
+    },
+    {
+      "features": [
+        "wind_speed"
+      ],
+      "unit": "m/s",
+      "kind": "fixed",
+      "domain": [
+        0.0,
+        40.0
+      ],
+      "shoulders": [
+        0.5,
+        0.5,
+        0.79
+      ],
+      "terms": [
+        {
+          "name": "Calm to light air",
+          "core": [
+            0.0,
+            1.5
+          ],
+          "params": [
+            0.0,
+            0.0,
+            1.5,
+            2.0
+          ]
+        },
+        {
+          "name": "Light breeze",
+          "core": [
+            1.6,
+            3.3
+          ],
+          "params": [
+            1.1,
+            1.6,
+            3.3,
+            3.8
+          ]
+        },
+        {
+          "name": "Gentle to moderate breeze",
+          "core": [
+            3.4,
+            7.9
+          ],
+          "params": [
+            2.9,
+            3.4,
+            7.9,
+            8.69
+          ]
+        },
+        {
+          "name": "Fresh breeze or stronger",
+          "core": [
+            8.0,
+            40.0
+          ],
+          "params": [
+            7.21,
+            8.0,
+            40.0,
+            40.0
+          ]
+        }
+      ],
+      "rationale": "Same Beaufort groups as Madrid (force 0-1, 2, 3-4, 5 or more) in m/s, with English names from the WMO scale (Calm/Light air; Light breeze; Gentle/Moderate breeze; Fresh breeze or stronger). Low wind is associated with weaker dispersion of near-surface emissions, so higher NO2 at low wind is plausible; this is an association the model may or may not find, not a causal claim. Shoulders = the measurement uncertainty the WMO guide calls usually sufficient for surface wind speed: 0.5 m/s below 5 m/s (boundaries 1.5 and 3.3) and 10 % above 5 m/s (10 % of 7.9 = 0.79). Unit and height of the DWD wind: the product description (DESCRIPTION_wind.pdf, v24.03) gives the unit m/s (column F) and 'hourly mean'; the station metadata (Metadaten_Parameter) say the hourly value is generated from 10-minute means. The description PDF does not state the sensor height; the per-station 'Geberhoehe ueber Grund' of Metadaten_Geraete_Windgeschwindigkeit for the 300 stations with wind data in 2019-2025 gives 155 stations with the sensor at exactly 10 m (maximum over the period), 114 between 10 m and 15 m (79 of them at 12 m) and 29 above 15 m (up to 42.6 m); median 10 m. So the Beaufort match (10 min means at 10 m over open ground) is approximate and worse at the 29 tall-mast stations, where speeds are larger than at 10 m. The wind station is the nearest within 25 km, not co-located with the air station.",
+      "source_url": "https://old.wmo.int/extranet/pages/prog/www/IMOP/publications/CIMO-Guide/Prelim_2018_ed/8_I_5_en_MR_tc.pdf",
+      "source_status": "WMO-No. 8 (CIMO Guide), Part I, Chapter 5 'Measurement of surface wind' (preliminary 2018 edition PDF, text extracted and READ on 2026-10-30 for the Madrid partitions): Beaufort m/s ranges 0.3-1.5, 1.6-3.3, 3.4-5.4, 5.5-7.9, 8.0-10.7 for forces 1-5 (and 0-0.2 for force 0); section 5.1: 'A required measurement uncertainty for horizontal speed of 0.5 m/s below 5 m/s and better than 10 % above 5 m/s is usually sufficient.' The preliminary edition, not the current published one, was read; not re-read for Germany. DWD: data/raw/dwd-meteo-de/docs/DESCRIPTION_wind.pdf and the Metadaten_* files inside the station zips, read on 2026-11-02."
+    },
+    {
+      "features": [
+        "valid_hour_local"
+      ],
+      "unit": "h",
+      "kind": "fixed",
+      "domain": [
+        0.0,
+        23.0
+      ],
+      "shoulders": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "terms": [
+        {
+          "name": "Night",
+          "core": [
+            0.0,
+            4.0
+          ],
+          "params": [
+            0.0,
+            0.0,
+            4.0,
+            5.0
+          ]
+        },
+        {
+          "name": "Morning rush",
+          "core": [
+            5.0,
+            9.0
+          ],
+          "params": [
+            4.0,
+            5.0,
+            9.0,
+            10.0
+          ]
+        },
+        {
+          "name": "Midday",
+          "core": [
+            10.0,
+            16.0
+          ],
+          "params": [
+            9.0,
+            10.0,
+            16.0,
+            17.0
+          ]
+        },
+        {
+          "name": "Evening",
+          "core": [
+            17.0,
+            23.0
+          ],
+          "params": [
+            16.0,
+            17.0,
+            23.0,
+            23.0
+          ]
+        }
+      ],
+      "rationale": "Day periods read from the diurnal profile of the NO2 TARGET in the TRAIN period only (2019-01-01 to 2023-12-31, 15,213,722 complete rows, 400 stations): mean of target / the station's own mean, by local hour of the valid time (Europe/Berlin, the column valid_hour_local), workdays Monday-Friday. Profile, hours 0-23: 0.93 0.86 0.83 0.82 0.87 1.05 1.29 1.45 1.37 1.21 1.08 0.98 0.92 0.90 0.92 0.99 1.07 1.13 1.18 1.19 1.20 1.19 1.15 1.05. Night = hours 0-4: the trough, all below 0.95 of the station mean (0.82 at hour 3). Morning rush = hours 5-9: hour 5 is the first above the station mean (1.05, the ramp) and 6-9 are the peak (1.29, 1.45 at hour 7, 1.37, 1.21); hour 10 is 1.08 on the way down. Midday = hours 10-16: the decline and daytime trough (minimum 0.90 at hour 13) up to 1.07 at hour 16. Evening = hours 17-23: 1.13-1.20 at 17-22 and 1.05 at 23. The raw workday means (ug/m3) are 13.5 at hour 3, 26.4 at hour 7, 17.0 at hour 13, 21.6 at hour 18. Saturday and Sunday lack the morning peak (Saturday: 0.83 at hour 3 and 0.96 at hour 7 with the maximum 1.08 at hour 21; Sunday: 0.75 at hour 4 and 0.76 at hour 7, maximum 0.99 at hour 21); the periods follow the workday profile and the model combines them with the weekday variable. Compared with Madrid (night 0-6, rush 7-9) the German morning ramp starts two hours earlier, so Madrid's periods were not reused. Hours are whole numbers, so a one-hour shoulder is crisp. Midnight wrap: a trapezoid cannot wrap, so the evening term ends at 23 and the night term starts at 0; the flip between hour 23 and hour 0 is crisp by construction. FOUR terms, not five, on purpose: ex_fuzzy 3.3.1 bounds the term index of the k-th antecedent slot by the number of terms of the k-th feature, so with four NO2 features first (4 terms each) a fifth term of any later feature could never be chosen. The profile describes the training period, not a validated cause of NO2 (traffic, heating, boundary-layer height and photochemistry all vary with the hour).",
+      "source_url": null,
+      "source_status": "No external source: the cut points come from the train-period profile of the target computed on 2026-11-02 from data/processed/air-de/features/de_no2_h6 (complete rows, issued 2019-01-01 to 2023-12-31); the numbers are in docs/ml/de_no2_h6_eaqi.md."
+    },
+    {
+      "features": [
+        "valid_weekday"
+      ],
+      "unit": "day",
+      "kind": "fixed",
+      "domain": [
+        0.0,
+        6.0
+      ],
+      "shoulders": [
+        1.0,
+        1.0
+      ],
+      "terms": [
+        {
+          "name": "Weekday",
+          "core": [
+            0.0,
+            4.0
+          ],
+          "params": [
+            0.0,
+            0.0,
+            4.0,
+            5.0
+          ]
+        },
+        {
+          "name": "Saturday",
+          "core": [
+            5.0,
+            5.0
+          ],
+          "params": [
+            4.0,
+            5.0,
+            5.0,
+            6.0
+          ]
+        },
+        {
+          "name": "Sunday",
+          "core": [
+            6.0,
+            6.0
+          ],
+          "params": [
+            5.0,
+            6.0,
+            6.0,
+            6.0
+          ]
+        }
+      ],
+      "rationale": "Calendar day type of the target hour (0 = Monday ... 6 = Sunday): Monday to Friday, Saturday, Sunday. Public holidays (which differ by federal state) and school holidays are NOT encoded: a holiday counts as the weekday it falls on. In the training period the mean of target / station mean is 1.02-1.10 Monday to Friday (1.10 on Wednesday), 0.90 on Saturday and 0.78 on Sunday. Whole-number input, so crisp.",
+      "source_url": null,
+      "source_status": "Calendar convention; no source needed. Day-type means computed on the train period on 2026-11-02."
+    },
+    {
+      "features": [
+        "temperature",
+        "relative_humidity"
+      ],
+      "unit": "degC; %",
+      "kind": "quantile",
+      "rationale": "No citable categorical scheme was found for HOURLY OUTDOOR air temperature or relative humidity that is meant for this use (thermal-comfort standards such as ASHRAE 55 describe indoor conditions). Not invented: the terms Low / Medium / High are data-driven, ex_fuzzy trapezoids anchored at the 20/40/60/80 % quantiles of the training rows, so they describe the training distribution and nothing else, as in the Madrid protocol. DWD temperature is at 2 m (DESCRIPTION_air_temperature.pdf); relative humidity is in % from the same product.",
+      "source_url": null,
+      "source_status": "searched in the Madrid task (AT-041d), nothing defensible found; no source claimed"
+    }
+  ]
+}

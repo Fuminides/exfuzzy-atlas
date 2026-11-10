@@ -1,0 +1,3788 @@
+[
+ {
+  "schema_version": "0.3.0",
+  "data_version": "synthetic-test",
+  "synthetic": true,
+  "task_id": "synthetic_class_h6",
+  "entity_id": "E0",
+  "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+  "target": "y",
+  "unit": "u",
+  "horizon_hours": 6,
+  "points": [
+   {
+    "issued_at_utc": "2024-01-05T00:00:00Z",
+    "valid_at_utc": "2024-01-05T06:00:00Z",
+    "observed": 26.337582731186217,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T01:00:00Z",
+    "valid_at_utc": "2024-01-05T07:00:00Z",
+    "observed": 27.797854370798532,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T02:00:00Z",
+    "valid_at_utc": "2024-01-05T08:00:00Z",
+    "observed": 23.11342264090004,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T03:00:00Z",
+    "valid_at_utc": "2024-01-05T09:00:00Z",
+    "observed": 25.222250509423322,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T04:00:00Z",
+    "valid_at_utc": "2024-01-05T10:00:00Z",
+    "observed": 27.68472295104584,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T05:00:00Z",
+    "valid_at_utc": "2024-01-05T11:00:00Z",
+    "observed": 35.76530013029014,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T06:00:00Z",
+    "valid_at_utc": "2024-01-05T12:00:00Z",
+    "observed": 35.26555056242754,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T07:00:00Z",
+    "valid_at_utc": "2024-01-05T13:00:00Z",
+    "observed": 36.43502190557443,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T08:00:00Z",
+    "valid_at_utc": "2024-01-05T14:00:00Z",
+    "observed": 38.67931545287523,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T09:00:00Z",
+    "valid_at_utc": "2024-01-05T15:00:00Z",
+    "observed": 39.132180687907294,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T10:00:00Z",
+    "valid_at_utc": "2024-01-05T16:00:00Z",
+    "observed": 40.96689328162626,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T11:00:00Z",
+    "valid_at_utc": "2024-01-05T17:00:00Z",
+    "observed": 40.154085945126226,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T12:00:00Z",
+    "valid_at_utc": "2024-01-05T18:00:00Z",
+    "observed": 41.561439572687455,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T13:00:00Z",
+    "valid_at_utc": "2024-01-05T19:00:00Z",
+    "observed": 43.73104675153923,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T14:00:00Z",
+    "valid_at_utc": "2024-01-05T20:00:00Z",
+    "observed": 45.02427928027987,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T15:00:00Z",
+    "valid_at_utc": "2024-01-05T21:00:00Z",
+    "observed": 41.10101374086931,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T16:00:00Z",
+    "valid_at_utc": "2024-01-05T22:00:00Z",
+    "observed": 39.129003765328804,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T17:00:00Z",
+    "valid_at_utc": "2024-01-05T23:00:00Z",
+    "observed": 35.99487399939712,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T18:00:00Z",
+    "valid_at_utc": "2024-01-06T00:00:00Z",
+    "observed": 34.650104549109635,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T19:00:00Z",
+    "valid_at_utc": "2024-01-06T01:00:00Z",
+    "observed": 36.00735857493857,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T20:00:00Z",
+    "valid_at_utc": "2024-01-06T02:00:00Z",
+    "observed": 36.866229072762586,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T21:00:00Z",
+    "valid_at_utc": "2024-01-06T03:00:00Z",
+    "observed": 35.76553613960258,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T22:00:00Z",
+    "valid_at_utc": "2024-01-06T04:00:00Z",
+    "observed": 29.953185350838385,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T23:00:00Z",
+    "valid_at_utc": "2024-01-06T05:00:00Z",
+    "observed": 31.185074418325183,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T00:00:00Z",
+    "valid_at_utc": "2024-01-06T06:00:00Z",
+    "observed": 35.57507870434549,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T01:00:00Z",
+    "valid_at_utc": "2024-01-06T07:00:00Z",
+    "observed": 35.84988901685133,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T02:00:00Z",
+    "valid_at_utc": "2024-01-06T08:00:00Z",
+    "observed": 38.52336309766988,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T03:00:00Z",
+    "valid_at_utc": "2024-01-06T09:00:00Z",
+    "observed": 41.93619865665682,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T04:00:00Z",
+    "valid_at_utc": "2024-01-06T10:00:00Z",
+    "observed": 43.66861450688028,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T05:00:00Z",
+    "valid_at_utc": "2024-01-06T11:00:00Z",
+    "observed": 44.00153651883488,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T06:00:00Z",
+    "valid_at_utc": "2024-01-06T12:00:00Z",
+    "observed": 46.25388391371074,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T07:00:00Z",
+    "valid_at_utc": "2024-01-06T13:00:00Z",
+    "observed": 48.8396411363118,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T08:00:00Z",
+    "valid_at_utc": "2024-01-06T14:00:00Z",
+    "observed": 50.88183697989573,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T09:00:00Z",
+    "valid_at_utc": "2024-01-06T15:00:00Z",
+    "observed": 51.59378841144088,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "missing_input",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T10:00:00Z",
+    "valid_at_utc": "2024-01-06T16:00:00Z",
+    "observed": 52.49533851654568,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T11:00:00Z",
+    "valid_at_utc": "2024-01-06T17:00:00Z",
+    "observed": 55.291088665932556,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T12:00:00Z",
+    "valid_at_utc": "2024-01-06T18:00:00Z",
+    "observed": 57.65822560150974,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T13:00:00Z",
+    "valid_at_utc": "2024-01-06T19:00:00Z",
+    "observed": 56.295960773100354,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T14:00:00Z",
+    "valid_at_utc": "2024-01-06T20:00:00Z",
+    "observed": 56.89349531702354,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T15:00:00Z",
+    "valid_at_utc": "2024-01-06T21:00:00Z",
+    "observed": 52.34565130201862,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T16:00:00Z",
+    "valid_at_utc": "2024-01-06T22:00:00Z",
+    "observed": 52.013069869397775,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T17:00:00Z",
+    "valid_at_utc": "2024-01-06T23:00:00Z",
+    "observed": 50.8926152841271,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T18:00:00Z",
+    "valid_at_utc": "2024-01-07T00:00:00Z",
+    "observed": 50.45424044537668,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T19:00:00Z",
+    "valid_at_utc": "2024-01-07T01:00:00Z",
+    "observed": 49.99473211065936,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T20:00:00Z",
+    "valid_at_utc": "2024-01-07T02:00:00Z",
+    "observed": 47.78197786077594,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T21:00:00Z",
+    "valid_at_utc": "2024-01-07T03:00:00Z",
+    "observed": 45.108913186040816,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T22:00:00Z",
+    "valid_at_utc": "2024-01-07T04:00:00Z",
+    "observed": 44.74875751990027,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T23:00:00Z",
+    "valid_at_utc": "2024-01-07T05:00:00Z",
+    "observed": 46.72885867605212,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T00:00:00Z",
+    "valid_at_utc": "2024-01-07T06:00:00Z",
+    "observed": 49.07664403306603,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T01:00:00Z",
+    "valid_at_utc": "2024-01-07T07:00:00Z",
+    "observed": 52.57765706874116,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T02:00:00Z",
+    "valid_at_utc": "2024-01-07T08:00:00Z",
+    "observed": 52.396515261051945,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T03:00:00Z",
+    "valid_at_utc": "2024-01-07T09:00:00Z",
+    "observed": 54.73873991014675,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T04:00:00Z",
+    "valid_at_utc": "2024-01-07T10:00:00Z",
+    "observed": 53.792778466578895,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T05:00:00Z",
+    "valid_at_utc": "2024-01-07T11:00:00Z",
+    "observed": 49.73501452187987,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T06:00:00Z",
+    "valid_at_utc": "2024-01-07T12:00:00Z",
+    "observed": 54.12874783308227,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T07:00:00Z",
+    "valid_at_utc": "2024-01-07T13:00:00Z",
+    "observed": 55.71286669960267,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T08:00:00Z",
+    "valid_at_utc": "2024-01-07T14:00:00Z",
+    "observed": 56.53675149047708,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T09:00:00Z",
+    "valid_at_utc": "2024-01-07T15:00:00Z",
+    "observed": 59.32632259720503,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T10:00:00Z",
+    "valid_at_utc": "2024-01-07T16:00:00Z",
+    "observed": 56.08723520457539,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T11:00:00Z",
+    "valid_at_utc": "2024-01-07T17:00:00Z",
+    "observed": 54.336929145852594,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T12:00:00Z",
+    "valid_at_utc": "2024-01-07T18:00:00Z",
+    "observed": 55.68843702140414,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T13:00:00Z",
+    "valid_at_utc": "2024-01-07T19:00:00Z",
+    "observed": 54.38364334789448,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T14:00:00Z",
+    "valid_at_utc": "2024-01-07T20:00:00Z",
+    "observed": 51.48201283568381,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T15:00:00Z",
+    "valid_at_utc": "2024-01-07T21:00:00Z",
+    "observed": 48.72224041728572,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T16:00:00Z",
+    "valid_at_utc": "2024-01-07T22:00:00Z",
+    "observed": 44.419993710824016,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T17:00:00Z",
+    "valid_at_utc": "2024-01-07T23:00:00Z",
+    "observed": 42.51769629025427,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T18:00:00Z",
+    "valid_at_utc": "2024-01-08T00:00:00Z",
+    "observed": 41.812241621272086,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T19:00:00Z",
+    "valid_at_utc": "2024-01-08T01:00:00Z",
+    "observed": 37.802414037268235,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T20:00:00Z",
+    "valid_at_utc": "2024-01-08T02:00:00Z",
+    "observed": 35.13982586776504,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T21:00:00Z",
+    "valid_at_utc": "2024-01-08T03:00:00Z",
+    "observed": 35.64538122261572,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T22:00:00Z",
+    "valid_at_utc": "2024-01-08T04:00:00Z",
+    "observed": 34.52568456203896,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T23:00:00Z",
+    "valid_at_utc": "2024-01-08T05:00:00Z",
+    "observed": 35.44214811065043,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T00:00:00Z",
+    "valid_at_utc": "2024-01-08T06:00:00Z",
+    "observed": 40.38304374411809,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T01:00:00Z",
+    "valid_at_utc": "2024-01-08T07:00:00Z",
+    "observed": 38.83554555522742,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T02:00:00Z",
+    "valid_at_utc": "2024-01-08T08:00:00Z",
+    "observed": 40.970827298812566,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T03:00:00Z",
+    "valid_at_utc": "2024-01-08T09:00:00Z",
+    "observed": 46.72740196892933,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T04:00:00Z",
+    "valid_at_utc": "2024-01-08T10:00:00Z",
+    "observed": 47.12248332609646,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T05:00:00Z",
+    "valid_at_utc": "2024-01-08T11:00:00Z",
+    "observed": 48.36166947482407,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T06:00:00Z",
+    "valid_at_utc": "2024-01-08T12:00:00Z",
+    "observed": 50.283292459937144,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T07:00:00Z",
+    "valid_at_utc": "2024-01-08T13:00:00Z",
+    "observed": 51.219053701373966,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T08:00:00Z",
+    "valid_at_utc": "2024-01-08T14:00:00Z",
+    "observed": 52.20727831384907,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T09:00:00Z",
+    "valid_at_utc": "2024-01-08T15:00:00Z",
+    "observed": 45.977339563611444,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T10:00:00Z",
+    "valid_at_utc": "2024-01-08T16:00:00Z",
+    "observed": 42.887809006200136,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T11:00:00Z",
+    "valid_at_utc": "2024-01-08T17:00:00Z",
+    "observed": 45.22378705370138,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T12:00:00Z",
+    "valid_at_utc": "2024-01-08T18:00:00Z",
+    "observed": 46.11607171079929,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T13:00:00Z",
+    "valid_at_utc": "2024-01-08T19:00:00Z",
+    "observed": 44.05116557838447,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T14:00:00Z",
+    "valid_at_utc": "2024-01-08T20:00:00Z",
+    "observed": 45.73320478374891,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T15:00:00Z",
+    "valid_at_utc": "2024-01-08T21:00:00Z",
+    "observed": 41.86947293816192,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T16:00:00Z",
+    "valid_at_utc": "2024-01-08T22:00:00Z",
+    "observed": 41.63082546737916,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T17:00:00Z",
+    "valid_at_utc": "2024-01-08T23:00:00Z",
+    "observed": 36.91274066205426,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T18:00:00Z",
+    "valid_at_utc": "2024-01-09T00:00:00Z",
+    "observed": 32.90799201485034,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": null,
+    "missing_reason": "missing_input",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T19:00:00Z",
+    "valid_at_utc": "2024-01-09T01:00:00Z",
+    "observed": 34.91035355040174,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T20:00:00Z",
+    "valid_at_utc": "2024-01-09T02:00:00Z",
+    "observed": 32.300047683415514,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": null,
+    "missing_reason": "missing_input",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T21:00:00Z",
+    "valid_at_utc": "2024-01-09T03:00:00Z",
+    "observed": 36.533380847261384,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T22:00:00Z",
+    "valid_at_utc": "2024-01-09T04:00:00Z",
+    "observed": 30.080689325762496,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T23:00:00Z",
+    "valid_at_utc": "2024-01-09T05:00:00Z",
+    "observed": 28.967484625982586,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   }
+  ],
+  "next_cursor": null
+ },
+ {
+  "schema_version": "0.3.0",
+  "data_version": "synthetic-test",
+  "synthetic": true,
+  "task_id": "synthetic_class_h6",
+  "entity_id": "E1",
+  "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+  "target": "y",
+  "unit": "u",
+  "horizon_hours": 6,
+  "points": [
+   {
+    "issued_at_utc": "2024-01-05T00:00:00Z",
+    "valid_at_utc": "2024-01-05T06:00:00Z",
+    "observed": 52.75596655445044,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T01:00:00Z",
+    "valid_at_utc": "2024-01-05T07:00:00Z",
+    "observed": 52.69217647104649,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T02:00:00Z",
+    "valid_at_utc": "2024-01-05T08:00:00Z",
+    "observed": 56.44740722232571,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T03:00:00Z",
+    "valid_at_utc": "2024-01-05T09:00:00Z",
+    "observed": 59.18853744822721,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T04:00:00Z",
+    "valid_at_utc": "2024-01-05T10:00:00Z",
+    "observed": 59.16042512319208,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T05:00:00Z",
+    "valid_at_utc": "2024-01-05T11:00:00Z",
+    "observed": 60.52241536639445,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T06:00:00Z",
+    "valid_at_utc": "2024-01-05T12:00:00Z",
+    "observed": 59.36886313721307,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T07:00:00Z",
+    "valid_at_utc": "2024-01-05T13:00:00Z",
+    "observed": 58.89837121398336,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T08:00:00Z",
+    "valid_at_utc": "2024-01-05T14:00:00Z",
+    "observed": 60.75202448041749,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T09:00:00Z",
+    "valid_at_utc": "2024-01-05T15:00:00Z",
+    "observed": 63.70118849432622,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T10:00:00Z",
+    "valid_at_utc": "2024-01-05T16:00:00Z",
+    "observed": 66.39986687403615,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T11:00:00Z",
+    "valid_at_utc": "2024-01-05T17:00:00Z",
+    "observed": 67.46043082178927,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T12:00:00Z",
+    "valid_at_utc": "2024-01-05T18:00:00Z",
+    "observed": 65.5725492131617,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T13:00:00Z",
+    "valid_at_utc": "2024-01-05T19:00:00Z",
+    "observed": 66.08877750360999,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T14:00:00Z",
+    "valid_at_utc": "2024-01-05T20:00:00Z",
+    "observed": 66.57070636773899,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T15:00:00Z",
+    "valid_at_utc": "2024-01-05T21:00:00Z",
+    "observed": 65.02037724069369,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T16:00:00Z",
+    "valid_at_utc": "2024-01-05T22:00:00Z",
+    "observed": 65.85970277048528,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T17:00:00Z",
+    "valid_at_utc": "2024-01-05T23:00:00Z",
+    "observed": 64.69062285890315,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T18:00:00Z",
+    "valid_at_utc": "2024-01-06T00:00:00Z",
+    "observed": 66.83651311638252,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T19:00:00Z",
+    "valid_at_utc": "2024-01-06T01:00:00Z",
+    "observed": 65.31092106349807,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T20:00:00Z",
+    "valid_at_utc": "2024-01-06T02:00:00Z",
+    "observed": 63.92068179834707,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T21:00:00Z",
+    "valid_at_utc": "2024-01-06T03:00:00Z",
+    "observed": 61.14924789073346,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T22:00:00Z",
+    "valid_at_utc": "2024-01-06T04:00:00Z",
+    "observed": 60.451056092221286,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T23:00:00Z",
+    "valid_at_utc": "2024-01-06T05:00:00Z",
+    "observed": 62.39940131154272,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T00:00:00Z",
+    "valid_at_utc": "2024-01-06T06:00:00Z",
+    "observed": 62.90159796072291,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T01:00:00Z",
+    "valid_at_utc": "2024-01-06T07:00:00Z",
+    "observed": 61.36024686085983,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T02:00:00Z",
+    "valid_at_utc": "2024-01-06T08:00:00Z",
+    "observed": 56.94118372847122,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T03:00:00Z",
+    "valid_at_utc": "2024-01-06T09:00:00Z",
+    "observed": 53.722768213506995,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T04:00:00Z",
+    "valid_at_utc": "2024-01-06T10:00:00Z",
+    "observed": 55.62274672631892,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T05:00:00Z",
+    "valid_at_utc": "2024-01-06T11:00:00Z",
+    "observed": 56.18623204255727,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T06:00:00Z",
+    "valid_at_utc": "2024-01-06T12:00:00Z",
+    "observed": 57.4379037327028,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T07:00:00Z",
+    "valid_at_utc": "2024-01-06T13:00:00Z",
+    "observed": 60.73073221238439,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T08:00:00Z",
+    "valid_at_utc": "2024-01-06T14:00:00Z",
+    "observed": 56.80626416244215,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T09:00:00Z",
+    "valid_at_utc": "2024-01-06T15:00:00Z",
+    "observed": 57.70772297881511,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T10:00:00Z",
+    "valid_at_utc": "2024-01-06T16:00:00Z",
+    "observed": 60.1295572879516,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T11:00:00Z",
+    "valid_at_utc": "2024-01-06T17:00:00Z",
+    "observed": 60.71081468977892,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T12:00:00Z",
+    "valid_at_utc": "2024-01-06T18:00:00Z",
+    "observed": 57.49064476360483,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T13:00:00Z",
+    "valid_at_utc": "2024-01-06T19:00:00Z",
+    "observed": 54.57495344172394,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T14:00:00Z",
+    "valid_at_utc": "2024-01-06T20:00:00Z",
+    "observed": 53.73778717888691,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T15:00:00Z",
+    "valid_at_utc": "2024-01-06T21:00:00Z",
+    "observed": 50.59071760545858,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T16:00:00Z",
+    "valid_at_utc": "2024-01-06T22:00:00Z",
+    "observed": 48.90903039336484,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T17:00:00Z",
+    "valid_at_utc": "2024-01-06T23:00:00Z",
+    "observed": 47.04898840650881,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T18:00:00Z",
+    "valid_at_utc": "2024-01-07T00:00:00Z",
+    "observed": 50.96461282588434,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T19:00:00Z",
+    "valid_at_utc": "2024-01-07T01:00:00Z",
+    "observed": 50.20077763842809,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T20:00:00Z",
+    "valid_at_utc": "2024-01-07T02:00:00Z",
+    "observed": 45.0933356713439,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T21:00:00Z",
+    "valid_at_utc": "2024-01-07T03:00:00Z",
+    "observed": 44.027242598797564,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T22:00:00Z",
+    "valid_at_utc": "2024-01-07T04:00:00Z",
+    "observed": 42.72742652626759,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T23:00:00Z",
+    "valid_at_utc": "2024-01-07T05:00:00Z",
+    "observed": 42.92822150850566,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T00:00:00Z",
+    "valid_at_utc": "2024-01-07T06:00:00Z",
+    "observed": 41.67280308141521,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T01:00:00Z",
+    "valid_at_utc": "2024-01-07T07:00:00Z",
+    "observed": 43.68067185115899,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T02:00:00Z",
+    "valid_at_utc": "2024-01-07T08:00:00Z",
+    "observed": 43.334314909478636,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T03:00:00Z",
+    "valid_at_utc": "2024-01-07T09:00:00Z",
+    "observed": 43.39342021300162,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T04:00:00Z",
+    "valid_at_utc": "2024-01-07T10:00:00Z",
+    "observed": 46.42048522176003,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T05:00:00Z",
+    "valid_at_utc": "2024-01-07T11:00:00Z",
+    "observed": 48.22167232895673,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T06:00:00Z",
+    "valid_at_utc": "2024-01-07T12:00:00Z",
+    "observed": 49.93528402495684,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T07:00:00Z",
+    "valid_at_utc": "2024-01-07T13:00:00Z",
+    "observed": 52.642916852927655,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T08:00:00Z",
+    "valid_at_utc": "2024-01-07T14:00:00Z",
+    "observed": 52.29724879310394,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T09:00:00Z",
+    "valid_at_utc": "2024-01-07T15:00:00Z",
+    "observed": 52.14395045077821,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T10:00:00Z",
+    "valid_at_utc": "2024-01-07T16:00:00Z",
+    "observed": 49.16702078970909,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T11:00:00Z",
+    "valid_at_utc": "2024-01-07T17:00:00Z",
+    "observed": 51.95632406411291,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T12:00:00Z",
+    "valid_at_utc": "2024-01-07T18:00:00Z",
+    "observed": 47.168880559299275,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T13:00:00Z",
+    "valid_at_utc": "2024-01-07T19:00:00Z",
+    "observed": 47.8253137764551,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T14:00:00Z",
+    "valid_at_utc": "2024-01-07T20:00:00Z",
+    "observed": 44.44631751933123,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T15:00:00Z",
+    "valid_at_utc": "2024-01-07T21:00:00Z",
+    "observed": 42.385784074821395,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T16:00:00Z",
+    "valid_at_utc": "2024-01-07T22:00:00Z",
+    "observed": 40.461204844136454,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T17:00:00Z",
+    "valid_at_utc": "2024-01-07T23:00:00Z",
+    "observed": 37.628689624236515,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T18:00:00Z",
+    "valid_at_utc": "2024-01-08T00:00:00Z",
+    "observed": 35.06929345485294,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T19:00:00Z",
+    "valid_at_utc": "2024-01-08T01:00:00Z",
+    "observed": 33.143361467209886,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T20:00:00Z",
+    "valid_at_utc": "2024-01-08T02:00:00Z",
+    "observed": 29.18107113168444,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T21:00:00Z",
+    "valid_at_utc": "2024-01-08T03:00:00Z",
+    "observed": 24.64284109369063,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T22:00:00Z",
+    "valid_at_utc": "2024-01-08T04:00:00Z",
+    "observed": 24.931042089738725,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T23:00:00Z",
+    "valid_at_utc": "2024-01-08T05:00:00Z",
+    "observed": 25.49169766298473,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T00:00:00Z",
+    "valid_at_utc": "2024-01-08T06:00:00Z",
+    "observed": 27.141153821393967,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T01:00:00Z",
+    "valid_at_utc": "2024-01-08T07:00:00Z",
+    "observed": 27.638549744860725,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T02:00:00Z",
+    "valid_at_utc": "2024-01-08T08:00:00Z",
+    "observed": 27.28750499067186,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T03:00:00Z",
+    "valid_at_utc": "2024-01-08T09:00:00Z",
+    "observed": 28.690862930707652,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T04:00:00Z",
+    "valid_at_utc": "2024-01-08T10:00:00Z",
+    "observed": 30.65379181333831,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T05:00:00Z",
+    "valid_at_utc": "2024-01-08T11:00:00Z",
+    "observed": 32.83569843803521,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T06:00:00Z",
+    "valid_at_utc": "2024-01-08T12:00:00Z",
+    "observed": 35.26203134599157,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T07:00:00Z",
+    "valid_at_utc": "2024-01-08T13:00:00Z",
+    "observed": 37.5649050781092,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T08:00:00Z",
+    "valid_at_utc": "2024-01-08T14:00:00Z",
+    "observed": 40.00984802939684,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T09:00:00Z",
+    "valid_at_utc": "2024-01-08T15:00:00Z",
+    "observed": 39.39916622465905,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T10:00:00Z",
+    "valid_at_utc": "2024-01-08T16:00:00Z",
+    "observed": 38.56488255937727,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T11:00:00Z",
+    "valid_at_utc": "2024-01-08T17:00:00Z",
+    "observed": 38.40329524954449,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T12:00:00Z",
+    "valid_at_utc": "2024-01-08T18:00:00Z",
+    "observed": 38.72463084082928,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T13:00:00Z",
+    "valid_at_utc": "2024-01-08T19:00:00Z",
+    "observed": 38.35091419410469,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T14:00:00Z",
+    "valid_at_utc": "2024-01-08T20:00:00Z",
+    "observed": 36.116954707479785,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T15:00:00Z",
+    "valid_at_utc": "2024-01-08T21:00:00Z",
+    "observed": 36.603757952454366,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T16:00:00Z",
+    "valid_at_utc": "2024-01-08T22:00:00Z",
+    "observed": 38.50018525375798,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T17:00:00Z",
+    "valid_at_utc": "2024-01-08T23:00:00Z",
+    "observed": 34.51309844915261,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T18:00:00Z",
+    "valid_at_utc": "2024-01-09T00:00:00Z",
+    "observed": 27.795609940552502,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T19:00:00Z",
+    "valid_at_utc": "2024-01-09T01:00:00Z",
+    "observed": 25.829580083393942,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T20:00:00Z",
+    "valid_at_utc": "2024-01-09T02:00:00Z",
+    "observed": 23.74932646986435,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T21:00:00Z",
+    "valid_at_utc": "2024-01-09T03:00:00Z",
+    "observed": 22.013947447806117,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T22:00:00Z",
+    "valid_at_utc": "2024-01-09T04:00:00Z",
+    "observed": 19.010517140325945,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T23:00:00Z",
+    "valid_at_utc": "2024-01-09T05:00:00Z",
+    "observed": 23.765440242756835,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   }
+  ],
+  "next_cursor": null
+ },
+ {
+  "schema_version": "0.3.0",
+  "data_version": "synthetic-test",
+  "synthetic": true,
+  "task_id": "synthetic_class_h6",
+  "entity_id": "E2",
+  "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+  "target": "y",
+  "unit": "u",
+  "horizon_hours": 6,
+  "points": [
+   {
+    "issued_at_utc": "2024-01-05T00:00:00Z",
+    "valid_at_utc": "2024-01-05T06:00:00Z",
+    "observed": 61.49365486988271,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T01:00:00Z",
+    "valid_at_utc": "2024-01-05T07:00:00Z",
+    "observed": 66.3336989754868,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T02:00:00Z",
+    "valid_at_utc": "2024-01-05T08:00:00Z",
+    "observed": 66.58851018790811,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T03:00:00Z",
+    "valid_at_utc": "2024-01-05T09:00:00Z",
+    "observed": 66.51874667499303,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T04:00:00Z",
+    "valid_at_utc": "2024-01-05T10:00:00Z",
+    "observed": 68.91045517820184,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T05:00:00Z",
+    "valid_at_utc": "2024-01-05T11:00:00Z",
+    "observed": 69.86199502411334,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T06:00:00Z",
+    "valid_at_utc": "2024-01-05T12:00:00Z",
+    "observed": 69.94964507666461,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T07:00:00Z",
+    "valid_at_utc": "2024-01-05T13:00:00Z",
+    "observed": 72.60174003399149,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T08:00:00Z",
+    "valid_at_utc": "2024-01-05T14:00:00Z",
+    "observed": 68.64831247327072,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T09:00:00Z",
+    "valid_at_utc": "2024-01-05T15:00:00Z",
+    "observed": 72.04939746427408,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T10:00:00Z",
+    "valid_at_utc": "2024-01-05T16:00:00Z",
+    "observed": 71.94553295746285,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T11:00:00Z",
+    "valid_at_utc": "2024-01-05T17:00:00Z",
+    "observed": 70.66885601610737,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T12:00:00Z",
+    "valid_at_utc": "2024-01-05T18:00:00Z",
+    "observed": 70.99940716289846,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T13:00:00Z",
+    "valid_at_utc": "2024-01-05T19:00:00Z",
+    "observed": 70.27367365868986,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T14:00:00Z",
+    "valid_at_utc": "2024-01-05T20:00:00Z",
+    "observed": 69.13828147499231,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T15:00:00Z",
+    "valid_at_utc": "2024-01-05T21:00:00Z",
+    "observed": 68.9918358007772,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T16:00:00Z",
+    "valid_at_utc": "2024-01-05T22:00:00Z",
+    "observed": 63.02119929028789,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T17:00:00Z",
+    "valid_at_utc": "2024-01-05T23:00:00Z",
+    "observed": 60.26206850616226,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T18:00:00Z",
+    "valid_at_utc": "2024-01-06T00:00:00Z",
+    "observed": 56.6003739897491,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T19:00:00Z",
+    "valid_at_utc": "2024-01-06T01:00:00Z",
+    "observed": 51.46235969971076,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T20:00:00Z",
+    "valid_at_utc": "2024-01-06T02:00:00Z",
+    "observed": 52.0410443241724,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "missing_input",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T21:00:00Z",
+    "valid_at_utc": "2024-01-06T03:00:00Z",
+    "observed": 55.46255315662041,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T22:00:00Z",
+    "valid_at_utc": "2024-01-06T04:00:00Z",
+    "observed": 56.11845111584772,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-05T23:00:00Z",
+    "valid_at_utc": "2024-01-06T05:00:00Z",
+    "observed": 52.14437945510473,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T00:00:00Z",
+    "valid_at_utc": "2024-01-06T06:00:00Z",
+    "observed": 53.03907392939522,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T01:00:00Z",
+    "valid_at_utc": "2024-01-06T07:00:00Z",
+    "observed": 56.476266339584,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T02:00:00Z",
+    "valid_at_utc": "2024-01-06T08:00:00Z",
+    "observed": 54.3216798878941,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T03:00:00Z",
+    "valid_at_utc": "2024-01-06T09:00:00Z",
+    "observed": 57.510537367894386,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T04:00:00Z",
+    "valid_at_utc": "2024-01-06T10:00:00Z",
+    "observed": 55.19273487658213,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T05:00:00Z",
+    "valid_at_utc": "2024-01-06T11:00:00Z",
+    "observed": 53.85286612569352,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T06:00:00Z",
+    "valid_at_utc": "2024-01-06T12:00:00Z",
+    "observed": 58.38066270602129,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T07:00:00Z",
+    "valid_at_utc": "2024-01-06T13:00:00Z",
+    "observed": 59.81513526825796,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T08:00:00Z",
+    "valid_at_utc": "2024-01-06T14:00:00Z",
+    "observed": 60.35314537190095,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T09:00:00Z",
+    "valid_at_utc": "2024-01-06T15:00:00Z",
+    "observed": 63.319930792567774,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T10:00:00Z",
+    "valid_at_utc": "2024-01-06T16:00:00Z",
+    "observed": 63.712749622032206,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T11:00:00Z",
+    "valid_at_utc": "2024-01-06T17:00:00Z",
+    "observed": 62.38791636737923,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T12:00:00Z",
+    "valid_at_utc": "2024-01-06T18:00:00Z",
+    "observed": 61.88192850938392,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T13:00:00Z",
+    "valid_at_utc": "2024-01-06T19:00:00Z",
+    "observed": 59.60983404971932,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T14:00:00Z",
+    "valid_at_utc": "2024-01-06T20:00:00Z",
+    "observed": 56.8390208255378,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T15:00:00Z",
+    "valid_at_utc": "2024-01-06T21:00:00Z",
+    "observed": 54.122147118196104,
+    "prediction": null,
+    "observed_label": "high",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T16:00:00Z",
+    "valid_at_utc": "2024-01-06T22:00:00Z",
+    "observed": 50.3148685960931,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T17:00:00Z",
+    "valid_at_utc": "2024-01-06T23:00:00Z",
+    "observed": 49.32114074966811,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T18:00:00Z",
+    "valid_at_utc": "2024-01-07T00:00:00Z",
+    "observed": 47.39345256730267,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T19:00:00Z",
+    "valid_at_utc": "2024-01-07T01:00:00Z",
+    "observed": 45.038638059671925,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T20:00:00Z",
+    "valid_at_utc": "2024-01-07T02:00:00Z",
+    "observed": 43.0170721214224,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T21:00:00Z",
+    "valid_at_utc": "2024-01-07T03:00:00Z",
+    "observed": 42.33692299622605,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T22:00:00Z",
+    "valid_at_utc": "2024-01-07T04:00:00Z",
+    "observed": 41.18994615311891,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-06T23:00:00Z",
+    "valid_at_utc": "2024-01-07T05:00:00Z",
+    "observed": 40.850108962689426,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": null,
+    "missing_reason": "prediction_unavailable",
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T00:00:00Z",
+    "valid_at_utc": "2024-01-07T06:00:00Z",
+    "observed": 33.870503182148475,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "high",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T01:00:00Z",
+    "valid_at_utc": "2024-01-07T07:00:00Z",
+    "observed": 31.998789350738896,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T02:00:00Z",
+    "valid_at_utc": "2024-01-07T08:00:00Z",
+    "observed": 31.906328093165765,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T03:00:00Z",
+    "valid_at_utc": "2024-01-07T09:00:00Z",
+    "observed": 34.228236423297744,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T04:00:00Z",
+    "valid_at_utc": "2024-01-07T10:00:00Z",
+    "observed": 36.70805255637372,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T05:00:00Z",
+    "valid_at_utc": "2024-01-07T11:00:00Z",
+    "observed": 40.0893165583751,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T06:00:00Z",
+    "valid_at_utc": "2024-01-07T12:00:00Z",
+    "observed": 40.96816085336212,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T07:00:00Z",
+    "valid_at_utc": "2024-01-07T13:00:00Z",
+    "observed": 36.34666439658622,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T08:00:00Z",
+    "valid_at_utc": "2024-01-07T14:00:00Z",
+    "observed": 37.14553139492347,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T09:00:00Z",
+    "valid_at_utc": "2024-01-07T15:00:00Z",
+    "observed": 40.96375514769048,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T10:00:00Z",
+    "valid_at_utc": "2024-01-07T16:00:00Z",
+    "observed": 36.87274368488948,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T11:00:00Z",
+    "valid_at_utc": "2024-01-07T17:00:00Z",
+    "observed": 39.08388397206318,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T12:00:00Z",
+    "valid_at_utc": "2024-01-07T18:00:00Z",
+    "observed": 37.94922448164862,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T13:00:00Z",
+    "valid_at_utc": "2024-01-07T19:00:00Z",
+    "observed": 43.68496711113976,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T14:00:00Z",
+    "valid_at_utc": "2024-01-07T20:00:00Z",
+    "observed": 39.62224894474696,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T15:00:00Z",
+    "valid_at_utc": "2024-01-07T21:00:00Z",
+    "observed": 35.938585825619214,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T16:00:00Z",
+    "valid_at_utc": "2024-01-07T22:00:00Z",
+    "observed": 36.89200712557374,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T17:00:00Z",
+    "valid_at_utc": "2024-01-07T23:00:00Z",
+    "observed": 32.83387191453199,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T18:00:00Z",
+    "valid_at_utc": "2024-01-08T00:00:00Z",
+    "observed": 32.73393562854243,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T19:00:00Z",
+    "valid_at_utc": "2024-01-08T01:00:00Z",
+    "observed": 31.68395907794507,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T20:00:00Z",
+    "valid_at_utc": "2024-01-08T02:00:00Z",
+    "observed": 30.39437933070245,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T21:00:00Z",
+    "valid_at_utc": "2024-01-08T03:00:00Z",
+    "observed": 29.877281566434853,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T22:00:00Z",
+    "valid_at_utc": "2024-01-08T04:00:00Z",
+    "observed": 25.751140355611685,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-07T23:00:00Z",
+    "valid_at_utc": "2024-01-08T05:00:00Z",
+    "observed": 22.36292381026377,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T00:00:00Z",
+    "valid_at_utc": "2024-01-08T06:00:00Z",
+    "observed": 23.526761427793453,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T01:00:00Z",
+    "valid_at_utc": "2024-01-08T07:00:00Z",
+    "observed": 27.32010040695174,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T02:00:00Z",
+    "valid_at_utc": "2024-01-08T08:00:00Z",
+    "observed": 24.904923229038637,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T03:00:00Z",
+    "valid_at_utc": "2024-01-08T09:00:00Z",
+    "observed": 29.471353654506547,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T04:00:00Z",
+    "valid_at_utc": "2024-01-08T10:00:00Z",
+    "observed": 28.735817187425035,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T05:00:00Z",
+    "valid_at_utc": "2024-01-08T11:00:00Z",
+    "observed": 31.726928502056516,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T06:00:00Z",
+    "valid_at_utc": "2024-01-08T12:00:00Z",
+    "observed": 29.252311008077026,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T07:00:00Z",
+    "valid_at_utc": "2024-01-08T13:00:00Z",
+    "observed": 31.75247402097769,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T08:00:00Z",
+    "valid_at_utc": "2024-01-08T14:00:00Z",
+    "observed": 31.84386830291053,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T09:00:00Z",
+    "valid_at_utc": "2024-01-08T15:00:00Z",
+    "observed": 35.88862522412606,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T10:00:00Z",
+    "valid_at_utc": "2024-01-08T16:00:00Z",
+    "observed": 39.590202862261435,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T11:00:00Z",
+    "valid_at_utc": "2024-01-08T17:00:00Z",
+    "observed": 38.23737578347827,
+    "prediction": null,
+    "observed_label": "mid",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T12:00:00Z",
+    "valid_at_utc": "2024-01-08T18:00:00Z",
+    "observed": 32.823611468532164,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T13:00:00Z",
+    "valid_at_utc": "2024-01-08T19:00:00Z",
+    "observed": 32.255414448337554,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T14:00:00Z",
+    "valid_at_utc": "2024-01-08T20:00:00Z",
+    "observed": 29.739399053531084,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T15:00:00Z",
+    "valid_at_utc": "2024-01-08T21:00:00Z",
+    "observed": 30.866232091656364,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T16:00:00Z",
+    "valid_at_utc": "2024-01-08T22:00:00Z",
+    "observed": 30.075450116699802,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T17:00:00Z",
+    "valid_at_utc": "2024-01-08T23:00:00Z",
+    "observed": 28.78679993912395,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T18:00:00Z",
+    "valid_at_utc": "2024-01-09T00:00:00Z",
+    "observed": 27.469581320674994,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T19:00:00Z",
+    "valid_at_utc": "2024-01-09T01:00:00Z",
+    "observed": 26.286596854605914,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T20:00:00Z",
+    "valid_at_utc": "2024-01-09T02:00:00Z",
+    "observed": 26.816897208467896,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T21:00:00Z",
+    "valid_at_utc": "2024-01-09T03:00:00Z",
+    "observed": 26.38186758032382,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T22:00:00Z",
+    "valid_at_utc": "2024-01-09T04:00:00Z",
+    "observed": 25.982721691979016,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "mid",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   },
+   {
+    "issued_at_utc": "2024-01-08T23:00:00Z",
+    "valid_at_utc": "2024-01-09T05:00:00Z",
+    "observed": 26.75114054768025,
+    "prediction": null,
+    "observed_label": "low",
+    "predicted_label": "low",
+    "missing_reason": null,
+    "quality": {
+     "status": "valid",
+     "warnings": []
+    }
+   }
+  ],
+  "next_cursor": null
+ }
+]

@@ -1,0 +1,46 @@
+{
+ "name": "Índice Nacional de Calidad del Aire (ICA) - NO2, concentración media horaria",
+ "short_name": "ICA",
+ "kind": "official_index",
+ "source_url": "https://www.miteco.gob.es/content/dam/miteco/images/es/resoluciondgactualizacionica_tcm30-509833.pdf",
+ "unit": "ug/m3",
+ "boundary": "upper_inclusive",
+ "classes": [
+  {
+   "label": "Buena",
+   "lower": null,
+   "upper": 40.0,
+   "color": "#00FFFF",
+   "description": "Calidad del aire satisfactoria",
+   "merged_from": []
+  },
+  {
+   "label": "Razonablemente buena",
+   "lower": 40.0,
+   "upper": 90.0,
+   "color": "#00B050",
+   "description": "Calidad del aire aceptable, la contaminación no supone un riesgo para la salud.",
+   "merged_from": []
+  },
+  {
+   "label": "Regular",
+   "lower": 90.0,
+   "upper": 120.0,
+   "color": "#FFCC00",
+   "description": "La calidad del aire probablemente no afecte a la población general pero puede presentar un riesgo moderado para los grupos de riesgo.",
+   "merged_from": []
+  },
+  {
+   "label": "Desfavorable o peor",
+   "lower": 120.0,
+   "upper": 1000.0,
+   "color": "#FF3300",
+   "description": "Agrupa tres categorías oficiales del ICA para NO₂ que el modelo no distingue: «Desfavorable» (121-230 µg/m³), «Muy desfavorable» (231-340 µg/m³) y «Extremadamente desfavorable» (341-1000 µg/m³). Mensaje oficial de «Desfavorable»: Toda la población puede experimentar efectos negativos sobre la salud y los grupos de riesgo efectos mucho más serios.",
+   "merged_from": [
+    "Desfavorable",
+    "Muy desfavorable",
+    "Extremadamente desfavorable"
+   ]
+  }
+ ]
+}

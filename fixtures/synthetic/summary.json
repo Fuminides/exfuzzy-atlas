@@ -1,0 +1,667 @@
+[
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "task_id": "madrid_no2_h6",
+    "domain": "air",
+    "variable": "no2",
+    "label": "NO₂ horario observado (inventado)",
+    "label_en": "Observed hourly NO₂ (made up)",
+    "unit": "ug/m3",
+    "timezone": "Europe/Madrid",
+    "period_from_utc": "2025-01-15T12:00:00Z",
+    "period_to_utc": "2025-01-15T17:00:00Z",
+    "classes": null,
+    "groups": {
+      "all": [
+        {
+          "key": "all",
+          "n": 24,
+          "shares": null,
+          "quantiles": {
+            "p10": 24.720000000000002,
+            "p25": 38.625,
+            "p50": 52.2,
+            "p75": 58.725,
+            "p90": 71.5,
+            "mean": 49.48749999999999
+          }
+        }
+      ],
+      "year": [
+        {
+          "key": "2025",
+          "n": 24,
+          "shares": null,
+          "quantiles": {
+            "p10": 24.720000000000002,
+            "p25": 38.625,
+            "p50": 52.2,
+            "p75": 58.725,
+            "p90": 71.5,
+            "mean": 49.48749999999999
+          }
+        }
+      ],
+      "month": [
+        {
+          "key": "01",
+          "n": 24,
+          "shares": null,
+          "quantiles": {
+            "p10": 24.720000000000002,
+            "p25": 38.625,
+            "p50": 52.2,
+            "p75": 58.725,
+            "p90": 71.5,
+            "mean": 49.48749999999999
+          }
+        }
+      ],
+      "hour": [
+        {
+          "key": "13",
+          "n": 4,
+          "shares": null,
+          "quantiles": {
+            "p10": 36.03,
+            "p25": 41.02499999999999,
+            "p50": 53.15,
+            "p75": 66.125,
+            "p90": 72.65,
+            "mean": 54.0
+          }
+        },
+        {
+          "key": "14",
+          "n": 4,
+          "shares": null,
+          "quantiles": {
+            "p10": 36.21,
+            "p25": 43.724999999999994,
+            "p50": 50.349999999999994,
+            "p75": 53.9,
+            "p90": 55.88,
+            "mean": 47.275
+          }
+        },
+        {
+          "key": "15",
+          "n": 4,
+          "shares": null,
+          "quantiles": {
+            "p10": 32.19,
+            "p25": 44.925,
+            "p50": 52.2,
+            "p75": 53.625,
+            "p90": 55.83,
+            "mean": 46.349999999999994
+          }
+        },
+        {
+          "key": "16",
+          "n": 4,
+          "shares": null,
+          "quantiles": {
+            "p10": 53.81,
+            "p25": 56.825,
+            "p50": 66.5,
+            "p75": 74.575,
+            "p90": 74.71,
+            "mean": 64.9
+          }
+        },
+        {
+          "key": "17",
+          "n": 4,
+          "shares": null,
+          "quantiles": {
+            "p10": 29.110000000000003,
+            "p25": 46.075,
+            "p50": 57.45,
+            "p75": 60.675,
+            "p90": 62.97,
+            "mean": 49.3
+          }
+        },
+        {
+          "key": "18",
+          "n": 4,
+          "shares": null,
+          "quantiles": {
+            "p10": 23.04,
+            "p25": 25.650000000000002,
+            "p50": 33.85,
+            "p75": 43.3,
+            "p90": 48.160000000000004,
+            "mean": 35.1
+          }
+        }
+      ],
+      "weekday": [
+        {
+          "key": "2",
+          "n": 24,
+          "shares": null,
+          "quantiles": {
+            "p10": 24.720000000000002,
+            "p25": 38.625,
+            "p50": 52.2,
+            "p75": 58.725,
+            "p90": 71.5,
+            "mean": 49.48749999999999
+          }
+        }
+      ],
+      "entity": [
+        {
+          "key": "SYN_A",
+          "n": 6,
+          "shares": null,
+          "quantiles": {
+            "p10": 42.05,
+            "p25": 51.55,
+            "p50": 52.4,
+            "p75": 61.575,
+            "p90": 69.5,
+            "mean": 54.65
+          }
+        },
+        {
+          "key": "SYN_B",
+          "n": 6,
+          "shares": null,
+          "quantiles": {
+            "p10": 22.450000000000003,
+            "p25": 33.425,
+            "p50": 54.8,
+            "p75": 58.175,
+            "p90": 67.75,
+            "mean": 48.333333333333336
+          }
+        },
+        {
+          "key": "SYN_C",
+          "n": 6,
+          "shares": null,
+          "quantiles": {
+            "p10": 26.25,
+            "p25": 36.35,
+            "p50": 54.55,
+            "p75": 58.875,
+            "p90": 60.95,
+            "mean": 47.25
+          }
+        },
+        {
+          "key": "SYN_D",
+          "n": 6,
+          "shares": null,
+          "quantiles": {
+            "p10": 32.15,
+            "p25": 41.4,
+            "p50": 45.849999999999994,
+            "p75": 53.6,
+            "p90": 65.15,
+            "mean": 47.71666666666667
+          }
+        }
+      ]
+    },
+    "notes": [
+      "24 valores observados entre 2025-01-15 y 2025-01-15: todo el histórico de la tabla de variables, no solo el periodo publicado; cada valor cuenta una vez por entidad e instante.",
+      "Mes, hora y día de la semana en hora local (Europe/Madrid). Describe los datos, no el modelo."
+    ]
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-test",
+    "synthetic": true,
+    "task_id": "synthetic_class_h6",
+    "domain": "air",
+    "variable": "y",
+    "label": "Serie y observada (inventada)",
+    "label_en": "Observed series y (made up)",
+    "unit": "u",
+    "timezone": "Europe/Madrid",
+    "period_from_utc": "2024-01-01T06:00:00Z",
+    "period_to_utc": "2024-02-14T23:00:00Z",
+    "classes": [
+      {
+        "label": "low",
+        "display_label": "baja (inventada)",
+        "display_label_en": "low (made up)",
+        "lower": null,
+        "upper": 34.0,
+        "color": "#00FFFF",
+        "description": "invented",
+        "description_en": null,
+        "merged_from": []
+      },
+      {
+        "label": "mid",
+        "display_label": "media (inventada)",
+        "display_label_en": "medium (made up)",
+        "lower": 34.0,
+        "upper": 50.0,
+        "color": "#FFCC00",
+        "description": "invented",
+        "description_en": null,
+        "merged_from": []
+      },
+      {
+        "label": "high",
+        "display_label": "alta (inventada)",
+        "display_label_en": "high (made up)",
+        "lower": 50.0,
+        "upper": 1000.0,
+        "color": "#FF3300",
+        "description": "invented: groups two invented bands",
+        "description_en": "made up: groups two made-up bands",
+        "merged_from": [
+          "very high (invented)",
+          "extreme (invented)"
+        ]
+      }
+    ],
+    "groups": {
+      "all": [
+        {
+          "key": "all",
+          "n": 3222,
+          "shares": [
+            0.40037243947858475,
+            0.29639975170701427,
+            0.303227808814401
+          ],
+          "quantiles": null
+        }
+      ],
+      "year": [
+        {
+          "key": "2024",
+          "n": 3222,
+          "shares": [
+            0.40037243947858475,
+            0.29639975170701427,
+            0.303227808814401
+          ],
+          "quantiles": null
+        }
+      ],
+      "month": [
+        {
+          "key": "01",
+          "n": 2211,
+          "shares": [
+            0.3776571687019448,
+            0.30619629127091813,
+            0.31614654002713705
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "02",
+          "n": 1011,
+          "shares": [
+            0.45004945598417406,
+            0.27497527200791294,
+            0.27497527200791294
+          ],
+          "quantiles": null
+        }
+      ],
+      "hour": [
+        {
+          "key": "00",
+          "n": 135,
+          "shares": [
+            0.42962962962962964,
+            0.2814814814814815,
+            0.28888888888888886
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "01",
+          "n": 132,
+          "shares": [
+            0.4696969696969697,
+            0.25,
+            0.2803030303030303
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "02",
+          "n": 132,
+          "shares": [
+            0.4772727272727273,
+            0.30303030303030304,
+            0.2196969696969697
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "03",
+          "n": 132,
+          "shares": [
+            0.5151515151515151,
+            0.26515151515151514,
+            0.2196969696969697
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "04",
+          "n": 132,
+          "shares": [
+            0.5227272727272727,
+            0.2803030303030303,
+            0.19696969696969696
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "05",
+          "n": 132,
+          "shares": [
+            0.5454545454545454,
+            0.2727272727272727,
+            0.18181818181818182
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "06",
+          "n": 132,
+          "shares": [
+            0.5227272727272727,
+            0.29545454545454547,
+            0.18181818181818182
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "07",
+          "n": 135,
+          "shares": [
+            0.5481481481481482,
+            0.2518518518518518,
+            0.2
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "08",
+          "n": 135,
+          "shares": [
+            0.4888888888888889,
+            0.2962962962962963,
+            0.21481481481481482
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "09",
+          "n": 135,
+          "shares": [
+            0.4666666666666667,
+            0.28888888888888886,
+            0.24444444444444444
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "10",
+          "n": 135,
+          "shares": [
+            0.42962962962962964,
+            0.32592592592592595,
+            0.24444444444444444
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "11",
+          "n": 135,
+          "shares": [
+            0.4,
+            0.3111111111111111,
+            0.28888888888888886
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "12",
+          "n": 135,
+          "shares": [
+            0.3851851851851852,
+            0.3037037037037037,
+            0.3111111111111111
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "13",
+          "n": 135,
+          "shares": [
+            0.362962962962963,
+            0.31851851851851853,
+            0.31851851851851853
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "14",
+          "n": 135,
+          "shares": [
+            0.34814814814814815,
+            0.2740740740740741,
+            0.37777777777777777
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "15",
+          "n": 135,
+          "shares": [
+            0.3111111111111111,
+            0.2740740740740741,
+            0.4148148148148148
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "16",
+          "n": 135,
+          "shares": [
+            0.26666666666666666,
+            0.31851851851851853,
+            0.4148148148148148
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "17",
+          "n": 135,
+          "shares": [
+            0.25925925925925924,
+            0.3333333333333333,
+            0.4074074074074074
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "18",
+          "n": 135,
+          "shares": [
+            0.25925925925925924,
+            0.31851851851851853,
+            0.4222222222222222
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "19",
+          "n": 135,
+          "shares": [
+            0.2814814814814815,
+            0.2962962962962963,
+            0.4222222222222222
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "20",
+          "n": 135,
+          "shares": [
+            0.2962962962962963,
+            0.3111111111111111,
+            0.3925925925925926
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "21",
+          "n": 135,
+          "shares": [
+            0.31851851851851853,
+            0.31851851851851853,
+            0.362962962962963
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "22",
+          "n": 135,
+          "shares": [
+            0.34814814814814815,
+            0.3037037037037037,
+            0.34814814814814815
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "23",
+          "n": 135,
+          "shares": [
+            0.37037037037037035,
+            0.31851851851851853,
+            0.3111111111111111
+          ],
+          "quantiles": null
+        }
+      ],
+      "weekday": [
+        {
+          "key": "0",
+          "n": 483,
+          "shares": [
+            0.33747412008281574,
+            0.37681159420289856,
+            0.2857142857142857
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "1",
+          "n": 504,
+          "shares": [
+            0.38095238095238093,
+            0.31547619047619047,
+            0.30357142857142855
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "2",
+          "n": 504,
+          "shares": [
+            0.40476190476190477,
+            0.2996031746031746,
+            0.29563492063492064
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "3",
+          "n": 435,
+          "shares": [
+            0.432183908045977,
+            0.2827586206896552,
+            0.2850574712643678
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "4",
+          "n": 432,
+          "shares": [
+            0.4537037037037037,
+            0.27546296296296297,
+            0.2708333333333333
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "5",
+          "n": 432,
+          "shares": [
+            0.44212962962962965,
+            0.23148148148148148,
+            0.3263888888888889
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "6",
+          "n": 432,
+          "shares": [
+            0.3611111111111111,
+            0.2800925925925926,
+            0.3587962962962963
+          ],
+          "quantiles": null
+        }
+      ],
+      "entity": [
+        {
+          "key": "E0",
+          "n": 1074,
+          "shares": [
+            0.6061452513966481,
+            0.2886405959031657,
+            0.10521415270018622
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "E1",
+          "n": 1074,
+          "shares": [
+            0.4208566108007449,
+            0.31098696461824954,
+            0.2681564245810056
+          ],
+          "quantiles": null
+        },
+        {
+          "key": "E2",
+          "n": 1074,
+          "shares": [
+            0.17411545623836128,
+            0.28957169459962756,
+            0.5363128491620112
+          ],
+          "quantiles": null
+        }
+      ]
+    },
+    "notes": [
+      "3222 valores observados entre 2024-01-01 y 2024-02-14: todo el histórico de la tabla de variables, no solo el periodo publicado; cada valor cuenta una vez por entidad e instante.",
+      "Mes, hora y día de la semana en hora local (Europe/Madrid). Describe los datos, no el modelo."
+    ]
+  }
+]

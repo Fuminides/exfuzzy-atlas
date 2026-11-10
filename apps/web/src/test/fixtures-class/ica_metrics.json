@@ -1,0 +1,2018 @@
+{
+ "schema_version": "0.3.0",
+ "model_id": "exfuzzy-madrid_no2_h6-ica-v1-seed0",
+ "task_id": "madrid_no2_h6",
+ "split": {
+  "train_from_utc": "2019-01-01T00:00:00Z",
+  "train_to_utc": "2023-12-31T00:00:00Z",
+  "validation_from_utc": "2024-01-01T00:00:00Z",
+  "validation_to_utc": "2024-12-31T00:00:00Z",
+  "test_from_utc": "2025-01-01T00:00:00Z",
+  "test_to_utc": "2026-01-01T00:00:00Z",
+  "embargo_hours": 24
+ },
+ "rows": [
+  {
+   "estimator": "persistence",
+   "metric": "macro_f1",
+   "value": 0.2935214571500817,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "balanced_accuracy",
+   "value": 0.29376123020106937,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "accuracy",
+   "value": 0.7687410578618724,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "mae_class_index",
+   "value": 0.24363097944833245,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "share_off_by_2plus",
+   "value": 0.011717666892184155,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "share_unknown",
+   "value": 0,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "recall[Buena]",
+   "value": 0.8637864739478892,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "f1[Buena]",
+   "value": 0.8647565286239123,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "precision[Buena]",
+   "value": 0.8657287645427892,
+   "n": 150762,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Buena>Buena]",
+   "value": 130519,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Buena>Razonablemente buena]",
+   "value": 19619,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Buena>Regular]",
+   "value": 904,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Buena>Desfavorable o peor]",
+   "value": 59,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Buena>no_prediction]",
+   "value": 0,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "recall[Razonablemente buena]",
+   "value": 0.29079061059907835,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "f1[Razonablemente buena]",
+   "value": 0.2895552886769793,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "precision[Razonablemente buena]",
+   "value": 0.2883304180202049,
+   "n": 28013,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Razonablemente buena>Buena]",
+   "value": 19141,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Razonablemente buena>Razonablemente buena]",
+   "value": 8077,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Razonablemente buena>Regular]",
+   "value": 531,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Razonablemente buena>Desfavorable o peor]",
+   "value": 27,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Razonablemente buena>no_prediction]",
+   "value": 0,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "recall[Regular]",
+   "value": 0.02046783625730994,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "f1[Regular]",
+   "value": 0.01977401129943503,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "precision[Regular]",
+   "value": 0.01912568306010929,
+   "n": 1464,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Regular>Buena]",
+   "value": 1043,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Regular>Razonablemente buena]",
+   "value": 296,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Regular>Regular]",
+   "value": 28,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Regular>Desfavorable o peor]",
+   "value": 1,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Regular>no_prediction]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "recall[Desfavorable o peor]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "f1[Desfavorable o peor]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "precision[Desfavorable o peor]",
+   "value": 0,
+   "n": 87,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Desfavorable o peor>Buena]",
+   "value": 59,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Desfavorable o peor>Razonablemente buena]",
+   "value": 21,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Desfavorable o peor>Regular]",
+   "value": 1,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Desfavorable o peor>Desfavorable o peor]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "confusion[Desfavorable o peor>no_prediction]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "persistence",
+   "metric": "fit_seconds",
+   "value": 0.0000011022202670574188,
+   "n": 918601,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "macro_f1",
+   "value": 0.2913792782768371,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "balanced_accuracy",
+   "value": 0.2859132559800999,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "accuracy",
+   "value": 0.8270687532579883,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "mae_class_index",
+   "value": 0.18056741678959218,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "share_off_by_2plus",
+   "value": 0.007270166254450273,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "share_unknown",
+   "value": 0,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "recall[Buena]",
+   "value": 0.9517607428144089,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "f1[Buena]",
+   "value": 0.9026188197266637,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "precision[Buena]",
+   "value": 0.858302398032873,
+   "n": 167554,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Buena>Buena]",
+   "value": 143812,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Buena>Razonablemente buena]",
+   "value": 7289,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Buena>Regular]",
+   "value": 0,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Buena>Desfavorable o peor]",
+   "value": 0,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Buena>no_prediction]",
+   "value": 0,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "recall[Razonablemente buena]",
+   "value": 0.19189228110599077,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "f1[Razonablemente buena]",
+   "value": 0.2628982933806846,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "precision[Razonablemente buena]",
+   "value": 0.417319135609145,
+   "n": 12772,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Razonablemente buena>Buena]",
+   "value": 22446,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Razonablemente buena>Razonablemente buena]",
+   "value": 5330,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Razonablemente buena>Regular]",
+   "value": 0,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Razonablemente buena>Desfavorable o peor]",
+   "value": 0,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Razonablemente buena>no_prediction]",
+   "value": 0,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "recall[Regular]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "f1[Regular]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "precision[Regular]",
+   "value": 0,
+   "n": 0,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Regular>Buena]",
+   "value": 1230,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Regular>Razonablemente buena]",
+   "value": 138,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Regular>Regular]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Regular>Desfavorable o peor]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Regular>no_prediction]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "recall[Desfavorable o peor]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "f1[Desfavorable o peor]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "precision[Desfavorable o peor]",
+   "value": 0,
+   "n": 0,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Desfavorable o peor>Buena]",
+   "value": 66,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Desfavorable o peor>Razonablemente buena]",
+   "value": 15,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Desfavorable o peor>Regular]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Desfavorable o peor>Desfavorable o peor]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "confusion[Desfavorable o peor>no_prediction]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "climatology_majority_class",
+   "metric": "fit_seconds",
+   "value": 0.2322415877133608,
+   "n": 918601,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "macro_f1",
+   "value": 0.3733549686538779,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "balanced_accuracy",
+   "value": 0.39568627682181584,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "accuracy",
+   "value": 0.8454632166187904,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "mae_class_index",
+   "value": 0.16252786619788606,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "share_off_by_2plus",
+   "value": 0.006416157403813094,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "share_unknown",
+   "value": 0,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "recall[Buena]",
+   "value": 0.9220653734919028,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "f1[Buena]",
+   "value": 0.9126520131403549,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "precision[Buena]",
+   "value": 0.9034289123189252,
+   "n": 154218,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Buena>Buena]",
+   "value": 139325,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Buena>Razonablemente buena]",
+   "value": 11431,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Buena>Regular]",
+   "value": 96,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Buena>Desfavorable o peor]",
+   "value": 249,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Buena>no_prediction]",
+   "value": 0,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "recall[Razonablemente buena]",
+   "value": 0.4709461405529954,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "f1[Razonablemente buena]",
+   "value": 0.4934364390795926,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "precision[Razonablemente buena]",
+   "value": 0.5181825384249723,
+   "n": 25244,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Razonablemente buena>Buena]",
+   "value": 14338,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Razonablemente buena>Razonablemente buena]",
+   "value": 13081,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Razonablemente buena>Regular]",
+   "value": 129,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Razonablemente buena>Desfavorable o peor]",
+   "value": 228,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Razonablemente buena>no_prediction]",
+   "value": 0,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "recall[Regular]",
+   "value": 0.029239766081871343,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "f1[Regular]",
+   "value": 0.04886988393402565,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "precision[Regular]",
+   "value": 0.14869888475836432,
+   "n": 269,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Regular>Buena]",
+   "value": 520,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Regular>Razonablemente buena]",
+   "value": 703,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Regular>Regular]",
+   "value": 40,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Regular>Desfavorable o peor]",
+   "value": 105,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Regular>no_prediction]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "recall[Desfavorable o peor]",
+   "value": 0.16049382716049382,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "f1[Desfavorable o peor]",
+   "value": 0.03846153846153846,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "precision[Desfavorable o peor]",
+   "value": 0.021848739495798318,
+   "n": 595,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Desfavorable o peor>Buena]",
+   "value": 35,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Desfavorable o peor>Razonablemente buena]",
+   "value": 29,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Desfavorable o peor>Regular]",
+   "value": 4,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Desfavorable o peor>Desfavorable o peor]",
+   "value": 13,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "confusion[Desfavorable o peor>no_prediction]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting",
+   "metric": "fit_seconds",
+   "value": 10.686922674998641,
+   "n": 918601,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "macro_f1",
+   "value": 0.3496379507295662,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "balanced_accuracy",
+   "value": 0.6264287078395757,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "accuracy",
+   "value": 0.7252975167197188,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "mae_class_index",
+   "value": 0.3430620099153755,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "share_off_by_2plus",
+   "value": 0.05803378325920832,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "share_unknown",
+   "value": 0,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "recall[Buena]",
+   "value": 0.7614774223863509,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "f1[Buena]",
+   "value": 0.8453736256066066,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "precision[Buena]",
+   "value": 0.9500454132606722,
+   "n": 121110,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Buena>Buena]",
+   "value": 115060,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Buena>Razonablemente buena]",
+   "value": 27044,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Buena>Regular]",
+   "value": 7138,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Buena>Desfavorable o peor]",
+   "value": 1859,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Buena>no_prediction]",
+   "value": 0,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "recall[Razonablemente buena]",
+   "value": 0.5389904953917051,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "f1[Razonablemente buena]",
+   "value": 0.4282077684343001,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "precision[Razonablemente buena]",
+   "value": 0.3552007212679131,
+   "n": 42148,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Razonablemente buena>Buena]",
+   "value": 5967,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Razonablemente buena>Razonablemente buena]",
+   "value": 14971,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Razonablemente buena>Regular]",
+   "value": 5453,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Razonablemente buena>Desfavorable o peor]",
+   "value": 1385,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Razonablemente buena>no_prediction]",
+   "value": 0,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "recall[Regular]",
+   "value": 0.5138888888888888,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "f1[Regular]",
+   "value": 0.0957504767093435,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "precision[Regular]",
+   "value": 0.05279363172123761,
+   "n": 13316,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Regular>Buena]",
+   "value": 80,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Regular>Razonablemente buena]",
+   "value": 133,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Regular>Regular]",
+   "value": 703,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Regular>Desfavorable o peor]",
+   "value": 452,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Regular>no_prediction]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "recall[Desfavorable o peor]",
+   "value": 0.691358024691358,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "f1[Desfavorable o peor]",
+   "value": 0.02921993216801461,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "precision[Desfavorable o peor]",
+   "value": 0.014925373134328358,
+   "n": 3752,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Desfavorable o peor>Buena]",
+   "value": 3,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Desfavorable o peor>Razonablemente buena]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Desfavorable o peor>Regular]",
+   "value": 22,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Desfavorable o peor>Desfavorable o peor]",
+   "value": 56,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "confusion[Desfavorable o peor>no_prediction]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_balanced",
+   "metric": "fit_seconds",
+   "value": 11.275619253981858,
+   "n": 918601,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "macro_f1",
+   "value": 0.41393444826519826,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "balanced_accuracy",
+   "value": 0.40612689809479185,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "accuracy",
+   "value": 0.8361356654059869,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "mae_class_index",
+   "value": 0.16588382087896852,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "share_off_by_2plus",
+   "value": 0.0020130320255094965,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "share_unknown",
+   "value": 0.000005545512017124541,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "recall[Buena]",
+   "value": 0.895109893382572,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "f1[Buena]",
+   "value": 0.90568615174455,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "precision[Buena]",
+   "value": 0.9165153281110238,
+   "n": 147572,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Buena>Buena]",
+   "value": 135252,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Buena>Razonablemente buena]",
+   "value": 15789,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Buena>Regular]",
+   "value": 59,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Buena>Desfavorable o peor]",
+   "value": 0,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Buena>no_prediction]",
+   "value": 1,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "recall[Razonablemente buena]",
+   "value": 0.5537154377880185,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "f1[Razonablemente buena]",
+   "value": 0.5127435782033972,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "precision[Razonablemente buena]",
+   "value": 0.4774173521651405,
+   "n": 32215,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Razonablemente buena>Buena]",
+   "value": 12101,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Razonablemente buena>Razonablemente buena]",
+   "value": 15380,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Razonablemente buena>Regular]",
+   "value": 272,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Razonablemente buena>Desfavorable o peor]",
+   "value": 23,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Razonablemente buena>no_prediction]",
+   "value": 0,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "recall[Regular]",
+   "value": 0.10160818713450293,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "f1[Regular]",
+   "value": 0.1503515413737155,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "precision[Regular]",
+   "value": 0.288981288981289,
+   "n": 481,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Regular>Buena]",
+   "value": 217,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Regular>Razonablemente buena]",
+   "value": 984,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Regular>Regular]",
+   "value": 139,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Regular>Desfavorable o peor]",
+   "value": 28,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Regular>no_prediction]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "recall[Desfavorable o peor]",
+   "value": 0.07407407407407407,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "f1[Desfavorable o peor]",
+   "value": 0.08695652173913043,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "precision[Desfavorable o peor]",
+   "value": 0.10526315789473684,
+   "n": 57,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Desfavorable o peor>Buena]",
+   "value": 2,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Desfavorable o peor>Razonablemente buena]",
+   "value": 62,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Desfavorable o peor>Regular]",
+   "value": 11,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Desfavorable o peor>Desfavorable o peor]",
+   "value": 6,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "confusion[Desfavorable o peor>no_prediction]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_regression_binned",
+   "metric": "fit_seconds",
+   "value": 2.2387901400215924,
+   "n": 918601,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "macro_f1",
+   "value": 0.38261654762243646,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "balanced_accuracy",
+   "value": 0.49331543304725156,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "accuracy",
+   "value": 0.7978549959517762,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "mae_class_index",
+   "value": 0.22324013176136553,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "share_off_by_2plus",
+   "value": 0.017773366014884155,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "share_unknown",
+   "value": 0,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "recall[Buena]",
+   "value": 0.851860675971701,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "f1[Buena]",
+   "value": 0.8866975052440507,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "precision[Buena]",
+   "value": 0.9245051282787945,
+   "n": 139228,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Buena>Buena]",
+   "value": 128717,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Buena>Razonablemente buena]",
+   "value": 20138,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Buena>Regular]",
+   "value": 1664,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Buena>Desfavorable o peor]",
+   "value": 582,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Buena>no_prediction]",
+   "value": 0,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "recall[Razonablemente buena]",
+   "value": 0.529701900921659,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "f1[Razonablemente buena]",
+   "value": 0.4667311688105699,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "precision[Razonablemente buena]",
+   "value": 0.4171415610558249,
+   "n": 35271,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Razonablemente buena>Buena]",
+   "value": 10213,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Razonablemente buena>Razonablemente buena]",
+   "value": 14713,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Razonablemente buena>Regular]",
+   "value": 2206,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Razonablemente buena>Desfavorable o peor]",
+   "value": 644,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Razonablemente buena>no_prediction]",
+   "value": 0,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "recall[Regular]",
+   "value": 0.3077485380116959,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "f1[Regular]",
+   "value": 0.14816118247404542,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "precision[Regular]",
+   "value": 0.09756662804171495,
+   "n": 4315,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Regular>Buena]",
+   "value": 281,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Regular>Razonablemente buena]",
+   "value": 403,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Regular>Regular]",
+   "value": 421,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Regular>Desfavorable o peor]",
+   "value": 263,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Regular>no_prediction]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "recall[Desfavorable o peor]",
+   "value": 0.2839506172839506,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "f1[Desfavorable o peor]",
+   "value": 0.02887633396107972,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "precision[Desfavorable o peor]",
+   "value": 0.01521164021164021,
+   "n": 1512,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Desfavorable o peor>Buena]",
+   "value": 17,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Desfavorable o peor>Razonablemente buena]",
+   "value": 17,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Desfavorable o peor>Regular]",
+   "value": 24,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Desfavorable o peor>Desfavorable o peor]",
+   "value": 23,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "confusion[Desfavorable o peor>no_prediction]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "hist_gradient_boosting_subsample",
+   "metric": "fit_seconds",
+   "value": 1.2466461518779397,
+   "n": 30000,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "macro_f1",
+   "value": 0.3362258099167239,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "balanced_accuracy",
+   "value": 0.45931289857538915,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "accuracy",
+   "value": 0.7360613555449574,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "mae_class_index",
+   "value": 0.3020823513101345,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "share_off_by_2plus",
+   "value": 0.02803271870234299,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "share_unknown",
+   "value": 0.000005545512017124541,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "recall[Buena]",
+   "value": 0.7981747308091939,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "f1[Buena]",
+   "value": 0.8460213741314786,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "precision[Buena]",
+   "value": 0.8999701514812327,
+   "n": 134010,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Buena>Buena]",
+   "value": 120605,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Buena>Razonablemente buena]",
+   "value": 26930,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Buena>Regular]",
+   "value": 1775,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Buena>Desfavorable o peor]",
+   "value": 1791,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Buena>no_prediction]",
+   "value": 0,
+   "n": 151101,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "recall[Razonablemente buena]",
+   "value": 0.4221990207373272,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "f1[Razonablemente buena]",
+   "value": 0.3518293506142838,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "precision[Razonablemente buena]",
+   "value": 0.3015660760665518,
+   "n": 38887,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Razonablemente buena>Buena]",
+   "value": 12877,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Razonablemente buena>Razonablemente buena]",
+   "value": 11727,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Razonablemente buena>Regular]",
+   "value": 2220,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Razonablemente buena>Desfavorable o peor]",
+   "value": 951,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Razonablemente buena>no_prediction]",
+   "value": 1,
+   "n": 27776,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "recall[Regular]",
+   "value": 0.2711988304093567,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "f1[Regular]",
+   "value": 0.1291782729805014,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "precision[Regular]",
+   "value": 0.08478062157221207,
+   "n": 4376,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Regular>Buena]",
+   "value": 495,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Regular>Razonablemente buena]",
+   "value": 220,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Regular>Regular]",
+   "value": 371,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Regular>Desfavorable o peor]",
+   "value": 282,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Regular>no_prediction]",
+   "value": 0,
+   "n": 1368,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "recall[Desfavorable o peor]",
+   "value": 0.345679012345679,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "f1[Desfavorable o peor]",
+   "value": 0.017874241940631985,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "precision[Desfavorable o peor]",
+   "value": 0.009174311926605505,
+   "n": 3052,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Desfavorable o peor>Buena]",
+   "value": 33,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Desfavorable o peor>Razonablemente buena]",
+   "value": 10,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Desfavorable o peor>Regular]",
+   "value": 10,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Desfavorable o peor>Desfavorable o peor]",
+   "value": 28,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "confusion[Desfavorable o peor>no_prediction]",
+   "value": 0,
+   "n": 81,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "n_rules",
+   "value": 16,
+   "n": 16,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "mean_rule_length",
+   "value": 1.625,
+   "n": 16,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "n_distinct_antecedent_sets",
+   "value": 16,
+   "n": 16,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "n_duplicate_rules",
+   "value": 0,
+   "n": 16,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "n_conflicting_antecedent_sets",
+   "value": 0,
+   "n": 16,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "n_rules[Buena]",
+   "value": 5,
+   "n": 16,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "n_rules[Razonablemente buena]",
+   "value": 4,
+   "n": 16,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "n_rules[Regular]",
+   "value": 5,
+   "n": 16,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "n_rules[Desfavorable o peor]",
+   "value": 2,
+   "n": 16,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "share_no_rule_fires",
+   "value": 0.000005545512017124541,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "n_rules_winning",
+   "value": 16,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "n_rules_winning_ge_1pct",
+   "value": 10,
+   "n": 180326,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "fit_seconds",
+   "value": 83.58462187740952,
+   "n": 30000,
+   "slice": "all"
+  },
+  {
+   "estimator": "exfuzzy_classifier",
+   "metric": "fit_peak_rss_mb",
+   "value": 976.78125,
+   "n": 30000,
+   "slice": "all"
+  }
+ ]
+}

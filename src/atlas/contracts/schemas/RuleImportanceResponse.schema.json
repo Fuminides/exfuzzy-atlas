@@ -1,0 +1,489 @@
+{
+  "$defs": {
+    "EntityImportance": {
+      "additionalProperties": false,
+      "description": "The same measures inside one entity ('by zone'). Only rules that decided at least one prediction (rule mixture:\nthat are the top rule or decisive for at least one) are listed.",
+      "properties": {
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "n_predicted": {
+          "minimum": 0,
+          "title": "N Predicted",
+          "type": "integer"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/$defs/EntityRuleImportance"
+          },
+          "title": "Rules",
+          "type": "array"
+        }
+      },
+      "required": [
+        "entity_id",
+        "n_predicted",
+        "rules"
+      ],
+      "title": "EntityImportance",
+      "type": "object"
+    },
+    "EntityRuleImportance": {
+      "additionalProperties": false,
+      "properties": {
+        "accuracy": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Accuracy"
+        },
+        "decided_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Share of the entity's n_predicted decided by this rule; null for the rule mixture.",
+          "title": "Decided Share"
+        },
+        "decisive_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: as RuleImportance.",
+          "title": "Decisive Share"
+        },
+        "mae": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mae"
+        },
+        "mean_weight_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mean Weight Share"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "top_contributor_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: as RuleImportance.",
+          "title": "Top Contributor Share"
+        }
+      },
+      "required": [
+        "rule_id"
+      ],
+      "title": "EntityRuleImportance",
+      "type": "object"
+    },
+    "ImportanceMeasure": {
+      "enum": [
+        "winning_rule",
+        "weighted_average",
+        "rule_mixture"
+      ],
+      "title": "ImportanceMeasure",
+      "type": "string"
+    },
+    "RuleImportance": {
+      "additionalProperties": false,
+      "description": "How much one rule weighs in the model's published predictions. Faithful to the inference, not causal.\n\nWinning-rule classifier and TSK: ``n_decided`` / ``decided_share``. Rule mixture (v0.7): no rule decides alone, so\nthose are null and the rule has ``n_top`` / ``top_contributor_share`` and ``n_decisive`` / ``decisive_share``.",
+      "properties": {
+        "accuracy": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Classifier: share of the n_checked predictions (decided by the rule; for the rule mixture, those where it is the top rule) whose class is the observed class; null when n_checked is 0 or for regression.",
+          "title": "Accuracy"
+        },
+        "decided_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "n_decided / n_predicted of the response. Null for the rule mixture.",
+          "title": "Decided Share"
+        },
+        "decisive_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: n_decisive / n_predicted. Several rules can be decisive for one prediction and none for another, so the shares do not add up to 1. Measured, not a probability.",
+          "title": "Decisive Share"
+        },
+        "mae": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Regression only: mean absolute error of the n_checked predictions this rule decided.",
+          "title": "Mae"
+        },
+        "mean_weight_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Regression only: mean over the predictions of f_r / sum(f), the exact share of this rule in the weighted average (the shares of one prediction add up to 1).",
+          "title": "Mean Weight Share"
+        },
+        "n_checked": {
+          "description": "Of n_decided (rule mixture: of n_top), those with an observed value to compare with.",
+          "minimum": 0,
+          "title": "N Checked",
+          "type": "integer"
+        },
+        "n_decided": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Predictions this rule decided: the winning rule (classifier) or the rule with the largest share of the weighted average (regression; ties: lowest position). Null for the rule mixture.",
+          "title": "N Decided"
+        },
+        "n_decisive": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: predictions whose class would change if this rule's weights were set to 0 (the model's own argmax, recomputed by ex_fuzzy with that rule's weights removed).",
+          "title": "N Decisive"
+        },
+        "n_top": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: predictions where this rule is the top rule (largest positive centred contribution to the predicted class; see TracePrediction.top_rule_id).",
+          "title": "N Top"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "top_contributor_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: n_top / n_predicted. The shares of the rules add up to at most 1.",
+          "title": "Top Contributor Share"
+        }
+      },
+      "required": [
+        "rule_id",
+        "n_checked"
+      ],
+      "title": "RuleImportance",
+      "type": "object"
+    },
+    "VariableImportance": {
+      "additionalProperties": false,
+      "properties": {
+        "decided_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Winning-rule classifier: share of the predictions decided by a rule that uses the input. Regression: mean over the predictions of the summed weight share of the rules that use it. Null for the rule mixture.",
+          "title": "Decided Share"
+        },
+        "decisive_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: share of the predictions for which at least one rule that uses the input is decisive (zeroing that rule's weights changes the class).",
+          "title": "Decisive Share"
+        },
+        "feature": {
+          "title": "Feature",
+          "type": "string"
+        },
+        "n_rules": {
+          "description": "Rules whose antecedents use the input.",
+          "minimum": 0,
+          "title": "N Rules",
+          "type": "integer"
+        },
+        "top_contributor_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture: share of the predictions whose top rule uses the input.",
+          "title": "Top Contributor Share"
+        }
+      },
+      "required": [
+        "feature",
+        "n_rules"
+      ],
+      "title": "VariableImportance",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/RuleImportanceResponse.schema.json",
+  "additionalProperties": false,
+  "description": "Rule and input importance over the published period of a model (precomputed at publish time).",
+  "properties": {
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "entities": {
+      "items": {
+        "$ref": "#/$defs/EntityImportance"
+      },
+      "title": "Entities",
+      "type": "array"
+    },
+    "measure": {
+      "$ref": "#/$defs/ImportanceMeasure"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "n_no_rule": {
+      "description": "Published issue times with complete inputs where no rule fired.",
+      "minimum": 0,
+      "title": "N No Rule",
+      "type": "integer"
+    },
+    "n_no_top_rule": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "v0.7, rule mixture: predictions where no rule supports the predicted class (it wins on its bias and on what the rules take away from the other classes); they have no top rule.",
+      "title": "N No Top Rule"
+    },
+    "n_predicted": {
+      "description": "Published predictions with a model output (some rule fired).",
+      "minimum": 0,
+      "title": "N Predicted",
+      "type": "integer"
+    },
+    "n_withheld": {
+      "default": 0,
+      "description": "v0.5: issue times where a rule fired but the publish withheld the prediction (e.g. NYC cells without a reference level); attributed to no rule and not in n_predicted.",
+      "minimum": 0,
+      "title": "N Withheld",
+      "type": "integer"
+    },
+    "observed_class_shares": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "v0.5.2, classifiers: share of each observed class among the predictions with an observation (the union of the rules' n_checked), so a rule's accuracy can be read against how often its class occurs in the same predictions. Keys are scheme labels; the shares add up to 1.",
+      "title": "Observed Class Shares"
+    },
+    "period_from_utc": {
+      "format": "date-time",
+      "title": "Period From Utc",
+      "type": "string"
+    },
+    "period_to_utc": {
+      "format": "date-time",
+      "title": "Period To Utc",
+      "type": "string"
+    },
+    "rules": {
+      "description": "Every rule of the model, in rule-base order.",
+      "items": {
+        "$ref": "#/$defs/RuleImportance"
+      },
+      "title": "Rules",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "variables": {
+      "description": "Every input of the model.",
+      "items": {
+        "$ref": "#/$defs/VariableImportance"
+      },
+      "title": "Variables",
+      "type": "array"
+    }
+  },
+  "required": [
+    "data_version",
+    "model_id",
+    "task_id",
+    "measure",
+    "period_from_utc",
+    "period_to_utc",
+    "n_predicted",
+    "n_no_rule",
+    "rules",
+    "variables",
+    "entities"
+  ],
+  "title": "RuleImportanceResponse",
+  "type": "object"
+}

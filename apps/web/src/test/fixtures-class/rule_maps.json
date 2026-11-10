@@ -1,0 +1,347 @@
+[
+ {
+  "query": {
+   "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+   "rule_id": "R01",
+   "metric": "firing_strength",
+   "time": "2024-01-05T00:00:00Z"
+  },
+  "response": {
+   "schema_version": "0.3.0",
+   "data_version": "synthetic-test",
+   "synthetic": true,
+   "type": "FeatureCollection",
+   "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+   "rule_id": "R01",
+   "metric": "firing_strength",
+   "tau": null,
+   "time_from_utc": "2024-01-05T00:00:00Z",
+   "time_to_utc": "2024-01-05T00:00:00Z",
+   "features": [
+    {
+     "type": "Feature",
+     "id": "E0",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -3.703,
+       40.417
+      ]
+     },
+     "properties": {
+      "entity_id": "E0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "value": 0.962996604263643,
+      "n_valid": 1,
+      "time_from_utc": "2024-01-05T00:00:00Z",
+      "time_to_utc": "2024-01-05T00:00:00Z",
+      "issued_at_utc": "2024-01-05T00:00:00Z",
+      "valid_at_utc": "2024-01-05T06:00:00Z",
+      "tau": null,
+      "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+      "data_version": "synthetic-test",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "E1",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -3.688,
+       40.452
+      ]
+     },
+     "properties": {
+      "entity_id": "E1",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2024-01-05T00:00:00Z",
+      "time_to_utc": "2024-01-05T00:00:00Z",
+      "issued_at_utc": "2024-01-05T00:00:00Z",
+      "valid_at_utc": "2024-01-05T06:00:00Z",
+      "tau": null,
+      "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+      "data_version": "synthetic-test",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "E2",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -3.712,
+       40.381
+      ]
+     },
+     "properties": {
+      "entity_id": "E2",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2024-01-05T00:00:00Z",
+      "time_to_utc": "2024-01-05T00:00:00Z",
+      "issued_at_utc": "2024-01-05T00:00:00Z",
+      "valid_at_utc": "2024-01-05T06:00:00Z",
+      "tau": null,
+      "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+      "data_version": "synthetic-test",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "query": {
+   "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+   "rule_id": "R01",
+   "metric": "firing_strength",
+   "time": "2024-01-06T10:00:00Z"
+  },
+  "response": {
+   "schema_version": "0.3.0",
+   "data_version": "synthetic-test",
+   "synthetic": true,
+   "type": "FeatureCollection",
+   "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+   "rule_id": "R01",
+   "metric": "firing_strength",
+   "tau": null,
+   "time_from_utc": "2024-01-06T10:00:00Z",
+   "time_to_utc": "2024-01-06T10:00:00Z",
+   "features": [
+    {
+     "type": "Feature",
+     "id": "E0",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -3.703,
+       40.417
+      ]
+     },
+     "properties": {
+      "entity_id": "E0",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2024-01-06T10:00:00Z",
+      "time_to_utc": "2024-01-06T10:00:00Z",
+      "issued_at_utc": "2024-01-06T10:00:00Z",
+      "valid_at_utc": "2024-01-06T16:00:00Z",
+      "tau": null,
+      "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+      "data_version": "synthetic-test",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "E1",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -3.688,
+       40.452
+      ]
+     },
+     "properties": {
+      "entity_id": "E1",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2024-01-06T10:00:00Z",
+      "time_to_utc": "2024-01-06T10:00:00Z",
+      "issued_at_utc": "2024-01-06T10:00:00Z",
+      "valid_at_utc": "2024-01-06T16:00:00Z",
+      "tau": null,
+      "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+      "data_version": "synthetic-test",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "E2",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -3.712,
+       40.381
+      ]
+     },
+     "properties": {
+      "entity_id": "E2",
+      "rule_id": "R01",
+      "metric": "firing_strength",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2024-01-06T10:00:00Z",
+      "time_to_utc": "2024-01-06T10:00:00Z",
+      "issued_at_utc": "2024-01-06T10:00:00Z",
+      "valid_at_utc": "2024-01-06T16:00:00Z",
+      "tau": null,
+      "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+      "data_version": "synthetic-test",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "query": {
+   "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+   "rule_id": "R02",
+   "metric": "firing_strength",
+   "time": "2024-01-06T10:00:00Z"
+  },
+  "response": {
+   "schema_version": "0.3.0",
+   "data_version": "synthetic-test",
+   "synthetic": true,
+   "type": "FeatureCollection",
+   "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+   "rule_id": "R02",
+   "metric": "firing_strength",
+   "tau": null,
+   "time_from_utc": "2024-01-06T10:00:00Z",
+   "time_to_utc": "2024-01-06T10:00:00Z",
+   "features": [
+    {
+     "type": "Feature",
+     "id": "E0",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -3.703,
+       40.417
+      ]
+     },
+     "properties": {
+      "entity_id": "E0",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "value": 1,
+      "n_valid": 1,
+      "time_from_utc": "2024-01-06T10:00:00Z",
+      "time_to_utc": "2024-01-06T10:00:00Z",
+      "issued_at_utc": "2024-01-06T10:00:00Z",
+      "valid_at_utc": "2024-01-06T16:00:00Z",
+      "tau": null,
+      "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+      "data_version": "synthetic-test",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "E1",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -3.688,
+       40.452
+      ]
+     },
+     "properties": {
+      "entity_id": "E1",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2024-01-06T10:00:00Z",
+      "time_to_utc": "2024-01-06T10:00:00Z",
+      "issued_at_utc": "2024-01-06T10:00:00Z",
+      "valid_at_utc": "2024-01-06T16:00:00Z",
+      "tau": null,
+      "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+      "data_version": "synthetic-test",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "E2",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -3.712,
+       40.381
+      ]
+     },
+     "properties": {
+      "entity_id": "E2",
+      "rule_id": "R02",
+      "metric": "firing_strength",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2024-01-06T10:00:00Z",
+      "time_to_utc": "2024-01-06T10:00:00Z",
+      "issued_at_utc": "2024-01-06T10:00:00Z",
+      "valid_at_utc": "2024-01-06T16:00:00Z",
+      "tau": null,
+      "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+      "data_version": "synthetic-test",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    }
+   ]
+  }
+ }
+]

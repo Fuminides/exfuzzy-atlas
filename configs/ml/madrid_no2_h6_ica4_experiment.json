@@ -1,0 +1,217 @@
+{
+  "experiment_id": "ica4",
+  "base_config": "configs/ml/madrid_no2_h6_ica2_justified_experiment.json",
+  "base_experiment": "ica2-justified",
+  "base_seeds": [
+    0,
+    1,
+    2
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "robust_seeds": [
+    3,
+    4
+  ],
+  "diurnal_partitions": "configs/ml/madrid_partitions_diurnal.json",
+  "candidate_inputs": [
+    "no2_clim_valid",
+    "no2_expected_valid",
+    "no2_expected_valid_ratio",
+    "no2_expected_valid_damped",
+    "no2_yday_valid",
+    "no2_week_valid",
+    "no2_mean_24h",
+    "no2_max_24h"
+  ],
+  "stage1": [
+    "base_refit",
+    "no2_clim_valid",
+    "no2_expected_valid",
+    "no2_expected_valid_ratio",
+    "no2_expected_valid_damped",
+    "no2_yday_valid",
+    "no2_week_valid",
+    "no2_mean_24h",
+    "no2_max_24h"
+  ],
+  "shapes": [
+    [
+      30,
+      2
+    ],
+    [
+      30,
+      3
+    ],
+    [
+      30,
+      4
+    ],
+    [
+      60,
+      2
+    ],
+    [
+      60,
+      3
+    ],
+    [
+      60,
+      4
+    ]
+  ],
+  "decision": {
+    "entry_gain": 0.011,
+    "win_gain": 0.02,
+    "tie": 0.005,
+    "max_mean_rules": 22.0,
+    "max_combo_others": 2
+  },
+  "round2": [
+    "r2_power075",
+    "r2_power100",
+    "r2_minimal",
+    "r2_minimal_power100",
+    "r3_base_unweighted",
+    "r3_yday_unweighted",
+    "r3_compact_unweighted",
+    "r3_compact_r60a4_unweighted",
+    "r3_minimal_unweighted"
+  ],
+  "extra_arms": {
+    "r2_power075": {
+      "features": [
+        "no2_last",
+        "no2_yday_valid",
+        "wind_speed",
+        "valid_hour_local",
+        "temperature",
+        "relative_humidity",
+        "valid_weekday"
+      ],
+      "nRules": 30,
+      "nAnts": 2,
+      "sampling_power": 0.75,
+      "description": "compact 30x2, sampling power 0.75"
+    },
+    "r2_power100": {
+      "features": [
+        "no2_last",
+        "no2_yday_valid",
+        "wind_speed",
+        "valid_hour_local",
+        "temperature",
+        "relative_humidity",
+        "valid_weekday"
+      ],
+      "nRules": 30,
+      "nAnts": 2,
+      "sampling_power": 1.0,
+      "description": "compact 30x2, natural class proportions"
+    },
+    "r2_minimal": {
+      "features": [
+        "no2_yday_valid",
+        "no2_last",
+        "valid_hour_local",
+        "wind_speed"
+      ],
+      "nRules": 30,
+      "nAnts": 2,
+      "description": "yesterday at the valid hour, last hour, valid hour, wind"
+    },
+    "r2_minimal_power100": {
+      "features": [
+        "no2_yday_valid",
+        "no2_last",
+        "valid_hour_local",
+        "wind_speed"
+      ],
+      "nRules": 30,
+      "nAnts": 2,
+      "sampling_power": 1.0,
+      "description": "minimal, natural class proportions"
+    },
+    "r3_base_unweighted": {
+      "features": [
+        "no2_last",
+        "no2_lag1h",
+        "no2_lag3h",
+        "no2_lag24h",
+        "wind_speed",
+        "temperature",
+        "relative_humidity",
+        "valid_hour_local",
+        "valid_weekday"
+      ],
+      "nRules": 60,
+      "nAnts": 4,
+      "rule_weighting": "none",
+      "description": "AT-041d inputs and shape, unweighted (control: weighting alone)"
+    },
+    "r3_yday_unweighted": {
+      "features": [
+        "no2_last",
+        "no2_lag1h",
+        "no2_lag3h",
+        "no2_lag24h",
+        "wind_speed",
+        "temperature",
+        "relative_humidity",
+        "valid_hour_local",
+        "valid_weekday",
+        "no2_yday_valid"
+      ],
+      "nRules": 60,
+      "nAnts": 4,
+      "rule_weighting": "none",
+      "description": "AT-041d inputs + no2_yday_valid, 60x4, unweighted"
+    },
+    "r3_compact_unweighted": {
+      "features": [
+        "no2_last",
+        "no2_yday_valid",
+        "wind_speed",
+        "valid_hour_local",
+        "temperature",
+        "relative_humidity",
+        "valid_weekday"
+      ],
+      "nRules": 30,
+      "nAnts": 2,
+      "rule_weighting": "none",
+      "description": "compact 30x2, unweighted"
+    },
+    "r3_compact_r60a4_unweighted": {
+      "features": [
+        "no2_last",
+        "no2_yday_valid",
+        "wind_speed",
+        "valid_hour_local",
+        "temperature",
+        "relative_humidity",
+        "valid_weekday"
+      ],
+      "nRules": 60,
+      "nAnts": 4,
+      "rule_weighting": "none",
+      "description": "compact 60x4, unweighted"
+    },
+    "r3_minimal_unweighted": {
+      "features": [
+        "no2_yday_valid",
+        "no2_last",
+        "valid_hour_local",
+        "wind_speed"
+      ],
+      "nRules": 30,
+      "nAnts": 2,
+      "rule_weighting": "none",
+      "description": "minimal 30x2, unweighted"
+    }
+  }
+}

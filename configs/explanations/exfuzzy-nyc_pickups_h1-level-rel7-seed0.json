@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.6.2",
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-nyc_pickups_h1-level-rel7-seed0",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.319",
+    "model": "claude-opus-5-5"
+  },
+  "generated_at_utc": "2026-11-09T11:44:21Z",
+  "input_sha256": "31421bf628931d7f1a9d012a4c002af24da37c51e5ab6cdfa4312704ae8bf866",
+  "reviewed": false,
+  "es": {
+    "headline": "Las reglas aciertan el 42 %, menos que repetir la última categoría (44 %), y se apoyan sobre todo en el nivel de hace 1 h.",
+    "summary": [
+      "Las 10 reglas usan sobre todo «Nivel hace 1 h (percentil)», en 5 reglas, y «Nivel hace 24 h (percentil)», en 3. «Nivel medio, 24 h previas (razón)» aparece en 2; «Nivel hace 168 h (percentil)» y «Nivel hace 2 h (percentil)», en 1 cada una. «Hora local (Nueva York)» y «Día de la semana (local)» no aparecen en ninguna.",
+      "Decide la regla con mayor grado de cumplimiento por su peso. Tres reglas deciden el 67 %. R10 (nivel medio de 24 h por encima de lo habitual → muy alta) decide el 29 % y acierta el 44 %, con muy alta observada un 21 %. R02 (niveles hace 1 h y 24 h normales → normal) decide el 23 % y acierta el 54 %, con normal un 38 %.",
+      "Del 8 de febrero de 2025 al 31 de marzo de 2025, el modelo logra un F1 macro de 0,41 y un acierto del 42 %. Es peor que «Repetir la última categoría» (0,42 y 44 %) y que la regresión logística (0,45 y 47 %), y está a la par del Random Forest (0,42 y 42 %). Las reglas no llegan a superar la referencia trivial."
+    ],
+    "points": [
+      "R08 predice alta si el nivel hace 1 h es normal. Decide el 15 % y acierta el 33 %, con alta observada un 28 %.",
+      "R01 predice baja si el nivel hace 1 h está en baja. Decide el 13 % y acierta el 35 %, con baja observada un 13 %.",
+      "El modelo predice muy alta un 31 % de las veces, y se observa un 21 %. Normal se predice un 32 % y se observa un 38 %.",
+      "En el 15 % de los casos falta el nivel de referencia y no se publica predicción, y en el 0,2 % no se cumple ninguna regla."
+    ]
+  },
+  "en": {
+    "headline": "The rules are right 42% of the time, less than repeating the last category (44%), and lean mostly on the level 1 h ago.",
+    "summary": [
+      "The 10 rules mostly use “Level 1 h ago (percentile)”, in 5 rules, and “Level 24 h ago (percentile)”, in 3. “Mean level, previous 24 h (ratio)” appears in 2; “Level 168 h ago (percentile)” and “Level 2 h ago (percentile)” in 1 each. “Local hour (New York)” and “Weekday (local)” appear in none.",
+      "The rule with the highest degree × weight decides. Three rules decide 67% of predictions. R10 (mean level of the previous 24 h above what is usual → very high) decides 29% and is right 44% of the time, while very high is observed 21%. R02 (levels 1 h and 24 h ago normal → normal) decides 23% and is right 54%, with normal observed 38%.",
+      "From 8 February 2025 to 31 March 2025 the model reaches a macro-F1 of 0.41 and 42% accuracy. It is worse than “Repeat the last category” (0.42 and 44%) and than logistic regression (0.45 and 47%), and on a par with the random forest (0.42 and 42%). The rules do not even beat the trivial baseline."
+    ],
+    "points": [
+      "R08 predicts high when the level 1 h ago is normal. It decides 15% and is right 33%, while high is observed 28%.",
+      "R01 predicts low when the level 1 h ago is low. It decides 13% and is right 35%, while low is observed 13%.",
+      "The model predicts very high 31% of the time, but it is observed 21%; normal is predicted 32% and observed 38%.",
+      "In 15% of cases the reference level is missing and no prediction is published; in 0.2% no rule holds."
+    ]
+  }
+}

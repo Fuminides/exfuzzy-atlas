@@ -1,0 +1,55 @@
+{
+ "schema_version": "0.4.0",
+ "data_version": "madrid-no2-h6-v1,nyc-tlc-yellow-2024-04_2025-03-v1,uk-wq-ne-x-h-rivers-2015-2025-20261030",
+ "synthetic": false,
+ "domains": [
+  {
+   "domain": "air",
+   "title": "Madrid air quality",
+   "status": "available",
+   "tasks": [
+    {
+     "task_id": "madrid_no2_h6",
+     "task_type": "classification",
+     "target": "no2",
+     "unit": "ug/m3",
+     "horizon_hours": 6,
+     "status": "available",
+     "model_id": "exfuzzy-madrid_no2_h6-ica2-justified-seed0"
+    }
+   ]
+  },
+  {
+   "domain": "water",
+   "title": "River dissolved oxygen (UK)",
+   "status": "available",
+   "tasks": [
+    {
+     "task_id": "uk_water_do",
+     "task_type": "regression",
+     "target": "dissolved_oxygen",
+     "unit": "mg/l",
+     "horizon_hours": 0,
+     "status": "available",
+     "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0"
+    }
+   ]
+  },
+  {
+   "domain": "mobility",
+   "title": "Yellow-taxi demand level (NYC)",
+   "status": "available",
+   "tasks": [
+    {
+     "task_id": "nyc_pickups_h1",
+     "task_type": "classification",
+     "target": "pickups",
+     "unit": "trips",
+     "horizon_hours": 1,
+     "status": "available",
+     "model_id": "exfuzzy-nyc_pickups_h1-level-rel7-seed0"
+    }
+   ]
+  }
+ ]
+}

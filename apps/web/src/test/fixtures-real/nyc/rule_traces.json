@@ -1,0 +1,542 @@
+[
+ {
+  "schema_version": "0.4.0",
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-nyc_pickups_h1-level-rel7-seed0",
+  "task_id": "nyc_pickups_h1",
+  "entity_id": "4",
+  "issued_at_utc": "2025-03-19T23:00:00Z",
+  "valid_at_utc": "2025-03-20T00:00:00Z",
+  "inference": {
+   "family": "winning_rule_classifier",
+   "tnorm": "product",
+   "rule_mode": null,
+   "tolerance": 0,
+   "fallback": "unknown",
+   "rule_weighting": "dominance_score",
+   "allow_unknown": true,
+   "exfuzzy_version": "3.3.1"
+  },
+  "feature_values": [
+   {
+    "feature": "rel_lag1",
+    "value": 25.641025641025642,
+    "unit": "percentile",
+    "observed_at_utc": "2025-03-19T22:00:00Z",
+    "source_id": "nyc-tlc-yellow",
+    "missing_reason": null
+   },
+   {
+    "feature": "rel_lag2",
+    "value": 92.3076923076923,
+    "unit": "percentile",
+    "observed_at_utc": "2025-03-19T21:00:00Z",
+    "source_id": "nyc-tlc-yellow",
+    "missing_reason": null
+   },
+   {
+    "feature": "rel_lag24",
+    "value": 100,
+    "unit": "percentile",
+    "observed_at_utc": "2025-03-18T23:00:00Z",
+    "source_id": "nyc-tlc-yellow",
+    "missing_reason": null
+   },
+   {
+    "feature": "rel_lag168",
+    "value": 32.05128205128205,
+    "unit": "percentile",
+    "observed_at_utc": "2025-03-12T23:00:00Z",
+    "source_id": "nyc-tlc-yellow",
+    "missing_reason": null
+   },
+   {
+    "feature": "local_hour",
+    "value": 19,
+    "unit": "hour",
+    "observed_at_utc": "2025-03-19T23:00:00Z",
+    "source_id": "calendar-america-new-york",
+    "missing_reason": null
+   },
+   {
+    "feature": "local_dow",
+    "value": 2,
+    "unit": "weekday_index",
+    "observed_at_utc": "2025-03-19T23:00:00Z",
+    "source_id": "calendar-america-new-york",
+    "missing_reason": null
+   },
+   {
+    "feature": "rel_mean24h",
+    "value": 1.690239588699869,
+    "unit": "ratio",
+    "observed_at_utc": "2025-03-19T22:00:00Z",
+    "source_id": "nyc-tlc-yellow",
+    "missing_reason": null
+   }
+  ],
+  "rules": [
+   {
+    "rule_id": "R01",
+    "antecedents": [
+     {
+      "feature": "rel_lag1",
+      "term": "baja",
+      "membership": 0.8941391941391937,
+      "modifier": null,
+      "effective_membership": 0.8941391941391937
+     }
+    ],
+    "firing_strength": 0.8941391941391937,
+    "effective_firing": 0.8941391941391937,
+    "weight": 0.0620859604462816,
+    "association_degree": 0.05551349064079608
+   },
+   {
+    "rule_id": "R02",
+    "antecedents": [
+     {
+      "feature": "rel_lag1",
+      "term": "normal",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     },
+     {
+      "feature": "rel_lag24",
+      "term": "normal",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.06838435788221064,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R03",
+    "antecedents": [
+     {
+      "feature": "rel_lag24",
+      "term": "muy alta",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": 0.0058701496998037565,
+    "association_degree": 0.0058701496998037565
+   },
+   {
+    "rule_id": "R04",
+    "antecedents": [
+     {
+      "feature": "rel_lag24",
+      "term": "baja",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.03621703097158082,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R05",
+    "antecedents": [
+     {
+      "feature": "rel_mean24h",
+      "term": "Low",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.005458127672786559,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R06",
+    "antecedents": [
+     {
+      "feature": "rel_lag2",
+      "term": "baja",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.0065365213566253265,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R07",
+    "antecedents": [
+     {
+      "feature": "rel_lag1",
+      "term": "alta",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "rel_lag168",
+      "term": "normal",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.01790093203917367,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R08",
+    "antecedents": [
+     {
+      "feature": "rel_lag1",
+      "term": "normal",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": 0.030846831315211105,
+    "association_degree": 0.030846831315211105
+   },
+   {
+    "rule_id": "R09",
+    "antecedents": [
+     {
+      "feature": "rel_lag1",
+      "term": "muy alta",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.012027663259120913,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R10",
+    "antecedents": [
+     {
+      "feature": "rel_mean24h",
+      "term": "High",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": 0.012768422362597804,
+    "association_degree": 0.012768422362597804
+   }
+  ],
+  "prediction": {
+   "value": null,
+   "label": "baja",
+   "winning_rule_id": "R01",
+   "unit": "trips",
+   "fallback_used": false,
+   "missing_reason": null
+  },
+  "observation_ids": [],
+  "observed": 7,
+  "observed_label": "alta",
+  "quality": {
+   "status": "valid",
+   "warnings": []
+  }
+ },
+ {
+  "schema_version": "0.4.0",
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-nyc_pickups_h1-level-rel7-seed0",
+  "task_id": "nyc_pickups_h1",
+  "entity_id": "35",
+  "issued_at_utc": "2025-03-19T23:00:00Z",
+  "valid_at_utc": "2025-03-20T00:00:00Z",
+  "inference": {
+   "family": "winning_rule_classifier",
+   "tnorm": "product",
+   "rule_mode": null,
+   "tolerance": 0,
+   "fallback": "unknown",
+   "rule_weighting": "dominance_score",
+   "allow_unknown": true,
+   "exfuzzy_version": "3.3.1"
+  },
+  "feature_values": [
+   {
+    "feature": "rel_lag1",
+    "value": 100,
+    "unit": "percentile",
+    "observed_at_utc": "2025-03-19T22:00:00Z",
+    "source_id": "nyc-tlc-yellow",
+    "missing_reason": null
+   },
+   {
+    "feature": "rel_lag2",
+    "value": 62.82051282051282,
+    "unit": "percentile",
+    "observed_at_utc": "2025-03-19T21:00:00Z",
+    "source_id": "nyc-tlc-yellow",
+    "missing_reason": null
+   },
+   {
+    "feature": "rel_lag24",
+    "value": 100,
+    "unit": "percentile",
+    "observed_at_utc": "2025-03-18T23:00:00Z",
+    "source_id": "nyc-tlc-yellow",
+    "missing_reason": null
+   },
+   {
+    "feature": "rel_lag168",
+    "value": 97.43589743589743,
+    "unit": "percentile",
+    "observed_at_utc": "2025-03-12T23:00:00Z",
+    "source_id": "nyc-tlc-yellow",
+    "missing_reason": null
+   },
+   {
+    "feature": "local_hour",
+    "value": 19,
+    "unit": "hour",
+    "observed_at_utc": "2025-03-19T23:00:00Z",
+    "source_id": "calendar-america-new-york",
+    "missing_reason": null
+   },
+   {
+    "feature": "local_dow",
+    "value": 2,
+    "unit": "weekday_index",
+    "observed_at_utc": "2025-03-19T23:00:00Z",
+    "source_id": "calendar-america-new-york",
+    "missing_reason": null
+   },
+   {
+    "feature": "rel_mean24h",
+    "value": 2.510846745976207,
+    "unit": "ratio",
+    "observed_at_utc": "2025-03-19T22:00:00Z",
+    "source_id": "nyc-tlc-yellow",
+    "missing_reason": null
+   }
+  ],
+  "rules": [
+   {
+    "rule_id": "R01",
+    "antecedents": [
+     {
+      "feature": "rel_lag1",
+      "term": "baja",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.0620859604462816,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R02",
+    "antecedents": [
+     {
+      "feature": "rel_lag1",
+      "term": "normal",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "rel_lag24",
+      "term": "normal",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.06838435788221064,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R03",
+    "antecedents": [
+     {
+      "feature": "rel_lag24",
+      "term": "muy alta",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": 0.0058701496998037565,
+    "association_degree": 0.0058701496998037565
+   },
+   {
+    "rule_id": "R04",
+    "antecedents": [
+     {
+      "feature": "rel_lag24",
+      "term": "baja",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.03621703097158082,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R05",
+    "antecedents": [
+     {
+      "feature": "rel_mean24h",
+      "term": "Low",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.005458127672786559,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R06",
+    "antecedents": [
+     {
+      "feature": "rel_lag2",
+      "term": "baja",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.0065365213566253265,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R07",
+    "antecedents": [
+     {
+      "feature": "rel_lag1",
+      "term": "alta",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "rel_lag168",
+      "term": "normal",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.01790093203917367,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R08",
+    "antecedents": [
+     {
+      "feature": "rel_lag1",
+      "term": "normal",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": 0.030846831315211105,
+    "association_degree": 0
+   },
+   {
+    "rule_id": "R09",
+    "antecedents": [
+     {
+      "feature": "rel_lag1",
+      "term": "muy alta",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": 0.012027663259120913,
+    "association_degree": 0.012027663259120913
+   },
+   {
+    "rule_id": "R10",
+    "antecedents": [
+     {
+      "feature": "rel_mean24h",
+      "term": "High",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": 0.012768422362597804,
+    "association_degree": 0.012768422362597804
+   }
+  ],
+  "prediction": {
+   "value": null,
+   "label": null,
+   "winning_rule_id": null,
+   "unit": "trips",
+   "fallback_used": false,
+   "missing_reason": "prediction_unavailable"
+  },
+  "observation_ids": [],
+  "observed": 2,
+  "observed_label": null,
+  "quality": {
+   "status": "warning",
+   "warnings": [
+    "no reference level for this row: no class is published; the rule firings and associations below are the engine's own outputs"
+   ]
+  }
+ }
+]

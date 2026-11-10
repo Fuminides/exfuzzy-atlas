@@ -1,0 +1,36 @@
+{
+  "name": "Nivel de demanda de taxi amarillo respecto a lo habitual de la zona a esa hora de la semana",
+  "source_url": "https://github.com/Fuminides/exfuzzy-atlas/blob/main/docs/mobility/nyc_pickups_h1_level.md",
+  "unit": "percentil (0-100, rango medio) del target en su celda zona x hora de la semana del periodo de train",
+  "boundary": "lower_inclusive",
+  "classes": [
+    {
+      "label": "baja",
+      "lower": 0,
+      "upper": 25,
+      "color": "#DEEBF7",
+      "description": "Menos recogidas que en el 25 % inferior de las horas de train de esa zona y hora de la semana (percentil < 25). Solo es posible si esa celda no suele tener 0 recogidas."
+    },
+    {
+      "label": "normal",
+      "lower": 25,
+      "upper": 75,
+      "color": "#9ECAE1",
+      "description": "Dentro del rango habitual de esa zona y hora de la semana (percentil de 25 a menos de 75)."
+    },
+    {
+      "label": "alta",
+      "lower": 75,
+      "upper": 95,
+      "color": "#4292C6",
+      "description": "Por encima de lo habitual de esa zona y hora de la semana (percentil de 75 a menos de 95)."
+    },
+    {
+      "label": "muy alta",
+      "lower": 95,
+      "upper": 100,
+      "color": "#08306B",
+      "description": "Entre el 5 % de horas de train con más recogidas de esa zona y hora de la semana (percentil >= 95)."
+    }
+  ]
+}

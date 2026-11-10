@@ -1,0 +1,142 @@
+{
+  "task_id": "de_no2_h12",
+  "description": "Feature/target table for NO2 t+12h in Germany: same columns, conventions and time semantics as madrid_no2_h6 (other horizon), with EEA NO2 (E1a/E2a) and DWD meteorology.",
+  "data_version": "de-no2-h12-v1",
+  "horizon_hours": 12,
+  "timezone": "Europe/Berlin",
+  "grid": {
+    "start_utc": "2019-01-01T00:00:00Z",
+    "end_utc": "2025-12-31T10:00:00Z",
+    "note": "Issue hours t, hourly in UTC; same start and split as madrid_no2_h6; the end moves with the horizon. The last one is the last t whose target hour (t+12h) still has a source slot: the last NO2 hour starts at 2025-12-31T22:00Z (= 23:00 UTC+01, the last hour of 2025 in the EEA clock)."
+  },
+  "association": {
+    "variables": [
+      "wind_speed",
+      "temperature",
+      "relative_humidity",
+      "pressure"
+    ],
+    "max_distance_m": 25000,
+    "max_candidates": 3,
+    "note": "Cap chosen for the DWD synoptic network (about 25 km between stations), not for a dense city network like Madrid's (5 km); the share of stations and rows reached at other caps is in docs/air/de_no2_h6_quality.md. Beyond the cap the meteorological input is NULL (missing_reason no_observation, see association.json)."
+  },
+  "no2_source": {
+    "source_id": "eea-air-de",
+    "feature_name": "no2"
+  },
+  "meteo_source": {
+    "source_id": "dwd-meteo-de"
+  },
+  "units": {
+    "pressure": "hPa"
+  },
+  "plausible_range": {
+    "wind_speed": [
+      0,
+      50
+    ],
+    "temperature": [
+      -40,
+      50
+    ],
+    "relative_humidity": [
+      0,
+      100
+    ],
+    "pressure": [
+      500,
+      1100
+    ]
+  },
+  "chunk_by_month": true,
+  "split": {
+    "train_from_utc": "2019-01-01T00:00:00Z",
+    "train_to_utc": "2023-12-31T00:00:00Z",
+    "validation_from_utc": "2024-01-01T00:00:00Z",
+    "validation_to_utc": "2024-12-31T00:00:00Z",
+    "test_from_utc": "2025-01-01T00:00:00Z",
+    "test_to_utc": "2026-01-01T00:00:00Z",
+    "embargo_hours": 24,
+    "note": "Same boundaries and embargo as the Madrid protocol (configs/ml/madrid_no2_h6_*_experiment.json): periods are half-open issue-hour windows; the 24 h embargo precedes each later period. Train 2019-2023, validation 2024, test 2025."
+  },
+  "target_scheme": "configs/air/eaqi_no2_scheme.json",
+  "features": [
+    {
+      "name": "no2_last",
+      "kind": "no2",
+      "key_offset_hours": -1,
+      "recommended": true
+    },
+    {
+      "name": "no2_lag1h",
+      "kind": "no2",
+      "key_offset_hours": -2,
+      "recommended": true
+    },
+    {
+      "name": "no2_lag3h",
+      "kind": "no2",
+      "key_offset_hours": -4,
+      "recommended": true
+    },
+    {
+      "name": "no2_lag24h",
+      "kind": "no2",
+      "key_offset_hours": -25,
+      "recommended": true
+    },
+    {
+      "name": "wind_speed",
+      "kind": "meteo",
+      "variable": "wind_speed",
+      "key_offset_hours": -1,
+      "recommended": true
+    },
+    {
+      "name": "temperature",
+      "kind": "meteo",
+      "variable": "temperature",
+      "key_offset_hours": -1,
+      "recommended": true
+    },
+    {
+      "name": "relative_humidity",
+      "kind": "meteo",
+      "variable": "relative_humidity",
+      "key_offset_hours": -1,
+      "recommended": true
+    },
+    {
+      "name": "pressure",
+      "kind": "meteo",
+      "variable": "pressure",
+      "key_offset_hours": -1,
+      "recommended": false
+    },
+    {
+      "name": "valid_hour_local",
+      "kind": "calendar",
+      "recommended": true
+    },
+    {
+      "name": "valid_weekday",
+      "kind": "calendar",
+      "recommended": true
+    },
+    {
+      "name": "valid_is_weekend",
+      "kind": "calendar",
+      "recommended": false
+    },
+    {
+      "name": "valid_hour_sin",
+      "kind": "calendar",
+      "recommended": false
+    },
+    {
+      "name": "valid_hour_cos",
+      "kind": "calendar",
+      "recommended": false
+    }
+  ]
+}

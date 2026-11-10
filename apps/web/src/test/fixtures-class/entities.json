@@ -1,0 +1,69 @@
+{
+ "schema_version": "0.3.0",
+ "data_version": "synthetic-entities",
+ "synthetic": true,
+ "type": "FeatureCollection",
+ "domain": "air",
+ "features": [
+  {
+   "type": "Feature",
+   "id": "E0",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -3.703,
+     40.417
+    ]
+   },
+   "properties": {
+    "entity_id": "E0",
+    "domain": "air",
+    "name": "Synthetic station E0 (not real)",
+    "geometry_support": "observed_point",
+    "geometry_source": "synthetic",
+    "timezone": "Europe/Madrid",
+    "attributes": {}
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "E1",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -3.688,
+     40.452
+    ]
+   },
+   "properties": {
+    "entity_id": "E1",
+    "domain": "air",
+    "name": "Synthetic station E1 (not real)",
+    "geometry_support": "observed_point",
+    "geometry_source": "synthetic",
+    "timezone": "Europe/Madrid",
+    "attributes": {}
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "E2",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -3.712,
+     40.381
+    ]
+   },
+   "properties": {
+    "entity_id": "E2",
+    "domain": "air",
+    "name": "Synthetic station E2 (not real)",
+    "geometry_support": "observed_point",
+    "geometry_source": "synthetic",
+    "timezone": "Europe/Madrid",
+    "attributes": {}
+   }
+  }
+ ]
+}

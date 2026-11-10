@@ -1,0 +1,36 @@
+{
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ScenarioRequest.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "at": {
+      "description": "Issue time of the published row to start from.",
+      "format": "date-time",
+      "title": "At",
+      "type": "string"
+    },
+    "entity_id": {
+      "title": "Entity Id",
+      "type": "string"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "overrides": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "default": {},
+      "description": "feature -> value. Known features only, finite, inside the variable's domain.",
+      "title": "Overrides",
+      "type": "object"
+    }
+  },
+  "required": [
+    "model_id",
+    "entity_id",
+    "at"
+  ],
+  "title": "ScenarioRequest",
+  "type": "object"
+}

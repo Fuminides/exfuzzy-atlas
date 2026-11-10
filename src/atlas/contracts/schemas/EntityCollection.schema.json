@@ -1,0 +1,364 @@
+{
+  "$defs": {
+    "Attribution": {
+      "additionalProperties": false,
+      "description": "Credit and licence of a data source (v0.4); the text is what a redistribution must show.",
+      "properties": {
+        "license": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Licence name; null when the source declares none (say so in text).",
+          "title": "License"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "text_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6.1: the same credit in English; the UI shows it when the interface is in English, else falls back to `text`. The licence and the URL are the same in both languages.",
+          "title": "Text En"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Url"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "title": "Attribution",
+      "type": "object"
+    },
+    "Domain": {
+      "enum": [
+        "air",
+        "water",
+        "mobility"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "EntityFeature": {
+      "additionalProperties": false,
+      "properties": {
+        "geometry": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "MultiPolygon": "#/$defs/MultiPolygonGeometry",
+                  "Point": "#/$defs/PointGeometry",
+                  "Polygon": "#/$defs/PolygonGeometry"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/PointGeometry"
+                },
+                {
+                  "$ref": "#/$defs/PolygonGeometry"
+                },
+                {
+                  "$ref": "#/$defs/MultiPolygonGeometry"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Null when the source has no geometry; never fabricated.",
+          "title": "Geometry"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/$defs/EntityProperties"
+        },
+        "type": {
+          "const": "Feature",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "geometry",
+        "properties"
+      ],
+      "title": "EntityFeature",
+      "type": "object"
+    },
+    "EntityProperties": {
+      "additionalProperties": false,
+      "properties": {
+        "attributes": {
+          "additionalProperties": true,
+          "default": {},
+          "title": "Attributes",
+          "type": "object"
+        },
+        "domain": {
+          "$ref": "#/$defs/Domain"
+        },
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "geometry_source": {
+          "description": "URL or source_id of the official geometry.",
+          "title": "Geometry Source",
+          "type": "string"
+        },
+        "geometry_support": {
+          "$ref": "#/$defs/GeometrySupport"
+        },
+        "modelled": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.4. False: the entity exists in the geometry file but the model has no data for it, so every view returns null with missing_reason=not_modelled. Null: not stated (published before v0.4).",
+          "title": "Modelled"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        },
+        "timezone": {
+          "description": "IANA zone of the entity, e.g. Europe/Madrid.",
+          "title": "Timezone",
+          "type": "string"
+        }
+      },
+      "required": [
+        "entity_id",
+        "domain",
+        "geometry_support",
+        "geometry_source",
+        "timezone"
+      ],
+      "title": "EntityProperties",
+      "type": "object"
+    },
+    "GeometrySupport": {
+      "description": "Spatial meaning of a geometry. ``estimated_surface`` is deliberately absent in v0.1.",
+      "enum": [
+        "observed_point",
+        "observed_polygon",
+        "derived_aggregate"
+      ],
+      "title": "GeometrySupport",
+      "type": "string"
+    },
+    "MultiPolygonGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "items": {
+            "items": {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 180,
+                    "minimum": -180,
+                    "type": "number"
+                  },
+                  {
+                    "maximum": 90,
+                    "minimum": -90,
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "MultiPolygon",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "MultiPolygonGeometry",
+      "type": "object"
+    },
+    "PointGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "maximum": 180,
+              "minimum": -180,
+              "type": "number"
+            },
+            {
+              "maximum": 90,
+              "minimum": -90,
+              "type": "number"
+            }
+          ],
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "Point",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "PointGeometry",
+      "type": "object"
+    },
+    "PolygonGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "items": {
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "maximum": 180,
+                  "minimum": -180,
+                  "type": "number"
+                },
+                {
+                  "maximum": 90,
+                  "minimum": -90,
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "Polygon",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "PolygonGeometry",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/EntityCollection.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "attribution": {
+      "default": [],
+      "description": "v0.4: credits of the sources behind these entities.",
+      "items": {
+        "$ref": "#/$defs/Attribution"
+      },
+      "title": "Attribution",
+      "type": "array"
+    },
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "domain": {
+      "$ref": "#/$defs/Domain"
+    },
+    "features": {
+      "items": {
+        "$ref": "#/$defs/EntityFeature"
+      },
+      "title": "Features",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "type": {
+      "const": "FeatureCollection",
+      "title": "Type",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "type",
+    "domain",
+    "features"
+  ],
+  "title": "EntityCollection",
+  "type": "object"
+}

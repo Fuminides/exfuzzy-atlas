@@ -1,0 +1,28 @@
+{
+  "experiment_id": "ica3",
+  "base_config": "configs/ml/madrid_no2_h6_ica2_justified_experiment.json",
+  "base_experiment": "ica2-justified",
+  "base_seeds": [0, 1, 2],
+  "extra_partitions": "configs/ml/madrid_partitions_extra.json",
+  "stations": "processed/air/stations.geojson",
+  "feature_arms": {
+    "feat_trend": ["no2_trend_3h"],
+    "feat_anomaly": ["no2_anomaly"],
+    "feat_type": ["station_type"],
+    "feat_all": ["no2_trend_3h", "no2_anomaly", "station_type"]
+  },
+  "calibration": {"grid_log10": [-2.0, 3.0, 41], "sweeps": 3},
+  "consensus": {
+    "n_rows": 20000, "n_gen": 100, "pop_size": 60, "sampling_power": 0.5,
+    "seed_sets": {
+      "A": [100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114],
+      "B": [200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214],
+      "C": [300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314]
+    },
+    "pi": [0.3, 0.5],
+    "pi_posthoc": [0.1, 0.2],
+    "restart_k": [5, 15]
+  },
+  "ordinal": {"n_rows": 30000, "n_gen": 150, "pop_size": 60, "sampling_power": 0.5, "seeds": [0, 1, 2]},
+  "decision": {"min_gain": 0.011, "tie": 0.005, "reference_jaccard": 0.151, "jaccard_gain": 0.05}
+}

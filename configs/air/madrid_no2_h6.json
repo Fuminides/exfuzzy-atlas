@@ -1,0 +1,34 @@
+{
+  "task_id": "madrid_no2_h6",
+  "data_version": "madrid-no2-h6-v1",
+  "horizon_hours": 6,
+  "timezone": "Europe/Madrid",
+  "grid": {
+    "start_utc": "2019-01-01T00:00:00Z",
+    "end_utc": "2025-12-31T16:00:00Z",
+    "note": "Issue hours t, hourly in UTC. The last one is the last t whose target hour (t+6h) still has a source slot: the last NO2 hour starts at 2025-12-31T22:00Z."
+  },
+  "association": {
+    "variables": ["wind_speed", "temperature", "relative_humidity", "pressure"],
+    "max_distance_m": 5000,
+    "max_candidates": 3
+  },
+  "no2_source": {"source_id": "madrid-air", "feature_name": "no2"},
+  "meteo_source": {"source_id": "madrid-meteo"},
+  "features": [
+    {"name": "no2_last", "kind": "no2", "key_offset_hours": -1, "recommended": true},
+    {"name": "no2_lag1h", "kind": "no2", "key_offset_hours": -2, "recommended": true},
+    {"name": "no2_lag3h", "kind": "no2", "key_offset_hours": -4, "recommended": true},
+    {"name": "no2_lag24h", "kind": "no2", "key_offset_hours": -25, "recommended": true},
+    {"name": "no2_yday_valid", "kind": "no2", "key_offset_hours": -18, "recommended": false, "in_spec": true, "note": "Same clock hour as the target, one day earlier (key valid_at_utc - 24h); AT-041h."},
+    {"name": "wind_speed", "kind": "meteo", "variable": "wind_speed", "key_offset_hours": -1, "recommended": true},
+    {"name": "temperature", "kind": "meteo", "variable": "temperature", "key_offset_hours": -1, "recommended": true},
+    {"name": "relative_humidity", "kind": "meteo", "variable": "relative_humidity", "key_offset_hours": -1, "recommended": true},
+    {"name": "pressure", "kind": "meteo", "variable": "pressure", "key_offset_hours": -1, "recommended": false},
+    {"name": "valid_hour_local", "kind": "calendar", "recommended": true},
+    {"name": "valid_weekday", "kind": "calendar", "recommended": true},
+    {"name": "valid_is_weekend", "kind": "calendar", "recommended": false},
+    {"name": "valid_hour_sin", "kind": "calendar", "recommended": false},
+    {"name": "valid_hour_cos", "kind": "calendar", "recommended": false}
+  ]
+}

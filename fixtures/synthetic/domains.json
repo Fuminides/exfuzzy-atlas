@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.7.0",
+  "data_version": "synthetic-fixture-v0",
+  "synthetic": true,
+  "domains": [
+    {
+      "domain": "air",
+      "title": "Madrid air quality",
+      "status": "planned",
+      "tasks": [
+        {
+          "task_id": "madrid_no2_h6",
+          "task_type": "regression",
+          "target": "no2",
+          "unit": "ug/m3",
+          "horizon_hours": 6,
+          "status": "planned",
+          "model_id": "synthetic-no2-h6-v0",
+          "title": null,
+          "territory": "madrid",
+          "territory_title": "Madrid (inventado)",
+          "territory_title_en": "Madrid (made up)"
+        }
+      ]
+    },
+    {
+      "domain": "water",
+      "title": "England water quality",
+      "status": "planned",
+      "tasks": []
+    },
+    {
+      "domain": "mobility",
+      "title": "NYC yellow taxi demand",
+      "status": "planned",
+      "tasks": []
+    }
+  ]
+}

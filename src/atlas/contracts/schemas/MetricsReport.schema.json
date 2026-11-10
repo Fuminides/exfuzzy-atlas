@@ -1,0 +1,142 @@
+{
+  "$defs": {
+    "MetricRow": {
+      "additionalProperties": false,
+      "properties": {
+        "estimator": {
+          "title": "Estimator",
+          "type": "string"
+        },
+        "metric": {
+          "title": "Metric",
+          "type": "string"
+        },
+        "n": {
+          "minimum": 0,
+          "title": "N",
+          "type": "integer"
+        },
+        "slice": {
+          "default": "all",
+          "title": "Slice",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "estimator",
+        "metric",
+        "value",
+        "n"
+      ],
+      "title": "MetricRow",
+      "type": "object"
+    },
+    "SplitSpec": {
+      "additionalProperties": false,
+      "description": "Chronological split. Periods are half-open [from, to) and must not overlap.",
+      "properties": {
+        "embargo_hours": {
+          "description": "Gap between consecutive periods, at least the horizon.",
+          "minimum": 0,
+          "title": "Embargo Hours",
+          "type": "integer"
+        },
+        "test_from_utc": {
+          "format": "date-time",
+          "title": "Test From Utc",
+          "type": "string"
+        },
+        "test_to_utc": {
+          "format": "date-time",
+          "title": "Test To Utc",
+          "type": "string"
+        },
+        "train_from_utc": {
+          "format": "date-time",
+          "title": "Train From Utc",
+          "type": "string"
+        },
+        "train_to_utc": {
+          "format": "date-time",
+          "title": "Train To Utc",
+          "type": "string"
+        },
+        "validation_from_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Validation From Utc"
+        },
+        "validation_to_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Validation To Utc"
+        }
+      },
+      "required": [
+        "train_from_utc",
+        "train_to_utc",
+        "test_from_utc",
+        "test_to_utc",
+        "embargo_hours"
+      ],
+      "title": "SplitSpec",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/MetricsReport.schema.json",
+  "additionalProperties": false,
+  "description": "Every estimator in one report is evaluated on the same split.",
+  "properties": {
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "rows": {
+      "items": {
+        "$ref": "#/$defs/MetricRow"
+      },
+      "title": "Rows",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "split": {
+      "$ref": "#/$defs/SplitSpec"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "model_id",
+    "task_id",
+    "split",
+    "rows"
+  ],
+  "title": "MetricsReport",
+  "type": "object"
+}

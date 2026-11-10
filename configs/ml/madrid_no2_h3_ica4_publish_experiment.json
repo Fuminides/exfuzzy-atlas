@@ -1,0 +1,154 @@
+{
+  "experiment_id": "ica4-yday",
+  "table": "processed/air/features/madrid_no2_h3/table",
+  "complete_column": "complete",
+  "base": {
+    "task_id": "madrid_no2_h3",
+    "domain": "air",
+    "target": "no2",
+    "target_column": "target",
+    "unit": "ug/m3",
+    "horizon_hours": 3,
+    "features": [
+      "no2_yday_valid",
+      "no2_last",
+      "valid_hour_local",
+      "wind_speed"
+    ],
+    "feature_units": {
+      "no2_yday_valid": "ug/m3",
+      "no2_last": "ug/m3",
+      "valid_hour_local": "h",
+      "wind_speed": "m/s"
+    },
+    "persistence_feature": "no2_last",
+    "split": {
+      "train_from_utc": "2019-01-01T00:00:00Z",
+      "train_to_utc": "2023-12-31T00:00:00Z",
+      "validation_from_utc": "2024-01-01T00:00:00Z",
+      "validation_to_utc": "2024-12-31T00:00:00Z",
+      "test_from_utc": "2025-01-01T00:00:00Z",
+      "test_to_utc": "2026-01-01T00:00:00Z",
+      "embargo_hours": 24
+    },
+    "seed": 0,
+    "data_version": "madrid-no2-h3-v1",
+    "data_checksums": {
+      "feature_card.json": "569f10d85dc7a2d251d43e9fe770160eaa19e4c9a0588d1f86aaecae8ff585c2",
+      "stations.geojson": "5080137932fee2c30b4bed687c16f32a03bd1507d126ecfdac97597f04db5d01"
+    },
+    "synthetic": false,
+    "timezone": "Europe/Madrid",
+    "fuzzy": {
+      "nRules": 20,
+      "nAnts": 3,
+      "n_linguistic_variables": 3,
+      "rule_mode": "additive",
+      "tolerance": 0.0,
+      "n_gen": 50,
+      "pop_size": 50,
+      "backend": "pymoo",
+      "unique_antecedents": false
+    },
+    "ridge_alpha": 1.0,
+    "gbm_max_iter": 200,
+    "run_id": null,
+    "model_id": null
+  },
+  "subsample": {
+    "n_rows": 30000,
+    "seed": 20260101,
+    "partition_rows": null
+  },
+  "selection": {
+    "candidates": [
+      {
+        "nRules": 30,
+        "nAnts": 2,
+        "n_linguistic_variables": 3,
+        "rule_weighting": "none",
+        "sampling_power": 0.5
+      }
+    ],
+    "n_gen": 150,
+    "pop_size": 60,
+    "patience": null,
+    "seed": 0
+  },
+  "final": {
+    "n_gen": 150,
+    "pop_size": 60,
+    "patience": null,
+    "seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "extremes": {
+    "train_quantiles": [
+      0.99
+    ],
+    "absolute": []
+  },
+  "compact_load": false,
+  "covid_window_utc": null,
+  "train_exclude_windows_utc": [],
+  "exfuzzy_source": null,
+  "requires_exfuzzy": [],
+  "scheme": "configs/ml/ica_no2_scheme.json",
+  "merge_min_train_rows": 500,
+  "merge_min_train_share": null,
+  "target_label": "ICA",
+  "baseline_train_rows": null,
+  "partitions": {
+    "file": "configs/ml/madrid_partitions.json",
+    "use_features": [
+      "no2_last",
+      "valid_hour_local",
+      "wind_speed"
+    ],
+    "fixed": [
+      {
+        "feature": "no2_yday_valid",
+        "bands": [
+          {
+            "name": "Buena",
+            "lower": 0.0,
+            "upper": 40.0
+          },
+          {
+            "name": "Razonablemente buena",
+            "lower": 41.0,
+            "upper": 90.0
+          },
+          {
+            "name": "Regular",
+            "lower": 91.0,
+            "upper": 120.0
+          },
+          {
+            "name": "Desfavorable o peor",
+            "lower": 121.0,
+            "upper": 1000.0
+          }
+        ],
+        "shoulder": [
+          6.0,
+          13.5,
+          18.0
+        ],
+        "domain": [
+          0.0,
+          1000.0
+        ],
+        "follows_target_scheme": true
+      }
+    ]
+  },
+  "extra_tables": [],
+  "require_columns": [],
+  "persistence_baselines": {
+    "persistence_24h": "no2_yday_valid"
+  }
+}

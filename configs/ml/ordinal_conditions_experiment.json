@@ -1,0 +1,598 @@
+{
+  "experiment_id": "ordinal-conditions",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "tau_macro_f1": 0.01,
+  "tau_mae_share": 0.01,
+  "tasks": [
+    {
+      "task_id": "de_no2_h24",
+      "kind": "mixture",
+      "config": "configs/ml/de_no2_h24_mixture_serve_experiment.json",
+      "clock_variables": [
+        "valid_hour_local",
+        "valid_weekday"
+      ],
+      "compound_terms": {
+        "valid_hour_local": [
+          {
+            "terms": [
+              "Night",
+              "Morning rush"
+            ],
+            "name": "Early hours",
+            "name_es": "Primeras horas",
+            "name_en": "Early hours"
+          },
+          {
+            "terms": [
+              "Morning rush",
+              "Midday"
+            ],
+            "name": "Daytime",
+            "name_es": "Día",
+            "name_en": "Daytime"
+          },
+          {
+            "terms": [
+              "Midday",
+              "Evening"
+            ],
+            "name": "Afternoon",
+            "name_es": "Tarde",
+            "name_en": "Afternoon"
+          },
+          {
+            "terms": [
+              "Evening",
+              "Night"
+            ],
+            "name": "Long night",
+            "name_es": "Noche larga",
+            "name_en": "Long night"
+          }
+        ],
+        "valid_weekday": [
+          {
+            "terms": [
+              "Saturday",
+              "Sunday"
+            ],
+            "name": "Weekend",
+            "name_es": "Fin de semana",
+            "name_en": "Weekend"
+          }
+        ]
+      },
+      "cyclic_variables": [
+        "valid_hour_local"
+      ]
+    },
+    {
+      "task_id": "de_no2_h12",
+      "kind": "mixture",
+      "config": "configs/ml/de_no2_h12_mixture_serve_experiment.json",
+      "clock_variables": [
+        "valid_hour_local",
+        "valid_weekday"
+      ],
+      "compound_terms": {
+        "valid_hour_local": [
+          {
+            "terms": [
+              "Night",
+              "Morning rush"
+            ],
+            "name": "Early hours",
+            "name_es": "Primeras horas",
+            "name_en": "Early hours"
+          },
+          {
+            "terms": [
+              "Morning rush",
+              "Midday"
+            ],
+            "name": "Daytime",
+            "name_es": "Día",
+            "name_en": "Daytime"
+          },
+          {
+            "terms": [
+              "Midday",
+              "Evening"
+            ],
+            "name": "Afternoon",
+            "name_es": "Tarde",
+            "name_en": "Afternoon"
+          },
+          {
+            "terms": [
+              "Evening",
+              "Night"
+            ],
+            "name": "Long night",
+            "name_es": "Noche larga",
+            "name_en": "Long night"
+          }
+        ],
+        "valid_weekday": [
+          {
+            "terms": [
+              "Saturday",
+              "Sunday"
+            ],
+            "name": "Weekend",
+            "name_es": "Fin de semana",
+            "name_en": "Weekend"
+          }
+        ]
+      },
+      "cyclic_variables": [
+        "valid_hour_local"
+      ]
+    },
+    {
+      "task_id": "nyc_pickups_h24",
+      "kind": "mixture",
+      "config": "configs/ml/nyc_pickups_h24_mixture_serve_experiment.json",
+      "clock_variables": [
+        "local_hour",
+        "local_dow"
+      ],
+      "compound_terms": {
+        "local_hour": [
+          {
+            "terms": [
+              "Madrugada",
+              "Mañana"
+            ],
+            "name": "Primeras horas",
+            "name_es": "Primeras horas",
+            "name_en": "Early hours"
+          },
+          {
+            "terms": [
+              "Mañana",
+              "Mediodía"
+            ],
+            "name": "Día",
+            "name_es": "Día",
+            "name_en": "Daytime"
+          },
+          {
+            "terms": [
+              "Mediodía",
+              "Tarde-noche"
+            ],
+            "name": "Tarde",
+            "name_es": "Tarde",
+            "name_en": "Afternoon"
+          },
+          {
+            "terms": [
+              "Tarde-noche",
+              "Madrugada"
+            ],
+            "name": "Noche larga",
+            "name_es": "Noche larga",
+            "name_en": "Long night"
+          }
+        ],
+        "local_dow": [
+          {
+            "terms": [
+              "Sábado",
+              "Domingo"
+            ],
+            "name": "Fin de semana",
+            "name_es": "Fin de semana",
+            "name_en": "Weekend"
+          }
+        ]
+      },
+      "cyclic_variables": [
+        "local_hour"
+      ]
+    },
+    {
+      "task_id": "nyc_pickups_h3",
+      "kind": "mixture",
+      "config": "configs/ml/nyc_pickups_h3_mixture_serve_experiment.json",
+      "clock_variables": [
+        "local_hour",
+        "local_dow"
+      ],
+      "compound_terms": {
+        "local_hour": [
+          {
+            "terms": [
+              "Madrugada",
+              "Mañana"
+            ],
+            "name": "Primeras horas",
+            "name_es": "Primeras horas",
+            "name_en": "Early hours"
+          },
+          {
+            "terms": [
+              "Mañana",
+              "Mediodía"
+            ],
+            "name": "Día",
+            "name_es": "Día",
+            "name_en": "Daytime"
+          },
+          {
+            "terms": [
+              "Mediodía",
+              "Tarde-noche"
+            ],
+            "name": "Tarde",
+            "name_es": "Tarde",
+            "name_en": "Afternoon"
+          },
+          {
+            "terms": [
+              "Tarde-noche",
+              "Madrugada"
+            ],
+            "name": "Noche larga",
+            "name_es": "Noche larga",
+            "name_en": "Long night"
+          }
+        ],
+        "local_dow": [
+          {
+            "terms": [
+              "Sábado",
+              "Domingo"
+            ],
+            "name": "Fin de semana",
+            "name_es": "Fin de semana",
+            "name_en": "Weekend"
+          }
+        ]
+      },
+      "cyclic_variables": [
+        "local_hour"
+      ]
+    },
+    {
+      "task_id": "de_no2_h3",
+      "kind": "mixture",
+      "config": "configs/ml/de_no2_h3_mixture_serve_experiment.json",
+      "clock_variables": [
+        "valid_hour_local",
+        "valid_weekday"
+      ],
+      "compound_terms": {
+        "valid_hour_local": [
+          {
+            "terms": [
+              "Night",
+              "Morning rush"
+            ],
+            "name": "Early hours",
+            "name_es": "Primeras horas",
+            "name_en": "Early hours"
+          },
+          {
+            "terms": [
+              "Morning rush",
+              "Midday"
+            ],
+            "name": "Daytime",
+            "name_es": "Día",
+            "name_en": "Daytime"
+          },
+          {
+            "terms": [
+              "Midday",
+              "Evening"
+            ],
+            "name": "Afternoon",
+            "name_es": "Tarde",
+            "name_en": "Afternoon"
+          },
+          {
+            "terms": [
+              "Evening",
+              "Night"
+            ],
+            "name": "Long night",
+            "name_es": "Noche larga",
+            "name_en": "Long night"
+          }
+        ],
+        "valid_weekday": [
+          {
+            "terms": [
+              "Saturday",
+              "Sunday"
+            ],
+            "name": "Weekend",
+            "name_es": "Fin de semana",
+            "name_en": "Weekend"
+          }
+        ]
+      },
+      "cyclic_variables": [
+        "valid_hour_local"
+      ]
+    },
+    {
+      "task_id": "de_no2_h1",
+      "kind": "mixture",
+      "config": "configs/ml/de_no2_h1_mixture_serve_experiment.json",
+      "clock_variables": [
+        "valid_hour_local",
+        "valid_weekday"
+      ],
+      "compound_terms": {
+        "valid_hour_local": [
+          {
+            "terms": [
+              "Night",
+              "Morning rush"
+            ],
+            "name": "Early hours",
+            "name_es": "Primeras horas",
+            "name_en": "Early hours"
+          },
+          {
+            "terms": [
+              "Morning rush",
+              "Midday"
+            ],
+            "name": "Daytime",
+            "name_es": "Día",
+            "name_en": "Daytime"
+          },
+          {
+            "terms": [
+              "Midday",
+              "Evening"
+            ],
+            "name": "Afternoon",
+            "name_es": "Tarde",
+            "name_en": "Afternoon"
+          },
+          {
+            "terms": [
+              "Evening",
+              "Night"
+            ],
+            "name": "Long night",
+            "name_es": "Noche larga",
+            "name_en": "Long night"
+          }
+        ],
+        "valid_weekday": [
+          {
+            "terms": [
+              "Saturday",
+              "Sunday"
+            ],
+            "name": "Weekend",
+            "name_es": "Fin de semana",
+            "name_en": "Weekend"
+          }
+        ]
+      },
+      "cyclic_variables": [
+        "valid_hour_local"
+      ]
+    },
+    {
+      "task_id": "nyc_pickups_h1",
+      "kind": "mixture",
+      "config": "configs/ml/nyc_pickups_h1_mixture_serve_experiment.json",
+      "clock_variables": [
+        "local_hour",
+        "local_dow"
+      ],
+      "compound_terms": {
+        "local_hour": [
+          {
+            "terms": [
+              "Madrugada",
+              "Mañana"
+            ],
+            "name": "Primeras horas",
+            "name_es": "Primeras horas",
+            "name_en": "Early hours"
+          },
+          {
+            "terms": [
+              "Mañana",
+              "Mediodía"
+            ],
+            "name": "Día",
+            "name_es": "Día",
+            "name_en": "Daytime"
+          },
+          {
+            "terms": [
+              "Mediodía",
+              "Tarde-noche"
+            ],
+            "name": "Tarde",
+            "name_es": "Tarde",
+            "name_en": "Afternoon"
+          },
+          {
+            "terms": [
+              "Tarde-noche",
+              "Madrugada"
+            ],
+            "name": "Noche larga",
+            "name_es": "Noche larga",
+            "name_en": "Long night"
+          }
+        ],
+        "local_dow": [
+          {
+            "terms": [
+              "Sábado",
+              "Domingo"
+            ],
+            "name": "Fin de semana",
+            "name_es": "Fin de semana",
+            "name_en": "Weekend"
+          }
+        ]
+      },
+      "cyclic_variables": [
+        "local_hour"
+      ]
+    },
+    {
+      "task_id": "de_no2_h6",
+      "kind": "mixture",
+      "config": "configs/ml/de_no2_h6_mixture_serve_experiment.json",
+      "clock_variables": [
+        "valid_hour_local"
+      ],
+      "compound_terms": {
+        "valid_hour_local": [
+          {
+            "terms": [
+              "Night",
+              "Morning rush"
+            ],
+            "name": "Early hours",
+            "name_es": "Primeras horas",
+            "name_en": "Early hours"
+          },
+          {
+            "terms": [
+              "Morning rush",
+              "Midday"
+            ],
+            "name": "Daytime",
+            "name_es": "Día",
+            "name_en": "Daytime"
+          },
+          {
+            "terms": [
+              "Midday",
+              "Evening"
+            ],
+            "name": "Afternoon",
+            "name_es": "Tarde",
+            "name_en": "Afternoon"
+          },
+          {
+            "terms": [
+              "Evening",
+              "Night"
+            ],
+            "name": "Long night",
+            "name_es": "Noche larga",
+            "name_en": "Long night"
+          }
+        ]
+      },
+      "cyclic_variables": [
+        "valid_hour_local"
+      ]
+    },
+    {
+      "task_id": "nyc_pickups_h6",
+      "kind": "winning",
+      "config": "configs/ml/nyc_pickups_h6_mixture_serve_experiment.json",
+      "clock_variables": [
+        "local_hour",
+        "local_dow"
+      ],
+      "compound_terms": {
+        "local_hour": [
+          {
+            "terms": [
+              "Madrugada",
+              "Mañana"
+            ],
+            "name": "Primeras horas",
+            "name_es": "Primeras horas",
+            "name_en": "Early hours"
+          },
+          {
+            "terms": [
+              "Mañana",
+              "Mediodía"
+            ],
+            "name": "Día",
+            "name_es": "Día",
+            "name_en": "Daytime"
+          },
+          {
+            "terms": [
+              "Mediodía",
+              "Tarde-noche"
+            ],
+            "name": "Tarde",
+            "name_es": "Tarde",
+            "name_en": "Afternoon"
+          },
+          {
+            "terms": [
+              "Tarde-noche",
+              "Madrugada"
+            ],
+            "name": "Noche larga",
+            "name_es": "Noche larga",
+            "name_en": "Long night"
+          }
+        ],
+        "local_dow": [
+          {
+            "terms": [
+              "Sábado",
+              "Domingo"
+            ],
+            "name": "Fin de semana",
+            "name_es": "Fin de semana",
+            "name_en": "Weekend"
+          }
+        ]
+      },
+      "cyclic_variables": [
+        "local_hour"
+      ]
+    },
+    {
+      "task_id": "uk_water_do",
+      "kind": "water",
+      "config": "configs/ml/fx_water_do_chrono_temp_unique_experiment.json",
+      "clock_variables": [
+        "local_hour"
+      ],
+      "compound_terms": {
+        "local_hour": [
+          {
+            "terms": [
+              "Low",
+              "Medium"
+            ],
+            "name": "Low or Medium",
+            "name_es": "baja o media",
+            "name_en": "low or medium"
+          },
+          {
+            "terms": [
+              "Medium",
+              "High"
+            ],
+            "name": "Medium or High",
+            "name_es": "media o alta",
+            "name_en": "medium or high"
+          }
+        ]
+      },
+      "cyclic_variables": []
+    }
+  ]
+}

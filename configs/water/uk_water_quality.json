@@ -1,0 +1,34 @@
+{
+  "source_id": "uk-water-quality",
+  "title": "Environment Agency Water Quality Explorer (Water Quality Archive API v1.3.1): North East, Northumberland & Tyne rivers",
+  "landing_url": "https://www.data.gov.uk/dataset/583e771f-1af6-4934-b8f0-28f1d1ddd48c/water-quality-explorer",
+  "api_base": "https://environment.data.gov.uk/water-quality",
+  "license": "Open Government Licence v3.0",
+  "attribution": "Contains public sector information licensed under the Open Government Licence v3.0. © Environment Agency copyright and/or database right 2025. All rights reserved.",
+  "manifest_notes": [
+    "API: https://environment.data.gov.uk/water-quality (OpenAPI at /water-quality/api/swagger, version 1.3.1); no key, no documented rate limit; the legacy Water Quality Archive was retired on 2025-12-11.",
+    "Observations are fetched with POST /data/observation (empty body), Accept: text/csv, limit=2500, two half-year windows per year: dateTo is exclusive and the API rejects multi-point queries spanning a year or more (HTTP 400).",
+    "phenomenonTime has no UTC offset; it is read as Europe/London local time (see docs/water/api_notes.md).",
+    "The archive is updated within two working days of a new sample and refreshed monthly (corrections possible), so this snapshot is dated by the download stamps below."
+  ],
+  "slice": {
+    "id": "ne-x-h-rivers",
+    "description": "Environment Agency North East region, area X (Northumberland, Durham and Tees), sub-area H (Northumberland & Tyne); sampling point type F6 (freshwater rivers).",
+    "filters": {"samplingPointType": "F6", "area": "X", "subArea": "H"},
+    "year_from": 2015,
+    "year_to": 2025
+  },
+  "determinands": [
+    {"code": "9924", "feature_name": "dissolved_oxygen", "label": "Oxygen, Dissolved as O2"},
+    {"code": "0111", "feature_name": "ammoniacal_nitrogen", "label": "Ammoniacal Nitrogen as N"},
+    {"code": "0180", "feature_name": "orthophosphate_reactive", "label": "Orthophosphate, reactive as P"},
+    {"code": "0061", "feature_name": "ph", "label": "pH"},
+    {"code": "0076", "feature_name": "water_temperature", "label": "Temperature of Water"}
+  ],
+  "candidate_determinands": [
+    {"code": "0117", "label": "Nitrate as N"},
+    {"code": "9901", "label": "Oxygen, Dissolved, % Saturation"}
+  ],
+  "dataset_extent_wgs84": {"lon": [-6.236, 2.072], "lat": [49.943, 55.816], "source": "data.gov.uk record, Extent (Longitude/Latitude)"},
+  "timezone": "Europe/London"
+}

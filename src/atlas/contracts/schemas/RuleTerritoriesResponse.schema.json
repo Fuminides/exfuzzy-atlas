@@ -1,0 +1,483 @@
+{
+  "$defs": {
+    "GeometrySupport": {
+      "description": "Spatial meaning of a geometry. ``estimated_surface`` is deliberately absent in v0.1.",
+      "enum": [
+        "observed_point",
+        "observed_polygon",
+        "derived_aggregate"
+      ],
+      "title": "GeometrySupport",
+      "type": "string"
+    },
+    "InferenceFamily": {
+      "enum": [
+        "tsk_zero_order",
+        "mamdani",
+        "winning_rule_classifier",
+        "rule_mixture_classifier"
+      ],
+      "title": "InferenceFamily",
+      "type": "string"
+    },
+    "MissingReason": {
+      "enum": [
+        "no_observation",
+        "invalid_observation",
+        "censored",
+        "missing_input",
+        "prediction_unavailable",
+        "not_modelled"
+      ],
+      "title": "MissingReason",
+      "type": "string"
+    },
+    "MultiPolygonGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "items": {
+            "items": {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 180,
+                    "minimum": -180,
+                    "type": "number"
+                  },
+                  {
+                    "maximum": 90,
+                    "minimum": -90,
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "MultiPolygon",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "MultiPolygonGeometry",
+      "type": "object"
+    },
+    "PointGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "maximum": 180,
+              "minimum": -180,
+              "type": "number"
+            },
+            {
+              "maximum": 90,
+              "minimum": -90,
+              "type": "number"
+            }
+          ],
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "Point",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "PointGeometry",
+      "type": "object"
+    },
+    "PolygonGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "items": {
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "maximum": 180,
+                  "minimum": -180,
+                  "type": "number"
+                },
+                {
+                  "maximum": 90,
+                  "minimum": -90,
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "Polygon",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "PolygonGeometry",
+      "type": "object"
+    },
+    "Quality": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/QualityStatus",
+          "default": "valid"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "title": "Quality",
+      "type": "object"
+    },
+    "QualityStatus": {
+      "enum": [
+        "valid",
+        "warning",
+        "invalid"
+      ],
+      "title": "QualityStatus",
+      "type": "string"
+    },
+    "TerritoryFeature": {
+      "additionalProperties": false,
+      "properties": {
+        "geometry": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "MultiPolygon": "#/$defs/MultiPolygonGeometry",
+                  "Point": "#/$defs/PointGeometry",
+                  "Polygon": "#/$defs/PolygonGeometry"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/PointGeometry"
+                },
+                {
+                  "$ref": "#/$defs/PolygonGeometry"
+                },
+                {
+                  "$ref": "#/$defs/MultiPolygonGeometry"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Geometry"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/$defs/TerritoryProperties"
+        },
+        "type": {
+          "const": "Feature",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "geometry",
+        "properties"
+      ],
+      "title": "TerritoryFeature",
+      "type": "object"
+    },
+    "TerritoryMeasure": {
+      "enum": [
+        "mean_activation",
+        "activation_frequency",
+        "winner_share"
+      ],
+      "title": "TerritoryMeasure",
+      "type": "string"
+    },
+    "TerritoryProperties": {
+      "additionalProperties": false,
+      "properties": {
+        "data_version": {
+          "title": "Data Version",
+          "type": "string"
+        },
+        "dominant_rule_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Argmax of the chosen measure only (ties: lowest rule position). Not the rule that 'explains' the prediction; null when n_valid is 0 or the measure is 0 for every rule.",
+          "title": "Dominant Rule Id"
+        },
+        "dominant_value": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dominant Value"
+        },
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "geometry_support": {
+          "$ref": "#/$defs/GeometrySupport"
+        },
+        "missing_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "n_records": {
+          "description": "Published issue times of the entity in the window.",
+          "minimum": 0,
+          "title": "N Records",
+          "type": "integer"
+        },
+        "n_valid": {
+          "description": "Records with every model input present: the denominator of all values.",
+          "minimum": 0,
+          "title": "N Valid",
+          "type": "integer"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": {
+            "status": "valid",
+            "warnings": []
+          }
+        },
+        "rules": {
+          "default": [],
+          "description": "Every rule of the model; empty when n_valid is 0.",
+          "items": {
+            "$ref": "#/$defs/TerritoryRuleStats"
+          },
+          "title": "Rules",
+          "type": "array"
+        }
+      },
+      "required": [
+        "entity_id",
+        "model_id",
+        "data_version",
+        "geometry_support",
+        "n_records",
+        "n_valid"
+      ],
+      "title": "TerritoryProperties",
+      "type": "object"
+    },
+    "TerritoryRuleStats": {
+      "additionalProperties": false,
+      "properties": {
+        "activation_frequency": {
+          "description": "Share of the n_valid records with firing >= tau.",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Activation Frequency",
+          "type": "number"
+        },
+        "mean_activation": {
+          "description": "Mean firing over the entity's n_valid records.",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Mean Activation",
+          "type": "number"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "winner_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Winning-rule classifiers: share of the n_valid records in which this rule decided the class. Null for the rule mixture, where no rule decides alone.",
+          "title": "Winner Share"
+        }
+      },
+      "required": [
+        "rule_id",
+        "mean_activation",
+        "activation_frequency"
+      ],
+      "title": "TerritoryRuleStats",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/RuleTerritoriesResponse.schema.json",
+  "additionalProperties": false,
+  "description": "Empirical territory of every rule over a window ``[from, to)``. Territories overlap: they are not a partition.",
+  "properties": {
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "denominators": {
+      "title": "Denominators",
+      "type": "string"
+    },
+    "features": {
+      "items": {
+        "$ref": "#/$defs/TerritoryFeature"
+      },
+      "title": "Features",
+      "type": "array"
+    },
+    "inference_family": {
+      "$ref": "#/$defs/InferenceFamily"
+    },
+    "measure": {
+      "$ref": "#/$defs/TerritoryMeasure",
+      "description": "Measure that picks each entity's dominant rule."
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "n_rules": {
+      "minimum": 1,
+      "title": "N Rules",
+      "type": "integer"
+    },
+    "notes": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "tau": {
+      "description": "Threshold of activation_frequency (reported for every rule).",
+      "exclusiveMinimum": 0,
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Tau",
+      "type": "number"
+    },
+    "tie_break": {
+      "title": "Tie Break",
+      "type": "string"
+    },
+    "time_from_utc": {
+      "format": "date-time",
+      "title": "Time From Utc",
+      "type": "string"
+    },
+    "time_to_utc": {
+      "format": "date-time",
+      "title": "Time To Utc",
+      "type": "string"
+    },
+    "type": {
+      "const": "FeatureCollection",
+      "title": "Type",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "type",
+    "model_id",
+    "inference_family",
+    "measure",
+    "tau",
+    "time_from_utc",
+    "time_to_utc",
+    "n_rules",
+    "tie_break",
+    "denominators",
+    "features"
+  ],
+  "title": "RuleTerritoriesResponse",
+  "type": "object"
+}

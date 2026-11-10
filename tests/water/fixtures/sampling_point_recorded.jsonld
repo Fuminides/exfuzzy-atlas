@@ -1,0 +1,134 @@
+{
+ "@context": "https://environment.data.gov.uk/water-quality/context/wqa_samplingpoint_context.json-ld",
+ "@type": "hydra:Collection",
+ "totalItems": 2,
+ "view": {
+  "first": null,
+  "last": null,
+  "next": null
+ },
+ "member": [
+  {
+   "id": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000002",
+   "@type": [
+    "sosa:FeatureOfInterest",
+    "geo:Feature"
+   ],
+   "altLabel": "SOUTH LOW AT TIDAL SLUICE",
+   "prefLabel": "SOUTH LOW AT TIDAL SLUICE",
+   "notation": "NE-41000002",
+   "hasObservations": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000002/observation",
+   "geometry": {
+    "id": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000002#Geometry",
+    "@type": "geo:Geometry",
+    "asWKT": "POINT(407291 643492) <http://www.opengis.net/def/crs/EPSG/0/27700>"
+   },
+   "samplingPointStatus": {
+    "@id": "_:status#O",
+    "@type": [
+     "skos:Concept",
+     "sosa:Property"
+    ],
+    "prefLabel": "OPEN",
+    "notation": "O"
+   },
+   "samplingPointType": {
+    "@id": "_:samplingPointType#F6",
+    "@type": [
+     "skos:Concept",
+     "sosa:Property"
+    ],
+    "prefLabel": "FRESHWATER - RIVERS",
+    "notation": "F6"
+   },
+   "region": {
+    "@id": "_:samplingPointRegion#NE",
+    "@type": [
+     "skos:Concept",
+     "geo:Feature"
+    ],
+    "prefLabel": "NorthEast",
+    "notation": "NE"
+   },
+   "area": {
+    "@id": "_:samplingPointArea#X",
+    "@type": [
+     "skos:Concept",
+     "geo:Feature"
+    ],
+    "prefLabel": "NORTH EAST - NORTHUMBERLAND DURHAM AND TEES",
+    "notation": "X"
+   },
+   "subArea": {
+    "@id": "_:samplingPointSubArea#X-H",
+    "@type": [
+     "skos:Concept",
+     "geo:Feature"
+    ],
+    "prefLabel": "NORTHUMBERLAND & TYNE",
+    "notation": "X-H"
+   }
+  },
+  {
+   "id": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000003",
+   "@type": [
+    "sosa:FeatureOfInterest",
+    "geo:Feature"
+   ],
+   "altLabel": "FENHAM BURN AT FENHAM-LE-MOOR",
+   "prefLabel": "FENHAM BURN AT FENHAM-LE-MOOR",
+   "notation": "NE-41000003",
+   "hasObservations": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000003/observation",
+   "geometry": {
+    "id": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000003#Geometry",
+    "@type": "geo:Geometry",
+    "asWKT": "POINT(409570 639530) <http://www.opengis.net/def/crs/EPSG/0/27700>"
+   },
+   "samplingPointStatus": {
+    "@id": "_:status#O",
+    "@type": [
+     "skos:Concept",
+     "sosa:Property"
+    ],
+    "prefLabel": "OPEN",
+    "notation": "O"
+   },
+   "samplingPointType": {
+    "@id": "_:samplingPointType#F6",
+    "@type": [
+     "skos:Concept",
+     "sosa:Property"
+    ],
+    "prefLabel": "FRESHWATER - RIVERS",
+    "notation": "F6"
+   },
+   "region": {
+    "@id": "_:samplingPointRegion#NE",
+    "@type": [
+     "skos:Concept",
+     "geo:Feature"
+    ],
+    "prefLabel": "NorthEast",
+    "notation": "NE"
+   },
+   "area": {
+    "@id": "_:samplingPointArea#X",
+    "@type": [
+     "skos:Concept",
+     "geo:Feature"
+    ],
+    "prefLabel": "NORTH EAST - NORTHUMBERLAND DURHAM AND TEES",
+    "notation": "X"
+   },
+   "subArea": {
+    "@id": "_:samplingPointSubArea#X-H",
+    "@type": [
+     "skos:Concept",
+     "geo:Feature"
+    ],
+    "prefLabel": "NORTHUMBERLAND & TYNE",
+    "notation": "X-H"
+   }
+  }
+ ]
+}

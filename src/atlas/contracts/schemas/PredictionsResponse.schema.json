@@ -1,0 +1,510 @@
+{
+  "$defs": {
+    "GeometrySupport": {
+      "description": "Spatial meaning of a geometry. ``estimated_surface`` is deliberately absent in v0.1.",
+      "enum": [
+        "observed_point",
+        "observed_polygon",
+        "derived_aggregate"
+      ],
+      "title": "GeometrySupport",
+      "type": "string"
+    },
+    "MissingReason": {
+      "enum": [
+        "no_observation",
+        "invalid_observation",
+        "censored",
+        "missing_input",
+        "prediction_unavailable",
+        "not_modelled"
+      ],
+      "title": "MissingReason",
+      "type": "string"
+    },
+    "MultiPolygonGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "items": {
+            "items": {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "maximum": 180,
+                    "minimum": -180,
+                    "type": "number"
+                  },
+                  {
+                    "maximum": 90,
+                    "minimum": -90,
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "MultiPolygon",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "MultiPolygonGeometry",
+      "type": "object"
+    },
+    "PointGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "maximum": 180,
+              "minimum": -180,
+              "type": "number"
+            },
+            {
+              "maximum": 90,
+              "minimum": -90,
+              "type": "number"
+            }
+          ],
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "Point",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "PointGeometry",
+      "type": "object"
+    },
+    "PolygonGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "items": {
+            "items": {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "maximum": 180,
+                  "minimum": -180,
+                  "type": "number"
+                },
+                {
+                  "maximum": 90,
+                  "minimum": -90,
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "title": "Coordinates",
+          "type": "array"
+        },
+        "type": {
+          "const": "Polygon",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "PolygonGeometry",
+      "type": "object"
+    },
+    "PredictionFeature": {
+      "additionalProperties": false,
+      "properties": {
+        "geometry": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "MultiPolygon": "#/$defs/MultiPolygonGeometry",
+                  "Point": "#/$defs/PointGeometry",
+                  "Polygon": "#/$defs/PolygonGeometry"
+                },
+                "propertyName": "type"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/PointGeometry"
+                },
+                {
+                  "$ref": "#/$defs/PolygonGeometry"
+                },
+                {
+                  "$ref": "#/$defs/MultiPolygonGeometry"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Geometry"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "properties": {
+          "$ref": "#/$defs/PredictionProperties"
+        },
+        "type": {
+          "const": "Feature",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "id",
+        "geometry",
+        "properties"
+      ],
+      "title": "PredictionFeature",
+      "type": "object"
+    },
+    "PredictionProperties": {
+      "additionalProperties": false,
+      "properties": {
+        "data_version": {
+          "title": "Data Version",
+          "type": "string"
+        },
+        "decided_by_rule_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.5.1: the rule that decided this prediction, by the /importance measure: the winning rule (winning-rule classifier) or the rule with the largest weight share f_r/\u03a3f (TSK). Null without a prediction or with no rule fired, and always null for the rule mixture (no single rule decides; see top_rule_id). It is not a cause.",
+          "title": "Decided By Rule Id"
+        },
+        "entity_id": {
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "geometry_support": {
+          "$ref": "#/$defs/GeometrySupport"
+        },
+        "issued_at_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Null when the entity has no row in the query.",
+          "title": "Issued At Utc"
+        },
+        "missing_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MissingReason"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "model_id": {
+          "title": "Model Id",
+          "type": "string"
+        },
+        "observed": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Target observed at valid_at_utc, if known. Not a prediction.",
+          "title": "Observed"
+        },
+        "observed_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observed Label"
+        },
+        "prediction": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Prediction"
+        },
+        "prediction_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Predicted class (classification tasks).",
+          "title": "Prediction Label"
+        },
+        "quality": {
+          "$ref": "#/$defs/Quality",
+          "default": {
+            "status": "valid",
+            "warnings": []
+          }
+        },
+        "top_rule_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture only: the rule that supports the predicted class the most (largest positive centred contribution to its score). Every rule that fires contributes; this one did not decide alone. Null without a prediction or when no rule supports the predicted class.",
+          "title": "Top Rule Id"
+        },
+        "top_rule_share": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture only: the top rule's centred contribution to the predicted class over the sum of the positive centred contributions to it.",
+          "title": "Top Rule Share"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "valid_at_utc": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Valid At Utc"
+        }
+      },
+      "required": [
+        "entity_id",
+        "model_id",
+        "data_version",
+        "unit",
+        "issued_at_utc",
+        "valid_at_utc",
+        "prediction",
+        "geometry_support"
+      ],
+      "title": "PredictionProperties",
+      "type": "object"
+    },
+    "Quality": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/QualityStatus",
+          "default": "valid"
+        },
+        "warnings": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "title": "Quality",
+      "type": "object"
+    },
+    "QualityStatus": {
+      "enum": [
+        "valid",
+        "warning",
+        "invalid"
+      ],
+      "title": "QualityStatus",
+      "type": "string"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/PredictionsResponse.schema.json",
+  "additionalProperties": false,
+  "description": "All entities at one issue time (``issued_at_utc``) or, for irregular tasks, the latest sample in a window.",
+  "properties": {
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "features": {
+      "items": {
+        "$ref": "#/$defs/PredictionFeature"
+      },
+      "title": "Features",
+      "type": "array"
+    },
+    "horizon_hours": {
+      "minimum": 0,
+      "title": "Horizon Hours",
+      "type": "integer"
+    },
+    "issued_at_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Set for a query by time; each feature has its own.",
+      "title": "Issued At Utc"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "target": {
+      "title": "Target",
+      "type": "string"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "task_type": {
+      "enum": [
+        "regression",
+        "classification"
+      ],
+      "title": "Task Type",
+      "type": "string"
+    },
+    "time_from_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Window start (inclusive) when queried by window.",
+      "title": "Time From Utc"
+    },
+    "time_to_utc": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Window end (exclusive) when queried by window.",
+      "title": "Time To Utc"
+    },
+    "type": {
+      "const": "FeatureCollection",
+      "title": "Type",
+      "type": "string"
+    },
+    "unit": {
+      "title": "Unit",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "type",
+    "task_id",
+    "model_id",
+    "task_type",
+    "target",
+    "unit",
+    "horizon_hours",
+    "features"
+  ],
+  "title": "PredictionsResponse",
+  "type": "object"
+}

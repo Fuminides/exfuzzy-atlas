@@ -1,0 +1,100 @@
+{
+  "data_version": "de-eea-2019-2025-v1",
+  "default_years": [
+    2019,
+    2025
+  ],
+  "timezone": "Europe/Berlin",
+  "source_timezone": "UTC+01",
+  "country": "DE",
+  "pollutant": {
+    "notation": "NO2",
+    "eionet_code": 8,
+    "feature_name": "no2",
+    "unit": "ug/m3"
+  },
+  "air": {
+    "source_id": "eea-air-de",
+    "title": "EEA Air Quality Download Service: hourly NO2, Germany (E1a verified and E2a up-to-date)",
+    "landing_url": "https://www.eea.europa.eu/en/datahub/datahubitem-view/778ef9f5-6293-4846-badd-56a29c70880d",
+    "api_base": "https://eeadmz1-downloads-api-appservice.azurewebsites.net",
+    "license": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); copyright holder: European Environment Agency (EEA), per the metadata record of the dataset",
+    "attribution": "European Environment Agency (EEA), Air Quality Download Service, E1a (verified) and E2a (up-to-date) data reported by Germany (Umweltbundesamt and the Laender) under Commission Implementing Decision 2011/850/EU. https://www.eea.europa.eu/en/datahub/datahubitem-view/778ef9f5-6293-4846-badd-56a29c70880d",
+    "period_start": "2019-01-01",
+    "datasets": [
+      {
+        "key": "e1a",
+        "source_id": "eea-air-de-e1a",
+        "api_dataset": 2,
+        "blob_container": "airquality-p-e1a",
+        "description": "E1a: verified data, as reported by the country by 30 September of the following year."
+      },
+      {
+        "key": "e2a",
+        "source_id": "eea-air-de-e2a",
+        "api_dataset": 1,
+        "blob_container": "airquality-p",
+        "description": "E2a: up-to-date data, transmitted continuously, mostly unverified."
+      }
+    ],
+    "license_evidence": [
+      "https://sdi.eea.europa.eu/catalogue/srv/api/records/fe809728-9cec-41c0-a9be-3a8f04600974/formatters/xml: otherConstraints 'License CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Copyright holder: European Environment Agency (EEA).'",
+      "https://www.eea.europa.eu/en/legal-notice: 'EEA materials are published under the CC-BY license.'",
+      "https://www.eea.europa.eu/en/datahub/eea-data-policy, article 4: datasets under ODC-by or a similar open licence unless indicated otherwise."
+    ]
+  },
+  "stations": {
+    "title": "EEA e-Reporting station and sampling point metadata (PanEuropean_metadata.csv)",
+    "geometry_source": "https://discomap.eea.europa.eu/map/fme/metadata/PanEuropean_metadata.csv",
+    "bbox_lon_lat": [
+      5.8,
+      47.2,
+      15.1,
+      55.1
+    ],
+    "files": [
+      {
+        "path": "stations/PanEuropean_metadata.csv",
+        "url": "https://discomap.eea.europa.eu/map/fme/metadata/PanEuropean_metadata.csv",
+        "role": "metadata"
+      },
+      {
+        "path": "vocabulary/observationvalidity.csv",
+        "url": "http://dd.eionet.europa.eu/vocabulary/aq/observationvalidity/csv",
+        "role": "interpreter"
+      },
+      {
+        "path": "vocabulary/observationverification.csv",
+        "url": "http://dd.eionet.europa.eu/vocabulary/aq/observationverification/csv",
+        "role": "interpreter"
+      },
+      {
+        "path": "vocabulary/timezone.csv",
+        "url": "http://dd.eionet.europa.eu/vocabulary/aq/timezone/csv",
+        "role": "interpreter"
+      },
+      {
+        "path": "docs/reference_metadata_air_quality_reports.pdf",
+        "url": "https://sdi.eea.europa.eu/catalogue/srv/api/records/fe809728-9cec-41c0-a9be-3a8f04600974/attachments/Reference%20metadata%20on%20methodology%20and%20quality%20for%20Air%20Quality%20reports.pdf",
+        "role": "interpreter"
+      },
+      {
+        "path": "docs/dataset_record.xml",
+        "url": "https://sdi.eea.europa.eu/catalogue/srv/api/records/fe809728-9cec-41c0-a9be-3a8f04600974/formatters/xml",
+        "role": "license"
+      },
+      {
+        "path": "stations/esri_stations_de.geojson",
+        "url": "https://air.discomap.eea.europa.eu/arcgis/rest/services/AirQuality/AirQualityDownloadServiceEUMonitoringStations/MapServer/0/query?where=CountryCode%3D%27DE%27&outFields=AirQualityStation,CountryCode,AirQualityStationEoICode,AQStationName,stationClass&outSR=4326&f=geojson&orderByFields=AirQualityStationEoICode",
+        "role": "names"
+      },
+      {
+        "path": "docs/eaqi_airindex.html",
+        "url": "https://airindex.eea.europa.eu/AQI/index.html",
+        "role": "interpreter"
+      }
+    ],
+    "names_source": "https://air.discomap.eea.europa.eu/arcgis/rest/services/AirQuality/AirQualityDownloadServiceEUMonitoringStations/MapServer/0",
+    "bbox_note": "Slightly generous bounding box of Germany (extreme points: 5.87E-15.04E, 47.27N-55.06N)."
+  }
+}

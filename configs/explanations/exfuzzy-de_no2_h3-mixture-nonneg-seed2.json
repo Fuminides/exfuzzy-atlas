@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.7.0",
+  "data_version": "de-no2-h3-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-de_no2_h3-mixture-nonneg-seed2",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.321",
+    "model": "claude-fable-5-2"
+  },
+  "generated_at_utc": "2026-11-09T23:03:04Z",
+  "input_sha256": "906562300f140c03ea17c8a6637ca177866eddb1ece770bc25f72a686eb678b5",
+  "reviewed": false,
+  "es": {
+    "headline": "En el 85 % de las predicciones, la regla que más suma a la categoría predicha mira NO₂ hace 1 h (último dato).",
+    "summary": [
+      "De las 15 reglas, 6 miran NO₂ hace 1 h (último dato) y 4 la Hora de validez (local). NO₂ hace 25 h (misma franja, un día antes) y Temperatura hace 1 h (°C) aparecen en 3 reglas, y NO₂ hace 4 h y Viento hace 1 h (m/s) en 2. NO₂ hace 2 h, Humedad relativa hace 1 h (%) y Día de la semana (validez) aparecen en 1.",
+      "Las reglas suman su apoyo a cada categoría. Ninguna regla decide sola, y sus pesos solo tienen sentido junto a los de las demás. R02 [NO₂ hace 1 h (último dato) es Buena → Buena] es la que más suma a la categoría predicha en el 46 % de las predicciones, y en ellas el modelo acierta el 79 %. Buena se observa el 46 % de las veces.",
+      "En 2025 el modelo alcanza un F1 macro de 0,54 y un acierto del 67 %. Es mejor que Repetir la última categoría (0,53 y 66 %), está a la par de la regresión logística (0,54 y 67 %) y es peor que el Random Forest (0,59 y 70 %)."
+    ],
+    "points": [
+      "Con R04 [NO₂ hace 1 h (último dato) es Aceptable → Buena] como regla que más suma, el modelo acierta el 59 %.",
+      "Cuando R09 [NO₂ hace 1 h (último dato) es Mala o peor → Mala o peor] es la que más suma, el modelo acierta el 26 %.",
+      "Mala o peor es la categoría menos frecuente. Se observa el 0,9 % de las veces.",
+      "Sin R11, que mira NO₂ hace 25 h (misma franja, un día antes), la categoría cambiaría en el 19 % de las predicciones."
+    ]
+  },
+  "en": {
+    "headline": "In 85% of predictions, the rule that adds the most to the predicted category looks at NO₂ 1 h ago (latest value).",
+    "summary": [
+      "Of the 15 rules, 6 look at NO₂ 1 h ago (latest value) and 4 at Hour of the valid time (local). NO₂ 25 h ago (same slot, one day earlier) and Temperature 1 h ago (°C) appear in 3 rules each. NO₂ 4 h ago and Wind 1 h ago (m/s) appear in 2, and the remaining inputs in 1 each.",
+      "The rules add up their support for each category. No single rule decides, and a rule's weights only make sense together with the others. R02 [NO₂ 1 h ago (latest value) is Good → Good] adds the most to the predicted category in 46% of predictions, and those are right 79% of the time. Good is observed 46% of the time.",
+      "Over 2025 the model reaches a macro-F1 of 0.54 and an accuracy of 67%. It is better than Repeat the last category (0.53 and 66%), on a par with logistic regression (0.54 and 67%) and worse than the random forest (0.59 and 70%)."
+    ],
+    "points": [
+      "R04 [NO₂ 1 h ago (latest value) is Fair → Good] adds the most in 31% of predictions, right 59% of the time.",
+      "Where R09 [NO₂ 1 h ago (latest value) is Poor or worse → Poor or worse] adds the most, predictions are right 26% of the time.",
+      "Poor or worse is the rarest category. It is observed 0.9% of the time.",
+      "Without R11, which looks at NO₂ 25 h ago (same slot, one day earlier), the category would change in 19% of predictions."
+    ]
+  }
+}

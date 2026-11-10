@@ -1,0 +1,1346 @@
+{
+  "data_version": "madrid-meteo-2019-2025-v1",
+  "default_years": [
+    2019,
+    2025
+  ],
+  "meteo": {
+    "source_id": "madrid-meteo",
+    "title": "Datos meteorologicos horarios desde 2019 (Ayuntamiento de Madrid)",
+    "landing_url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios",
+    "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/legalcode.es",
+    "attribution": "Ayuntamiento de Madrid, Servicio de Calidad del Aire. Datos abiertos: https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios",
+    "period_start": "2019-01-01",
+    "files": [
+      {
+        "path": "interprete_datos_meteorologicos.pdf",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-122-meteorologicos-horarios/download/interpretacic3b3n_datos_meteorologicos.pdf",
+        "role": "interpreter"
+      },
+      {
+        "path": "meteo-2019-01.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-116-meteorologicos-horarios-csv/download/300352-116-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2019-01.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-147-meteorologicos-horarios-txt/download/300352-147-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2019-02.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-107-meteorologicos-horarios-csv/download/300352-107-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2019-02.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-154-meteorologicos-horarios-txt/download/300352-154-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2019-03.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-170-meteorologicos-horarios-csv/download/300352-170-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2019-03.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-188-meteorologicos-horarios-txt/download/300352-188-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2019-04.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-89-meteorologicos-horarios-csv/download/300352-89-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2019-04.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-148-meteorologicos-horarios-txt/download/300352-148-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2019-05.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-78-meteorologicos-horarios-csv/download/300352-78-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2019-05.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-82-meteorologicos-horarios-txt/download/300352-82-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2019-06.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-67-meteorologicos-horarios-csv/download/300352-67-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2019-06.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-149-meteorologicos-horarios-txt/download/300352-149-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2019-07.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-213-meteorologicos-horarios-csv/download/300352-213-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2019-07.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-193-meteorologicos-horarios-txt/download/300352-193-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2019-08.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-152-meteorologicos-horarios-csv/download/300352-152-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2019-08.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-140-meteorologicos-horarios-txt/download/300352-140-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2019-09.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-39-meteorologicos-horarios-csv/download/300352-39-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2019-09.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-130-meteorologicos-horarios-txt/download/300352-130-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2019-10.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-183-meteorologicos-horarios-csv/download/300352-183-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2019-10.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-153-meteorologicos-horarios-txt/download/300352-153-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2019-11.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-207-meteorologicos-horarios-csv/download/300352-207-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2019-11.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-19-meteorologicos-horarios-txt/download/300352-19-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2019-12.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-4-meteorologicos-horarios-csv/download/300352-4-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2019-12.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-7-meteorologicos-horarios-txt/download/300352-7-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2019
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2020-01.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-115-meteorologicos-horarios-csv/download/300352-115-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2020-01.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-197-meteorologicos-horarios-txt/download/300352-197-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2020-02.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-160-meteorologicos-horarios-csv/download/300352-160-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2020-02.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-110-meteorologicos-horarios-txt/download/300352-110-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2020-03.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-97-meteorologicos-horarios-csv/download/300352-97-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2020-03.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-100-meteorologicos-horarios-txt/download/300352-100-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2020-04.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-88-meteorologicos-horarios-csv/download/300352-88-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2020-04.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-91-meteorologicos-horarios-txt/download/300352-91-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2020-05.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-77-meteorologicos-horarios-csv/download/300352-77-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2020-05.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-216-meteorologicos-horarios-txt/download/300352-216-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2020-06.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-142-meteorologicos-horarios-csv/download/300352-142-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2020-06.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-69-meteorologicos-horarios-txt/download/300352-69-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2020-07.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-131-meteorologicos-horarios-csv/download/300352-131-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2020-07.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-171-meteorologicos-horarios-txt/download/300352-171-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2020-08.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-48-meteorologicos-horarios-csv/download/300352-48-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2020-08.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-162-meteorologicos-horarios-txt/download/300352-162-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2020-09.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-143-meteorologicos-horarios-csv/download/300352-143-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2020-09.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-218-meteorologicos-horarios-txt/download/300352-218-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2020-10.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-189-meteorologicos-horarios-csv/download/300352-189-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2020-10.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-31-meteorologicos-horarios-txt/download/300352-31-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2020-11.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-14-meteorologicos-horarios-csv/download/300352-14-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2020-11.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-18-meteorologicos-horarios-txt/download/300352-18-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2020-12.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-198-meteorologicos-horarios-csv/download/300352-198-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2020-12.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-8-meteorologicos-horarios-txt/download/300352-8-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2020
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2021-01.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-144-meteorologicos-horarios-csv/download/300352-144-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2021-01.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-118-meteorologicos-horarios-txt/download/300352-118-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2021-02.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-106-meteorologicos-horarios-csv/download/300352-106-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2021-02.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-190-meteorologicos-horarios-txt/download/300352-190-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2021-03.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-164-meteorologicos-horarios-csv/download/300352-164-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2021-03.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-99-meteorologicos-horarios-txt/download/300352-99-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2021-04.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-191-meteorologicos-horarios-csv/download/300352-191-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2021-04.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-179-meteorologicos-horarios-txt/download/300352-179-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2021-05.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-184-meteorologicos-horarios-csv/download/300352-184-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2021-05.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-81-meteorologicos-horarios-txt/download/300352-81-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2021-06.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-155-meteorologicos-horarios-csv/download/300352-155-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2021-06.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-70-meteorologicos-horarios-txt/download/300352-70-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2021-07.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-59-meteorologicos-horarios-csv/download/300352-59-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2021-07.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-165-meteorologicos-horarios-txt/download/300352-165-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2021-08.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-146-meteorologicos-horarios-csv/download/300352-146-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2021-08.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-52-meteorologicos-horarios-txt/download/300352-52-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2021-09.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-37-meteorologicos-horarios-csv/download/300352-37-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2021-09.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-41-meteorologicos-horarios-txt/download/300352-41-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2021-10.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-27-meteorologicos-horarios-csv/download/300352-27-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2021-10.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-167-meteorologicos-horarios-txt/download/300352-167-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2021-11.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-124-meteorologicos-horarios-csv/download/300352-124-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2021-11.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-123-meteorologicos-horarios-txt/download/300352-123-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2021-12.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-3-meteorologicos-horarios-csv/download/300352-3-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2021-12.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-219-meteorologicos-horarios-txt/download/300352-219-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2021
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2022-01.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-166-meteorologicos-horarios-csv/download/300352-166-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2022-01.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-199-meteorologicos-horarios-txt/download/300352-199-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2022-02.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-125-meteorologicos-horarios-csv/download/300352-125-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2022-02.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-109-meteorologicos-horarios-txt/download/300352-109-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2022-03.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-96-meteorologicos-horarios-csv/download/300352-96-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2022-03.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-192-meteorologicos-horarios-txt/download/300352-192-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2022-04.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-210-meteorologicos-horarios-csv/download/300352-210-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2022-04.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-90-meteorologicos-horarios-txt/download/300352-90-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2022-05.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-134-meteorologicos-horarios-csv/download/300352-134-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2022-05.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-80-meteorologicos-horarios-txt/download/300352-80-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2022-06.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-66-meteorologicos-horarios-csv/download/300352-66-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2022-06.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-68-meteorologicos-horarios-txt/download/300352-68-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2022-07.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-58-meteorologicos-horarios-csv/download/300352-58-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2022-07.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-61-meteorologicos-horarios-txt/download/300352-61-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2022-08.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-47-meteorologicos-horarios-csv/download/300352-47-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2022-08.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-51-meteorologicos-horarios-txt/download/300352-51-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2022-09.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-202-meteorologicos-horarios-csv/download/300352-202-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2022-09.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-40-meteorologicos-horarios-txt/download/300352-40-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2022-10.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-26-meteorologicos-horarios-csv/download/300352-26-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2022-10.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-30-meteorologicos-horarios-txt/download/300352-30-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2022-11.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-13-meteorologicos-horarios-csv/download/300352-13-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2022-11.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-17-meteorologicos-horarios-txt/download/300352-17-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2022-12.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-0-meteorologicos-horarios-csv/download/300352-0-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2022-12.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-6-meteorologicos-horarios-txt/download/300352-6-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2022
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2023-01.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-114-meteorologicos-horarios-csv/download/300352-114-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2023-01.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-117-meteorologicos-horarios-txt/download/300352-117-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2023-02.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-105-meteorologicos-horarios-csv/download/300352-105-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2023-02.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-108-meteorologicos-horarios-txt/download/300352-108-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2023-03.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-156-meteorologicos-horarios-csv/download/300352-156-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2023-03.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-185-meteorologicos-horarios-txt/download/300352-185-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2023-04.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-86-meteorologicos-horarios-csv/download/300352-86-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2023-04.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-126-meteorologicos-horarios-txt/download/300352-126-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2023-05.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-76-meteorologicos-horarios-csv/download/300352-76-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2023-05.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-79-meteorologicos-horarios-txt/download/300352-79-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2023-06.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-135-meteorologicos-horarios-csv/download/300352-135-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2023-06.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-157-meteorologicos-horarios-txt/download/300352-157-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2023-07.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-168-meteorologicos-horarios-csv/download/300352-168-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2023-07.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-60-meteorologicos-horarios-txt/download/300352-60-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2023-08.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-46-meteorologicos-horarios-csv/download/300352-46-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2023-08.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-50-meteorologicos-horarios-txt/download/300352-50-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2023-09.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-38-meteorologicos-horarios-csv/download/300352-38-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2023-09.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-211-meteorologicos-horarios-txt/download/300352-211-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2023-10.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-24-meteorologicos-horarios-csv/download/300352-24-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2023-10.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-29-meteorologicos-horarios-txt/download/300352-29-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2023-11.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-12-meteorologicos-horarios-csv/download/300352-12-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2023-11.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-16-meteorologicos-horarios-txt/download/300352-16-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2023-12.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-1-meteorologicos-horarios-csv/download/300352-1-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2023-12.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-136-meteorologicos-horarios-txt/download/300352-136-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2023
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2024-01.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-113-meteorologicos-horarios-csv/download/300352-113-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2024-01.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-181-meteorologicos-horarios-txt/download/300352-181-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 1
+      },
+      {
+        "path": "meteo-2024-02.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-204-meteorologicos-horarios-csv/download/300352-204-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2024-02.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-151-meteorologicos-horarios-txt/download/300352-151-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 2
+      },
+      {
+        "path": "meteo-2024-03.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-95-meteorologicos-horarios-csv/download/300352-95-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2024-03.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-98-meteorologicos-horarios-txt/download/300352-98-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 3
+      },
+      {
+        "path": "meteo-2024-04.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-87-meteorologicos-horarios-csv/download/300352-87-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2024-04.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-169-meteorologicos-horarios-txt/download/300352-169-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 4
+      },
+      {
+        "path": "meteo-2024-05.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-205-meteorologicos-horarios-csv/download/300352-205-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2024-05.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-129-meteorologicos-horarios-txt/download/300352-129-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 5
+      },
+      {
+        "path": "meteo-2024-06.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-158-meteorologicos-horarios-csv/download/300352-158-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2024-06.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-174-meteorologicos-horarios-txt/download/300352-174-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 6
+      },
+      {
+        "path": "meteo-2024-07.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-57-meteorologicos-horarios-csv/download/300352-57-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2024-07.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-138-meteorologicos-horarios-txt/download/300352-138-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 7
+      },
+      {
+        "path": "meteo-2024-08.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-214-meteorologicos-horarios-csv/download/300352-214-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2024-08.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-49-meteorologicos-horarios-txt/download/300352-49-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 8
+      },
+      {
+        "path": "meteo-2024-09.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-196-meteorologicos-horarios-csv/download/300352-196-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2024-09.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-159-meteorologicos-horarios-txt/download/300352-159-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 9
+      },
+      {
+        "path": "meteo-2024-10.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-25-meteorologicos-horarios-csv/download/300352-25-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2024-10.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-28-meteorologicos-horarios-txt/download/300352-28-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 10
+      },
+      {
+        "path": "meteo-2024-11.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-175-meteorologicos-horarios-csv/download/300352-175-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2024-11.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-133-meteorologicos-horarios-txt/download/300352-133-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 11
+      },
+      {
+        "path": "meteo-2024-12.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-2-meteorologicos-horarios-csv/download/300352-2-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-2024-12.txt",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-5-meteorologicos-horarios-txt/download/300352-5-meteorologicos-horarios-txt.txt",
+        "role": "data",
+        "years": [
+          2024
+        ],
+        "month": 12
+      },
+      {
+        "path": "meteo-desde-2025.csv",
+        "url": "https://datos.madrid.es/dataset/300352-0-meteorologicos-horarios/resource/300352-180-meteorologicos-horarios-csv/download/300352-180-meteorologicos-horarios-csv.csv",
+        "role": "data",
+        "years": [
+          2025,
+          2026
+        ]
+      }
+    ]
+  },
+  "stations": {
+    "source_id": "madrid-meteo-stations",
+    "title": "Estaciones meteorologicas de control del Ayuntamiento de Madrid (coordenadas oficiales)",
+    "landing_url": "https://datos.madrid.es/dataset/300360-0-meteorologicos-estaciones",
+    "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/legalcode.es",
+    "attribution": "Ayuntamiento de Madrid, Servicio de Calidad del Aire. Datos abiertos: https://datos.madrid.es/dataset/300360-0-meteorologicos-estaciones",
+    "files": [
+      {
+        "path": "estaciones-meteorologicas.csv",
+        "url": "https://datos.madrid.es/dataset/300360-0-meteorologicos-estaciones/resource/300360-1-meteorologicos-estaciones-csv/download/300360-1-meteorologicos-estaciones-csv.csv",
+        "role": "geometry"
+      },
+      {
+        "path": "estaciones-meteorologicas-estructura.pdf",
+        "url": "https://datos.madrid.es/dataset/300360-0-meteorologicos-estaciones/resource/300360-2-meteorologicos-estaciones/download/estructura_estaciones20meteorolc3b3gicas.pdf",
+        "role": "interpreter"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+# Data and generated artifacts stay out of git (see LLM_help/DATASETS_PATHS.md).
+/data/
+/artifacts/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+build/
+dist/
+
+# Web
+node_modules/
+apps/web/dist/
+.vite/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp

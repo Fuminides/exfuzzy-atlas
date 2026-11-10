@@ -1,0 +1,1674 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/v1/models/exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3/rules",
+    "query": {},
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-test",
+      "synthetic": true,
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "task_id": "synthetic_mixture_h6",
+      "domain": "air",
+      "inference": {
+        "family": "rule_mixture_classifier",
+        "tnorm": "product",
+        "rule_mode": null,
+        "tolerance": 0.0,
+        "fallback": "unknown",
+        "rule_weighting": null,
+        "allow_unknown": true,
+        "mixture_weights": "non_negative",
+        "mixture_C": 1.0,
+        "exfuzzy_version": "3.4.0"
+      },
+      "target_scheme": {
+        "name": "Synthetic bands (invented, not an official index)",
+        "name_en": "Synthetic bands (made up, not an official index)",
+        "short_name": "synthetic",
+        "short_name_en": "synthetic",
+        "kind": "analytical",
+        "source_url": "https://example.org/synthetic",
+        "unit": "u",
+        "boundary": "upper_inclusive",
+        "classes": [
+          {
+            "label": "low",
+            "display_label": "baja (inventada)",
+            "display_label_en": "low (made up)",
+            "lower": null,
+            "upper": 34.0,
+            "color": "#00FFFF",
+            "description": "invented",
+            "description_en": null,
+            "merged_from": []
+          },
+          {
+            "label": "mid",
+            "display_label": "media (inventada)",
+            "display_label_en": "medium (made up)",
+            "lower": 34.0,
+            "upper": 50.0,
+            "color": "#FFCC00",
+            "description": "invented",
+            "description_en": null,
+            "merged_from": []
+          },
+          {
+            "label": "high",
+            "display_label": "alta (inventada)",
+            "display_label_en": "high (made up)",
+            "lower": 50.0,
+            "upper": 1000.0,
+            "color": "#FF3300",
+            "description": "invented: groups two invented bands",
+            "description_en": "made up: groups two made-up bands",
+            "merged_from": [
+              "very high (invented)",
+              "extreme (invented)"
+            ]
+          }
+        ]
+      },
+      "variables": [
+        {
+          "feature": "y_t",
+          "unit": "u",
+          "label": "Serie y en la emisión (inventada)",
+          "description": "Valor inventado de la serie y a la hora de emisión; no es una fuente real.",
+          "label_en": "Series y at the issue time (made up)",
+          "description_en": "Made-up value of series y at the issue time; not a real source.",
+          "domain": [
+            -0.5513443693790216,
+            82.96277753024067
+          ],
+          "terms": [
+            {
+              "name": "Low",
+              "label": "baja (inventada)",
+              "label_en": "low (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                -0.5514443693790216,
+                -0.5514443693790216,
+                24.238622080368394,
+                33.716138429437656
+              ]
+            },
+            {
+              "name": "Medium",
+              "label": "media (inventada)",
+              "label_en": "medium (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                24.238622080368394,
+                33.716138429437656,
+                43.33154160432075,
+                55.394502816007574
+              ]
+            },
+            {
+              "name": "High",
+              "label": "alta (inventada)",
+              "label_en": "high (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                43.33154160432075,
+                55.394502816007574,
+                82.96287753024068,
+                82.96287753024068
+              ]
+            }
+          ]
+        },
+        {
+          "feature": "y_lag3",
+          "unit": "u",
+          "label": "Serie y hace 3 h (inventada)",
+          "description": "Valor inventado de la serie y 3 h antes de la hora de emisión; no es una fuente real.",
+          "label_en": "Series y 3 h ago (made up)",
+          "description_en": "Made-up value of series y 3 h before the issue time; not a real source.",
+          "domain": [
+            -0.5513443693790216,
+            82.96277753024067
+          ],
+          "terms": [
+            {
+              "name": "Low",
+              "label": "baja (inventada)",
+              "label_en": "low (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                -0.5514443693790216,
+                -0.5514443693790216,
+                24.287443345847077,
+                33.733591694694034
+              ]
+            },
+            {
+              "name": "Medium",
+              "label": "media (inventada)",
+              "label_en": "medium (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                24.287443345847077,
+                33.733591694694034,
+                43.31893288630616,
+                54.98770726642847
+              ]
+            },
+            {
+              "name": "High",
+              "label": "alta (inventada)",
+              "label_en": "high (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                43.31893288630616,
+                54.98770726642847,
+                82.96287753024068,
+                82.96287753024068
+              ]
+            }
+          ]
+        },
+        {
+          "feature": "exo_t",
+          "unit": "m/s",
+          "label": "Viento hace 1 h (m/s, inventado)",
+          "description": "Variable exógena inventada (m/s) de la hora anterior a la emisión; no es una fuente real.",
+          "label_en": "Wind 1 h ago (m/s, made up)",
+          "description_en": "Made-up exogenous variable (m/s) of the hour before the issue time; not a real source.",
+          "domain": [
+            0.0,
+            8.407449283932516
+          ],
+          "terms": [
+            {
+              "name": "Low",
+              "label": "baja (inventada)",
+              "label_en": "low (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                -0.0001,
+                -0.0001,
+                1.5087931684216886,
+                2.5231621805065836
+              ]
+            },
+            {
+              "name": "Medium",
+              "label": "media (inventada)",
+              "label_en": "medium (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                1.5087931684216886,
+                2.5231621805065836,
+                3.6786285682544717,
+                4.618808666426912
+              ]
+            },
+            {
+              "name": "High",
+              "label": "alta (inventada)",
+              "label_en": "high (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                3.6786285682544717,
+                4.618808666426912,
+                8.407549283932516,
+                8.407549283932516
+              ]
+            }
+          ]
+        },
+        {
+          "feature": "hour",
+          "unit": "h",
+          "label": "Hora de emisión (inventada)",
+          "description": "Hora del día de la emisión (0-23), calendario conocido de antemano.",
+          "label_en": "Issue hour (made up)",
+          "description_en": "Hour of the day of the issue time (0-23), calendar known in advance.",
+          "domain": [
+            0.0,
+            23.0
+          ],
+          "terms": [
+            {
+              "name": "Low",
+              "label": "baja (inventada)",
+              "label_en": "low (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                -0.0001,
+                -0.0001,
+                4.0,
+                9.0
+              ]
+            },
+            {
+              "name": "Medium",
+              "label": "media (inventada)",
+              "label_en": "medium (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                4.0,
+                9.0,
+                14.0,
+                19.0
+              ]
+            },
+            {
+              "name": "High",
+              "label": "alta (inventada)",
+              "label_en": "high (made up)",
+              "membership_type": "trapezoidal",
+              "params": [
+                14.0,
+                19.0,
+                23.0001,
+                23.0001
+              ]
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "R01",
+          "position": 0,
+          "antecedents": [
+            {
+              "feature": "y_t",
+              "term": "Low",
+              "modifier": null
+            }
+          ],
+          "consequent": {
+            "type": "class",
+            "value": null,
+            "term": "low",
+            "unit": null
+          },
+          "text": "IF y_t IS Low: Y centred weights (+ supports, - suppresses) low +4.09 | mid -0.68 | high -3.41",
+          "duplicate_of": null,
+          "weight": null,
+          "class_weights": {
+            "low": 7.495243589267473,
+            "mid": 2.731904731402224,
+            "high": 0.0
+          },
+          "class_weights_centred": {
+            "low": 4.086194149044241,
+            "mid": -0.6771447088210083,
+            "high": -3.409049440223232
+          },
+          "strongest_class": "low",
+          "metrics": {
+            "n_antecedents": 1.0,
+            "weight_spread": 7.495243589267473,
+            "mean_activation": 0.3031168326960278,
+            "activation_frequency_tau0.5": 0.307982740021575
+          }
+        },
+        {
+          "rule_id": "R02",
+          "position": 1,
+          "antecedents": [
+            {
+              "feature": "y_t",
+              "term": "Medium",
+              "modifier": null
+            }
+          ],
+          "consequent": {
+            "type": "class",
+            "value": null,
+            "term": "mid",
+            "unit": null
+          },
+          "text": "IF y_t IS Medium: Y centred weights (+ supports, - suppresses) low +1.68 | mid +0.69 | high -2.37",
+          "duplicate_of": null,
+          "weight": null,
+          "class_weights": {
+            "low": 4.0468940040298005,
+            "mid": 3.053274656516374,
+            "high": 0.0
+          },
+          "class_weights_centred": {
+            "low": 1.6801711171810756,
+            "mid": 0.6865517696676493,
+            "high": -2.366722886848725
+          },
+          "strongest_class": "low",
+          "metrics": {
+            "n_antecedents": 1.0,
+            "weight_spread": 4.0468940040298005,
+            "mean_activation": 0.3962918483413014,
+            "activation_frequency_tau0.5": 0.3883495145631068
+          }
+        },
+        {
+          "rule_id": "R03",
+          "position": 2,
+          "antecedents": [
+            {
+              "feature": "y_lag3",
+              "term": "High",
+              "modifier": null
+            }
+          ],
+          "consequent": {
+            "type": "class",
+            "value": null,
+            "term": "high",
+            "unit": null
+          },
+          "text": "IF y_lag3 IS High: Y centred weights (+ supports, - suppresses) low -0.68 | mid +0.24 | high +0.44",
+          "duplicate_of": null,
+          "weight": null,
+          "class_weights": {
+            "low": 0.0,
+            "mid": 0.9215536214013007,
+            "high": 1.1153081863123107
+          },
+          "class_weights_centred": {
+            "low": -0.6789539359045372,
+            "mid": 0.24259968549676347,
+            "high": 0.4363542504077734
+          },
+          "strongest_class": "high",
+          "metrics": {
+            "n_antecedents": 1.0,
+            "weight_spread": 1.1153081863123107,
+            "mean_activation": 0.30258015635045354,
+            "activation_frequency_tau0.5": 0.30528586839266453
+          }
+        }
+      ],
+      "class_bias": {
+        "low": -1.5923719395772553,
+        "mid": 0.14294911020600257,
+        "high": 1.4494228293712526
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/entities/E0/rule-trace",
+    "query": {
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "at": "2024-01-05T00:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-test",
+      "synthetic": true,
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "task_id": "synthetic_mixture_h6",
+      "entity_id": "E0",
+      "issued_at_utc": "2024-01-05T00:00:00Z",
+      "valid_at_utc": "2024-01-05T06:00:00Z",
+      "inference": {
+        "family": "rule_mixture_classifier",
+        "tnorm": "product",
+        "rule_mode": null,
+        "tolerance": 0.0,
+        "fallback": "unknown",
+        "rule_weighting": null,
+        "allow_unknown": true,
+        "mixture_weights": "non_negative",
+        "mixture_C": 1.0,
+        "exfuzzy_version": "3.4.0"
+      },
+      "feature_values": [
+        {
+          "feature": "y_t",
+          "value": 26.3764674232469,
+          "unit": "u",
+          "observed_at_utc": "2024-01-05T00:00:00Z",
+          "source_id": "synthetic-y_t",
+          "missing_reason": null
+        },
+        {
+          "feature": "y_lag3",
+          "value": 24.636982911383797,
+          "unit": "u",
+          "observed_at_utc": "2024-01-04T21:00:00Z",
+          "source_id": "synthetic-y_lag3",
+          "missing_reason": null
+        },
+        {
+          "feature": "exo_t",
+          "value": 2.950951589142619,
+          "unit": "m/s",
+          "observed_at_utc": "2024-01-04T23:00:00Z",
+          "source_id": "synthetic-exo_t",
+          "missing_reason": null
+        },
+        {
+          "feature": "hour",
+          "value": 0.0,
+          "unit": "h",
+          "observed_at_utc": "2024-01-05T00:00:00Z",
+          "source_id": "synthetic-hour",
+          "missing_reason": null
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "R01",
+          "antecedents": [
+            {
+              "feature": "y_t",
+              "term": "Low",
+              "membership": 0.7744297910825073,
+              "modifier": null,
+              "effective_membership": 0.7744297910825073
+            }
+          ],
+          "firing_strength": 0.7744297910825073,
+          "effective_firing": 0.7744297910825073,
+          "weight": null,
+          "association_degree": null,
+          "class_weights": {
+            "low": 7.495243589267473,
+            "mid": 2.731904731402224,
+            "high": 0.0
+          },
+          "class_contributions": {
+            "low": 5.8045399269489115,
+            "mid": 2.1156684103971375,
+            "high": 0.0
+          },
+          "class_contributions_centred": {
+            "low": 3.1644704811668953,
+            "mid": -0.5244010353848787,
+            "high": -2.640069445782016
+          }
+        },
+        {
+          "rule_id": "R02",
+          "antecedents": [
+            {
+              "feature": "y_t",
+              "term": "Medium",
+              "membership": 0.22557020891749274,
+              "modifier": null,
+              "effective_membership": 0.22557020891749274
+            }
+          ],
+          "firing_strength": 0.22557020891749274,
+          "effective_firing": 0.22557020891749274,
+          "weight": null,
+          "association_degree": null,
+          "class_weights": {
+            "low": 4.0468940040298005,
+            "mid": 3.053274656516374,
+            "high": 0.0
+          },
+          "class_contributions": {
+            "low": 0.9128587259559509,
+            "mid": 0.6887278021528844,
+            "high": 0.0
+          },
+          "class_contributions_centred": {
+            "low": 0.3789965499196724,
+            "mid": 0.154865626116606,
+            "high": -0.5338621760362784
+          }
+        },
+        {
+          "rule_id": "R03",
+          "antecedents": [
+            {
+              "feature": "y_lag3",
+              "term": "High",
+              "membership": 0.0,
+              "modifier": null,
+              "effective_membership": 0.0
+            }
+          ],
+          "firing_strength": 0.0,
+          "effective_firing": 0.0,
+          "weight": null,
+          "association_degree": null,
+          "class_weights": {
+            "low": 0.0,
+            "mid": 0.9215536214013007,
+            "high": 1.1153081863123107
+          },
+          "class_contributions": {
+            "low": 0.0,
+            "mid": 0.0,
+            "high": 0.0
+          },
+          "class_contributions_centred": {
+            "low": -0.0,
+            "mid": 0.0,
+            "high": 0.0
+          }
+        }
+      ],
+      "prediction": {
+        "value": null,
+        "label": "low",
+        "winning_rule_id": null,
+        "unit": "u",
+        "fallback_used": false,
+        "missing_reason": null,
+        "class_scores": {
+          "low": 5.125026713327607,
+          "mid": 2.9473453227560245,
+          "high": 1.4494228293712526
+        },
+        "class_bias": {
+          "low": -1.5923719395772553,
+          "mid": 0.14294911020600257,
+          "high": 1.4494228293712526
+        },
+        "top_rule_id": "R01",
+        "top_rule_share": 0.8930435794675767
+      },
+      "observation_ids": [],
+      "observed": 26.337582731186217,
+      "observed_label": "low",
+      "quality": {
+        "status": "valid",
+        "warnings": []
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/entities/E0/rule-trace",
+    "query": {
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "at": "2024-01-14T11:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-test",
+      "synthetic": true,
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "task_id": "synthetic_mixture_h6",
+      "entity_id": "E0",
+      "issued_at_utc": "2024-01-14T11:00:00Z",
+      "valid_at_utc": "2024-01-14T17:00:00Z",
+      "inference": {
+        "family": "rule_mixture_classifier",
+        "tnorm": "product",
+        "rule_mode": null,
+        "tolerance": 0.0,
+        "fallback": "unknown",
+        "rule_weighting": null,
+        "allow_unknown": true,
+        "mixture_weights": "non_negative",
+        "mixture_C": 1.0,
+        "exfuzzy_version": "3.4.0"
+      },
+      "feature_values": [
+        {
+          "feature": "y_t",
+          "value": 51.14620267308259,
+          "unit": "u",
+          "observed_at_utc": "2024-01-14T11:00:00Z",
+          "source_id": "synthetic-y_t",
+          "missing_reason": null
+        },
+        {
+          "feature": "y_lag3",
+          "value": 37.306439275634816,
+          "unit": "u",
+          "observed_at_utc": "2024-01-14T08:00:00Z",
+          "source_id": "synthetic-y_lag3",
+          "missing_reason": null
+        },
+        {
+          "feature": "exo_t",
+          "value": 0.9385125259723288,
+          "unit": "m/s",
+          "observed_at_utc": "2024-01-14T10:00:00Z",
+          "source_id": "synthetic-exo_t",
+          "missing_reason": null
+        },
+        {
+          "feature": "hour",
+          "value": 11.0,
+          "unit": "h",
+          "observed_at_utc": "2024-01-14T11:00:00Z",
+          "source_id": "synthetic-hour",
+          "missing_reason": null
+        }
+      ],
+      "rules": [
+        {
+          "rule_id": "R01",
+          "antecedents": [
+            {
+              "feature": "y_t",
+              "term": "Low",
+              "membership": 0.0,
+              "modifier": null,
+              "effective_membership": 0.0
+            }
+          ],
+          "firing_strength": 0.0,
+          "effective_firing": 0.0,
+          "weight": null,
+          "association_degree": null,
+          "class_weights": {
+            "low": 7.495243589267473,
+            "mid": 2.731904731402224,
+            "high": 0.0
+          },
+          "class_contributions": {
+            "low": 0.0,
+            "mid": 0.0,
+            "high": 0.0
+          },
+          "class_contributions_centred": {
+            "low": 0.0,
+            "mid": -0.0,
+            "high": -0.0
+          }
+        },
+        {
+          "rule_id": "R02",
+          "antecedents": [
+            {
+              "feature": "y_t",
+              "term": "Medium",
+              "membership": 0.35217721986945866,
+              "modifier": null,
+              "effective_membership": 0.35217721986945866
+            }
+          ],
+          "firing_strength": 0.35217721986945866,
+          "effective_firing": 0.35217721986945866,
+          "weight": null,
+          "association_degree": null,
+          "class_weights": {
+            "low": 4.0468940040298005,
+            "mid": 3.053274656516374,
+            "high": 0.0
+          },
+          "class_contributions": {
+            "low": 1.425223879445597,
+            "mid": 1.075293780029813,
+            "high": 0.0
+          },
+          "class_contributions_centred": {
+            "low": 0.5917179929537937,
+            "mid": 0.24178789353800967,
+            "high": -0.8335058864918033
+          }
+        },
+        {
+          "rule_id": "R03",
+          "antecedents": [
+            {
+              "feature": "y_lag3",
+              "term": "High",
+              "membership": 0.0,
+              "modifier": null,
+              "effective_membership": 0.0
+            }
+          ],
+          "firing_strength": 0.0,
+          "effective_firing": 0.0,
+          "weight": null,
+          "association_degree": null,
+          "class_weights": {
+            "low": 0.0,
+            "mid": 0.9215536214013007,
+            "high": 1.1153081863123107
+          },
+          "class_contributions": {
+            "low": 0.0,
+            "mid": 0.0,
+            "high": 0.0
+          },
+          "class_contributions_centred": {
+            "low": -0.0,
+            "mid": 0.0,
+            "high": 0.0
+          }
+        }
+      ],
+      "prediction": {
+        "value": null,
+        "label": "high",
+        "winning_rule_id": null,
+        "unit": "u",
+        "fallback_used": false,
+        "missing_reason": null,
+        "class_scores": {
+          "low": -0.1671480601316584,
+          "mid": 1.2182428902358156,
+          "high": 1.4494228293712526
+        },
+        "class_bias": {
+          "low": -1.5923719395772553,
+          "mid": 0.14294911020600257,
+          "high": 1.4494228293712526
+        },
+        "top_rule_id": null,
+        "top_rule_share": null
+      },
+      "observation_ids": [],
+      "observed": 58.771704125976406,
+      "observed_label": "high",
+      "quality": {
+        "status": "valid",
+        "warnings": []
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/entities/E2/rule-trace",
+    "query": {
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "at": "2024-01-05T20:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-test",
+      "synthetic": true,
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "task_id": "synthetic_mixture_h6",
+      "entity_id": "E2",
+      "issued_at_utc": "2024-01-05T20:00:00Z",
+      "valid_at_utc": "2024-01-06T02:00:00Z",
+      "inference": {
+        "family": "rule_mixture_classifier",
+        "tnorm": "product",
+        "rule_mode": null,
+        "tolerance": 0.0,
+        "fallback": "unknown",
+        "rule_weighting": null,
+        "allow_unknown": true,
+        "mixture_weights": "non_negative",
+        "mixture_C": 1.0,
+        "exfuzzy_version": "3.4.0"
+      },
+      "feature_values": [
+        {
+          "feature": "y_t",
+          "value": 69.13828147499231,
+          "unit": "u",
+          "observed_at_utc": "2024-01-05T20:00:00Z",
+          "source_id": "synthetic-y_t",
+          "missing_reason": null
+        },
+        {
+          "feature": "y_lag3",
+          "value": 70.66885601610737,
+          "unit": "u",
+          "observed_at_utc": "2024-01-05T17:00:00Z",
+          "source_id": "synthetic-y_lag3",
+          "missing_reason": null
+        },
+        {
+          "feature": "exo_t",
+          "value": null,
+          "unit": "m/s",
+          "observed_at_utc": null,
+          "source_id": "synthetic-exo_t",
+          "missing_reason": "no_observation"
+        },
+        {
+          "feature": "hour",
+          "value": 20.0,
+          "unit": "h",
+          "observed_at_utc": "2024-01-05T20:00:00Z",
+          "source_id": "synthetic-hour",
+          "missing_reason": null
+        }
+      ],
+      "rules": [],
+      "prediction": {
+        "value": null,
+        "label": null,
+        "winning_rule_id": null,
+        "unit": "u",
+        "fallback_used": false,
+        "missing_reason": "missing_input",
+        "class_scores": null,
+        "class_bias": null,
+        "top_rule_id": null,
+        "top_rule_share": null
+      },
+      "observation_ids": [],
+      "observed": 52.0410443241724,
+      "observed_label": "high",
+      "quality": {
+        "status": "warning",
+        "warnings": [
+          "missing input: exo_t"
+        ]
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/predictions",
+    "query": {
+      "task_id": "synthetic_mixture_h6",
+      "time": "2024-01-05T00:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-test",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "task_id": "synthetic_mixture_h6",
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "task_type": "classification",
+      "target": "y",
+      "unit": "u",
+      "horizon_hours": 6,
+      "issued_at_utc": "2024-01-05T00:00:00Z",
+      "time_from_utc": null,
+      "time_to_utc": null,
+      "features": [
+        {
+          "type": "Feature",
+          "id": "E0",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "E0",
+            "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+            "data_version": "synthetic-test",
+            "unit": "u",
+            "issued_at_utc": "2024-01-05T00:00:00Z",
+            "valid_at_utc": "2024-01-05T06:00:00Z",
+            "prediction": null,
+            "prediction_label": "low",
+            "observed": 26.337582731186217,
+            "observed_label": "low",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": null,
+            "top_rule_id": "R01",
+            "top_rule_share": 0.8930435794675767
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "E1",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.688,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "E1",
+            "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+            "data_version": "synthetic-test",
+            "unit": "u",
+            "issued_at_utc": "2024-01-05T00:00:00Z",
+            "valid_at_utc": "2024-01-05T06:00:00Z",
+            "prediction": null,
+            "prediction_label": "high",
+            "observed": 52.75596655445044,
+            "observed_label": "high",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": null,
+            "top_rule_id": "R03",
+            "top_rule_share": 1.0
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "E2",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.712,
+              40.381
+            ]
+          },
+          "properties": {
+            "entity_id": "E2",
+            "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+            "data_version": "synthetic-test",
+            "unit": "u",
+            "issued_at_utc": "2024-01-05T00:00:00Z",
+            "valid_at_utc": "2024-01-05T06:00:00Z",
+            "prediction": null,
+            "prediction_label": "high",
+            "observed": 61.49365486988271,
+            "observed_label": "high",
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": null,
+            "top_rule_id": "R03",
+            "top_rule_share": 1.0
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "E9",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.65,
+              40.4
+            ]
+          },
+          "properties": {
+            "entity_id": "E9",
+            "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+            "data_version": "synthetic-test",
+            "unit": "u",
+            "issued_at_utc": null,
+            "valid_at_utc": null,
+            "prediction": null,
+            "prediction_label": null,
+            "observed": null,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": "not_modelled",
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": null,
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        }
+      ]
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/scenarios",
+    "query": {},
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-test",
+      "synthetic": true,
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "entity_id": "E0",
+      "issued_at_utc": "2024-01-05T00:00:00Z",
+      "synthetic_what_if": true,
+      "label": "respuesta del modelo ante entradas modificadas — no efecto causal ni predicción",
+      "inputs": [
+        {
+          "feature": "y_t",
+          "unit": "u",
+          "origin": "overridden",
+          "original_value": 26.3764674232469,
+          "scenario_value": 60.0,
+          "domain": [
+            -0.5513443693790216,
+            82.96277753024067
+          ],
+          "missing_reason": null
+        },
+        {
+          "feature": "y_lag3",
+          "unit": "u",
+          "origin": "observed",
+          "original_value": 24.636982911383797,
+          "scenario_value": 24.636982911383797,
+          "domain": [
+            -0.5513443693790216,
+            82.96277753024067
+          ],
+          "missing_reason": null
+        },
+        {
+          "feature": "exo_t",
+          "unit": "m/s",
+          "origin": "observed",
+          "original_value": 2.950951589142619,
+          "scenario_value": 2.950951589142619,
+          "domain": [
+            0.0,
+            8.407449283932516
+          ],
+          "missing_reason": null
+        },
+        {
+          "feature": "hour",
+          "unit": "h",
+          "origin": "observed",
+          "original_value": 0.0,
+          "scenario_value": 0.0,
+          "domain": [
+            0.0,
+            23.0
+          ],
+          "missing_reason": null
+        }
+      ],
+      "original": {
+        "schema_version": "0.7.0",
+        "data_version": "synthetic-test",
+        "synthetic": true,
+        "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+        "task_id": "synthetic_mixture_h6",
+        "entity_id": "E0",
+        "issued_at_utc": "2024-01-05T00:00:00Z",
+        "valid_at_utc": "2024-01-05T06:00:00Z",
+        "inference": {
+          "family": "rule_mixture_classifier",
+          "tnorm": "product",
+          "rule_mode": null,
+          "tolerance": 0.0,
+          "fallback": "unknown",
+          "rule_weighting": null,
+          "allow_unknown": true,
+          "mixture_weights": "non_negative",
+          "mixture_C": 1.0,
+          "exfuzzy_version": "3.4.0"
+        },
+        "feature_values": [
+          {
+            "feature": "y_t",
+            "value": 26.3764674232469,
+            "unit": "u",
+            "observed_at_utc": "2024-01-05T00:00:00Z",
+            "source_id": "synthetic-y_t",
+            "missing_reason": null
+          },
+          {
+            "feature": "y_lag3",
+            "value": 24.636982911383797,
+            "unit": "u",
+            "observed_at_utc": "2024-01-04T21:00:00Z",
+            "source_id": "synthetic-y_lag3",
+            "missing_reason": null
+          },
+          {
+            "feature": "exo_t",
+            "value": 2.950951589142619,
+            "unit": "m/s",
+            "observed_at_utc": "2024-01-04T23:00:00Z",
+            "source_id": "synthetic-exo_t",
+            "missing_reason": null
+          },
+          {
+            "feature": "hour",
+            "value": 0.0,
+            "unit": "h",
+            "observed_at_utc": "2024-01-05T00:00:00Z",
+            "source_id": "synthetic-hour",
+            "missing_reason": null
+          }
+        ],
+        "rules": [
+          {
+            "rule_id": "R01",
+            "antecedents": [
+              {
+                "feature": "y_t",
+                "term": "Low",
+                "membership": 0.7744297910825073,
+                "modifier": null,
+                "effective_membership": 0.7744297910825073
+              }
+            ],
+            "firing_strength": 0.7744297910825073,
+            "effective_firing": 0.7744297910825073,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": {
+              "low": 7.495243589267473,
+              "mid": 2.731904731402224,
+              "high": 0.0
+            },
+            "class_contributions": {
+              "low": 5.8045399269489115,
+              "mid": 2.1156684103971375,
+              "high": 0.0
+            },
+            "class_contributions_centred": {
+              "low": 3.1644704811668953,
+              "mid": -0.5244010353848787,
+              "high": -2.640069445782016
+            }
+          },
+          {
+            "rule_id": "R02",
+            "antecedents": [
+              {
+                "feature": "y_t",
+                "term": "Medium",
+                "membership": 0.22557020891749274,
+                "modifier": null,
+                "effective_membership": 0.22557020891749274
+              }
+            ],
+            "firing_strength": 0.22557020891749274,
+            "effective_firing": 0.22557020891749274,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": {
+              "low": 4.0468940040298005,
+              "mid": 3.053274656516374,
+              "high": 0.0
+            },
+            "class_contributions": {
+              "low": 0.9128587259559509,
+              "mid": 0.6887278021528844,
+              "high": 0.0
+            },
+            "class_contributions_centred": {
+              "low": 0.3789965499196724,
+              "mid": 0.154865626116606,
+              "high": -0.5338621760362784
+            }
+          },
+          {
+            "rule_id": "R03",
+            "antecedents": [
+              {
+                "feature": "y_lag3",
+                "term": "High",
+                "membership": 0.0,
+                "modifier": null,
+                "effective_membership": 0.0
+              }
+            ],
+            "firing_strength": 0.0,
+            "effective_firing": 0.0,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": {
+              "low": 0.0,
+              "mid": 0.9215536214013007,
+              "high": 1.1153081863123107
+            },
+            "class_contributions": {
+              "low": 0.0,
+              "mid": 0.0,
+              "high": 0.0
+            },
+            "class_contributions_centred": {
+              "low": -0.0,
+              "mid": 0.0,
+              "high": 0.0
+            }
+          }
+        ],
+        "prediction": {
+          "value": null,
+          "label": "low",
+          "winning_rule_id": null,
+          "unit": "u",
+          "fallback_used": false,
+          "missing_reason": null,
+          "class_scores": {
+            "low": 5.125026713327607,
+            "mid": 2.9473453227560245,
+            "high": 1.4494228293712526
+          },
+          "class_bias": {
+            "low": -1.5923719395772553,
+            "mid": 0.14294911020600257,
+            "high": 1.4494228293712526
+          },
+          "top_rule_id": "R01",
+          "top_rule_share": 0.8930435794675767
+        },
+        "observation_ids": [],
+        "observed": 26.337582731186217,
+        "observed_label": "low",
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      "modified": {
+        "schema_version": "0.7.0",
+        "data_version": "synthetic-test",
+        "synthetic": true,
+        "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+        "task_id": "synthetic_mixture_h6",
+        "entity_id": "E0",
+        "issued_at_utc": "2024-01-05T00:00:00Z",
+        "valid_at_utc": "2024-01-05T06:00:00Z",
+        "inference": {
+          "family": "rule_mixture_classifier",
+          "tnorm": "product",
+          "rule_mode": null,
+          "tolerance": 0.0,
+          "fallback": "unknown",
+          "rule_weighting": null,
+          "allow_unknown": true,
+          "mixture_weights": "non_negative",
+          "mixture_C": 1.0,
+          "exfuzzy_version": "3.4.0"
+        },
+        "feature_values": [
+          {
+            "feature": "y_t",
+            "value": 60.0,
+            "unit": "u",
+            "observed_at_utc": null,
+            "source_id": "what_if_override",
+            "missing_reason": null
+          },
+          {
+            "feature": "y_lag3",
+            "value": 24.636982911383797,
+            "unit": "u",
+            "observed_at_utc": "2024-01-04T21:00:00Z",
+            "source_id": "synthetic-y_lag3",
+            "missing_reason": null
+          },
+          {
+            "feature": "exo_t",
+            "value": 2.950951589142619,
+            "unit": "m/s",
+            "observed_at_utc": "2024-01-04T23:00:00Z",
+            "source_id": "synthetic-exo_t",
+            "missing_reason": null
+          },
+          {
+            "feature": "hour",
+            "value": 0.0,
+            "unit": "h",
+            "observed_at_utc": "2024-01-05T00:00:00Z",
+            "source_id": "synthetic-hour",
+            "missing_reason": null
+          }
+        ],
+        "rules": [
+          {
+            "rule_id": "R01",
+            "antecedents": [
+              {
+                "feature": "y_t",
+                "term": "Low",
+                "membership": 0.0,
+                "modifier": null,
+                "effective_membership": 0.0
+              }
+            ],
+            "firing_strength": 0.0,
+            "effective_firing": 0.0,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": {
+              "low": 7.495243589267473,
+              "mid": 2.731904731402224,
+              "high": 0.0
+            },
+            "class_contributions": {
+              "low": 0.0,
+              "mid": 0.0,
+              "high": 0.0
+            },
+            "class_contributions_centred": {
+              "low": 0.0,
+              "mid": -0.0,
+              "high": -0.0
+            }
+          },
+          {
+            "rule_id": "R02",
+            "antecedents": [
+              {
+                "feature": "y_t",
+                "term": "Medium",
+                "membership": 0.0,
+                "modifier": null,
+                "effective_membership": 0.0
+              }
+            ],
+            "firing_strength": 0.0,
+            "effective_firing": 0.0,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": {
+              "low": 4.0468940040298005,
+              "mid": 3.053274656516374,
+              "high": 0.0
+            },
+            "class_contributions": {
+              "low": 0.0,
+              "mid": 0.0,
+              "high": 0.0
+            },
+            "class_contributions_centred": {
+              "low": 0.0,
+              "mid": 0.0,
+              "high": -0.0
+            }
+          },
+          {
+            "rule_id": "R03",
+            "antecedents": [
+              {
+                "feature": "y_lag3",
+                "term": "High",
+                "membership": 0.0,
+                "modifier": null,
+                "effective_membership": 0.0
+              }
+            ],
+            "firing_strength": 0.0,
+            "effective_firing": 0.0,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": {
+              "low": 0.0,
+              "mid": 0.9215536214013007,
+              "high": 1.1153081863123107
+            },
+            "class_contributions": {
+              "low": 0.0,
+              "mid": 0.0,
+              "high": 0.0
+            },
+            "class_contributions_centred": {
+              "low": -0.0,
+              "mid": 0.0,
+              "high": 0.0
+            }
+          }
+        ],
+        "prediction": {
+          "value": null,
+          "label": null,
+          "winning_rule_id": null,
+          "unit": "u",
+          "fallback_used": true,
+          "missing_reason": "prediction_unavailable",
+          "class_scores": {
+            "low": -1.5923719395772553,
+            "mid": 0.14294911020600257,
+            "high": 1.4494228293712526
+          },
+          "class_bias": {
+            "low": -1.5923719395772553,
+            "mid": 0.14294911020600257,
+            "high": 1.4494228293712526
+          },
+          "top_rule_id": null,
+          "top_rule_share": null
+        },
+        "observation_ids": [],
+        "observed": null,
+        "observed_label": null,
+        "quality": {
+          "status": "warning",
+          "warnings": [
+            "what-if: inputs overridden (y_t); respuesta del modelo ante entradas modificadas — no efecto causal ni predicción"
+          ]
+        }
+      },
+      "rule_deltas": [
+        {
+          "rule_id": "R01",
+          "firing_original": 0.7744297910825073,
+          "firing_scenario": 0.0,
+          "firing_delta": -0.7744297910825073,
+          "association_original": null,
+          "association_scenario": null,
+          "association_delta": null
+        },
+        {
+          "rule_id": "R02",
+          "firing_original": 0.22557020891749274,
+          "firing_scenario": 0.0,
+          "firing_delta": -0.22557020891749274,
+          "association_original": null,
+          "association_scenario": null,
+          "association_delta": null
+        },
+        {
+          "rule_id": "R03",
+          "firing_original": 0.0,
+          "firing_scenario": 0.0,
+          "firing_delta": 0.0,
+          "association_original": null,
+          "association_scenario": null,
+          "association_delta": null
+        }
+      ],
+      "prediction_change": {
+        "original_value": null,
+        "scenario_value": null,
+        "value_delta": null,
+        "original_label": "low",
+        "scenario_label": null,
+        "label_changed": true,
+        "original_winning_rule_id": null,
+        "scenario_winning_rule_id": null,
+        "original_top_rule_id": "R01",
+        "scenario_top_rule_id": null
+      }
+    },
+    "body": {
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "entity_id": "E0",
+      "at": "2024-01-05T00:00:00Z",
+      "overrides": {
+        "y_t": 60.0
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/models/exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3/importance",
+    "query": {},
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-test",
+      "synthetic": true,
+      "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+      "task_id": "synthetic_mixture_h6",
+      "measure": "rule_mixture",
+      "period_from_utc": "2024-01-05T00:00:00Z",
+      "period_to_utc": "2024-02-14T22:00:00Z",
+      "n_predicted": 2856,
+      "n_no_rule": 0,
+      "n_withheld": 0,
+      "n_no_top_rule": 10,
+      "rules": [
+        {
+          "rule_id": "R01",
+          "n_decided": null,
+          "decided_share": null,
+          "n_checked": 903,
+          "accuracy": 0.8748615725359912,
+          "n_top": 904,
+          "top_contributor_share": 0.3165266106442577,
+          "n_decisive": 950,
+          "decisive_share": 0.3326330532212885,
+          "mean_weight_share": null,
+          "mae": null
+        },
+        {
+          "rule_id": "R02",
+          "n_decided": null,
+          "decided_share": null,
+          "n_checked": 1022,
+          "accuracy": 0.5342465753424658,
+          "n_top": 1025,
+          "top_contributor_share": 0.3588935574229692,
+          "n_decisive": 1093,
+          "decisive_share": 0.38270308123249297,
+          "mean_weight_share": null,
+          "mae": null
+        },
+        {
+          "rule_id": "R03",
+          "n_decided": null,
+          "decided_share": null,
+          "n_checked": 907,
+          "accuracy": 0.7464167585446527,
+          "n_top": 917,
+          "top_contributor_share": 0.32107843137254904,
+          "n_decisive": 23,
+          "decisive_share": 0.008053221288515405,
+          "mean_weight_share": null,
+          "mae": null
+        }
+      ],
+      "variables": [
+        {
+          "feature": "y_t",
+          "n_rules": 2,
+          "decided_share": null,
+          "top_contributor_share": 0.6754201680672269,
+          "decisive_share": 0.6754201680672269
+        },
+        {
+          "feature": "y_lag3",
+          "n_rules": 1,
+          "decided_share": null,
+          "top_contributor_share": 0.32107843137254904,
+          "decisive_share": 0.008053221288515405
+        },
+        {
+          "feature": "exo_t",
+          "n_rules": 0,
+          "decided_share": null,
+          "top_contributor_share": 0.0,
+          "decisive_share": 0.0
+        },
+        {
+          "feature": "hour",
+          "n_rules": 0,
+          "decided_share": null,
+          "top_contributor_share": 0.0,
+          "decisive_share": 0.0
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "E0",
+          "n_predicted": 948,
+          "rules": [
+            {
+              "rule_id": "R01",
+              "decided_share": null,
+              "accuracy": 0.9175257731958762,
+              "mean_weight_share": null,
+              "mae": null,
+              "top_contributor_share": 0.5126582278481012,
+              "decisive_share": 0.5242616033755274
+            },
+            {
+              "rule_id": "R02",
+              "decided_share": null,
+              "accuracy": 0.5555555555555556,
+              "mean_weight_share": null,
+              "mae": null,
+              "top_contributor_share": 0.35443037974683544,
+              "decisive_share": 0.3829113924050633
+            },
+            {
+              "rule_id": "R03",
+              "decided_share": null,
+              "accuracy": 0.3548387096774194,
+              "mean_weight_share": null,
+              "mae": null,
+              "top_contributor_share": 0.1308016877637131,
+              "decisive_share": 0.006329113924050633
+            }
+          ]
+        },
+        {
+          "entity_id": "E1",
+          "n_predicted": 957,
+          "rules": [
+            {
+              "rule_id": "R01",
+              "decided_share": null,
+              "accuracy": 0.889589905362776,
+              "mean_weight_share": null,
+              "mae": null,
+              "top_contributor_share": 0.33124346917450365,
+              "decisive_share": 0.3490073145245559
+            },
+            {
+              "rule_id": "R02",
+              "decided_share": null,
+              "accuracy": 0.5141242937853108,
+              "mean_weight_share": null,
+              "mae": null,
+              "top_contributor_share": 0.36990595611285265,
+              "decisive_share": 0.3928944618599791
+            },
+            {
+              "rule_id": "R03",
+              "decided_share": null,
+              "accuracy": 0.6884057971014492,
+              "mean_weight_share": null,
+              "mae": null,
+              "top_contributor_share": 0.2936259143155695,
+              "decisive_share": 0.01044932079414838
+            }
+          ]
+        },
+        {
+          "entity_id": "E2",
+          "n_predicted": 951,
+          "rules": [
+            {
+              "rule_id": "R01",
+              "decided_share": null,
+              "accuracy": 0.6237623762376238,
+              "mean_weight_share": null,
+              "mae": null,
+              "top_contributor_share": 0.10620399579390116,
+              "decisive_share": 0.12513144058885384
+            },
+            {
+              "rule_id": "R02",
+              "decided_share": null,
+              "accuracy": 0.5343283582089552,
+              "mean_weight_share": null,
+              "mae": null,
+              "top_contributor_share": 0.352260778128286,
+              "decisive_share": 0.3722397476340694
+            },
+            {
+              "rule_id": "R03",
+              "decided_share": null,
+              "accuracy": 0.873767258382643,
+              "mean_weight_share": null,
+              "mae": null,
+              "top_contributor_share": 0.5383806519453207,
+              "decisive_share": 0.007360672975814932
+            }
+          ]
+        }
+      ],
+      "observed_class_shares": {
+        "low": 0.3862994350282486,
+        "mid": 0.3096751412429379,
+        "high": 0.3040254237288136
+      }
+    }
+  }
+]

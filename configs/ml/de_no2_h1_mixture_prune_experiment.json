@@ -1,0 +1,31 @@
+{
+  "experiment_id": "mixture-prune",
+  "kind": "class",
+  "task_config": "configs/ml/de_no2_h1_eaqi_experiment.json",
+  "served_experiment": "de_no2_h1/experiments/eaqi-justified",
+  "served_run": "de_no2_h1/eaqi-justified-seed0",
+  "served_seed": 0,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "mixture_C": 1.0,
+  "reference_baselines": [
+    "persistence",
+    "logistic_regression_subsample",
+    "random_forest_subsample"
+  ],
+  "serve": {
+    "arms": [
+      "mix_search_nonneg_mp",
+      "mix_search_free_mp"
+    ],
+    "tie": 0.005,
+    "run_prefix": "mixture-mp",
+    "params": {},
+    "serve_if_validation_mean_at_least": 0.6471,
+    "current_run": "exfuzzy-de_no2_h1-mixture-nonneg-seed1"
+  },
+  "mixture_prune_threshold": 0.02
+}

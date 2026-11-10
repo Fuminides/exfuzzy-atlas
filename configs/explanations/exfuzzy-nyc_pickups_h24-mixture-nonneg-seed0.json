@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.7.0",
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-nyc_pickups_h24-mixture-nonneg-seed0",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.321",
+    "model": "claude-fable-5-2"
+  },
+  "generated_at_utc": "2026-11-09T23:10:03Z",
+  "input_sha256": "9a6d6e83f7f8956aa0e9951d30971c380228ea7f9c99d5f7eb31366cc148864a",
+  "reviewed": false,
+  "es": {
+    "headline": "Las 16 reglas empatan en F1 macro con repetir la última categoría y la superan en acierto (43 % frente a 40 %).",
+    "summary": [
+      "El modelo tiene 16 reglas, con 1,2 condiciones de media. Nivel hace 168 h (percentil) aparece en 5 reglas. Nivel hace 1 h (percentil) y Nivel medio, 24 h previas (razón) aparecen en 4 cada una, Nivel hace 2 h (percentil) en 3, y Nivel hace 24 h (percentil) y Día de la semana (local) en 2 cada una. Hora local (Nueva York) no aparece en ninguna regla.",
+      "Las reglas que se cumplen suman su apoyo a cada categoría y gana la del total mayor. Ninguna regla decide sola, y los pesos de una regla solo tienen sentido junto a los de las demás. R15 [Nivel hace 1 h (percentil) es alta] es la que más suma a la categoría predicha en el 22 % de las predicciones, y el modelo acierta en el 35 % de ellas.",
+      "En el periodo de prueba el F1 macro es 0,39. Está a la par de Repetir la última categoría, la regresión logística y el Random Forest, todos con 0,38. En esa medida las reglas han aprendido, en esencia, a repetir la última categoría. El acierto es del 43 %, mejor que Repetir la última categoría (40 %) y el Random Forest (39 %), y a la par de la regresión logística (43 %)."
+    ],
+    "points": [
+      "Sin R12 [Nivel hace 1 h (percentil) es muy alta], la categoría predicha cambiaría en el 21 % de las predicciones.",
+      "R09 casi nunca es la que más suma a la categoría predicha (<0,1 %), pero sin ella cambiaría el 12 % de las predicciones.",
+      "La categoría baja es la menos observada, con un 12 % de los casos. La más observada es normal, con un 38 %.",
+      "En el 15 % de los casos se cumple alguna regla pero no se publica predicción, ya que falta el nivel de referencia."
+    ]
+  },
+  "en": {
+    "headline": "The 16 rules are on a par with repeating the last category on macro-F1 and beat it on accuracy, 43% compared with 40%.",
+    "summary": [
+      "The model has 16 rules, with 1.2 conditions each on average. Level 168 h ago (percentile) appears in 5 rules. Level 1 h ago (percentile) and Mean level, previous 24 h (ratio) appear in 4 each, Level 2 h ago (percentile) in 3, and Level 24 h ago (percentile) and Weekday (local) in 2 each. Local hour (New York) appears in no rule.",
+      "The rules that hold add up their support for each category, and the category with the largest total is predicted. No single rule decides, and a rule's weights only make sense together with the others. R15 [Level 1 h ago (percentile) is high] adds the most to the predicted category in 22% of predictions, and the model is right in 35% of those.",
+      "Over the test period macro-F1 is 0.39. That is on a par with Repeat the last category, logistic regression and the random forest, all at 0.38. On that measure the rules have essentially learned to repeat the last category. Accuracy is 43%, better than Repeat the last category (40%) and the random forest (39%), and on a par with logistic regression (43%)."
+    ],
+    "points": [
+      "Without R12 [Level 1 h ago (percentile) is very high], the predicted category would change in 21% of predictions.",
+      "R09 almost never adds the most to the predicted category (<0.1%), yet without it the category would change in 12% of predictions.",
+      "The low category is the least observed, 12% of the time. The most observed is normal, at 38%.",
+      "In 15% of cases a rule holds but no prediction is published, as the reference level is missing."
+    ]
+  }
+}

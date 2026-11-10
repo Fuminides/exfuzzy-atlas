@@ -1,0 +1,1579 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/v1/predictions",
+    "query": {
+      "task_id": "madrid_no2_h6",
+      "time": "2025-01-15T06:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "task_id": "madrid_no2_h6",
+      "model_id": "synthetic-no2-h6-v0",
+      "task_type": "regression",
+      "target": "no2",
+      "unit": "ug/m3",
+      "horizon_hours": 6,
+      "issued_at_utc": "2025-01-15T06:00:00Z",
+      "time_from_utc": null,
+      "time_to_utc": null,
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "prediction": 44.0,
+            "prediction_label": null,
+            "observed": 32.7,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": "R02",
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "prediction": 44.0,
+            "prediction_label": null,
+            "observed": 77.0,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": "R02",
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "prediction": 34.95652173913044,
+            "prediction_label": null,
+            "observed": 62.5,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": "R02",
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T06:00:00Z",
+            "valid_at_utc": "2025-01-15T12:00:00Z",
+            "prediction": 72.0,
+            "prediction_label": null,
+            "observed": 43.8,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": "R01",
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/predictions",
+    "query": {
+      "task_id": "madrid_no2_h6",
+      "time": "2025-01-15T08:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "task_id": "madrid_no2_h6",
+      "model_id": "synthetic-no2-h6-v0",
+      "task_type": "regression",
+      "target": "no2",
+      "unit": "ug/m3",
+      "horizon_hours": 6,
+      "issued_at_utc": "2025-01-15T08:00:00Z",
+      "time_from_utc": null,
+      "time_to_utc": null,
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "prediction": 72.0,
+            "prediction_label": null,
+            "observed": 52.0,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": "R01",
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "prediction": 44.0,
+            "prediction_label": null,
+            "observed": 52.4,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": "R02",
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "prediction": 44.0,
+            "prediction_label": null,
+            "observed": 57.3,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": "R02",
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "prediction": null,
+            "prediction_label": null,
+            "observed": 23.7,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": "missing_input",
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": null,
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/predictions",
+    "query": {
+      "task_id": "madrid_no2_h6",
+      "from": "2025-01-15T06:00:00Z",
+      "to": "2025-01-15T12:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "task_id": "madrid_no2_h6",
+      "model_id": "synthetic-no2-h6-v0",
+      "task_type": "regression",
+      "target": "no2",
+      "unit": "ug/m3",
+      "horizon_hours": 6,
+      "issued_at_utc": null,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T12:00:00Z",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "prediction": 65.13999999999999,
+            "prediction_label": null,
+            "observed": 51.4,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": "R01",
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "prediction": 44.0,
+            "prediction_label": null,
+            "observed": 27.1,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": "R02",
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "prediction": 35.0,
+            "prediction_label": null,
+            "observed": 21.3,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": null,
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "unit": "ug/m3",
+            "issued_at_utc": "2025-01-15T11:00:00Z",
+            "valid_at_utc": "2025-01-15T17:00:00Z",
+            "prediction": 72.0,
+            "prediction_label": null,
+            "observed": 40.6,
+            "observed_label": null,
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            },
+            "decided_by_rule_id": "R01",
+            "top_rule_id": null,
+            "top_rule_share": null
+          }
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/observations",
+    "query": {
+      "task_id": "madrid_no2_h6",
+      "time": "2025-01-15T08:00:00Z"
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "task_id": "madrid_no2_h6",
+      "model_id": "synthetic-no2-h6-v0",
+      "target": "no2",
+      "unit": "ug/m3",
+      "horizon_hours": 6,
+      "issued_at_utc": "2025-01-15T08:00:00Z",
+      "time_from_utc": null,
+      "time_to_utc": null,
+      "note": "Valores observados publicados (entradas del modelo y objetivo en valid_at_utc), no predicciones ni interpolaciones; null = ausente, con su motivo.",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "target": {
+              "feature": "no2",
+              "value": 52.0,
+              "unit": "ug/m3",
+              "observed_at_utc": "2025-01-15T14:00:00Z",
+              "source_id": null,
+              "missing_reason": null
+            },
+            "target_label": null,
+            "inputs": [
+              {
+                "feature": "no2_t",
+                "value": 86.4,
+                "unit": "ug/m3",
+                "observed_at_utc": "2025-01-15T08:00:00Z",
+                "source_id": "synthetic",
+                "missing_reason": null
+              },
+              {
+                "feature": "wind_speed_t",
+                "value": 2.0,
+                "unit": "m/s",
+                "observed_at_utc": "2025-01-15T08:00:00Z",
+                "source_id": "synthetic",
+                "missing_reason": null
+              }
+            ],
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "target": {
+              "feature": "no2",
+              "value": 52.4,
+              "unit": "ug/m3",
+              "observed_at_utc": "2025-01-15T14:00:00Z",
+              "source_id": null,
+              "missing_reason": null
+            },
+            "target_label": null,
+            "inputs": [
+              {
+                "feature": "no2_t",
+                "value": 55.4,
+                "unit": "ug/m3",
+                "observed_at_utc": "2025-01-15T08:00:00Z",
+                "source_id": "synthetic",
+                "missing_reason": null
+              },
+              {
+                "feature": "wind_speed_t",
+                "value": 3.7,
+                "unit": "m/s",
+                "observed_at_utc": "2025-01-15T08:00:00Z",
+                "source_id": "synthetic",
+                "missing_reason": null
+              }
+            ],
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "target": {
+              "feature": "no2",
+              "value": 57.3,
+              "unit": "ug/m3",
+              "observed_at_utc": "2025-01-15T14:00:00Z",
+              "source_id": null,
+              "missing_reason": null
+            },
+            "target_label": null,
+            "inputs": [
+              {
+                "feature": "no2_t",
+                "value": 31.8,
+                "unit": "ug/m3",
+                "observed_at_utc": "2025-01-15T08:00:00Z",
+                "source_id": "synthetic",
+                "missing_reason": null
+              },
+              {
+                "feature": "wind_speed_t",
+                "value": 4.5,
+                "unit": "m/s",
+                "observed_at_utc": "2025-01-15T08:00:00Z",
+                "source_id": "synthetic",
+                "missing_reason": null
+              }
+            ],
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "issued_at_utc": "2025-01-15T08:00:00Z",
+            "valid_at_utc": "2025-01-15T14:00:00Z",
+            "target": {
+              "feature": "no2",
+              "value": 23.7,
+              "unit": "ug/m3",
+              "observed_at_utc": "2025-01-15T14:00:00Z",
+              "source_id": null,
+              "missing_reason": null
+            },
+            "target_label": null,
+            "inputs": [
+              {
+                "feature": "no2_t",
+                "value": 74.5,
+                "unit": "ug/m3",
+                "observed_at_utc": "2025-01-15T08:00:00Z",
+                "source_id": "synthetic",
+                "missing_reason": null
+              },
+              {
+                "feature": "wind_speed_t",
+                "value": null,
+                "unit": "m/s",
+                "observed_at_utc": "2025-01-15T08:00:00Z",
+                "source_id": "synthetic",
+                "missing_reason": "no_observation"
+              }
+            ],
+            "geometry_support": "observed_point",
+            "missing_reason": null,
+            "quality": {
+              "status": "warning",
+              "warnings": [
+                "missing input: wind_speed_t"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/rule-territories",
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "from": "2025-01-15T06:00:00Z",
+      "to": "2025-01-15T12:00:00Z",
+      "measure": "mean_activation",
+      "tau": 0.5
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "inference_family": "tsk_zero_order",
+      "measure": "mean_activation",
+      "tau": 0.5,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T12:00:00Z",
+      "n_rules": 3,
+      "tie_break": "Dominant rule = argmax of the measure over the rules of the entity; values within 1e-12 tie and the rule with the lowest position (R01 before R02, ...) wins; null if the measure is 0 for every rule.",
+      "denominators": "n_valid = records of the entity with issue time in [from, to) whose inputs are all present. mean_activation, activation_frequency and winner_share are computed over those n_valid records (a missing input is never a 0).",
+      "notes": [
+        "Territories overlap: several rules are active in the same entity and record. They are not a partition.",
+        "A rule's activation is a degree of match with the inputs. It is not a probability, a risk nor a contribution to the prediction, and the dominant rule is not the rule that explains the prediction."
+      ],
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "n_records": 6,
+            "n_valid": 6,
+            "dominant_rule_id": "R01",
+            "dominant_value": 0.5391666666666666,
+            "rules": [
+              {
+                "rule_id": "R01",
+                "mean_activation": 0.5391666666666666,
+                "activation_frequency": 0.6666666666666666,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R02",
+                "mean_activation": 0.14083333333333337,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R03",
+                "mean_activation": 0.0,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              }
+            ],
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "n_records": 6,
+            "n_valid": 6,
+            "dominant_rule_id": "R02",
+            "dominant_value": 0.9733333333333333,
+            "rules": [
+              {
+                "rule_id": "R01",
+                "mean_activation": 0.0,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R02",
+                "mean_activation": 0.9733333333333333,
+                "activation_frequency": 1.0,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R03",
+                "mean_activation": 0.0,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              }
+            ],
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "n_records": 6,
+            "n_valid": 6,
+            "dominant_rule_id": "R02",
+            "dominant_value": 0.4808333333333334,
+            "rules": [
+              {
+                "rule_id": "R01",
+                "mean_activation": 0.0,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R02",
+                "mean_activation": 0.4808333333333334,
+                "activation_frequency": 0.5,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R03",
+                "mean_activation": 0.15555555555555547,
+                "activation_frequency": 0.16666666666666666,
+                "winner_share": null
+              }
+            ],
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "n_records": 6,
+            "n_valid": 5,
+            "dominant_rule_id": "R01",
+            "dominant_value": 0.6796,
+            "rules": [
+              {
+                "rule_id": "R01",
+                "mean_activation": 0.6796,
+                "activation_frequency": 0.6,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R02",
+                "mean_activation": 0.18400000000000005,
+                "activation_frequency": 0.2,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R03",
+                "mean_activation": 0.0,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              }
+            ],
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/rule-territories",
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "from": "2025-01-15T06:00:00Z",
+      "to": "2025-01-15T12:00:00Z",
+      "measure": "activation_frequency",
+      "tau": 0.5
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "type": "FeatureCollection",
+      "model_id": "synthetic-no2-h6-v0",
+      "inference_family": "tsk_zero_order",
+      "measure": "activation_frequency",
+      "tau": 0.5,
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T12:00:00Z",
+      "n_rules": 3,
+      "tie_break": "Dominant rule = argmax of the measure over the rules of the entity; values within 1e-12 tie and the rule with the lowest position (R01 before R02, ...) wins; null if the measure is 0 for every rule.",
+      "denominators": "n_valid = records of the entity with issue time in [from, to) whose inputs are all present. mean_activation, activation_frequency and winner_share are computed over those n_valid records (a missing input is never a 0).",
+      "notes": [
+        "Territories overlap: several rules are active in the same entity and record. They are not a partition.",
+        "A rule's activation is a degree of match with the inputs. It is not a probability, a risk nor a contribution to the prediction, and the dominant rule is not the rule that explains the prediction."
+      ],
+      "features": [
+        {
+          "type": "Feature",
+          "id": "SYN_A",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.703,
+              40.417
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_A",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "n_records": 6,
+            "n_valid": 6,
+            "dominant_rule_id": "R01",
+            "dominant_value": 0.6666666666666666,
+            "rules": [
+              {
+                "rule_id": "R01",
+                "mean_activation": 0.5391666666666666,
+                "activation_frequency": 0.6666666666666666,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R02",
+                "mean_activation": 0.14083333333333337,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R03",
+                "mean_activation": 0.0,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              }
+            ],
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_B",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.668,
+              40.452
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_B",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "n_records": 6,
+            "n_valid": 6,
+            "dominant_rule_id": "R02",
+            "dominant_value": 1.0,
+            "rules": [
+              {
+                "rule_id": "R01",
+                "mean_activation": 0.0,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R02",
+                "mean_activation": 0.9733333333333333,
+                "activation_frequency": 1.0,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R03",
+                "mean_activation": 0.0,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              }
+            ],
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_C",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.741,
+              40.388
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_C",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "n_records": 6,
+            "n_valid": 6,
+            "dominant_rule_id": "R02",
+            "dominant_value": 0.5,
+            "rules": [
+              {
+                "rule_id": "R01",
+                "mean_activation": 0.0,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R02",
+                "mean_activation": 0.4808333333333334,
+                "activation_frequency": 0.5,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R03",
+                "mean_activation": 0.15555555555555547,
+                "activation_frequency": 0.16666666666666666,
+                "winner_share": null
+              }
+            ],
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "SYN_D",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -3.632,
+              40.401
+            ]
+          },
+          "properties": {
+            "entity_id": "SYN_D",
+            "model_id": "synthetic-no2-h6-v0",
+            "data_version": "synthetic-fixture-v0",
+            "geometry_support": "observed_point",
+            "n_records": 6,
+            "n_valid": 5,
+            "dominant_rule_id": "R01",
+            "dominant_value": 0.6,
+            "rules": [
+              {
+                "rule_id": "R01",
+                "mean_activation": 0.6796,
+                "activation_frequency": 0.6,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R02",
+                "mean_activation": 0.18400000000000005,
+                "activation_frequency": 0.2,
+                "winner_share": null
+              },
+              {
+                "rule_id": "R03",
+                "mean_activation": 0.0,
+                "activation_frequency": 0.0,
+                "winner_share": null
+              }
+            ],
+            "missing_reason": null,
+            "quality": {
+              "status": "valid",
+              "warnings": []
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/v1/rule-stories",
+    "query": {
+      "model_id": "synthetic-no2-h6-v0",
+      "from": "2025-01-15T06:00:00Z",
+      "to": "2025-01-15T12:00:00Z",
+      "tau": 0.5,
+      "limit": 10
+    },
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "model_id": "synthetic-no2-h6-v0",
+      "time_from_utc": "2025-01-15T06:00:00Z",
+      "time_to_utc": "2025-01-15T12:00:00Z",
+      "tau": 0.5,
+      "limit": 10,
+      "n_candidates": 2,
+      "score_definition": "co_activation_burst: peak_share x (1 - baseline_share) x min(1, hours / 12); localized_rule: 0.8 x (1 - k / n) x mean frequency of the k entities; territory_leader: 0.5 x entities_led / n. Ordering heuristic, not a statistical test and not a probability. Ties: kind order, then lowest rule position.",
+      "disclaimer": "Descripciones de activaciones del modelo en la ventana pedida. No son causas, probabilidades, riesgos ni contribuciones a la predicción.",
+      "stories": [
+        {
+          "story_id": "territory_leader:R01:2025-01-15T06:00:00Z",
+          "kind": "territory_leader",
+          "rule_id": "R01",
+          "text": "R01 es la regla con mayor activación media en 2 de 4 estaciones entre 15/01/2025 06:00 y 15/01/2025 12:00 UTC (activación media; no es la contribución a la predicción).",
+          "score": 0.25,
+          "numbers": {
+            "tau": 0.5,
+            "entities_led": 2,
+            "n": 4,
+            "measure": "mean_activation"
+          },
+          "queries": [
+            {
+              "method": "GET",
+              "path": "/api/v1/rule-territories",
+              "params": {
+                "model_id": "synthetic-no2-h6-v0",
+                "measure": "mean_activation",
+                "tau": "0.5",
+                "from": "2025-01-15T06:00:00Z",
+                "to": "2025-01-15T12:00:00Z"
+              }
+            }
+          ],
+          "checks": [
+            {
+              "query": 0,
+              "property": "dominant_rule_id",
+              "op": "eq",
+              "operand": "R01",
+              "expected": 2
+            },
+            {
+              "query": 0,
+              "property": "n_valid",
+              "op": "gte",
+              "operand": 1.0,
+              "expected": 4
+            }
+          ]
+        },
+        {
+          "story_id": "localized_rule:R03:2025-01-15T06:00:00Z",
+          "kind": "localized_rule",
+          "rule_id": "R03",
+          "text": "R03 superó τ=0.5 en al menos el 10 % de los registros válidos solo en 1 de 4 estaciones (Synthetic station C (not real)) entre 15/01/2025 06:00 y 15/01/2025 12:00 UTC.",
+          "score": 0.1,
+          "numbers": {
+            "tau": 0.5,
+            "min_frequency": 0.1,
+            "k": 1,
+            "n": 4,
+            "entity_ids": "SYN_C"
+          },
+          "queries": [
+            {
+              "method": "GET",
+              "path": "/api/v1/rule-map",
+              "params": {
+                "model_id": "synthetic-no2-h6-v0",
+                "rule_id": "R03",
+                "metric": "activation_frequency",
+                "from": "2025-01-15T06:00:00Z",
+                "to": "2025-01-15T12:00:00Z",
+                "tau": "0.5"
+              }
+            }
+          ],
+          "checks": [
+            {
+              "query": 0,
+              "property": "value",
+              "op": "gte",
+              "operand": 0.1,
+              "expected": 1
+            },
+            {
+              "query": 0,
+              "property": "n_valid",
+              "op": "gte",
+              "operand": 1.0,
+              "expected": 4
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/v1/scenarios",
+    "query": {},
+    "response": {
+      "schema_version": "0.7.0",
+      "data_version": "synthetic-fixture-v0",
+      "synthetic": true,
+      "model_id": "synthetic-no2-h6-v0",
+      "entity_id": "SYN_A",
+      "issued_at_utc": "2025-01-15T07:00:00Z",
+      "synthetic_what_if": true,
+      "label": "respuesta del modelo ante entradas modificadas — no efecto causal ni predicción",
+      "inputs": [
+        {
+          "feature": "no2_t",
+          "unit": "ug/m3",
+          "origin": "observed",
+          "original_value": 74.0,
+          "scenario_value": 74.0,
+          "domain": [
+            0.0,
+            200.0
+          ],
+          "missing_reason": null
+        },
+        {
+          "feature": "wind_speed_t",
+          "unit": "m/s",
+          "origin": "overridden",
+          "original_value": 2.4,
+          "scenario_value": 5.0,
+          "domain": [
+            0.0,
+            20.0
+          ],
+          "missing_reason": null
+        }
+      ],
+      "original": {
+        "schema_version": "0.7.0",
+        "data_version": "synthetic-fixture-v0",
+        "synthetic": true,
+        "model_id": "synthetic-no2-h6-v0",
+        "task_id": "madrid_no2_h6",
+        "entity_id": "SYN_A",
+        "issued_at_utc": "2025-01-15T07:00:00Z",
+        "valid_at_utc": "2025-01-15T13:00:00Z",
+        "inference": {
+          "family": "tsk_zero_order",
+          "tnorm": "product",
+          "rule_mode": "additive",
+          "tolerance": 0.0,
+          "fallback": "train_target_mean",
+          "rule_weighting": null,
+          "allow_unknown": null,
+          "mixture_weights": null,
+          "mixture_C": null,
+          "exfuzzy_version": "3.4.0"
+        },
+        "feature_values": [
+          {
+            "feature": "no2_t",
+            "value": 74.0,
+            "unit": "ug/m3",
+            "observed_at_utc": "2025-01-15T07:00:00Z",
+            "source_id": "synthetic",
+            "missing_reason": null
+          },
+          {
+            "feature": "wind_speed_t",
+            "value": 2.4,
+            "unit": "m/s",
+            "observed_at_utc": "2025-01-15T07:00:00Z",
+            "source_id": "synthetic",
+            "missing_reason": null
+          }
+        ],
+        "rules": [
+          {
+            "rule_id": "R01",
+            "antecedents": [
+              {
+                "feature": "no2_t",
+                "term": "High",
+                "membership": 0.7,
+                "modifier": null,
+                "effective_membership": 0.7
+              },
+              {
+                "feature": "wind_speed_t",
+                "term": "Low",
+                "membership": 0.4000000000000001,
+                "modifier": null,
+                "effective_membership": 0.4000000000000001
+              }
+            ],
+            "firing_strength": 0.28,
+            "effective_firing": 0.28,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": null,
+            "class_contributions": null,
+            "class_contributions_centred": null
+          },
+          {
+            "rule_id": "R02",
+            "antecedents": [
+              {
+                "feature": "no2_t",
+                "term": "Medium",
+                "membership": 0.3,
+                "modifier": null,
+                "effective_membership": 0.3
+              }
+            ],
+            "firing_strength": 0.3,
+            "effective_firing": 0.3,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": null,
+            "class_contributions": null,
+            "class_contributions_centred": null
+          },
+          {
+            "rule_id": "R03",
+            "antecedents": [
+              {
+                "feature": "wind_speed_t",
+                "term": "High",
+                "membership": 0.0,
+                "modifier": null,
+                "effective_membership": 0.0
+              }
+            ],
+            "firing_strength": 0.0,
+            "effective_firing": 0.0,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": null,
+            "class_contributions": null,
+            "class_contributions_centred": null
+          }
+        ],
+        "prediction": {
+          "value": 57.517241379310335,
+          "label": null,
+          "winning_rule_id": null,
+          "unit": "ug/m3",
+          "fallback_used": false,
+          "missing_reason": null,
+          "class_scores": null,
+          "class_bias": null,
+          "top_rule_id": null,
+          "top_rule_share": null
+        },
+        "observation_ids": [],
+        "observed": 52.8,
+        "observed_label": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      "modified": {
+        "schema_version": "0.7.0",
+        "data_version": "synthetic-fixture-v0",
+        "synthetic": true,
+        "model_id": "synthetic-no2-h6-v0",
+        "task_id": "madrid_no2_h6",
+        "entity_id": "SYN_A",
+        "issued_at_utc": "2025-01-15T07:00:00Z",
+        "valid_at_utc": "2025-01-15T13:00:00Z",
+        "inference": {
+          "family": "tsk_zero_order",
+          "tnorm": "product",
+          "rule_mode": "additive",
+          "tolerance": 0.0,
+          "fallback": "train_target_mean",
+          "rule_weighting": null,
+          "allow_unknown": null,
+          "mixture_weights": null,
+          "mixture_C": null,
+          "exfuzzy_version": "3.4.0"
+        },
+        "feature_values": [
+          {
+            "feature": "no2_t",
+            "value": 74.0,
+            "unit": "ug/m3",
+            "observed_at_utc": "2025-01-15T07:00:00Z",
+            "source_id": "synthetic",
+            "missing_reason": null
+          },
+          {
+            "feature": "wind_speed_t",
+            "value": 5.0,
+            "unit": "m/s",
+            "observed_at_utc": null,
+            "source_id": "what_if_override",
+            "missing_reason": null
+          }
+        ],
+        "rules": [
+          {
+            "rule_id": "R01",
+            "antecedents": [
+              {
+                "feature": "no2_t",
+                "term": "High",
+                "membership": 0.7,
+                "modifier": null,
+                "effective_membership": 0.7
+              },
+              {
+                "feature": "wind_speed_t",
+                "term": "Low",
+                "membership": 0.0,
+                "modifier": null,
+                "effective_membership": 0.0
+              }
+            ],
+            "firing_strength": 0.0,
+            "effective_firing": 0.0,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": null,
+            "class_contributions": null,
+            "class_contributions_centred": null
+          },
+          {
+            "rule_id": "R02",
+            "antecedents": [
+              {
+                "feature": "no2_t",
+                "term": "Medium",
+                "membership": 0.3,
+                "modifier": null,
+                "effective_membership": 0.3
+              }
+            ],
+            "firing_strength": 0.3,
+            "effective_firing": 0.3,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": null,
+            "class_contributions": null,
+            "class_contributions_centred": null
+          },
+          {
+            "rule_id": "R03",
+            "antecedents": [
+              {
+                "feature": "wind_speed_t",
+                "term": "High",
+                "membership": 0.3333333333333333,
+                "modifier": null,
+                "effective_membership": 0.3333333333333333
+              }
+            ],
+            "firing_strength": 0.3333333333333333,
+            "effective_firing": 0.3333333333333333,
+            "weight": null,
+            "association_degree": null,
+            "class_weights": null,
+            "class_contributions": null,
+            "class_contributions_centred": null
+          }
+        ],
+        "prediction": {
+          "value": 30.315789473684212,
+          "label": null,
+          "winning_rule_id": null,
+          "unit": "ug/m3",
+          "fallback_used": false,
+          "missing_reason": null,
+          "class_scores": null,
+          "class_bias": null,
+          "top_rule_id": null,
+          "top_rule_share": null
+        },
+        "observation_ids": [],
+        "observed": null,
+        "observed_label": null,
+        "quality": {
+          "status": "warning",
+          "warnings": [
+            "what-if: inputs overridden (wind_speed_t); respuesta del modelo ante entradas modificadas — no efecto causal ni predicción"
+          ]
+        }
+      },
+      "rule_deltas": [
+        {
+          "rule_id": "R01",
+          "firing_original": 0.28,
+          "firing_scenario": 0.0,
+          "firing_delta": -0.28,
+          "association_original": null,
+          "association_scenario": null,
+          "association_delta": null
+        },
+        {
+          "rule_id": "R02",
+          "firing_original": 0.3,
+          "firing_scenario": 0.3,
+          "firing_delta": 0.0,
+          "association_original": null,
+          "association_scenario": null,
+          "association_delta": null
+        },
+        {
+          "rule_id": "R03",
+          "firing_original": 0.0,
+          "firing_scenario": 0.3333333333333333,
+          "firing_delta": 0.3333333333333333,
+          "association_original": null,
+          "association_scenario": null,
+          "association_delta": null
+        }
+      ],
+      "prediction_change": {
+        "original_value": 57.517241379310335,
+        "scenario_value": 30.315789473684212,
+        "value_delta": -27.201451905626122,
+        "original_label": null,
+        "scenario_label": null,
+        "label_changed": null,
+        "original_winning_rule_id": null,
+        "scenario_winning_rule_id": null,
+        "original_top_rule_id": null,
+        "scenario_top_rule_id": null
+      }
+    },
+    "body": {
+      "model_id": "synthetic-no2-h6-v0",
+      "entity_id": "SYN_A",
+      "at": "2025-01-15T07:00:00Z",
+      "overrides": {
+        "wind_speed_t": 5.0
+      }
+    }
+  }
+]

@@ -1,0 +1,155 @@
+{
+  "attribution": [
+    {
+      "text": "NYC Taxi & Limousine Commission (TLC) Trip Record Data and Taxi Zones. Los datos de viaje fueron recogidos por los proveedores TPEP/LPEP y no los creó la TLC, que no garantiza su exactitud. La TLC no declara una licencia abierta explícita (rigen la NYC Open Data Legal Policy y los NYC.gov Terms of Use): revisar los términos antes de redistribuir los artefactos derivados.",
+      "text_en": "NYC Taxi & Limousine Commission (TLC) Trip Record Data and Taxi Zones. The trip data were collected by the TPEP/LPEP providers, not created by the TLC, which does not guarantee their accuracy. The TLC states no explicit open licence (the NYC Open Data Legal Policy and the NYC.gov Terms of Use apply): review the terms before redistributing the derived artefacts.",
+      "license": null,
+      "url": "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page"
+    },
+    {
+      "text": "Esquema de nivel de demanda: construcción propia de ExFuzzy Atlas (percentiles de la referencia de entrenamiento por zona y hora de la semana); no es un índice oficial.",
+      "text_en": "Demand-level scheme: built by ExFuzzy Atlas (percentiles of the training reference per zone and hour of the week); not an official index.",
+      "license": "AGPL-3.0-or-later",
+      "url": "https://github.com/Fuminides/exfuzzy-atlas/blob/main/docs/mobility/nyc_pickups_h1_level.md"
+    }
+  ],
+  "target_scheme": {
+    "kind": "percentile_reference",
+    "name_en": "Yellow-taxi demand level relative to what is usual for the zone at that hour of the week",
+    "short_name": "Nivel relativo",
+    "short_name_en": "Relative level",
+    "classes": {
+      "baja": {
+        "display_label_en": "low",
+        "description_en": "Fewer pickups than in the lowest 25% of the training hours of that zone and hour of the week (percentile < 25). Only possible if that cell does not usually have 0 pickups."
+      },
+      "normal": {
+        "display_label_en": "normal",
+        "description_en": "Within the usual range of that zone and hour of the week (percentile from 25 to under 75)."
+      },
+      "alta": {
+        "display_label_en": "high",
+        "description_en": "Above what is usual for that zone and hour of the week (percentile from 75 to under 95)."
+      },
+      "muy alta": {
+        "display_label_en": "very high",
+        "description_en": "Among the 5% of training hours with the most pickups of that zone and hour of the week (percentile >= 95)."
+      }
+    }
+  },
+  "features": {
+    "pickups_lag1": {
+      "label": "Recogidas hace 1 h",
+      "label_en": "Pickups 1 h ago",
+      "description": "Recogidas de taxi amarillo en la zona (viajes) en la hora [T−1 h, T), la que acaba de terminar a la hora de emisión T. Fuente: NYC TLC (taxi amarillo).",
+      "description_en": "Yellow-taxi pickups in the zone (trips) in the hour [T−1 h, T), the one that has just ended at the issue time T. Source: NYC TLC (yellow taxi).",
+      "lag_hours": 1
+    },
+    "pickups_lag2": {
+      "label": "Recogidas hace 2 h",
+      "label_en": "Pickups 2 h ago",
+      "description": "Recogidas de taxi amarillo en la zona (viajes) en la hora [T−2 h, T−1 h). Fuente: NYC TLC (taxi amarillo).",
+      "description_en": "Yellow-taxi pickups in the zone (trips) in the hour [T−2 h, T−1 h). Source: NYC TLC (yellow taxi).",
+      "lag_hours": 2
+    },
+    "pickups_lag24": {
+      "label": "Recogidas hace 24 h (misma hora de ayer)",
+      "label_en": "Pickups 24 h ago (same hour yesterday)",
+      "description": "Recogidas de taxi amarillo en la zona (viajes) en la hora [T−24 h, T−23 h), la misma hora de reloj un día antes. Fuente: NYC TLC (taxi amarillo).",
+      "description_en": "Yellow-taxi pickups in the zone (trips) in the hour [T−24 h, T−23 h), the same clock hour one day earlier. Source: NYC TLC (yellow taxi).",
+      "lag_hours": 24
+    },
+    "pickups_lag168": {
+      "label": "Recogidas hace 168 h (misma hora, semana pasada)",
+      "label_en": "Pickups 168 h ago (same hour, last week)",
+      "description": "Recogidas de taxi amarillo en la zona (viajes) en la hora [T−168 h, T−167 h), la misma hora de la semana anterior. Fuente: NYC TLC (taxi amarillo).",
+      "description_en": "Yellow-taxi pickups in the zone (trips) in the hour [T−168 h, T−167 h), the same hour of the previous week. Source: NYC TLC (yellow taxi).",
+      "lag_hours": 168
+    },
+    "pickups_mean24h": {
+      "label": "Recogidas medias, 24 h previas",
+      "label_en": "Mean pickups, previous 24 h",
+      "description": "Media de las recogidas por hora (viajes/h) de las 24 horas anteriores a la emisión T, [T−24 h, T); solo si se conocen las 24. Fuente: NYC TLC (taxi amarillo).",
+      "description_en": "Mean pickups per hour (trips/h) over the 24 hours before the issue time T, [T−24 h, T); only if all 24 are known. Source: NYC TLC (yellow taxi).",
+      "lag_hours": 1
+    },
+    "local_hour": {
+      "label": "Hora local (Nueva York)",
+      "label_en": "Local hour (New York)",
+      "description": "Hora del reloj de Nueva York, de 0 a 23, de la emisión T, que es también la de la hora cuya demanda se predice; es calendario, se conoce de antemano.",
+      "description_en": "New York clock hour, from 0 to 23, of the issue time T, which is also that of the hour whose demand is predicted; it is calendar information, known in advance.",
+      "lag_hours": 0,
+      "terms_en": {
+        "Madrugada": "Small hours",
+        "Mañana": "Morning",
+        "Mediodía": "Midday",
+        "Tarde-noche": "Evening"
+      }
+    },
+    "local_dow": {
+      "label": "Día de la semana (local)",
+      "label_en": "Weekday (local)",
+      "description": "Día de la semana en Nueva York de la emisión T, de 0 = lunes a 6 = domingo; es calendario, se conoce de antemano y no modela festivos.",
+      "description_en": "Weekday in New York of the issue time T, from 0 = Monday to 6 = Sunday; it is calendar information, known in advance, and does not model public holidays.",
+      "lag_hours": 0,
+      "terms_en": {
+        "Laborable": "Weekday",
+        "Sábado": "Saturday",
+        "Domingo": "Sunday"
+      }
+    },
+    "rel_lag1": {
+      "label": "Nivel hace 1 h (percentil)",
+      "label_en": "Level 1 h ago (percentile)",
+      "description": "Percentil (0-100) de las recogidas de la hora [T−1 h, T) dentro de lo habitual de esa zona a esa hora de la semana (referencia de abril a diciembre de 2024); no es una probabilidad.",
+      "description_en": "Percentile (0-100) of the pickups of the hour [T−1 h, T) within what is usual for that zone at that hour of the week (reference April to December 2024); it is not a probability.",
+      "lag_hours": 1
+    },
+    "rel_lag2": {
+      "label": "Nivel hace 2 h (percentil)",
+      "label_en": "Level 2 h ago (percentile)",
+      "description": "Percentil (0-100) de las recogidas de la hora [T−2 h, T−1 h) dentro de lo habitual de esa zona a esa hora de la semana (referencia de abril a diciembre de 2024).",
+      "description_en": "Percentile (0-100) of the pickups of the hour [T−2 h, T−1 h) within what is usual for that zone at that hour of the week (reference April to December 2024).",
+      "lag_hours": 2
+    },
+    "rel_lag24": {
+      "label": "Nivel hace 24 h (percentil)",
+      "label_en": "Level 24 h ago (percentile)",
+      "description": "Percentil (0-100) de las recogidas de la hora [T−24 h, T−23 h) dentro de lo habitual de esa zona a esa hora de la semana (referencia de abril a diciembre de 2024).",
+      "description_en": "Percentile (0-100) of the pickups of the hour [T−24 h, T−23 h) within what is usual for that zone at that hour of the week (reference April to December 2024).",
+      "lag_hours": 24
+    },
+    "rel_lag168": {
+      "label": "Nivel hace 168 h (percentil)",
+      "label_en": "Level 168 h ago (percentile)",
+      "description": "Percentil (0-100) de las recogidas de la hora [T−168 h, T−167 h) dentro de lo habitual de esa zona a esa hora de la semana (referencia de abril a diciembre de 2024).",
+      "description_en": "Percentile (0-100) of the pickups of the hour [T−168 h, T−167 h) within what is usual for that zone at that hour of the week (reference April to December 2024).",
+      "lag_hours": 168
+    },
+    "rel_mean24h": {
+      "label": "Nivel medio, 24 h previas (razón)",
+      "label_en": "Mean level, previous 24 h (ratio)",
+      "description": "Recogidas medias de las 24 horas anteriores a T dividida por lo habitual de esas mismas horas en la zona; 1 = como lo normal (referencia de abril a diciembre de 2024).",
+      "description_en": "Mean pickups over the 24 hours before T divided by what is usual for those same hours in the zone; 1 = as usual (reference April to December 2024).",
+      "lag_hours": 1,
+      "terms": {
+        "Low": "por debajo de lo habitual",
+        "Medium": "como lo habitual",
+        "High": "por encima de lo habitual"
+      },
+      "terms_en": {
+        "Low": "below what is usual",
+        "Medium": "as usual",
+        "High": "above what is usual"
+      }
+    }
+  },
+  "summary": {
+    "label": "Recogidas de taxi amarillo por zona y hora",
+    "label_en": "Yellow-taxi pickups by zone and hour",
+    "time_column": "issued_at_utc",
+    "notes": [
+      "El nivel relativo de demanda es un percentil respecto a lo habitual de cada zona, así que su distribución es casi uniforme por construcción y no informa; aquí se resumen las recogidas brutas por zona y hora (viajes completados de taxi amarillo), con la hora de la ventana [T, T+1 h) que cubren."
+    ]
+  }
+}

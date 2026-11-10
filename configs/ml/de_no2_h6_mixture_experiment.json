@@ -1,0 +1,25 @@
+{
+  "experiment_id": "rule-mixture",
+  "kind": "class",
+  "task_config": "configs/ml/de_no2_h6_ica4_publish_experiment.json",
+  "served_experiment": "de_no2_h6/experiments/ica4-yday",
+  "served_run": "de_no2_h6/ica4-yday-seed2",
+  "served_seed": 2,
+  "reference_baselines": [
+    "persistence",
+    "persistence_24h",
+    "logistic_regression_subsample"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "mixture_C": 1.0,
+  "decision": {
+    "min_gain": 0.02,
+    "tie": 0.005,
+    "max_mean_active_rules": 22.0,
+    "active_spread": 0.25
+  }
+}

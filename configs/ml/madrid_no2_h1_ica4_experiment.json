@@ -1,0 +1,61 @@
+{
+  "experiment_id": "ica4",
+  "base_config": "configs/ml/madrid_no2_h1_ica2_justified_experiment.json",
+  "base_experiment": "ica2-justified",
+  "base_seeds": [
+    0,
+    1,
+    2
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "robust_seeds": [
+    3,
+    4
+  ],
+  "diurnal_partitions": "configs/ml/madrid_partitions_diurnal.json",
+  "candidate_inputs": [
+    "no2_yday_valid"
+  ],
+  "stage1": [
+    "base_refit"
+  ],
+  "extra_arms": {
+    "minimal_unweighted": {
+      "features": [
+        "no2_yday_valid",
+        "no2_last",
+        "valid_hour_local",
+        "wind_speed"
+      ],
+      "nRules": 30,
+      "nAnts": 2,
+      "rule_weighting": "none",
+      "description": "Madrid +6 h final choice (r3_minimal_unweighted): yesterday at the valid hour, last hour, valid hour, wind; 30x2, unweighted"
+    },
+    "compact_r30a2": {
+      "features": [
+        "no2_last",
+        "no2_yday_valid",
+        "wind_speed",
+        "valid_hour_local",
+        "temperature",
+        "relative_humidity",
+        "valid_weekday"
+      ],
+      "nRules": 30,
+      "nAnts": 2,
+      "description": "Madrid +6 h round-1 choice: lags replaced by yesterday at the valid hour; 30x2, dominance weights"
+    }
+  },
+  "decision": {
+    "entry_gain": 0.011,
+    "win_gain": 0.02,
+    "tie": 0.005,
+    "max_mean_rules": 22.0,
+    "max_combo_others": 2
+  }
+}

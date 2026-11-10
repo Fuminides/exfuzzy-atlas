@@ -1,0 +1,44 @@
+{
+  "features": {
+    "ammoniacal_nitrogen": {
+      "unit": "mg/l",
+      "source_id": "uk-water-quality",
+      "lag_hours": 0
+    },
+    "orthophosphate_reactive": {
+      "unit": "mg/l",
+      "source_id": "uk-water-quality",
+      "lag_hours": 0
+    },
+    "water_temperature": {
+      "unit": "degC",
+      "source_id": "uk-water-quality",
+      "lag_hours": 0
+    },
+    "ph": {
+      "unit": "pH",
+      "source_id": "uk-water-quality",
+      "lag_hours": 0
+    },
+    "days_from_midwinter": {
+      "unit": "days",
+      "source_id": "calendar-europe-london",
+      "lag_hours": 0
+    },
+    "local_hour": {
+      "unit": "hour",
+      "source_id": "calendar-europe-london",
+      "lag_hours": 0
+    },
+    "local_day_of_year": {
+      "unit": "day",
+      "source_id": "calendar-europe-london",
+      "lag_hours": 0
+    },
+    "point_median_phosphate_train": {
+      "unit": "mg/l",
+      "source_id": "uk-water-quality",
+      "lag_hours": 0
+    }
+  }
+}

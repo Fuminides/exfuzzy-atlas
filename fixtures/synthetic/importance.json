@@ -1,0 +1,585 @@
+[
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "model_id": "synthetic-no2-h6-v0",
+    "task_id": "madrid_no2_h6",
+    "measure": "weighted_average",
+    "period_from_utc": "2025-01-15T06:00:00Z",
+    "period_to_utc": "2025-01-15T11:00:00Z",
+    "n_predicted": 22,
+    "n_no_rule": 1,
+    "n_withheld": 0,
+    "n_no_top_rule": null,
+    "rules": [
+      {
+        "rule_id": "R01",
+        "n_decided": 8,
+        "decided_share": 0.36363636363636365,
+        "n_checked": 8,
+        "accuracy": null,
+        "n_top": null,
+        "top_contributor_share": null,
+        "n_decisive": null,
+        "decisive_share": null,
+        "mean_weight_share": 0.3728134141336523,
+        "mae": 16.554477715877436
+      },
+      {
+        "rule_id": "R02",
+        "n_decided": 13,
+        "decided_share": 0.5909090909090909,
+        "n_checked": 13,
+        "accuracy": null,
+        "n_top": null,
+        "top_contributor_share": null,
+        "n_decisive": null,
+        "decisive_share": null,
+        "mean_weight_share": 0.5837496299800699,
+        "mae": 16.606822608977478
+      },
+      {
+        "rule_id": "R03",
+        "n_decided": 1,
+        "decided_share": 0.045454545454545456,
+        "n_checked": 1,
+        "accuracy": null,
+        "n_top": null,
+        "top_contributor_share": null,
+        "n_decisive": null,
+        "decisive_share": null,
+        "mean_weight_share": 0.043436955886277835,
+        "mae": 21.93043478260869
+      }
+    ],
+    "variables": [
+      {
+        "feature": "no2_t",
+        "n_rules": 2,
+        "decided_share": 0.9565630441137223,
+        "top_contributor_share": null,
+        "decisive_share": null
+      },
+      {
+        "feature": "wind_speed_t",
+        "n_rules": 2,
+        "decided_share": 0.4162503700199301,
+        "top_contributor_share": null,
+        "decisive_share": null
+      }
+    ],
+    "entities": [
+      {
+        "entity_id": "SYN_A",
+        "n_predicted": 6,
+        "rules": [
+          {
+            "rule_id": "R01",
+            "decided_share": 0.6666666666666666,
+            "accuracy": null,
+            "mean_weight_share": 0.7062931034482758,
+            "mae": 10.934999999999997,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R02",
+            "decided_share": 0.3333333333333333,
+            "accuracy": null,
+            "mean_weight_share": 0.29370689655172416,
+            "mae": 8.008620689655167,
+            "top_contributor_share": null,
+            "decisive_share": null
+          }
+        ]
+      },
+      {
+        "entity_id": "SYN_B",
+        "n_predicted": 6,
+        "rules": [
+          {
+            "rule_id": "R02",
+            "decided_share": 1.0,
+            "accuracy": null,
+            "mean_weight_share": 1.0,
+            "mae": 18.7,
+            "top_contributor_share": null,
+            "decisive_share": null
+          }
+        ]
+      },
+      {
+        "entity_id": "SYN_C",
+        "n_predicted": 5,
+        "rules": [
+          {
+            "rule_id": "R02",
+            "decided_share": 0.8,
+            "accuracy": null,
+            "mean_weight_share": 0.8088773941003776,
+            "mae": 16.842863134349223,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R03",
+            "decided_share": 0.2,
+            "accuracy": null,
+            "mean_weight_share": 0.19112260589962246,
+            "mae": 21.93043478260869,
+            "top_contributor_share": null,
+            "decisive_share": null
+          }
+        ]
+      },
+      {
+        "entity_id": "SYN_D",
+        "n_predicted": 5,
+        "rules": [
+          {
+            "rule_id": "R01",
+            "decided_share": 0.8,
+            "accuracy": null,
+            "mean_weight_share": 0.7928272980501392,
+            "mae": 22.173955431754873,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R02",
+            "decided_share": 0.2,
+            "accuracy": null,
+            "mean_weight_share": 0.20717270194986076,
+            "mae": 20.299999999999997,
+            "top_contributor_share": null,
+            "decisive_share": null
+          }
+        ]
+      }
+    ],
+    "observed_class_shares": null
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-test",
+    "synthetic": true,
+    "model_id": "exfuzzy-synthetic_class_h6-synthetic-class-seed3",
+    "task_id": "synthetic_class_h6",
+    "measure": "winning_rule",
+    "period_from_utc": "2024-01-05T00:00:00Z",
+    "period_to_utc": "2024-02-14T22:00:00Z",
+    "n_predicted": 2760,
+    "n_no_rule": 96,
+    "n_withheld": 0,
+    "n_no_top_rule": null,
+    "rules": [
+      {
+        "rule_id": "R01",
+        "n_decided": 899,
+        "decided_share": 0.32572463768115945,
+        "n_checked": 898,
+        "accuracy": 0.8184855233853007,
+        "n_top": null,
+        "top_contributor_share": null,
+        "n_decisive": null,
+        "decisive_share": null,
+        "mean_weight_share": null,
+        "mae": null
+      },
+      {
+        "rule_id": "R02",
+        "n_decided": 826,
+        "decided_share": 0.29927536231884055,
+        "n_checked": 823,
+        "accuracy": 0.4580801944106926,
+        "n_top": null,
+        "top_contributor_share": null,
+        "n_decisive": null,
+        "decisive_share": null,
+        "mean_weight_share": null,
+        "mae": null
+      },
+      {
+        "rule_id": "R03",
+        "n_decided": 58,
+        "decided_share": 0.021014492753623187,
+        "n_checked": 58,
+        "accuracy": 0.27586206896551724,
+        "n_top": null,
+        "top_contributor_share": null,
+        "n_decisive": null,
+        "decisive_share": null,
+        "mean_weight_share": null,
+        "mae": null
+      },
+      {
+        "rule_id": "R04",
+        "n_decided": 977,
+        "decided_share": 0.3539855072463768,
+        "n_checked": 967,
+        "accuracy": 0.671147880041365,
+        "n_top": null,
+        "top_contributor_share": null,
+        "n_decisive": null,
+        "decisive_share": null,
+        "mean_weight_share": null,
+        "mae": null
+      }
+    ],
+    "variables": [
+      {
+        "feature": "y_t",
+        "n_rules": 0,
+        "decided_share": 0.0,
+        "top_contributor_share": null,
+        "decisive_share": null
+      },
+      {
+        "feature": "y_lag3",
+        "n_rules": 2,
+        "decided_share": 0.625,
+        "top_contributor_share": null,
+        "decisive_share": null
+      },
+      {
+        "feature": "exo_t",
+        "n_rules": 1,
+        "decided_share": 0.3539855072463768,
+        "top_contributor_share": null,
+        "decisive_share": null
+      },
+      {
+        "feature": "hour",
+        "n_rules": 1,
+        "decided_share": 0.021014492753623187,
+        "top_contributor_share": null,
+        "decisive_share": null
+      }
+    ],
+    "entities": [
+      {
+        "entity_id": "E0",
+        "n_predicted": 946,
+        "rules": [
+          {
+            "rule_id": "R01",
+            "decided_share": 0.5084566596194503,
+            "accuracy": 0.89375,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R02",
+            "decided_share": 0.193446088794926,
+            "accuracy": 0.4444444444444444,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R03",
+            "decided_share": 0.0010570824524312897,
+            "accuracy": 1.0,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R04",
+            "decided_share": 0.29704016913319237,
+            "accuracy": 0.3202846975088968,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          }
+        ]
+      },
+      {
+        "entity_id": "E1",
+        "n_predicted": 937,
+        "rules": [
+          {
+            "rule_id": "R01",
+            "decided_share": 0.33938100320170755,
+            "accuracy": 0.8238993710691824,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R02",
+            "decided_share": 0.3084311632870864,
+            "accuracy": 0.4602076124567474,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R03",
+            "decided_share": 0.012806830309498399,
+            "accuracy": 0.25,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R04",
+            "decided_share": 0.33938100320170755,
+            "accuracy": 0.6773162939297125,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          }
+        ]
+      },
+      {
+        "entity_id": "E2",
+        "n_predicted": 877,
+        "rules": [
+          {
+            "rule_id": "R01",
+            "decided_share": 0.11402508551881414,
+            "accuracy": 0.44,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R02",
+            "decided_share": 0.40364880273660203,
+            "accuracy": 0.4632768361581921,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R03",
+            "decided_share": 0.05131128848346636,
+            "accuracy": 0.26666666666666666,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          },
+          {
+            "rule_id": "R04",
+            "decided_share": 0.43101482326111745,
+            "accuracy": 0.9302949061662198,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": null,
+            "decisive_share": null
+          }
+        ]
+      }
+    ],
+    "observed_class_shares": {
+      "low": 0.3965768390386016,
+      "mid": 0.30699198834668606,
+      "high": 0.2964311726147123
+    }
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-test",
+    "synthetic": true,
+    "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
+    "task_id": "synthetic_mixture_h6",
+    "measure": "rule_mixture",
+    "period_from_utc": "2024-01-05T00:00:00Z",
+    "period_to_utc": "2024-02-14T22:00:00Z",
+    "n_predicted": 2856,
+    "n_no_rule": 0,
+    "n_withheld": 0,
+    "n_no_top_rule": 10,
+    "rules": [
+      {
+        "rule_id": "R01",
+        "n_decided": null,
+        "decided_share": null,
+        "n_checked": 903,
+        "accuracy": 0.8748615725359912,
+        "n_top": 904,
+        "top_contributor_share": 0.3165266106442577,
+        "n_decisive": 950,
+        "decisive_share": 0.3326330532212885,
+        "mean_weight_share": null,
+        "mae": null
+      },
+      {
+        "rule_id": "R02",
+        "n_decided": null,
+        "decided_share": null,
+        "n_checked": 1022,
+        "accuracy": 0.5342465753424658,
+        "n_top": 1025,
+        "top_contributor_share": 0.3588935574229692,
+        "n_decisive": 1093,
+        "decisive_share": 0.38270308123249297,
+        "mean_weight_share": null,
+        "mae": null
+      },
+      {
+        "rule_id": "R03",
+        "n_decided": null,
+        "decided_share": null,
+        "n_checked": 907,
+        "accuracy": 0.7464167585446527,
+        "n_top": 917,
+        "top_contributor_share": 0.32107843137254904,
+        "n_decisive": 23,
+        "decisive_share": 0.008053221288515405,
+        "mean_weight_share": null,
+        "mae": null
+      }
+    ],
+    "variables": [
+      {
+        "feature": "y_t",
+        "n_rules": 2,
+        "decided_share": null,
+        "top_contributor_share": 0.6754201680672269,
+        "decisive_share": 0.6754201680672269
+      },
+      {
+        "feature": "y_lag3",
+        "n_rules": 1,
+        "decided_share": null,
+        "top_contributor_share": 0.32107843137254904,
+        "decisive_share": 0.008053221288515405
+      },
+      {
+        "feature": "exo_t",
+        "n_rules": 0,
+        "decided_share": null,
+        "top_contributor_share": 0.0,
+        "decisive_share": 0.0
+      },
+      {
+        "feature": "hour",
+        "n_rules": 0,
+        "decided_share": null,
+        "top_contributor_share": 0.0,
+        "decisive_share": 0.0
+      }
+    ],
+    "entities": [
+      {
+        "entity_id": "E0",
+        "n_predicted": 948,
+        "rules": [
+          {
+            "rule_id": "R01",
+            "decided_share": null,
+            "accuracy": 0.9175257731958762,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": 0.5126582278481012,
+            "decisive_share": 0.5242616033755274
+          },
+          {
+            "rule_id": "R02",
+            "decided_share": null,
+            "accuracy": 0.5555555555555556,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": 0.35443037974683544,
+            "decisive_share": 0.3829113924050633
+          },
+          {
+            "rule_id": "R03",
+            "decided_share": null,
+            "accuracy": 0.3548387096774194,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": 0.1308016877637131,
+            "decisive_share": 0.006329113924050633
+          }
+        ]
+      },
+      {
+        "entity_id": "E1",
+        "n_predicted": 957,
+        "rules": [
+          {
+            "rule_id": "R01",
+            "decided_share": null,
+            "accuracy": 0.889589905362776,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": 0.33124346917450365,
+            "decisive_share": 0.3490073145245559
+          },
+          {
+            "rule_id": "R02",
+            "decided_share": null,
+            "accuracy": 0.5141242937853108,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": 0.36990595611285265,
+            "decisive_share": 0.3928944618599791
+          },
+          {
+            "rule_id": "R03",
+            "decided_share": null,
+            "accuracy": 0.6884057971014492,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": 0.2936259143155695,
+            "decisive_share": 0.01044932079414838
+          }
+        ]
+      },
+      {
+        "entity_id": "E2",
+        "n_predicted": 951,
+        "rules": [
+          {
+            "rule_id": "R01",
+            "decided_share": null,
+            "accuracy": 0.6237623762376238,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": 0.10620399579390116,
+            "decisive_share": 0.12513144058885384
+          },
+          {
+            "rule_id": "R02",
+            "decided_share": null,
+            "accuracy": 0.5343283582089552,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": 0.352260778128286,
+            "decisive_share": 0.3722397476340694
+          },
+          {
+            "rule_id": "R03",
+            "decided_share": null,
+            "accuracy": 0.873767258382643,
+            "mean_weight_share": null,
+            "mae": null,
+            "top_contributor_share": 0.5383806519453207,
+            "decisive_share": 0.007360672975814932
+          }
+        ]
+      }
+    ],
+    "observed_class_shares": {
+      "low": 0.3862994350282486,
+      "mid": 0.3096751412429379,
+      "high": 0.3040254237288136
+    }
+  }
+]

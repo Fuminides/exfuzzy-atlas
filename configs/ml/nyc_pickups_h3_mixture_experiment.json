@@ -1,0 +1,25 @@
+{
+  "experiment_id": "rule-mixture",
+  "kind": "nyc",
+  "task_config": "configs/ml/nyc_pickups_h3_level_rel7_experiment.json",
+  "served_experiment": "nyc_pickups_h3/experiments/level-rel7",
+  "served_run": "nyc_pickups_h3/level-rel7-seed0",
+  "served_seed": 0,
+  "reference_baselines": [
+    "persistence",
+    "persistence_rel_lag24",
+    "logistic_regression_subsample"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "mixture_C": 1.0,
+  "decision": {
+    "min_gain": 0.02,
+    "tie": 0.005,
+    "max_mean_active_rules": 22.0,
+    "active_spread": 0.25
+  }
+}

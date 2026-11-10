@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.6.2",
+  "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+  "synthetic": false,
+  "model_id": "exfuzzy-uk_water_do-fx-w-unique-seed0",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.319",
+    "model": "claude-opus-5-5"
+  },
+  "generated_at_utc": "2026-11-09T11:51:41Z",
+  "input_sha256": "17a295a3493bb31de4311ec497d14f8285e80ee06351dd0e112177a1272f947c",
+  "reviewed": false,
+  "es": {
+    "headline": "Las cinco reglas principales deciden el 68 % de las estimaciones, y el modelo supera a la regresión lineal pero queda por detrás del Random Forest",
+    "summary": [
+      "Las 39 reglas usan 1,6 condiciones de media. Nitrógeno amoniacal de la muestra (mg/l) aparece en 16 reglas, Temperatura del agua de la muestra (°C) en 14, pH de la muestra en 12, Ortofosfato de la muestra (mg/l) en 10, Días desde pleno invierno en 9 y Hora local de la muestra en 3.",
+      "Cada estimación promedia los valores de las reglas que se cumplen, según cuánto se cumple cada una. Decide la regla que más se cumple, y si hay empate gana la primera en el orden del modelo. R03 (pH de la muestra medio, 14,36 mg/l) decide el 18 %, con un error medio absoluto de 0,57 mg/l. R12 (ortofosfato ≤ límite de detección, 14,89 mg/l) decide el 15 %, con 0,54 mg/l.",
+      "Entre el 1 de enero de 2024 y el 31 de diciembre de 2025, el error medio absoluto del modelo es de 0,64 mg/l. Es mejor que el de la regresión lineal (0,66 mg/l) y peor que el del Random Forest (0,55 mg/l). Ninguna de las dos referencias es trivial."
+    ],
+    "points": [
+      "El valor de una regla no es el oxígeno observado en las muestras que cubre: R18 (Primavera-otoño) da 6,35 mg/l y R02 da 12,22 mg/l.",
+      "R07 (nitrógeno amoniacal alta, sobre el límite) tiene el mayor error de las reglas listadas, 1,58 mg/l, y decide el 2,5 % de las estimaciones.",
+      "Solo 24 de las 39 reglas deciden al menos una estimación; las que usan Hora local de la muestra deciden apenas el 3,5 %.",
+      "Cifras por regla: del 2 de enero de 2024 al 22 de diciembre de 2025. Rendimiento global: todo el periodo de prueba."
+    ]
+  },
+  "en": {
+    "headline": "The top five rules decide 68% of the estimates, and overall the model beats linear regression but falls short of the random forest",
+    "summary": [
+      "The 39 rules use 1.6 conditions on average. Ammoniacal nitrogen in the sample (mg/l) appears in 16 rules, Water temperature of the sample (°C) in 14, pH of the sample in 12, Orthophosphate in the sample (mg/l) in 10, Days from midwinter in 9 and Local hour of the sample in 3.",
+      "Each estimate averages the values of the rules that hold, by how much each one holds. The rule that holds most decides, and a tie goes to the first rule in the model's order. R03 (pH of the sample medium, 14.36 mg/l) decides 18%, with a mean absolute error of 0.57 mg/l. R12 (orthophosphate ≤ detection limit, 14.89 mg/l) decides 15%, with 0.54 mg/l.",
+      "From 1 January 2024 to 31 December 2025, the model's mean absolute error is 0.64 mg/l. That is better than linear regression (0.66 mg/l) and worse than the random forest (0.55 mg/l). Neither baseline is trivial."
+    ],
+    "points": [
+      "A rule's value is not the oxygen observed in the samples it covers: R18 (Spring-autumn) gives 6.35 mg/l, while R02 gives 12.22 mg/l.",
+      "R07 (ammoniacal nitrogen high, above the limit) has the largest error of the rules listed, 1.58 mg/l, and decides 2.5% of estimates.",
+      "Only 24 of the 39 rules decide at least one estimate; rules using Local hour of the sample decide just 3.5%.",
+      "Each rule's figures cover 2 January 2024 to 22 December 2025; the overall performance covers the full test period."
+    ]
+  }
+}

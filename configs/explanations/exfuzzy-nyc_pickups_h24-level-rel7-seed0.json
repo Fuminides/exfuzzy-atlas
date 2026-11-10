@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.6.2",
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-nyc_pickups_h24-level-rel7-seed0",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.319",
+    "model": "claude-opus-5-5"
+  },
+  "generated_at_utc": "2026-11-09T11:46:31Z",
+  "input_sha256": "4bc4396ba1cc0299f6179c82d77c10c78e23a337bd146f652fca5f4fb5a5b1b9",
+  "reviewed": false,
+  "es": {
+    "headline": "Cuatro reglas deciden el 81 % de las predicciones, y el modelo queda a la par de repetir la última categoría en F1 macro",
+    "summary": [
+      "Las 11 reglas tienen 1,3 condiciones de media. «Nivel hace 1 h (percentil)» aparece en 4, que deciden el 50 %; «Nivel hace 2 h (percentil)» y «Nivel medio, 24 h previas (razón)», en 3 cada una; «Día de la semana (local)», en 2; «Nivel hace 24 h (percentil)» y «Nivel hace 168 h (percentil)», en 1 cada una. «Hora local (Nueva York)» no aparece en ninguna.",
+      "Decide la regla con mayor grado de cumplimiento por peso. R11 decide el 31 %. Si el nivel medio de las 24 h previas está por encima de lo habitual, predice muy alta, y acierta el 38 %, frente al 21 % observado de esa clase. R04 decide el 25 %. Si el nivel hace 1 h y hace 2 h es normal, predice normal, y acierta el 50 %, frente al 38 % observado.",
+      "En el periodo de prueba, el F1 macro (0,37) está a la par de las tres referencias, todas con 0,38, incluida repetir la última categoría, así que en esa métrica las reglas han aprendido en esencia esa referencia. En acierto (39 %) es peor que repetir la última categoría (40 %) y que la regresión logística (43 %), y está a la par del Random Forest (39 %)."
+    ],
+    "points": [
+      "El modelo predice muy alta en el 33 % de los casos, y se observa en el 21 %. Alta, en el 21 % frente al 28 %.",
+      "R01 (nivel hace 1 h baja → baja) decide el 11 % y acierta el 28 %, cuando baja se observa el 12 %.",
+      "«Hora local (Nueva York)» no aparece en ninguna regla, y «Día de la semana (local)» solo en 2, que deciden el 2,2 %.",
+      "En el 15 % de los casos una regla se cumple pero no se publica predicción porque falta el nivel de referencia.",
+      "Las clases comparan cada hora con lo habitual de esa zona y hora de la semana. Muy alta es percentil >= 95."
+    ]
+  },
+  "en": {
+    "headline": "Four rules decide 81% of the predictions, and on macro-F1 the model is on a par with repeating the last category",
+    "summary": [
+      "The 11 rules have 1.3 conditions on average. \"Level 1 h ago (percentile)\" appears in 4 rules, which decide 50% of the predictions; \"Level 2 h ago (percentile)\" and \"Mean level, previous 24 h (ratio)\" in 3 each; \"Weekday (local)\" in 2; \"Level 24 h ago (percentile)\" and \"Level 168 h ago (percentile)\" in 1 each. \"Local hour (New York)\" appears in none.",
+      "The rule with the highest degree × weight decides. R11 decides 31%. If the mean level over the previous 24 h is above what is usual, it predicts very high, and is right 38% of the time, compared with 21% observed. R04 decides 25%. If the level 1 h and 2 h ago is normal, it predicts normal, and is right 50% of the time, compared with 38% observed.",
+      "Over the test period, macro-F1 (0.37) is on a par with all three baselines, each at 0.38, including repeating the last category, so on that metric the rules have essentially learned that trivial baseline. On accuracy (39%) the model is worse than repeating the last category (40%) and logistic regression (43%), and on a par with the random forest (39%)."
+    ],
+    "points": [
+      "The model predicts very high in 33% of cases, but it is observed in 21%. High is predicted in 21% and observed in 28%.",
+      "R01 (level 1 h ago low → low) decides 11% and is right 28% of the time, while low is observed in 12%.",
+      "\"Local hour (New York)\" appears in no rule, and \"Weekday (local)\" in only 2, which decide 2.2% of the predictions.",
+      "In 15% of cases a rule holds but no prediction is published, as the reference level is missing.",
+      "Classes compare each hour with what is usual for that zone and hour of the week; very high means percentile >= 95 of training hours."
+    ]
+  }
+}

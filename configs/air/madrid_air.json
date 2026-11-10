@@ -1,0 +1,91 @@
+{
+  "data_version": "madrid-air-2019-2025-v1",
+  "default_years": [2019, 2025],
+  "air": {
+    "source_id": "madrid-air",
+    "title": "Calidad del aire. Datos horarios desde 2001 (Ayuntamiento de Madrid)",
+    "landing_url": "https://datos.madrid.es/dataset/201200-0-calidad-aire-horario",
+    "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/legalcode.es",
+    "attribution": "Ayuntamiento de Madrid, Servicio de Calidad del Aire. Datos abiertos: https://datos.madrid.es/dataset/201200-0-calidad-aire-horario",
+    "period_start": "2019-01-01",
+    "files": [
+      {
+        "path": "interprete_ficheros_calidad_aire_horario.pdf",
+        "url": "https://datos.madrid.es/dataset/201200-0-calidad-aire-horario/resource/201200-17-calidad-aire-horario/download/201200-17-calidad-aire-horario.pdf",
+        "role": "interpreter"
+      },
+      {
+        "path": "calidad-aire-horario-2019.zip",
+        "url": "https://datos.madrid.es/dataset/201200-0-calidad-aire-horario/resource/201200-6-calidad-aire-horario-zip/download/201200-6-calidad-aire-horario-zip.zip",
+        "role": "data",
+        "years": [2019]
+      },
+      {
+        "path": "calidad-aire-horario-2020.zip",
+        "url": "https://datos.madrid.es/dataset/201200-0-calidad-aire-horario/resource/201200-4-calidad-aire-horario-zip/download/201200-4-calidad-aire-horario-zip.zip",
+        "role": "data",
+        "years": [2020]
+      },
+      {
+        "path": "calidad-aire-horario-2021.zip",
+        "url": "https://datos.madrid.es/dataset/201200-0-calidad-aire-horario/resource/201200-5-calidad-aire-horario-zip/download/201200-5-calidad-aire-horario-zip.zip",
+        "role": "data",
+        "years": [2021]
+      },
+      {
+        "path": "calidad-aire-horario-2022.zip",
+        "url": "https://datos.madrid.es/dataset/201200-0-calidad-aire-horario/resource/201200-23-calidad-aire-horario-zip/download/201200-23-calidad-aire-horario-zip.zip",
+        "role": "data",
+        "years": [2022]
+      },
+      {
+        "path": "calidad-aire-horario-2023.zip",
+        "url": "https://datos.madrid.es/dataset/201200-0-calidad-aire-horario/resource/201200-3-calidad-aire-horario-zip/download/201200-3-calidad-aire-horario-zip.zip",
+        "role": "data",
+        "years": [2023]
+      },
+      {
+        "path": "calidad-aire-horario-2024.zip",
+        "url": "https://datos.madrid.es/dataset/201200-0-calidad-aire-horario/resource/201200-0-calidad-aire-horario-zip/download/201200-0-calidad-aire-horario-zip.zip",
+        "role": "data",
+        "years": [2024]
+      },
+      {
+        "path": "calidad-aire-horario-desde-2025.csv",
+        "url": "https://datos.madrid.es/dataset/201200-0-calidad-aire-horario/resource/201200-1-calidad-aire-horario-csv/download/201200-1-calidad-aire-horario-csv.csv",
+        "role": "data",
+        "years": [2025, 2026]
+      }
+    ]
+  },
+  "stations": {
+    "source_id": "madrid-air-stations",
+    "title": "Estaciones de medicion de la calidad del aire de Madrid (geometria oficial)",
+    "landing_url": "https://datos.madrid.es/dataset/212629-0-estaciones-control-aire",
+    "geometry_source": "https://sigma.madrid.es/hosted/rest/services/GEOPORTAL/ZONAS_DE_CALIDAD_DEL_AIRE_Y_ESTACIONES_DE_MEDICION/MapServer/5",
+    "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International), https://creativecommons.org/licenses/by/4.0/legalcode.es",
+    "attribution": "Ayuntamiento de Madrid, Servicio de Calidad del Aire (Geoportal https://geoportal.madrid.es y datos abiertos https://datos.madrid.es/dataset/212629-0-estaciones-control-aire)",
+    "files": [
+      {
+        "path": "geoportal_layer5_estaciones.geojson",
+        "url": "https://sigma.madrid.es/hosted/rest/services/GEOPORTAL/ZONAS_DE_CALIDAD_DEL_AIRE_Y_ESTACIONES_DE_MEDICION/MapServer/5/query?where=1%3D1&outFields=*&outSR=4326&f=geojson",
+        "role": "geometry"
+      },
+      {
+        "path": "geoportal_layer5_metadata.json",
+        "url": "https://sigma.madrid.es/hosted/rest/services/GEOPORTAL/ZONAS_DE_CALIDAD_DEL_AIRE_Y_ESTACIONES_DE_MEDICION/MapServer/5?f=json",
+        "role": "metadata"
+      },
+      {
+        "path": "estaciones-control-aire.csv",
+        "url": "https://datos.madrid.es/dataset/212629-0-estaciones-control-aire/resource/212629-0-estaciones-control-aire-csv/download/212629-0-estaciones-control-aire-csv.csv",
+        "role": "crosscheck"
+      },
+      {
+        "path": "estaciones-control-aire-estructura.pdf",
+        "url": "https://datos.madrid.es/dataset/212629-0-estaciones-control-aire/resource/212629-2-estaciones-control-aire/download/212629-2-estaciones-control-aire.pdf",
+        "role": "interpreter"
+      }
+    ]
+  }
+}

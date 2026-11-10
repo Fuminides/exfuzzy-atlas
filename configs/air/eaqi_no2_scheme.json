@@ -1,0 +1,56 @@
+{
+  "name": "European Air Quality Index (EAQI) - NO2, hourly concentration",
+  "source_url": "https://airindex.eea.europa.eu/AQI/index.html",
+  "unit": "ug/m3",
+  "source_title": "European Environment Agency, European Air Quality Index, section 2 'Bands of concentrations and index levels'. The page does not carry a date or version; it describes the revised index (bands tied to the WHO 2021 air quality guidelines and the revised Ambient Air Quality Directive EU 2024/2881).",
+  "source_table": "Table 'Pollutant / Index level (based on pollutant concentrations in ug/m3)', row 'Nitrogen dioxide (NO2)': Good 0-10, Fair 11-25, Moderate 26-60, Poor 61-100, Very poor 101-150, Extremely poor >150. A snapshot of the page is stored in data/raw/eea-air-de/docs/eaqi_airindex.html.",
+  "accessed": "2026-11-02",
+  "averaging": "NO2: hourly concentration (the index is defined hourly; 'the Index indicates the short-term (hourly) air quality situation')",
+  "value_resolution": 1,
+  "boundary_convention": "Atlas convention, not stated by the EEA: the official table lists whole micrograms per cubic metre with both ends inclusive (0-10, 11-25, ...), so a value is rounded to the nearest whole number (half up) and then falls in the band whose closed range contains it; a value below 0 (instrument noise below the detection limit) is not a concentration and is placed in the lowest band; >150 is open-ended (the source gives no upper bound).",
+  "equals_ica_no2_madrid": false,
+  "comparison_with_ica": "Not equal to the Spanish ICA NO2 bands used for Madrid (configs/ml/ica_no2_scheme.json: 0-40, 41-90, 91-120, 121-230, 231-340, 341-1000). All five EAQI thresholds are lower (10/25/60/100/150 against 40/90/120/230/340) and the top band is open. The same concentration can be 'Good' in the ICA and 'Fair' or 'Moderate' in the EAQI, so results by class are NOT comparable between the Madrid and the Germany tasks.",
+  "merged_label_suffix": " or worse",
+  "below_first_as_first": true,
+  "merged_label_note": "Read by atlas.ml.classification.ClassScheme: a tail of rare classes merged for a model is labelled '<best member> or worse' (e.g. 'Poor or worse'). below_first_as_first applies the boundary_convention above to values below 0 (they are classified Good, not left unclassified), as de_features.band_sql does.",
+  "colors_note": "Colours of the EEA European Air Quality Index viewer, given as text in its stylesheet https://airindex.eea.europa.eu/AQI/css/style.css, lines 17-22 (--band-color-good rgb(80, 240, 230), -fair rgb(80, 204, 170), -moderate rgb(240, 230, 65), -poor rgb(255, 80, 80), -veryPoor rgb(150, 0, 50), -extremelyPoor rgb(125, 33, 129)); they colour the index table and the stations of that page. Accessed 2026-11-02; a snapshot is stored in data/raw/eea-air-de/docs/eaqi_airindex_style.css (sha256 684efdc6...179c). A merged class takes the colour of its best member, as in the Madrid ICA scheme.",
+  "classes": [
+    {
+      "label": "Good",
+      "lower": 0,
+      "upper": 10,
+      "color": "#50F0E6"
+    },
+    {
+      "label": "Fair",
+      "lower": 11,
+      "upper": 25,
+      "color": "#50CCAA"
+    },
+    {
+      "label": "Moderate",
+      "lower": 26,
+      "upper": 60,
+      "color": "#F0E641"
+    },
+    {
+      "label": "Poor",
+      "lower": 61,
+      "upper": 100,
+      "color": "#FF5050"
+    },
+    {
+      "label": "Very poor",
+      "lower": 101,
+      "upper": 150,
+      "color": "#960032"
+    },
+    {
+      "label": "Extremely poor",
+      "lower": 151,
+      "upper": null,
+      "note": "'>150' in the source: open-ended",
+      "color": "#7D2181"
+    }
+  ]
+}

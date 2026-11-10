@@ -1,0 +1,598 @@
+{
+  "task_id": "madrid_no2_h6",
+  "description": "Diurnal inputs of AT-041h (src/atlas/ml/diurnal_features.py). Same format and checks as madrid_partitions.json; added to the AT-041d terms. Every term is an ICA band; only the inputs are new. Fitted quantities (climatology, rho) come from training rows only.",
+  "variables": [
+    {
+      "features": [
+        "no2_clim_valid"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        0,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        13.5,
+        18.0
+      ],
+      "terms": [
+        {
+          "name": "Buena",
+          "core": [
+            0,
+            40
+          ],
+          "params": [
+            0.0,
+            0.0,
+            40.0,
+            46.0
+          ]
+        },
+        {
+          "name": "Razonablemente buena",
+          "core": [
+            41,
+            90
+          ],
+          "params": [
+            35.0,
+            41.0,
+            90.0,
+            103.5
+          ]
+        },
+        {
+          "name": "Regular",
+          "core": [
+            91,
+            120
+          ],
+          "params": [
+            77.5,
+            91.0,
+            120.0,
+            138.0
+          ]
+        },
+        {
+          "name": "Desfavorable o peor",
+          "core": [
+            121,
+            1000
+          ],
+          "params": [
+            103.0,
+            121.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "follows_target_scheme": true,
+      "rationale": "Training-period (2019-2023) median NO2 of the station at the local hour and day type (Laborable Mon-Fri / Sabado / Domingo; holidays not encoded) of the target hour: what this station usually reads at that hour on that kind of day. A table of 24 stations x 24 hours x 3 day types computed from training rows only. Terms = the ICA bands of the target with the shoulders of no2_last (15 % of each breakpoint: 6, 13.5, 18 ug/m3; see madrid_partitions.json for the source and its caveats), so a rule reads in the target's own language, e.g. 'no2_expected_valid IS Regular'. ",
+      "source_url": null,
+      "source_status": "derived input; terms as no2_last"
+    },
+    {
+      "features": [
+        "no2_expected_valid"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        0,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        13.5,
+        18.0
+      ],
+      "terms": [
+        {
+          "name": "Buena",
+          "core": [
+            0,
+            40
+          ],
+          "params": [
+            0.0,
+            0.0,
+            40.0,
+            46.0
+          ]
+        },
+        {
+          "name": "Razonablemente buena",
+          "core": [
+            41,
+            90
+          ],
+          "params": [
+            35.0,
+            41.0,
+            90.0,
+            103.5
+          ]
+        },
+        {
+          "name": "Regular",
+          "core": [
+            91,
+            120
+          ],
+          "params": [
+            77.5,
+            91.0,
+            120.0,
+            138.0
+          ]
+        },
+        {
+          "name": "Desfavorable o peor",
+          "core": [
+            121,
+            1000
+          ],
+          "params": [
+            103.0,
+            121.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "follows_target_scheme": true,
+      "rationale": "no2_clim_valid + (no2_last - usual value of the station at the hour and day type of no2_last), floored at 0 ug/m3: today's departure from the station's usual value, carried forward unchanged to the target hour (persistence of the anomaly projected on the diurnal cycle). The floor only says a concentration cannot be negative. Terms = the ICA bands of the target with the shoulders of no2_last (15 % of each breakpoint: 6, 13.5, 18 ug/m3; see madrid_partitions.json for the source and its caveats), so a rule reads in the target's own language, e.g. 'no2_expected_valid IS Regular'. ",
+      "source_url": null,
+      "source_status": "derived input; terms as no2_last"
+    },
+    {
+      "features": [
+        "no2_expected_valid_ratio"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        0,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        13.5,
+        18.0
+      ],
+      "terms": [
+        {
+          "name": "Buena",
+          "core": [
+            0,
+            40
+          ],
+          "params": [
+            0.0,
+            0.0,
+            40.0,
+            46.0
+          ]
+        },
+        {
+          "name": "Razonablemente buena",
+          "core": [
+            41,
+            90
+          ],
+          "params": [
+            35.0,
+            41.0,
+            90.0,
+            103.5
+          ]
+        },
+        {
+          "name": "Regular",
+          "core": [
+            91,
+            120
+          ],
+          "params": [
+            77.5,
+            91.0,
+            120.0,
+            138.0
+          ]
+        },
+        {
+          "name": "Desfavorable o peor",
+          "core": [
+            121,
+            1000
+          ],
+          "params": [
+            103.0,
+            121.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "follows_target_scheme": true,
+      "rationale": "no2_clim_valid x (no2_last + 6) / (usual value at the hour of no2_last + 6): the same projection with the departure as a ratio (the diurnal cycle scales the level). The 6 ug/m3 offset keeps a near-zero usual value from blowing the ratio up; it is the measurement-uncertainty scale of the NO2 terms (15 % of 40), a scale and not a fitted constant. Terms = the ICA bands of the target with the shoulders of no2_last (15 % of each breakpoint: 6, 13.5, 18 ug/m3; see madrid_partitions.json for the source and its caveats), so a rule reads in the target's own language, e.g. 'no2_expected_valid IS Regular'. ",
+      "source_url": null,
+      "source_status": "derived input; terms as no2_last"
+    },
+    {
+      "features": [
+        "no2_expected_valid_damped"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        0,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        13.5,
+        18.0
+      ],
+      "terms": [
+        {
+          "name": "Buena",
+          "core": [
+            0,
+            40
+          ],
+          "params": [
+            0.0,
+            0.0,
+            40.0,
+            46.0
+          ]
+        },
+        {
+          "name": "Razonablemente buena",
+          "core": [
+            41,
+            90
+          ],
+          "params": [
+            35.0,
+            41.0,
+            90.0,
+            103.5
+          ]
+        },
+        {
+          "name": "Regular",
+          "core": [
+            91,
+            120
+          ],
+          "params": [
+            77.5,
+            91.0,
+            120.0,
+            138.0
+          ]
+        },
+        {
+          "name": "Desfavorable o peor",
+          "core": [
+            121,
+            1000
+          ],
+          "params": [
+            103.0,
+            121.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "follows_target_scheme": true,
+      "rationale": "no2_clim_valid + rho x (no2_last - usual value at the hour of no2_last), floored at 0, rho = least-squares slope (no intercept) of the target's departure on no2_last's departure over the complete training rows: a linear persistence-plus-diurnal expectation in which only the share rho of today's departure survives to the target hour. One number fitted on training rows only. Terms = the ICA bands of the target with the shoulders of no2_last (15 % of each breakpoint: 6, 13.5, 18 ug/m3; see madrid_partitions.json for the source and its caveats), so a rule reads in the target's own language, e.g. 'no2_expected_valid IS Regular'. ",
+      "source_url": null,
+      "source_status": "derived input; terms as no2_last"
+    },
+    {
+      "features": [
+        "no2_yday_valid"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        0,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        13.5,
+        18.0
+      ],
+      "terms": [
+        {
+          "name": "Buena",
+          "core": [
+            0,
+            40
+          ],
+          "params": [
+            0.0,
+            0.0,
+            40.0,
+            46.0
+          ]
+        },
+        {
+          "name": "Razonablemente buena",
+          "core": [
+            41,
+            90
+          ],
+          "params": [
+            35.0,
+            41.0,
+            90.0,
+            103.5
+          ]
+        },
+        {
+          "name": "Regular",
+          "core": [
+            91,
+            120
+          ],
+          "params": [
+            77.5,
+            91.0,
+            120.0,
+            138.0
+          ]
+        },
+        {
+          "name": "Desfavorable o peor",
+          "core": [
+            121,
+            1000
+          ],
+          "params": [
+            103.0,
+            121.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "follows_target_scheme": true,
+      "rationale": "NO2 of the same station 24 h before the target hour (key t+h-24h; for h = 6 that is the finished hour [t-18h, t-17h)): what happened yesterday at the hour being forecast. It carries the diurnal cycle and the multi-day persistence of episodes at once, without any fitted quantity. Missing if that hour has no valid value. Terms = the ICA bands of the target with the shoulders of no2_last (15 % of each breakpoint: 6, 13.5, 18 ug/m3; see madrid_partitions.json for the source and its caveats), so a rule reads in the target's own language, e.g. 'no2_expected_valid IS Regular'. ",
+      "source_url": null,
+      "source_status": "derived input; terms as no2_last"
+    },
+    {
+      "features": [
+        "no2_week_valid"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        0,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        13.5,
+        18.0
+      ],
+      "terms": [
+        {
+          "name": "Buena",
+          "core": [
+            0,
+            40
+          ],
+          "params": [
+            0.0,
+            0.0,
+            40.0,
+            46.0
+          ]
+        },
+        {
+          "name": "Razonablemente buena",
+          "core": [
+            41,
+            90
+          ],
+          "params": [
+            35.0,
+            41.0,
+            90.0,
+            103.5
+          ]
+        },
+        {
+          "name": "Regular",
+          "core": [
+            91,
+            120
+          ],
+          "params": [
+            77.5,
+            91.0,
+            120.0,
+            138.0
+          ]
+        },
+        {
+          "name": "Desfavorable o peor",
+          "core": [
+            121,
+            1000
+          ],
+          "params": [
+            103.0,
+            121.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "follows_target_scheme": true,
+      "rationale": "NO2 of the same station 168 h before the target hour (same local hour and weekday last week, key t+h-168h): the weekly pattern of traffic emissions. Missing if that hour has no valid value. Terms = the ICA bands of the target with the shoulders of no2_last (15 % of each breakpoint: 6, 13.5, 18 ug/m3; see madrid_partitions.json for the source and its caveats), so a rule reads in the target's own language, e.g. 'no2_expected_valid IS Regular'. ",
+      "source_url": null,
+      "source_status": "derived input; terms as no2_last"
+    },
+    {
+      "features": [
+        "no2_mean_24h"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        0,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        13.5,
+        18.0
+      ],
+      "terms": [
+        {
+          "name": "Buena",
+          "core": [
+            0,
+            40
+          ],
+          "params": [
+            0.0,
+            0.0,
+            40.0,
+            46.0
+          ]
+        },
+        {
+          "name": "Razonablemente buena",
+          "core": [
+            41,
+            90
+          ],
+          "params": [
+            35.0,
+            41.0,
+            90.0,
+            103.5
+          ]
+        },
+        {
+          "name": "Regular",
+          "core": [
+            91,
+            120
+          ],
+          "params": [
+            77.5,
+            91.0,
+            120.0,
+            138.0
+          ]
+        },
+        {
+          "name": "Desfavorable o peor",
+          "core": [
+            121,
+            1000
+          ],
+          "params": [
+            103.0,
+            121.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "follows_target_scheme": true,
+      "rationale": "Mean NO2 of the station over the 24 finished hours [t-24h, t), with at least 18 valid hours (75 % data capture, Directive 2008/50/EC Annex VII for daily aggregation): the level of the last day, a marker of multi-day accumulation episodes. Bands of the hourly ICA scale used as a reading of the level, not as a daily limit value. Terms = the ICA bands of the target with the shoulders of no2_last (15 % of each breakpoint: 6, 13.5, 18 ug/m3; see madrid_partitions.json for the source and its caveats), so a rule reads in the target's own language, e.g. 'no2_expected_valid IS Regular'. ",
+      "source_url": null,
+      "source_status": "derived input; terms as no2_last"
+    },
+    {
+      "features": [
+        "no2_max_24h"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        0,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        13.5,
+        18.0
+      ],
+      "terms": [
+        {
+          "name": "Buena",
+          "core": [
+            0,
+            40
+          ],
+          "params": [
+            0.0,
+            0.0,
+            40.0,
+            46.0
+          ]
+        },
+        {
+          "name": "Razonablemente buena",
+          "core": [
+            41,
+            90
+          ],
+          "params": [
+            35.0,
+            41.0,
+            90.0,
+            103.5
+          ]
+        },
+        {
+          "name": "Regular",
+          "core": [
+            91,
+            120
+          ],
+          "params": [
+            77.5,
+            91.0,
+            120.0,
+            138.0
+          ]
+        },
+        {
+          "name": "Desfavorable o peor",
+          "core": [
+            121,
+            1000
+          ],
+          "params": [
+            103.0,
+            121.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "follows_target_scheme": true,
+      "rationale": "Maximum hourly NO2 of the station over the 24 finished hours [t-24h, t), with at least 18 valid hours: the worst hour of the last day (whether yesterday's rush-hour peak reached Regular or worse). Terms = the ICA bands of the target with the shoulders of no2_last (15 % of each breakpoint: 6, 13.5, 18 ug/m3; see madrid_partitions.json for the source and its caveats), so a rule reads in the target's own language, e.g. 'no2_expected_valid IS Regular'. ",
+      "source_url": null,
+      "source_status": "derived input; terms as no2_last"
+    }
+  ]
+}

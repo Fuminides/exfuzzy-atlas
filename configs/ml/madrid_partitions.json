@@ -1,0 +1,310 @@
+{
+  "task_id": "madrid_no2_h6",
+  "description": "Linguistic variables of the Madrid NO2 t+6h ICA classifier (AT-041d). Every variable has a rationale; a source is given only where one was found AND read (source_status says what was checked). Terms of a fixed variable have a core [lower, upper] (membership 1) and trapezoids [a, b, c, d] = (lower - w_below, lower, upper, upper + w_above), see atlas.ml.partitions. Variables of kind 'quantile' are data-driven (ex_fuzzy trapezoids anchored at the 20/40/60/80 % quantiles of the training rows) and carry no authority beyond that.",
+  "variables": [
+    {
+      "features": [
+        "no2_last",
+        "no2_lag1h",
+        "no2_lag3h",
+        "no2_lag24h"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        0,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        13.5,
+        18.0
+      ],
+      "terms": [
+        {
+          "name": "Buena",
+          "core": [
+            0,
+            40
+          ],
+          "params": [
+            0.0,
+            0.0,
+            40.0,
+            46.0
+          ]
+        },
+        {
+          "name": "Razonablemente buena",
+          "core": [
+            41,
+            90
+          ],
+          "params": [
+            35.0,
+            41.0,
+            90.0,
+            103.5
+          ]
+        },
+        {
+          "name": "Regular",
+          "core": [
+            91,
+            120
+          ],
+          "params": [
+            77.5,
+            91.0,
+            120.0,
+            138.0
+          ]
+        },
+        {
+          "name": "Desfavorable o peor",
+          "core": [
+            121,
+            1000
+          ],
+          "params": [
+            103.0,
+            121.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "rationale": "Cores are the official ICA bands for NO2 (hourly mean) of configs/ml/ica_no2_scheme.json, so a rule reads in the language of the target. Shoulder at each boundary = 15 % of the boundary value (40 -> 6, 90 -> 13.5, 120 -> 18 ug/m3): the data quality objective for the uncertainty of fixed NO2 measurements (95 % confidence, individual measurements averaged over the limit-value period). CAVEATS: (1) the directive states this uncertainty 'in the region of the appropriate limit value' (hourly limit value 200 ug/m3), so applying 15 % at 40-120 ug/m3 is an extrapolation and, at lower concentrations, real instrument uncertainty is relatively larger; (2) Directive (EU) 2024/2881 Annex V is reported (secondary source only) to give NO2 hourly 15 % or 30 ug/m3 absolute; the absolute figure would make the shoulders 5 times wider at 40 and was not used. The term 'Desfavorable o peor' is the merged class 121-1000 (AT-041c merge rule); the experiment refuses the partition if the target scheme differs.",
+      "source_url": "https://legislation.gov.uk/cy/eudr/2008/50/annex/I/adopted/data.htm",
+      "source_status": "Directive 2008/50/EC Annex I 'Data quality objectives': row 'Sulphur dioxide, nitrogen dioxide and oxides of nitrogen and carbon monoxide', fixed measurements, uncertainty 15 %, minimum data capture 90 %; percentages are for individual measurements averaged over the period of the limit value, 95 % confidence, applicable in the region of the limit value. READ on 2026-10-30 in the legislation.gov.uk copy of the original text (EUR-Lex returned an empty page to the tools used). Directive (EU) 2024/2881 (recast): Annex V, Section A, Table 2 (short-term averages) NOT verified against the Official Journal; only a secondary table (https://aq-framework-snpa.readthedocs.io/en/stable/tables/t_data_quality/) was read, listing NO2 1 h fixed measurements as 30 ug/m3 / 15 %. So the 15 % rests on 2008/50/EC; whether the recast keeps it is consistent with the secondary table but unconfirmed.",
+      "follows_target_scheme": true
+    },
+    {
+      "features": [
+        "wind_speed"
+      ],
+      "unit": "m/s",
+      "kind": "fixed",
+      "domain": [
+        0,
+        40
+      ],
+      "shoulders": [
+        0.5,
+        0.5,
+        0.79
+      ],
+      "terms": [
+        {
+          "name": "Calma-ventolina",
+          "core": [
+            0,
+            1.5
+          ],
+          "params": [
+            0.0,
+            0.0,
+            1.5,
+            2.0
+          ]
+        },
+        {
+          "name": "Brisa ligera",
+          "core": [
+            1.6,
+            3.3
+          ],
+          "params": [
+            1.1,
+            1.6,
+            3.3,
+            3.8
+          ]
+        },
+        {
+          "name": "Brisa gentil-moderada",
+          "core": [
+            3.4,
+            7.9
+          ],
+          "params": [
+            2.9,
+            3.4,
+            7.9,
+            8.69
+          ]
+        },
+        {
+          "name": "Brisa fresca o más",
+          "core": [
+            8.0,
+            40
+          ],
+          "params": [
+            7.21,
+            8.0,
+            40.0,
+            40.0
+          ]
+        }
+      ],
+      "rationale": "Cores are groups of Beaufort forces expressed in m/s (force 0-1, 2, 3-4, 5 or more). Low wind is associated with weaker dispersion of near-surface emissions (stagnation), so higher NO2 at low wind is plausible; this is an association the model may or may not find, not a causal claim. Shoulders = the measurement uncertainty the WMO guide calls usually sufficient for surface wind speed: 0.5 m/s below 5 m/s (boundaries 1.5 and 3.3) and 10 % above 5 m/s (10 % of 7.9 = 0.79). Beaufort speeds are 10-min means at 10 m over open ground; the Madrid values are hourly station readings whose height and exposure were not checked, so the match is approximate. Spanish term names are my translation of the WMO English names (Calm/Light air; Light breeze; Gentle/Moderate breeze; Fresh breeze or stronger), not an official Spanish scale.",
+      "source_url": "https://old.wmo.int/extranet/pages/prog/www/IMOP/publications/CIMO-Guide/Prelim_2018_ed/8_I_5_en_MR_tc.pdf",
+      "source_status": "WMO-No. 8 (CIMO Guide), Part I, Chapter 5 'Measurement of surface wind' (preliminary 2018 edition PDF, text extracted and READ on 2026-10-30): Table 5.1/5.2 Beaufort scale with m/s ranges 0.3-1.5, 1.6-3.3, 3.4-5.4, 5.5-7.9, 8.0-10.7 for forces 1-5 (and 0-0.2 for force 0); section 5.1: 'A required measurement uncertainty for horizontal speed of 0.5 m/s below 5 m/s and better than 10 % above 5 m/s is usually sufficient.' The preliminary edition, not the current published one, was read."
+    },
+    {
+      "features": [
+        "valid_hour_local"
+      ],
+      "unit": "h",
+      "kind": "fixed",
+      "domain": [
+        0,
+        23
+      ],
+      "shoulders": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "terms": [
+        {
+          "name": "Noche",
+          "core": [
+            0,
+            6
+          ],
+          "params": [
+            0.0,
+            0.0,
+            6.0,
+            7.0
+          ]
+        },
+        {
+          "name": "Punta de mañana",
+          "core": [
+            7,
+            9
+          ],
+          "params": [
+            6.0,
+            7.0,
+            9.0,
+            10.0
+          ]
+        },
+        {
+          "name": "Mediodía",
+          "core": [
+            10,
+            16
+          ],
+          "params": [
+            9.0,
+            10.0,
+            16.0,
+            17.0
+          ]
+        },
+        {
+          "name": "Tarde-noche",
+          "core": [
+            17,
+            23
+          ],
+          "params": [
+            16.0,
+            17.0,
+            23.0,
+            23.0
+          ]
+        }
+      ],
+      "rationale": "Day periods read from the diurnal profile of the traffic intensity in the TRAIN period (AT-012 table, 2023, workdays, local hour, mean of traffic_intensity_last divided by each station's own mean over all stations with traffic): night = below 0.5 of the station mean = hours 0-6 (0.44 ... 0.49 at hour 6); morning rush = hours 7-9 (7: 1.05 ramp, 8: 1.64, 9: 1.67; the p75 of the 24 workday values is 1.60); midday = 10-16 (1.38-1.66, plateau); evening = 17-23 (17-19: 1.63-1.71 evening rush, then decline 1.50 -> 0.65). Hours are whole numbers, so a one-hour shoulder is crisp. Midnight wrap: a trapezoid cannot wrap, so the evening term ends at 23 and the night term starts at 0; the two are adjacent across midnight and the flip between hour 23 and hour 0 is crisp by construction. FOUR terms, not five, on purpose: ex_fuzzy 3.3.1 bounds the term index of the k-th antecedent slot by the number of terms of the k-th feature, so with four NO2 features first, a fifth term of any later feature could never be chosen. The traffic profile is a description of the train period, not a validated cause of NO2.",
+      "source_url": null,
+      "source_status": "No external source: the cut points come from the 2023 traffic profile (data/processed/air/features/madrid_no2_h6_traffic), computed 2026-10-30 by the AT-041d analysis; the exact profile is in docs/ml/madrid_no2_h6_ica_v2.md."
+    },
+    {
+      "features": [
+        "valid_weekday"
+      ],
+      "unit": "day",
+      "kind": "fixed",
+      "domain": [
+        0,
+        6
+      ],
+      "shoulders": [
+        1.0,
+        1.0
+      ],
+      "terms": [
+        {
+          "name": "Laborable",
+          "core": [
+            0,
+            4
+          ],
+          "params": [
+            0.0,
+            0.0,
+            4.0,
+            5.0
+          ]
+        },
+        {
+          "name": "Sábado",
+          "core": [
+            5,
+            5
+          ],
+          "params": [
+            4.0,
+            5.0,
+            5.0,
+            6.0
+          ]
+        },
+        {
+          "name": "Domingo",
+          "core": [
+            6,
+            6
+          ],
+          "params": [
+            5.0,
+            6.0,
+            6.0,
+            6.0
+          ]
+        }
+      ],
+      "rationale": "Calendar day type of the target hour (0 = Monday ... 6 = Sunday): Monday to Friday, Saturday, Sunday. Public holidays and school holidays are NOT encoded (a holiday counts as the weekday it falls on). Whole-number input, so crisp.",
+      "source_url": null,
+      "source_status": "Calendar convention; no source needed."
+    },
+    {
+      "features": [
+        "temperature",
+        "relative_humidity"
+      ],
+      "unit": "degC; %",
+      "kind": "quantile",
+      "rationale": "No citable categorical scheme was found for HOURLY OUTDOOR air temperature or relative humidity that is meant for this use (thermal-comfort standards such as ASHRAE 55 describe indoor conditions; the AEMET warning thresholds are daily and regional). Not invented: the terms Low / Medium / High are data-driven, ex_fuzzy trapezoids anchored at the 20/40/60/80 % quantiles of the training rows (the same ones as AT-041c), so they describe the training distribution and nothing else. Deviation from the brief: the brief suggested terciles; the quantile trapezoids were kept to keep the comparison with AT-041c attributable to the partitions that changed.",
+      "source_url": null,
+      "source_status": "searched, nothing defensible found; no source claimed"
+    },
+    {
+      "features": [
+        "traffic_intensity_last",
+        "traffic_intensity_lag24h"
+      ],
+      "unit": "veh/h",
+      "kind": "quantile",
+      "rationale": "Only in the traffic comparison. There is no official band for street-segment traffic counts. Data-driven quantile terms (Low / Medium / High) on the pooled training rows of all stations. The brief preferred terciles per station or values relative to each station's normal; pooled terms were used instead because a per-station variable cannot be one linguistic variable without adding a derived input. Station-level differences in traffic magnitude therefore mix with within-station variation.",
+      "source_url": null,
+      "source_status": "data-driven"
+    }
+  ]
+}

@@ -1,0 +1,811 @@
+[
+ {
+  "schema_version": "0.4.0",
+  "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+  "synthetic": false,
+  "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+  "task_id": "uk_water_do",
+  "entity_id": "NE-41000003",
+  "issued_at_utc": "2025-12-03T08:15:00Z",
+  "valid_at_utc": "2025-12-03T08:15:00Z",
+  "inference": {
+   "family": "tsk_zero_order",
+   "tnorm": "product",
+   "rule_mode": "additive",
+   "tolerance": 0,
+   "fallback": "train_target_mean",
+   "rule_weighting": null,
+   "allow_unknown": null,
+   "exfuzzy_version": "3.3.1"
+  },
+  "feature_values": [
+   {
+    "feature": "ammoniacal_nitrogen",
+    "value": 0.03,
+    "unit": "mg/l",
+    "observed_at_utc": "2025-12-03T08:15:00Z",
+    "source_id": "uk-water-quality",
+    "missing_reason": null
+   },
+   {
+    "feature": "orthophosphate_reactive",
+    "value": 0.033,
+    "unit": "mg/l",
+    "observed_at_utc": "2025-12-03T08:15:00Z",
+    "source_id": "uk-water-quality",
+    "missing_reason": null
+   },
+   {
+    "feature": "water_temperature",
+    "value": 6.7,
+    "unit": "degC",
+    "observed_at_utc": "2025-12-03T08:15:00Z",
+    "source_id": "uk-water-quality",
+    "missing_reason": null
+   },
+   {
+    "feature": "days_from_midwinter",
+    "value": 18,
+    "unit": "days",
+    "observed_at_utc": "2025-12-03T08:15:00Z",
+    "source_id": "calendar-europe-london",
+    "missing_reason": null
+   },
+   {
+    "feature": "ph",
+    "value": 7.68,
+    "unit": "pH",
+    "observed_at_utc": "2025-12-03T08:15:00Z",
+    "source_id": "uk-water-quality",
+    "missing_reason": null
+   },
+   {
+    "feature": "local_hour",
+    "value": 8.25,
+    "unit": "hour",
+    "observed_at_utc": "2025-12-03T08:15:00Z",
+    "source_id": "calendar-europe-london",
+    "missing_reason": null
+   }
+  ],
+  "rules": [
+   {
+    "rule_id": "R01",
+    "antecedents": [
+     {
+      "feature": "days_from_midwinter",
+      "term": "Verano",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R02",
+    "antecedents": [
+     {
+      "feature": "local_hour",
+      "term": "Low",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R03",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "High",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "ph",
+      "term": "Low",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R04",
+    "antecedents": [
+     {
+      "feature": "orthophosphate_reactive",
+      "term": "Bajo>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R05",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "Low",
+      "membership": 0.1304347826086956,
+      "modifier": null,
+      "effective_membership": 0.1304347826086956
+     }
+    ],
+    "firing_strength": 0.1304347826086956,
+    "effective_firing": 0.1304347826086956,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R06",
+    "antecedents": [
+     {
+      "feature": "days_from_midwinter",
+      "term": "Verano",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R07",
+    "antecedents": [
+     {
+      "feature": "ph",
+      "term": "High",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R08",
+    "antecedents": [
+     {
+      "feature": "ammoniacal_nitrogen",
+      "term": "Medio>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "water_temperature",
+      "term": "Low",
+      "membership": 0.1304347826086956,
+      "modifier": null,
+      "effective_membership": 0.1304347826086956
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R09",
+    "antecedents": [
+     {
+      "feature": "ph",
+      "term": "Low",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R10",
+    "antecedents": [
+     {
+      "feature": "orthophosphate_reactive",
+      "term": "<=L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R11",
+    "antecedents": [
+     {
+      "feature": "orthophosphate_reactive",
+      "term": "Bajo>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "water_temperature",
+      "term": "Medium",
+      "membership": 0.8695652173913044,
+      "modifier": null,
+      "effective_membership": 0.8695652173913044
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R12",
+    "antecedents": [
+     {
+      "feature": "orthophosphate_reactive",
+      "term": "Bajo>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R13",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "Low",
+      "membership": 0.1304347826086956,
+      "modifier": null,
+      "effective_membership": 0.1304347826086956
+     },
+     {
+      "feature": "days_from_midwinter",
+      "term": "Invierno",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 0.1304347826086956,
+    "effective_firing": 0.1304347826086956,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R14",
+    "antecedents": [
+     {
+      "feature": "ammoniacal_nitrogen",
+      "term": "Bajo>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R15",
+    "antecedents": [
+     {
+      "feature": "ammoniacal_nitrogen",
+      "term": "Medio>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "local_hour",
+      "term": "High",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R16",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "Medium",
+      "membership": 0.8695652173913044,
+      "modifier": null,
+      "effective_membership": 0.8695652173913044
+     },
+     {
+      "feature": "days_from_midwinter",
+      "term": "Invierno",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 0.8695652173913044,
+    "effective_firing": 0.8695652173913044,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R17",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "Medium",
+      "membership": 0.8695652173913044,
+      "modifier": null,
+      "effective_membership": 0.8695652173913044
+     }
+    ],
+    "firing_strength": 0.8695652173913044,
+    "effective_firing": 0.8695652173913044,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R18",
+    "antecedents": [
+     {
+      "feature": "orthophosphate_reactive",
+      "term": "Alto>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R19",
+    "antecedents": [
+     {
+      "feature": "ammoniacal_nitrogen",
+      "term": "Medio>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "local_hour",
+      "term": "Medium",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R20",
+    "antecedents": [
+     {
+      "feature": "ph",
+      "term": "High",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R21",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "Low",
+      "membership": 0.1304347826086956,
+      "modifier": null,
+      "effective_membership": 0.1304347826086956
+     }
+    ],
+    "firing_strength": 0.1304347826086956,
+    "effective_firing": 0.1304347826086956,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R22",
+    "antecedents": [
+     {
+      "feature": "orthophosphate_reactive",
+      "term": "Bajo>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R23",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "High",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R24",
+    "antecedents": [
+     {
+      "feature": "orthophosphate_reactive",
+      "term": "Medio>L",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     },
+     {
+      "feature": "ph",
+      "term": "Low",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R25",
+    "antecedents": [
+     {
+      "feature": "ammoniacal_nitrogen",
+      "term": "Bajo>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R26",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "Low",
+      "membership": 0.1304347826086956,
+      "modifier": null,
+      "effective_membership": 0.1304347826086956
+     }
+    ],
+    "firing_strength": 0.1304347826086956,
+    "effective_firing": 0.1304347826086956,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R27",
+    "antecedents": [
+     {
+      "feature": "ammoniacal_nitrogen",
+      "term": "<=L",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R28",
+    "antecedents": [
+     {
+      "feature": "ammoniacal_nitrogen",
+      "term": "<=L",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     },
+     {
+      "feature": "water_temperature",
+      "term": "High",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R29",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "Medium",
+      "membership": 0.8695652173913044,
+      "modifier": null,
+      "effective_membership": 0.8695652173913044
+     }
+    ],
+    "firing_strength": 0.8695652173913044,
+    "effective_firing": 0.8695652173913044,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R30",
+    "antecedents": [
+     {
+      "feature": "ammoniacal_nitrogen",
+      "term": "<=L",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     },
+     {
+      "feature": "ph",
+      "term": "Medium",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R31",
+    "antecedents": [
+     {
+      "feature": "orthophosphate_reactive",
+      "term": "<=L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R32",
+    "antecedents": [
+     {
+      "feature": "ammoniacal_nitrogen",
+      "term": "Alto>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "ph",
+      "term": "Medium",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R33",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "High",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "local_hour",
+      "term": "Low",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R34",
+    "antecedents": [
+     {
+      "feature": "ph",
+      "term": "High",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R35",
+    "antecedents": [
+     {
+      "feature": "orthophosphate_reactive",
+      "term": "Bajo>L",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     },
+     {
+      "feature": "water_temperature",
+      "term": "High",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R36",
+    "antecedents": [
+     {
+      "feature": "days_from_midwinter",
+      "term": "Invierno",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     },
+     {
+      "feature": "local_hour",
+      "term": "Low",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R37",
+    "antecedents": [
+     {
+      "feature": "ph",
+      "term": "Medium",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R38",
+    "antecedents": [
+     {
+      "feature": "water_temperature",
+      "term": "High",
+      "membership": 0,
+      "modifier": null,
+      "effective_membership": 0
+     }
+    ],
+    "firing_strength": 0,
+    "effective_firing": 0,
+    "weight": null,
+    "association_degree": null
+   },
+   {
+    "rule_id": "R39",
+    "antecedents": [
+     {
+      "feature": "local_hour",
+      "term": "Low",
+      "membership": 1,
+      "modifier": null,
+      "effective_membership": 1
+     }
+    ],
+    "firing_strength": 1,
+    "effective_firing": 1,
+    "weight": null,
+    "association_degree": null
+   }
+  ],
+  "prediction": {
+   "value": 11.358646666666669,
+   "label": null,
+   "winning_rule_id": null,
+   "unit": "mg/l",
+   "fallback_used": false,
+   "missing_reason": null
+  },
+  "observation_ids": [],
+  "observed": 11.3,
+  "observed_label": null,
+  "quality": {
+   "status": "valid",
+   "warnings": []
+  }
+ }
+]

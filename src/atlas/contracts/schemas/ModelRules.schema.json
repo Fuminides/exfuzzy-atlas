@@ -1,0 +1,843 @@
+{
+  "$defs": {
+    "Antecedent": {
+      "additionalProperties": false,
+      "properties": {
+        "feature": {
+          "title": "Feature",
+          "type": "string"
+        },
+        "modifier": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Hedge exponent applied to the membership, if any.",
+          "title": "Modifier"
+        },
+        "term": {
+          "title": "Term",
+          "type": "string"
+        }
+      },
+      "required": [
+        "feature",
+        "term"
+      ],
+      "title": "Antecedent",
+      "type": "object"
+    },
+    "Consequent": {
+      "additionalProperties": false,
+      "properties": {
+        "term": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Output term (fuzzy) or class label (class).",
+          "title": "Term"
+        },
+        "type": {
+          "enum": [
+            "crisp",
+            "fuzzy",
+            "class"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "Consequent",
+      "type": "object"
+    },
+    "Domain": {
+      "enum": [
+        "air",
+        "water",
+        "mobility"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "InferenceFamily": {
+      "enum": [
+        "tsk_zero_order",
+        "mamdani",
+        "winning_rule_classifier",
+        "rule_mixture_classifier"
+      ],
+      "title": "InferenceFamily",
+      "type": "string"
+    },
+    "InferenceSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "allow_unknown": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Classifier only: no class when no rule fires.",
+          "title": "Allow Unknown"
+        },
+        "exfuzzy_version": {
+          "title": "Exfuzzy Version",
+          "type": "string"
+        },
+        "fallback": {
+          "anyOf": [
+            {
+              "enum": [
+                "train_target_mean",
+                "unknown",
+                "largest_bias"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Output when no rule fires. 'largest_bias' (v0.7, rule mixture without allow_unknown): the class of the largest class_bias.",
+          "title": "Fallback"
+        },
+        "family": {
+          "$ref": "#/$defs/InferenceFamily"
+        },
+        "mixture_C": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture only: inverse strength of the L2 penalty ||W||^2 / 2 of the multinomial logistic fit of the weights on the firing strengths of the fitting rows (scikit-learn's C).",
+          "title": "Mixture C"
+        },
+        "mixture_weights": {
+          "anyOf": [
+            {
+              "enum": [
+                "non_negative",
+                "unconstrained"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture only: how the class weights were fitted. Both describe the same family of decision functions (adding a constant to all the class weights of one rule changes no prediction); only the L2 penalty differs. Compare rules with RuleDefinition.class_weights_centred.",
+          "title": "Mixture Weights"
+        },
+        "rule_mode": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuleMode"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "TSK/Mamdani only: how many rules take part."
+        },
+        "rule_weighting": {
+          "anyOf": [
+            {
+              "enum": [
+                "dominance_score",
+                "weight",
+                "none"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Winning-rule classifier only: association degree = firing x this rule weight (ex_fuzzy ds_mode).",
+          "title": "Rule Weighting"
+        },
+        "tnorm": {
+          "$ref": "#/$defs/TNorm"
+        },
+        "tolerance": {
+          "default": 0.0,
+          "minimum": 0,
+          "title": "Tolerance",
+          "type": "number"
+        }
+      },
+      "required": [
+        "family",
+        "tnorm",
+        "fallback",
+        "exfuzzy_version"
+      ],
+      "title": "InferenceSpec",
+      "type": "object"
+    },
+    "LinguisticTerm": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.5.1: display name of the term, e.g. '\u2264 l\u00edmite de detecci\u00f3n' for '<=L'; the UI shows it instead of `name`, which stays the key that rules refer to.",
+          "title": "Label"
+        },
+        "label_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English display name of the term, e.g. '\u2264 detection limit'; the UI shows it when the interface is in English, else falls back to `label` (then `name`).",
+          "title": "Label En"
+        },
+        "membership_type": {
+          "enum": [
+            "trapezoidal",
+            "triangular",
+            "gaussian"
+          ],
+          "title": "Membership Type",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "params": {
+          "description": "ex_fuzzy semantics: trapezoidal and triangular are both [a, b, c, d] (trapezoid form); gaussian is [mean, std] with mu = exp(-((x - mean) / std) ** 2), no 1/2 factor.",
+          "items": {
+            "type": "number"
+          },
+          "title": "Params",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "membership_type",
+        "params"
+      ],
+      "title": "LinguisticTerm",
+      "type": "object"
+    },
+    "LinguisticVariable": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.5: what the input is and when it is known relative to the issue time.",
+          "title": "Description"
+        },
+        "description_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English version of `description`; the UI shows it when the interface is in English, else falls back to `description`.",
+          "title": "Description En"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Universe of discourse. ex_fuzzy clips inputs to it: values outside get the edge membership.",
+          "title": "Domain"
+        },
+        "feature": {
+          "title": "Feature",
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.5: display name of the input, e.g. 'NO\u2082 hace 3 h'; the UI shows it instead of `feature`.",
+          "title": "Label"
+        },
+        "label_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English display name of the input, e.g. 'NO\u2082 4 h ago'; the UI shows it when the interface is in English, else falls back to `label` (then `feature`).",
+          "title": "Label En"
+        },
+        "terms": {
+          "items": {
+            "$ref": "#/$defs/LinguisticTerm"
+          },
+          "minItems": 1,
+          "title": "Terms",
+          "type": "array"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        }
+      },
+      "required": [
+        "feature",
+        "terms"
+      ],
+      "title": "LinguisticVariable",
+      "type": "object"
+    },
+    "RuleDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "antecedents": {
+          "items": {
+            "$ref": "#/$defs/Antecedent"
+          },
+          "minItems": 1,
+          "title": "Antecedents",
+          "type": "array"
+        },
+        "class_weights": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture only: W[r, c] for every class of target_scheme, as fitted. The rule adds W[r, c] x firing to the score of class c. Signed when mixture_weights is 'unconstrained'. A weight is a coefficient of a fitted linear model on firing strengths: not a probability, a confidence or a risk.",
+          "title": "Class Weights"
+        },
+        "class_weights_centred": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture only: class_weights minus their mean over the classes. Adding a constant to all the weights of one rule changes no prediction, so this is the form to read and to compare between non-negative and unconstrained fits: a positive value means the rule supports that class (raises its score relative to the other classes), a negative one that it suppresses it (lowers it relative to the others). Suppression is not 'evidence against' the class, and neither is a probability.",
+          "title": "Class Weights Centred"
+        },
+        "consequent": {
+          "$ref": "#/$defs/Consequent",
+          "description": "What the rule concludes. Rule mixture (v0.7): the class the genetic search attached to the rule, used by the search and its pruning only; it does not enter the prediction (class_weights do), so it must not be shown as the rule's conclusion."
+        },
+        "duplicate_of": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "rule_id of the first rule with identical antecedents; such rules always fire together.",
+          "title": "Duplicate Of"
+        },
+        "metrics": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "default": {},
+          "description": "Support, coverage, ... Never probabilities.",
+          "title": "Metrics",
+          "type": "object"
+        },
+        "position": {
+          "description": "Index in the model's rule base.",
+          "minimum": 0,
+          "title": "Position",
+          "type": "integer"
+        },
+        "rule_id": {
+          "description": "Stable within one model_id only; R07 of another model is unrelated.",
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "strongest_class": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.7, rule mixture only: the class with the largest weight (first in scheme order on ties); null when all its weights are equal (a duplicate rule, whose weights are all zero): such a rule changes no prediction.",
+          "title": "Strongest Class"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "weight": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Winning-rule classifier: weight multiplying the firing in the association degree.",
+          "title": "Weight"
+        }
+      },
+      "required": [
+        "rule_id",
+        "position",
+        "antecedents",
+        "consequent",
+        "text"
+      ],
+      "title": "RuleDefinition",
+      "type": "object"
+    },
+    "RuleMode": {
+      "enum": [
+        "additive",
+        "sufficient"
+      ],
+      "title": "RuleMode",
+      "type": "string"
+    },
+    "SchemeKind": {
+      "description": "What a classification scheme is (v0.4); the UI words the classes differently for each.",
+      "enum": [
+        "official_index",
+        "percentile_reference",
+        "analytical"
+      ],
+      "title": "SchemeKind",
+      "type": "string"
+    },
+    "TNorm": {
+      "enum": [
+        "product",
+        "minimum"
+      ],
+      "title": "TNorm",
+      "type": "string"
+    },
+    "TargetClass": {
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "anyOf": [
+            {
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Official colour, if any.",
+          "title": "Color"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "description_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English version of `description`; the UI shows it when the interface is in English, else falls back to `description`.",
+          "title": "Description En"
+        },
+        "display_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.5.1: name shown in the UI language when the official `label` is in another one, e.g. EAQI 'Good' -> 'Buena'. `label` stays the key and the official name.",
+          "title": "Display Label"
+        },
+        "display_label_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English display name of the class, e.g. ICA 'Buena' -> 'Good' (EAQI: its own official name); the UI shows it when the interface is in English, else falls back to `display_label` (then `label`).",
+          "title": "Display Label En"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "lower": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Lower bound in the scheme unit; null = unbounded.",
+          "title": "Lower"
+        },
+        "merged_from": {
+          "default": [],
+          "description": "v0.4: labels of the official classes this one groups (e.g. ICA 'Desfavorable o peor').",
+          "items": {
+            "type": "string"
+          },
+          "title": "Merged From",
+          "type": "array"
+        },
+        "upper": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Upper bound in the scheme unit; null = unbounded.",
+          "title": "Upper"
+        }
+      },
+      "required": [
+        "label",
+        "lower",
+        "upper"
+      ],
+      "title": "TargetClass",
+      "type": "object"
+    },
+    "TargetScheme": {
+      "additionalProperties": false,
+      "description": "Ordered categories of a classification target, taken from a cited source (e.g. an official index).",
+      "properties": {
+        "boundary": {
+          "default": "lower_inclusive",
+          "description": "Which bound a value exactly on a boundary belongs to.",
+          "enum": [
+            "lower_inclusive",
+            "upper_inclusive"
+          ],
+          "title": "Boundary",
+          "type": "string"
+        },
+        "classes": {
+          "items": {
+            "$ref": "#/$defs/TargetClass"
+          },
+          "minItems": 2,
+          "title": "Classes",
+          "type": "array"
+        },
+        "kind": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SchemeKind"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.4: official index, percentile reference or analytical."
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "name_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English display name of the scheme; the UI shows it when the interface is in English, else falls back to `name`.",
+          "title": "Name En"
+        },
+        "short_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.4: compact name for legends, e.g. 'ICA'.",
+          "title": "Short Name"
+        },
+        "short_name_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English compact name, e.g. 'Relative level' for 'Nivel relativo'; the UI shows it when the interface is in English, else falls back to `short_name`.",
+          "title": "Short Name En"
+        },
+        "source_url": {
+          "title": "Source Url",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "source_url",
+        "unit",
+        "classes"
+      ],
+      "title": "TargetScheme",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/ModelRules.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "class_bias": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "v0.7, rule mixture only: b_c for every class of target_scheme (centred to mean 0). The score of class c is b_c + sum over the rules of class_weights[c] x firing; it is the score of a row that fires no rule.",
+      "title": "Class Bias"
+    },
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "domain": {
+      "$ref": "#/$defs/Domain"
+    },
+    "inference": {
+      "$ref": "#/$defs/InferenceSpec"
+    },
+    "model_id": {
+      "title": "Model Id",
+      "type": "string"
+    },
+    "rules": {
+      "items": {
+        "$ref": "#/$defs/RuleDefinition"
+      },
+      "title": "Rules",
+      "type": "array"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "target_scheme": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TargetScheme"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Required for classifiers: the class labels."
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "variables": {
+      "items": {
+        "$ref": "#/$defs/LinguisticVariable"
+      },
+      "title": "Variables",
+      "type": "array"
+    }
+  },
+  "required": [
+    "data_version",
+    "model_id",
+    "task_id",
+    "domain",
+    "inference",
+    "variables",
+    "rules"
+  ],
+  "title": "ModelRules",
+  "type": "object"
+}

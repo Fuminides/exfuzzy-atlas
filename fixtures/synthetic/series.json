@@ -1,0 +1,370 @@
+[
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_A",
+    "model_id": "synthetic-no2-h6-v0",
+    "target": "no2",
+    "unit": "ug/m3",
+    "horizon_hours": 6,
+    "points": [
+      {
+        "issued_at_utc": "2025-01-15T06:00:00Z",
+        "valid_at_utc": "2025-01-15T12:00:00Z",
+        "observed": 32.7,
+        "prediction": 44.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T07:00:00Z",
+        "valid_at_utc": "2025-01-15T13:00:00Z",
+        "observed": 52.8,
+        "prediction": 57.517241379310335,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T08:00:00Z",
+        "valid_at_utc": "2025-01-15T14:00:00Z",
+        "observed": 52.0,
+        "prediction": 72.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T09:00:00Z",
+        "valid_at_utc": "2025-01-15T15:00:00Z",
+        "observed": 74.5,
+        "prediction": 72.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T10:00:00Z",
+        "valid_at_utc": "2025-01-15T16:00:00Z",
+        "observed": 64.5,
+        "prediction": 72.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T11:00:00Z",
+        "valid_at_utc": "2025-01-15T17:00:00Z",
+        "observed": 51.4,
+        "prediction": 65.13999999999999,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      }
+    ],
+    "next_cursor": null
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_B",
+    "model_id": "synthetic-no2-h6-v0",
+    "target": "no2",
+    "unit": "ug/m3",
+    "horizon_hours": 6,
+    "points": [
+      {
+        "issued_at_utc": "2025-01-15T06:00:00Z",
+        "valid_at_utc": "2025-01-15T12:00:00Z",
+        "observed": 77.0,
+        "prediction": 44.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T07:00:00Z",
+        "valid_at_utc": "2025-01-15T13:00:00Z",
+        "observed": 57.2,
+        "prediction": 44.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T08:00:00Z",
+        "valid_at_utc": "2025-01-15T14:00:00Z",
+        "observed": 52.4,
+        "prediction": 44.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T09:00:00Z",
+        "valid_at_utc": "2025-01-15T15:00:00Z",
+        "observed": 58.5,
+        "prediction": 44.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T10:00:00Z",
+        "valid_at_utc": "2025-01-15T16:00:00Z",
+        "observed": 17.8,
+        "prediction": 44.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T11:00:00Z",
+        "valid_at_utc": "2025-01-15T17:00:00Z",
+        "observed": 27.1,
+        "prediction": 44.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      }
+    ],
+    "next_cursor": null
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_C",
+    "model_id": "synthetic-no2-h6-v0",
+    "target": "no2",
+    "unit": "ug/m3",
+    "horizon_hours": 6,
+    "points": [
+      {
+        "issued_at_utc": "2025-01-15T06:00:00Z",
+        "valid_at_utc": "2025-01-15T12:00:00Z",
+        "observed": 62.5,
+        "prediction": 34.95652173913044,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T07:00:00Z",
+        "valid_at_utc": "2025-01-15T13:00:00Z",
+        "observed": 31.2,
+        "prediction": 42.327974276527335,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T08:00:00Z",
+        "valid_at_utc": "2025-01-15T14:00:00Z",
+        "observed": 57.3,
+        "prediction": 44.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T09:00:00Z",
+        "valid_at_utc": "2025-01-15T15:00:00Z",
+        "observed": 51.8,
+        "prediction": 29.869565217391308,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T10:00:00Z",
+        "valid_at_utc": "2025-01-15T16:00:00Z",
+        "observed": 59.4,
+        "prediction": 44.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T11:00:00Z",
+        "valid_at_utc": "2025-01-15T17:00:00Z",
+        "observed": 21.3,
+        "prediction": 35.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      }
+    ],
+    "next_cursor": null
+  },
+  {
+    "schema_version": "0.7.0",
+    "data_version": "synthetic-fixture-v0",
+    "synthetic": true,
+    "task_id": "madrid_no2_h6",
+    "entity_id": "SYN_D",
+    "model_id": "synthetic-no2-h6-v0",
+    "target": "no2",
+    "unit": "ug/m3",
+    "horizon_hours": 6,
+    "points": [
+      {
+        "issued_at_utc": "2025-01-15T06:00:00Z",
+        "valid_at_utc": "2025-01-15T12:00:00Z",
+        "observed": 43.8,
+        "prediction": 72.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T07:00:00Z",
+        "valid_at_utc": "2025-01-15T13:00:00Z",
+        "observed": 47.9,
+        "prediction": 72.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T08:00:00Z",
+        "valid_at_utc": "2025-01-15T14:00:00Z",
+        "observed": 23.7,
+        "prediction": null,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": "missing_input",
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T09:00:00Z",
+        "valid_at_utc": "2025-01-15T15:00:00Z",
+        "observed": 74.8,
+        "prediction": 54.5,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T10:00:00Z",
+        "valid_at_utc": "2025-01-15T16:00:00Z",
+        "observed": 55.5,
+        "prediction": 60.49582172701949,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      },
+      {
+        "issued_at_utc": "2025-01-15T11:00:00Z",
+        "valid_at_utc": "2025-01-15T17:00:00Z",
+        "observed": 40.6,
+        "prediction": 72.0,
+        "observed_label": null,
+        "predicted_label": null,
+        "missing_reason": null,
+        "quality": {
+          "status": "valid",
+          "warnings": []
+        }
+      }
+    ],
+    "next_cursor": null
+  }
+]

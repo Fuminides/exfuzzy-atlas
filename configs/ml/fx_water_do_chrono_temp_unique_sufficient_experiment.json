@@ -1,0 +1,96 @@
+{
+  "experiment_id": "fx-w-unique-suf",
+  "table": "processed/water/features/uk_water_do",
+  "split_kind": "chrono",
+  "spatial_split_file": null,
+  "base": {
+    "task_id": "uk_water_do",
+    "domain": "water",
+    "target": "dissolved_oxygen",
+    "target_column": "target",
+    "unit": "mg/l",
+    "horizon_hours": 0,
+    "features": [
+      "ammoniacal_nitrogen",
+      "orthophosphate_reactive",
+      "water_temperature",
+      "days_from_midwinter",
+      "ph",
+      "local_hour"
+    ],
+    "feature_units": {
+      "ammoniacal_nitrogen": "mg/l",
+      "orthophosphate_reactive": "mg/l",
+      "water_temperature": "degC",
+      "days_from_midwinter": "days",
+      "ph": "pH",
+      "local_hour": "hour"
+    },
+    "persistence_feature": null,
+    "split": {
+      "train_from_utc": "2015-01-01T00:00:00Z",
+      "train_to_utc": "2021-12-01T00:00:00Z",
+      "validation_from_utc": "2022-01-01T00:00:00Z",
+      "validation_to_utc": "2023-12-01T00:00:00Z",
+      "test_from_utc": "2024-01-01T00:00:00Z",
+      "test_to_utc": "2026-01-01T00:00:00Z",
+      "embargo_hours": 720
+    },
+    "seed": 0,
+    "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+    "data_checksums": {
+      "uk_water_do_feature_report.json": "8d0f8521acdd352263de45c930d7d06e615ad09f51e2fc82746b3a7885ef8979",
+      "uk_water_do_spatial_split.json": "001d3758b70468fda7d698257991557c2ff43a1d507a3936f562ea85854bcfdc",
+      "entities.geojson": "53fa63271a4b03927cd03dae2280a84936d77aab31d7bf96cba27306b2e473a4"
+    },
+    "synthetic": false,
+    "timezone": "Europe/London",
+    "ridge_alpha": 1.0,
+    "gbm_max_iter": 200
+  },
+  "require_columns": [
+    "ammoniacal_nitrogen",
+    "orthophosphate_reactive",
+    "water_temperature",
+    "days_from_midwinter",
+    "ph",
+    "local_hour"
+  ],
+  "partitions": {
+    "file": "configs/ml/water_partitions.json",
+    "use_features": [
+      "days_from_midwinter"
+    ]
+  },
+  "selection": {
+    "nRules": [
+      10,
+      20,
+      40
+    ],
+    "nAnts": [
+      2,
+      3,
+      4
+    ],
+    "n_linguistic_variables": 3,
+    "n_gen": 150,
+    "pop_size": 60,
+    "seed": 0
+  },
+  "final": {
+    "n_gen": 150,
+    "pop_size": 60,
+    "seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "rule_mode": "sufficient",
+  "unique_antecedents": true,
+  "requires_exfuzzy": [
+    "unique_antecedents"
+  ],
+  "exfuzzy_source": "local atlas/local-integration @ 2ffcfb9 (3.3.1 + PRs #27 #29 #31 #32)"
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Índice Nacional de Calidad del Aire (ICA) - NO2, concentración media horaria",
+  "source_url": "https://www.miteco.gob.es/content/dam/miteco/images/es/resoluciondgactualizacionica_tcm30-509833.pdf",
+  "unit": "ug/m3",
+  "source_title": "Resolución del Director General de Calidad y Evaluación Ambiental por la que se modifica el anexo de la Orden TEC/351/2019, de 18 de marzo, por la que se aprueba el Índice Nacional de Calidad del Aire. The PDF carries no date or BOE number; 'resolución de 2 de septiembre de 2020, BOE núm. 242 de 10-09-2020' comes from the coordinator and a secondary page (Ayuntamiento de Granada consolidated text), not from the BOE text itself.",
+  "source_table": "Anexo, apartado A, tabla \"Bandas de concentraciones y categorías de índice\" (p. 3), columna NO2; colores de las celdas de esa tabla; mensajes de la tabla \"Recomendaciones para la salud\" (p. 5), columna \"Mensajes para la salud\"",
+  "accessed": "2026-10-30",
+  "averaging": "NO2: concentración media de la última hora (anexo, apartado A)",
+  "value_resolution": 1,
+  "boundary_convention": "The official table lists whole micrograms per cubic metre with both ends inclusive (0-40, 41-90, ..., 341-1000). Concentrations are reported as whole numbers (the Madrid target is integer-valued), so a class is the closed integer range [lower, upper]; a non-integer value must be rounded to the nearest whole number before classifying. Concentrations above the last upper bound are considered erroneous by the source and are not classified.",
+  "colors_note": "Hex values sampled from the filled cells of the NO2 / category columns of the official table (rendered PDF page 3); they are not written as text in the document.",
+  "classes": [
+    {
+      "label": "Buena",
+      "lower": 0,
+      "upper": 40,
+      "color": "#00FFFF",
+      "description": "Calidad del aire satisfactoria"
+    },
+    {
+      "label": "Razonablemente buena",
+      "lower": 41,
+      "upper": 90,
+      "color": "#00B050",
+      "description": "Calidad del aire aceptable, la contaminación no supone un riesgo para la salud."
+    },
+    {
+      "label": "Regular",
+      "lower": 91,
+      "upper": 120,
+      "color": "#FFCC00",
+      "description": "La calidad del aire probablemente no afecte a la población general pero puede presentar un riesgo moderado para los grupos de riesgo."
+    },
+    {
+      "label": "Desfavorable",
+      "lower": 121,
+      "upper": 230,
+      "color": "#FF3300",
+      "description": "Toda la población puede experimentar efectos negativos sobre la salud y los grupos de riesgo efectos mucho más serios."
+    },
+    {
+      "label": "Muy desfavorable",
+      "lower": 231,
+      "upper": 340,
+      "color": "#990000",
+      "description": "Condiciones de emergencia para la salud pública, la población entera puede verse seriamente afectada."
+    },
+    {
+      "label": "Extremadamente desfavorable",
+      "lower": 341,
+      "upper": 1000,
+      "color": "#9900FF",
+      "description": "Condiciones de emergencia para la salud pública, la población entera puede verse gravemente afectada."
+    }
+  ]
+}

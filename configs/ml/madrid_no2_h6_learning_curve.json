@@ -1,0 +1,85 @@
+{
+  "experiment_id": "lc-madrid-h6",
+  "base_config": "configs/ml/madrid_no2_h6_ica2_justified_experiment.json",
+  "shape": {
+    "nRules": 60,
+    "nAnts": 4,
+    "n_linguistic_variables": 3,
+    "rule_weighting": "dominance_score",
+    "sampling_power": 0.5
+  },
+  "n_gen": 150,
+  "pop_size": 60,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "backend": "evox",
+  "subsample_seed": 20260101,
+  "arms": [
+    {
+      "name": "n30k",
+      "sampler": "nested",
+      "n_rows": 30000,
+      "power": 0.5
+    },
+    {
+      "name": "n60k",
+      "sampler": "nested",
+      "n_rows": 60000,
+      "power": 0.5
+    },
+    {
+      "name": "n120k",
+      "sampler": "nested",
+      "n_rows": 120000,
+      "power": 0.5
+    },
+    {
+      "name": "n30k_pub",
+      "sampler": "published",
+      "n_rows": 30000,
+      "power": 0.5
+    },
+    {
+      "name": "full_natural",
+      "sampler": "all",
+      "seeds": [
+        0
+      ]
+    },
+    {
+      "name": "n120k_natural",
+      "sampler": "nested",
+      "n_rows": 120000,
+      "power": 1.0
+    },
+    {
+      "name": "n30k_ib",
+      "sampler": "nested",
+      "n_rows": 30000,
+      "power": 0.5,
+      "baselines": false
+    },
+    {
+      "name": "mb30k_full_natural",
+      "sampler": "all",
+      "batch_size": 30000,
+      "baselines": false
+    },
+    {
+      "name": "mb30k_tempered_max",
+      "sampler": "nested",
+      "n_rows": 129604,
+      "power": 0.5,
+      "batch_size": 30000,
+      "baselines": false
+    }
+  ],
+  "timing_rows": [
+    30000,
+    120000,
+    0
+  ]
+}

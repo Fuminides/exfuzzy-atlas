@@ -1,0 +1,18 @@
+{
+  "task_id": "nyc_pickups_h24",
+  "table_dirname": "nyc_pickups_h24",
+  "domain": "mobility",
+  "horizon_hours": 24,
+  "timezone": "America/New_York",
+  "target": {"name": "pickups", "unit": "trips", "source_id": "nyc-tlc-yellow"},
+  "zone_filter": {
+    "rule": "mean pickups per known hour in the train period >= min_train_mean_pickups_per_hour",
+    "min_train_mean_pickups_per_hour": 1.0
+  },
+  "split": {
+    "train": ["2024-04-01T04:00:00Z", "2025-01-01T05:00:00Z"],
+    "validation": ["2025-01-08T05:00:00Z", "2025-02-01T05:00:00Z"],
+    "test": ["2025-02-08T05:00:00Z", "2025-04-01T04:00:00Z"],
+    "embargo_hours": 168
+  }
+}

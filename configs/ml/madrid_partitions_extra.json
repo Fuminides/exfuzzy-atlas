@@ -1,0 +1,183 @@
+{
+  "task_id": "madrid_no2_h6",
+  "description": "Extra inputs of AT-041e (trend, anomaly, official station type). Same format and checks as madrid_partitions.json; these terms are added to the AT-041d ones, they do not replace them. Terms are anchored on the measurement-uncertainty scale or on official metadata; nothing is estimated from data.",
+  "variables": [
+    {
+      "features": [
+        "no2_trend_3h"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        -1000,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        6.0
+      ],
+      "terms": [
+        {
+          "name": "Bajando",
+          "core": [
+            -1000,
+            -7
+          ],
+          "params": [
+            -1000.0,
+            -1000.0,
+            -7.0,
+            -1.0
+          ]
+        },
+        {
+          "name": "Estable",
+          "core": [
+            -6,
+            6
+          ],
+          "params": [
+            -12.0,
+            -6.0,
+            6.0,
+            12.0
+          ]
+        },
+        {
+          "name": "Subiendo",
+          "core": [
+            7,
+            1000
+          ],
+          "params": [
+            1.0,
+            7.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "rationale": "no2_last - no2_lag3h: change of the finished hour [t-1h, t) with respect to the finished hour [t-4h, t-3h) (both known at t). Estable = |change| <= 6 ug/m3 (whole-number data). The half-width 6 ug/m3 is the measurement-uncertainty scale already used for the NO2 terms: 15 % of the first ICA breakpoint (40 ug/m3), i.e. the shoulder of the 'Buena' term (see madrid_partitions.json, no2_last). It says 'a change of more than the order of the measurement uncertainty', NOT a statistically significant change and NOT a physical threshold; the 15 % itself is an extrapolation of the data quality objective of Directive 2008/50/EC to low concentrations (see the caveats there). The shoulder is one more half-width (6 ug/m3), so the terms overlap smoothly.",
+      "source_url": null,
+      "source_status": "No external source for the use as a trend threshold; the 6 ug/m3 value is derived in madrid_partitions.json (Directive 2008/50/EC Annex I, read 2026-10-30 on legislation.gov.uk)."
+    },
+    {
+      "features": [
+        "no2_anomaly"
+      ],
+      "unit": "ug/m3",
+      "kind": "fixed",
+      "domain": [
+        -1000,
+        1000
+      ],
+      "shoulders": [
+        6.0,
+        6.0
+      ],
+      "terms": [
+        {
+          "name": "Por debajo",
+          "core": [
+            -1000,
+            -7
+          ],
+          "params": [
+            -1000.0,
+            -1000.0,
+            -7.0,
+            -1.0
+          ]
+        },
+        {
+          "name": "Normal",
+          "core": [
+            -6,
+            6
+          ],
+          "params": [
+            -12.0,
+            -6.0,
+            6.0,
+            12.0
+          ]
+        },
+        {
+          "name": "Por encima",
+          "core": [
+            7,
+            1000
+          ],
+          "params": [
+            1.0,
+            7.0,
+            1000.0,
+            1000.0
+          ]
+        }
+      ],
+      "rationale": "no2_last minus the median of no2_last of the same station at the same local hour of the observed hour, computed on the TRAINING rows only (2019-2023, issue time before the training end). Normal = within 6 ug/m3 of that station-and-hour median. The half-width 6 ug/m3 is the measurement-uncertainty scale already used for the NO2 terms: 15 % of the first ICA breakpoint (40 ug/m3), i.e. the shoulder of the 'Buena' term (see madrid_partitions.json, no2_last). It says 'a change of more than the order of the measurement uncertainty', NOT a statistically significant change and NOT a physical threshold; the 15 % itself is an extrapolation of the data quality objective of Directive 2008/50/EC to low concentrations (see the caveats there). The shoulder is one more half-width (6 ug/m3), so the terms overlap smoothly. It is a difference to a typical value, not a z-score: on the training rows its interquartile range is 24 ug/m3 (quartiles -8 and +16) and 33 % of the rows fall in 'Normal' (|anomaly| <= 6), so 'Normal' is a narrow band.",
+      "source_url": null,
+      "source_status": "No external source; reference computed from the AT-012 table, training split only (leakage test in tests/ml/test_extra_features.py)."
+    },
+    {
+      "features": [
+        "station_type"
+      ],
+      "unit": "code",
+      "kind": "fixed",
+      "domain": [
+        0,
+        2
+      ],
+      "shoulders": [
+        1.0,
+        1.0
+      ],
+      "terms": [
+        {
+          "name": "Tráfico",
+          "core": [
+            0,
+            0
+          ],
+          "params": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "Fondo urbano",
+          "core": [
+            1,
+            1
+          ],
+          "params": [
+            0.0,
+            1.0,
+            1.0,
+            2.0
+          ]
+        },
+        {
+          "name": "Suburbana",
+          "core": [
+            2,
+            2
+          ],
+          "params": [
+            1.0,
+            2.0,
+            2.0,
+            2.0
+          ]
+        }
+      ],
+      "rationale": "Official station type from stations.geojson attribute station_type_code (Madrid geoportal layer 5: UT = Urbana trafico, UF = Urbana fondo, S = Suburbana), coded 0 / 1 / 2 only to feed the partition; the code has no order. Nothing is inferred: a station without a code raises. Whole-number input, so crisp.",
+      "source_url": "https://sigma.madrid.es/hosted/rest/services/GEOPORTAL/ZONAS_DE_CALIDAD_DEL_AIRE_Y_ESTACIONES_DE_MEDICION/MapServer/5",
+      "source_status": "Official metadata of the Madrid air quality stations (geoportal layer already referenced by stations.geojson geometry_source); 24 stations: 9 UT, 12 UF, 3 S."
+    }
+  ]
+}

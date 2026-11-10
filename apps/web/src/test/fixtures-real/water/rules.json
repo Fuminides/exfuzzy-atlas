@@ -1,0 +1,1328 @@
+{
+ "schema_version": "0.3.0",
+ "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+ "synthetic": false,
+ "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+ "task_id": "uk_water_do",
+ "domain": "water",
+ "inference": {
+  "family": "tsk_zero_order",
+  "tnorm": "product",
+  "rule_mode": "additive",
+  "tolerance": 0,
+  "fallback": "train_target_mean",
+  "rule_weighting": null,
+  "allow_unknown": null,
+  "exfuzzy_version": "3.3.1"
+ },
+ "target_scheme": null,
+ "variables": [
+  {
+   "feature": "ammoniacal_nitrogen",
+   "unit": "mg/l",
+   "domain": [
+    0.03,
+    263
+   ],
+   "terms": [
+    {
+     "name": "<=L",
+     "membership_type": "trapezoidal",
+     "params": [
+      0.03,
+      0.03,
+      0.03,
+      0.0304
+     ]
+    },
+    {
+     "name": "Bajo>L",
+     "membership_type": "trapezoidal",
+     "params": [
+      0.0304,
+      0.0304,
+      0.039,
+      0.0525
+     ]
+    },
+    {
+     "name": "Medio>L",
+     "membership_type": "trapezoidal",
+     "params": [
+      0.039,
+      0.0525,
+      0.082,
+      0.17
+     ]
+    },
+    {
+     "name": "Alto>L",
+     "membership_type": "trapezoidal",
+     "params": [
+      0.082,
+      0.17,
+      263.0001,
+      263.0001
+     ]
+    }
+   ]
+  },
+  {
+   "feature": "orthophosphate_reactive",
+   "unit": "mg/l",
+   "domain": [
+    0.01,
+    5.17
+   ],
+   "terms": [
+    {
+     "name": "<=L",
+     "membership_type": "trapezoidal",
+     "params": [
+      0.01,
+      0.01,
+      0.01,
+      0.0101
+     ]
+    },
+    {
+     "name": "Bajo>L",
+     "membership_type": "trapezoidal",
+     "params": [
+      0.0101,
+      0.0101,
+      0.01748000000000001,
+      0.029
+     ]
+    },
+    {
+     "name": "Medio>L",
+     "membership_type": "trapezoidal",
+     "params": [
+      0.01748000000000001,
+      0.029,
+      0.055,
+      0.118
+     ]
+    },
+    {
+     "name": "Alto>L",
+     "membership_type": "trapezoidal",
+     "params": [
+      0.055,
+      0.118,
+      5.1701,
+      5.1701
+     ]
+    }
+   ]
+  },
+  {
+   "feature": "water_temperature",
+   "unit": "degC",
+   "domain": [
+    0,
+    22.5
+   ],
+   "terms": [
+    {
+     "name": "Low",
+     "membership_type": "trapezoidal",
+     "params": [
+      -0.0001,
+      -0.0001,
+      4.7,
+      7
+     ]
+    },
+    {
+     "name": "Medium",
+     "membership_type": "trapezoidal",
+     "params": [
+      4.7,
+      7,
+      10.1,
+      13.1
+     ]
+    },
+    {
+     "name": "High",
+     "membership_type": "trapezoidal",
+     "params": [
+      10.1,
+      13.1,
+      22.5001,
+      22.5001
+     ]
+    }
+   ]
+  },
+  {
+   "feature": "days_from_midwinter",
+   "unit": "days",
+   "domain": [
+    0,
+    183
+   ],
+   "terms": [
+    {
+     "name": "Invierno",
+     "membership_type": "trapezoidal",
+     "params": [
+      0,
+      0,
+      45,
+      60
+     ]
+    },
+    {
+     "name": "Primavera-otoño",
+     "membership_type": "trapezoidal",
+     "params": [
+      31,
+      46,
+      137,
+      152
+     ]
+    },
+    {
+     "name": "Verano",
+     "membership_type": "trapezoidal",
+     "params": [
+      123,
+      138,
+      183,
+      183
+     ]
+    }
+   ]
+  },
+  {
+   "feature": "ph",
+   "unit": "pH",
+   "domain": [
+    3.83,
+    9.51
+   ],
+   "terms": [
+    {
+     "name": "Low",
+     "membership_type": "trapezoidal",
+     "params": [
+      3.8299,
+      3.8299,
+      7.75,
+      7.94
+     ]
+    },
+    {
+     "name": "Medium",
+     "membership_type": "trapezoidal",
+     "params": [
+      7.75,
+      7.94,
+      8.09,
+      8.26
+     ]
+    },
+    {
+     "name": "High",
+     "membership_type": "trapezoidal",
+     "params": [
+      8.09,
+      8.26,
+      9.5101,
+      9.5101
+     ]
+    }
+   ]
+  },
+  {
+   "feature": "local_hour",
+   "unit": "hour",
+   "domain": [
+    5.416666666666667,
+    15.633333333333333
+   ],
+   "terms": [
+    {
+     "name": "Low",
+     "membership_type": "trapezoidal",
+     "params": [
+      5.416566666666667,
+      5.416566666666667,
+      8.983333333333333,
+      9.866666666666667
+     ]
+    },
+    {
+     "name": "Medium",
+     "membership_type": "trapezoidal",
+     "params": [
+      8.983333333333333,
+      9.866666666666667,
+      10.7,
+      11.766666666666667
+     ]
+    },
+    {
+     "name": "High",
+     "membership_type": "trapezoidal",
+     "params": [
+      10.7,
+      11.766666666666667,
+      15.633433333333333,
+      15.633433333333333
+     ]
+    }
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "rule_id": "R01",
+   "position": 0,
+   "antecedents": [
+    {
+     "feature": "days_from_midwinter",
+     "term": "Verano",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 1.1978,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF days_from_midwinter IS Verano THEN dissolved_oxygen(t) = 1.198 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.2799457305181039,
+    "activation_frequency_tau0.5": 0.2863139150343424
+   }
+  },
+  {
+   "rule_id": "R02",
+   "position": 1,
+   "antecedents": [
+    {
+     "feature": "local_hour",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 5.465,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF local_hour IS Low THEN dissolved_oxygen(t) = 5.465 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.29876693721411285,
+    "activation_frequency_tau0.5": 0.2967438310862376
+   }
+  },
+  {
+   "rule_id": "R03",
+   "position": 2,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "High",
+     "modifier": null
+    },
+    {
+     "feature": "ph",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 5.109400000000001,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS High AND ph IS Low THEN dissolved_oxygen(t) = 5.109 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.06981706364614162,
+    "activation_frequency_tau0.5": 0.06715848384634952
+   }
+  },
+  {
+   "rule_id": "R04",
+   "position": 3,
+   "antecedents": [
+    {
+     "feature": "orthophosphate_reactive",
+     "term": "Bajo>L",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 8.3098,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF orthophosphate_reactive IS Bajo>L THEN dissolved_oxygen(t) = 8.31 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.19755672503462512,
+    "activation_frequency_tau0.5": 0.20338336301195625
+   }
+  },
+  {
+   "rule_id": "R05",
+   "position": 4,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 17.911,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS Low THEN dissolved_oxygen(t) = 17.91 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.30402154557419825,
+    "activation_frequency_tau0.5": 0.3057746120580005
+   }
+  },
+  {
+   "rule_id": "R06",
+   "position": 5,
+   "antecedents": [
+    {
+     "feature": "days_from_midwinter",
+     "term": "Verano",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 18.6222,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF days_from_midwinter IS Verano THEN dissolved_oxygen(t) = 18.62 mg/l  [same antecedents as R01]",
+   "duplicate_of": "R01",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.2799457305181039,
+    "activation_frequency_tau0.5": 0.2863139150343424
+   }
+  },
+  {
+   "rule_id": "R07",
+   "position": 6,
+   "antecedents": [
+    {
+     "feature": "ph",
+     "term": "High",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 14.8884,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ph IS High THEN dissolved_oxygen(t) = 14.89 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.2938183668277797,
+    "activation_frequency_tau0.5": 0.2907657084711269
+   }
+  },
+  {
+   "rule_id": "R08",
+   "position": 7,
+   "antecedents": [
+    {
+     "feature": "ammoniacal_nitrogen",
+     "term": "Medio>L",
+     "modifier": null
+    },
+    {
+     "feature": "water_temperature",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 12.3992,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ammoniacal_nitrogen IS Medio>L AND water_temperature IS Low THEN dissolved_oxygen(t) = 12.4 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.045745672561091855,
+    "activation_frequency_tau0.5": 0.043881963876876116
+   }
+  },
+  {
+   "rule_id": "R09",
+   "position": 8,
+   "antecedents": [
+    {
+     "feature": "ph",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 5.109400000000001,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ph IS Low THEN dissolved_oxygen(t) = 5.109 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.2924125373214263,
+    "activation_frequency_tau0.5": 0.2882218265072501
+   }
+  },
+  {
+   "rule_id": "R10",
+   "position": 9,
+   "antecedents": [
+    {
+     "feature": "orthophosphate_reactive",
+     "term": "<=L",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 8.4876,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF orthophosphate_reactive IS <=L THEN dissolved_oxygen(t) = 8.488 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.35576189264818114,
+    "activation_frequency_tau0.5": 0.35576189264818114
+   }
+  },
+  {
+   "rule_id": "R11",
+   "position": 10,
+   "antecedents": [
+    {
+     "feature": "orthophosphate_reactive",
+     "term": "Bajo>L",
+     "modifier": null
+    },
+    {
+     "feature": "water_temperature",
+     "term": "Medium",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 7.4208,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF orthophosphate_reactive IS Bajo>L AND water_temperature IS Medium THEN dissolved_oxygen(t) = 7.421 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.07574358174176851,
+    "activation_frequency_tau0.5": 0.07046553039938946
+   }
+  },
+  {
+   "rule_id": "R12",
+   "position": 11,
+   "antecedents": [
+    {
+     "feature": "orthophosphate_reactive",
+     "term": "Bajo>L",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 13.466,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF orthophosphate_reactive IS Bajo>L THEN dissolved_oxygen(t) = 13.47 mg/l  [same antecedents as R04]",
+   "duplicate_of": "R04",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.19755672503462512,
+    "activation_frequency_tau0.5": 0.20338336301195625
+   }
+  },
+  {
+   "rule_id": "R13",
+   "position": 12,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "Low",
+     "modifier": null
+    },
+    {
+     "feature": "days_from_midwinter",
+     "term": "Invierno",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 10.0878,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS Low AND days_from_midwinter IS Invierno THEN dissolved_oxygen(t) = 10.09 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.19085271660786216,
+    "activation_frequency_tau0.5": 0.19753243449503943
+   }
+  },
+  {
+   "rule_id": "R14",
+   "position": 13,
+   "antecedents": [
+    {
+     "feature": "ammoniacal_nitrogen",
+     "term": "Bajo>L",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 15.421800000000001,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ammoniacal_nitrogen IS Bajo>L THEN dissolved_oxygen(t) = 15.42 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.10370464588220915,
+    "activation_frequency_tau0.5": 0.10239124904604427
+   }
+  },
+  {
+   "rule_id": "R15",
+   "position": 14,
+   "antecedents": [
+    {
+     "feature": "ammoniacal_nitrogen",
+     "term": "Medio>L",
+     "modifier": null
+    },
+    {
+     "feature": "local_hour",
+     "term": "High",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 14.355,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ammoniacal_nitrogen IS Medio>L AND local_hour IS High THEN dissolved_oxygen(t) = 14.36 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.050438551639840366,
+    "activation_frequency_tau0.5": 0.049096921902823706
+   }
+  },
+  {
+   "rule_id": "R16",
+   "position": 15,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "Medium",
+     "modifier": null
+    },
+    {
+     "feature": "days_from_midwinter",
+     "term": "Invierno",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 8.4876,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS Medium AND days_from_midwinter IS Invierno THEN dissolved_oxygen(t) = 8.488 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.12028213740157806,
+    "activation_frequency_tau0.5": 0.11918087000763164
+   }
+  },
+  {
+   "rule_id": "R17",
+   "position": 16,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "Medium",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 9.7322,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS Medium THEN dissolved_oxygen(t) = 9.732 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.39365504223212694,
+    "activation_frequency_tau0.5": 0.3936657339099466
+   }
+  },
+  {
+   "rule_id": "R18",
+   "position": 17,
+   "antecedents": [
+    {
+     "feature": "orthophosphate_reactive",
+     "term": "Alto>L",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 9.91,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF orthophosphate_reactive IS Alto>L THEN dissolved_oxygen(t) = 9.91 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.1808219565278833,
+    "activation_frequency_tau0.5": 0.17374713813279064
+   }
+  },
+  {
+   "rule_id": "R19",
+   "position": 18,
+   "antecedents": [
+    {
+     "feature": "ammoniacal_nitrogen",
+     "term": "Medio>L",
+     "modifier": null
+    },
+    {
+     "feature": "local_hour",
+     "term": "Medium",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 12.0436,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ammoniacal_nitrogen IS Medio>L AND local_hour IS Medium THEN dissolved_oxygen(t) = 12.04 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.05769346669107495,
+    "activation_frequency_tau0.5": 0.05405749173238362
+   }
+  },
+  {
+   "rule_id": "R20",
+   "position": 19,
+   "antecedents": [
+    {
+     "feature": "ph",
+     "term": "High",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 10.0878,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ph IS High THEN dissolved_oxygen(t) = 10.09 mg/l  [same antecedents as R07]",
+   "duplicate_of": "R07",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.2938183668277797,
+    "activation_frequency_tau0.5": 0.2907657084711269
+   }
+  },
+  {
+   "rule_id": "R21",
+   "position": 20,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 13.9994,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS Low THEN dissolved_oxygen(t) = 14 mg/l  [same antecedents as R05]",
+   "duplicate_of": "R05",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.30402154557419825,
+    "activation_frequency_tau0.5": 0.3057746120580005
+   }
+  },
+  {
+   "rule_id": "R22",
+   "position": 21,
+   "antecedents": [
+    {
+     "feature": "orthophosphate_reactive",
+     "term": "Bajo>L",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 18.0888,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF orthophosphate_reactive IS Bajo>L THEN dissolved_oxygen(t) = 18.09 mg/l  [same antecedents as R04]",
+   "duplicate_of": "R04",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.19755672503462512,
+    "activation_frequency_tau0.5": 0.20338336301195625
+   }
+  },
+  {
+   "rule_id": "R23",
+   "position": 22,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "High",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 10.6212,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS High THEN dissolved_oxygen(t) = 10.62 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.30232341219367453,
+    "activation_frequency_tau0.5": 0.30641058254896975
+   }
+  },
+  {
+   "rule_id": "R24",
+   "position": 23,
+   "antecedents": [
+    {
+     "feature": "orthophosphate_reactive",
+     "term": "Medio>L",
+     "modifier": null
+    },
+    {
+     "feature": "ph",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 8.132000000000001,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF orthophosphate_reactive IS Medio>L AND ph IS Low THEN dissolved_oxygen(t) = 8.132 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.0685120835455893,
+    "activation_frequency_tau0.5": 0.06296107860595268
+   }
+  },
+  {
+   "rule_id": "R25",
+   "position": 24,
+   "antecedents": [
+    {
+     "feature": "ammoniacal_nitrogen",
+     "term": "Bajo>L",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 10.4434,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ammoniacal_nitrogen IS Bajo>L THEN dissolved_oxygen(t) = 10.44 mg/l  [same antecedents as R14]",
+   "duplicate_of": "R14",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.10370464588220915,
+    "activation_frequency_tau0.5": 0.10239124904604427
+   }
+  },
+  {
+   "rule_id": "R26",
+   "position": 25,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 16.4886,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS Low THEN dissolved_oxygen(t) = 16.49 mg/l  [same antecedents as R05]",
+   "duplicate_of": "R05",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.30402154557419825,
+    "activation_frequency_tau0.5": 0.3057746120580005
+   }
+  },
+  {
+   "rule_id": "R27",
+   "position": 26,
+   "antecedents": [
+    {
+     "feature": "ammoniacal_nitrogen",
+     "term": "<=L",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 16.666400000000003,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ammoniacal_nitrogen IS <=L THEN dissolved_oxygen(t) = 16.67 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.6615365047061816,
+    "activation_frequency_tau0.5": 0.6615365047061816
+   }
+  },
+  {
+   "rule_id": "R28",
+   "position": 27,
+   "antecedents": [
+    {
+     "feature": "ammoniacal_nitrogen",
+     "term": "<=L",
+     "modifier": null
+    },
+    {
+     "feature": "water_temperature",
+     "term": "High",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 10.4434,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ammoniacal_nitrogen IS <=L AND water_temperature IS High THEN dissolved_oxygen(t) = 10.44 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.1882515051301619,
+    "activation_frequency_tau0.5": 0.1899007886034088
+   }
+  },
+  {
+   "rule_id": "R29",
+   "position": 28,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "Medium",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 13.466,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS Medium THEN dissolved_oxygen(t) = 13.47 mg/l  [same antecedents as R17]",
+   "duplicate_of": "R17",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.39365504223212694,
+    "activation_frequency_tau0.5": 0.3936657339099466
+   }
+  },
+  {
+   "rule_id": "R30",
+   "position": 29,
+   "antecedents": [
+    {
+     "feature": "ammoniacal_nitrogen",
+     "term": "<=L",
+     "modifier": null
+    },
+    {
+     "feature": "ph",
+     "term": "Medium",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 9.021,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ammoniacal_nitrogen IS <=L AND ph IS Medium THEN dissolved_oxygen(t) = 9.021 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.26092904459511684,
+    "activation_frequency_tau0.5": 0.2651996947341643
+   }
+  },
+  {
+   "rule_id": "R31",
+   "position": 30,
+   "antecedents": [
+    {
+     "feature": "orthophosphate_reactive",
+     "term": "<=L",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 17.1998,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF orthophosphate_reactive IS <=L THEN dissolved_oxygen(t) = 17.2 mg/l  [same antecedents as R10]",
+   "duplicate_of": "R10",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.35576189264818114,
+    "activation_frequency_tau0.5": 0.35576189264818114
+   }
+  },
+  {
+   "rule_id": "R32",
+   "position": 31,
+   "antecedents": [
+    {
+     "feature": "ammoniacal_nitrogen",
+     "term": "Alto>L",
+     "modifier": null
+    },
+    {
+     "feature": "ph",
+     "term": "Medium",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 13.8216,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ammoniacal_nitrogen IS Alto>L AND ph IS Medium THEN dissolved_oxygen(t) = 13.82 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.03551264680930396,
+    "activation_frequency_tau0.5": 0.031671330450267106
+   }
+  },
+  {
+   "rule_id": "R33",
+   "position": 32,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "High",
+     "modifier": null
+    },
+    {
+     "feature": "local_hour",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 5.109400000000001,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS High AND local_hour IS Low THEN dissolved_oxygen(t) = 5.109 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.08282655684776229,
+    "activation_frequency_tau0.5": 0.07962350546934623
+   }
+  },
+  {
+   "rule_id": "R34",
+   "position": 33,
+   "antecedents": [
+    {
+     "feature": "ph",
+     "term": "High",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 8.3098,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ph IS High THEN dissolved_oxygen(t) = 8.31 mg/l  [same antecedents as R07]",
+   "duplicate_of": "R07",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.2938183668277797,
+    "activation_frequency_tau0.5": 0.2907657084711269
+   }
+  },
+  {
+   "rule_id": "R35",
+   "position": 34,
+   "antecedents": [
+    {
+     "feature": "orthophosphate_reactive",
+     "term": "Bajo>L",
+     "modifier": null
+    },
+    {
+     "feature": "water_temperature",
+     "term": "High",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 5.109400000000001,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF orthophosphate_reactive IS Bajo>L AND water_temperature IS High THEN dissolved_oxygen(t) = 5.109 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.04671400524793424,
+    "activation_frequency_tau0.5": 0.045281098957008395
+   }
+  },
+  {
+   "rule_id": "R36",
+   "position": 35,
+   "antecedents": [
+    {
+     "feature": "days_from_midwinter",
+     "term": "Invierno",
+     "modifier": null
+    },
+    {
+     "feature": "local_hour",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 18.4444,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF days_from_midwinter IS Invierno AND local_hour IS Low THEN dissolved_oxygen(t) = 18.44 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 2,
+    "mean_activation": 0.09208356732247595,
+    "activation_frequency_tau0.5": 0.0903078097176291
+   }
+  },
+  {
+   "rule_id": "R37",
+   "position": 36,
+   "antecedents": [
+    {
+     "feature": "ph",
+     "term": "Medium",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 8.132000000000001,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF ph IS Medium THEN dissolved_oxygen(t) = 8.132 mg/l",
+   "duplicate_of": null,
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.4137690958507961,
+    "activation_frequency_tau0.5": 0.421012465021623
+   }
+  },
+  {
+   "rule_id": "R38",
+   "position": 37,
+   "antecedents": [
+    {
+     "feature": "water_temperature",
+     "term": "High",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 1.3756,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF water_temperature IS High THEN dissolved_oxygen(t) = 1.376 mg/l  [same antecedents as R23]",
+   "duplicate_of": "R23",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.30232341219367453,
+    "activation_frequency_tau0.5": 0.30641058254896975
+   }
+  },
+  {
+   "rule_id": "R39",
+   "position": 38,
+   "antecedents": [
+    {
+     "feature": "local_hour",
+     "term": "Low",
+     "modifier": null
+    }
+   ],
+   "consequent": {
+    "type": "crisp",
+    "value": 14.710600000000001,
+    "term": null,
+    "unit": "mg/l"
+   },
+   "text": "IF local_hour IS Low THEN dissolved_oxygen(t) = 14.71 mg/l  [same antecedents as R02]",
+   "duplicate_of": "R02",
+   "weight": null,
+   "metrics": {
+    "n_antecedents": 1,
+    "mean_activation": 0.29876693721411285,
+    "activation_frequency_tau0.5": 0.2967438310862376
+   }
+  }
+ ]
+}

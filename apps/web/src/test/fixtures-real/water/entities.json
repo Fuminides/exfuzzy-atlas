@@ -1,0 +1,256 @@
+{
+ "schema_version": "0.4.0",
+ "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+ "synthetic": false,
+ "type": "FeatureCollection",
+ "domain": "water",
+ "attribution": [
+  {
+   "text": "Contains public sector information licensed under the Open Government Licence v3.0. © Environment Agency copyright and/or database right 2025. All rights reserved.",
+   "license": "Open Government Licence v3.0",
+   "url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+  }
+ ],
+ "features": [
+  {
+   "type": "Feature",
+   "id": "NE-41000003",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -1.8494969,
+     55.6492166
+    ]
+   },
+   "properties": {
+    "entity_id": "NE-41000003",
+    "domain": "water",
+    "name": "FENHAM BURN AT FENHAM-LE-MOOR",
+    "geometry_support": "observed_point",
+    "geometry_source": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000003",
+    "timezone": "Europe/London",
+    "modelled": true,
+    "attributes": {
+     "alt_label": "FENHAM BURN AT FENHAM-LE-MOOR",
+     "status": "OPEN",
+     "point_type": "F6",
+     "point_type_label": "FRESHWATER - RIVERS",
+     "region": "NorthEast",
+     "area": "NORTH EAST - NORTHUMBERLAND DURHAM AND TEES",
+     "area_code": "X",
+     "sub_area": "NORTHUMBERLAND & TYNE",
+     "sub_area_code": "X-H",
+     "in_listing": true,
+     "coordinate_flag": null,
+     "bng_easting": 409570,
+     "bng_northing": 639530,
+     "coordinate_source": "EPSG:27700 as published (1 m); WGS84 by Helmert (<= 1.5 m from the API's GeoJSON)",
+     "n_observations": 257,
+     "n_samples": 54,
+     "first_sample_utc": "2015-02-03T10:28:00+00:00",
+     "last_sample_utc": "2025-12-03T08:15:00+00:00"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "NE-41000032",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -2.06994,
+     55.766634
+    ]
+   },
+   "properties": {
+    "entity_id": "NE-41000032",
+    "domain": "water",
+    "name": "WHITEADDER WATER (B6461 ROAD BRIDGE)",
+    "geometry_support": "observed_point",
+    "geometry_source": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000032",
+    "timezone": "Europe/London",
+    "modelled": true,
+    "attributes": {
+     "alt_label": "WHITEADDER WATER (B6461 ROAD BRIDGE)",
+     "status": "OPEN",
+     "point_type": "F6",
+     "point_type_label": "FRESHWATER - RIVERS",
+     "region": "NorthEast",
+     "area": "NORTH EAST - NORTHUMBERLAND DURHAM AND TEES",
+     "area_code": "X",
+     "sub_area": "NORTHUMBERLAND & TYNE",
+     "sub_area_code": "X-H",
+     "in_listing": true,
+     "coordinate_flag": null,
+     "bng_easting": 395710,
+     "bng_northing": 652590,
+     "coordinate_source": "EPSG:27700 as published (1 m); WGS84 by Helmert (<= 1.5 m from the API's GeoJSON)",
+     "n_observations": 747,
+     "n_samples": 153,
+     "first_sample_utc": "2015-01-06T10:10:00+00:00",
+     "last_sample_utc": "2025-12-02T08:56:00+00:00"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "NE-41000033",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -2.2418644,
+     55.6543621
+    ]
+   },
+   "properties": {
+    "entity_id": "NE-41000033",
+    "domain": "water",
+    "name": "TWEED U/S CONFLUENCE WITH R TILL",
+    "geometry_support": "observed_point",
+    "geometry_source": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000033",
+    "timezone": "Europe/London",
+    "modelled": true,
+    "attributes": {
+     "alt_label": "TWEED U/S CONFLUENCE WITH R TILL",
+     "status": "OPEN",
+     "point_type": "F6",
+     "point_type_label": "FRESHWATER - RIVERS",
+     "region": "NorthEast",
+     "area": "NORTH EAST - NORTHUMBERLAND DURHAM AND TEES",
+     "area_code": "X",
+     "sub_area": "NORTHUMBERLAND & TYNE",
+     "sub_area_code": "X-H",
+     "in_listing": true,
+     "coordinate_flag": null,
+     "bng_easting": 384879,
+     "bng_northing": 640119,
+     "coordinate_source": "EPSG:27700 as published (1 m); WGS84 by Helmert (<= 1.5 m from the API's GeoJSON)",
+     "n_observations": 577,
+     "n_samples": 119,
+     "first_sample_utc": "2017-08-07T07:42:00+00:00",
+     "last_sample_utc": "2025-12-05T08:11:00+00:00"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "NE-41000035",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -2.0033825,
+     55.5706427
+    ]
+   },
+   "properties": {
+    "entity_id": "NE-41000035",
+    "domain": "water",
+    "name": "TILL AT DODDINGTON BRIDGE",
+    "geometry_support": "observed_point",
+    "geometry_source": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000035",
+    "timezone": "Europe/London",
+    "modelled": true,
+    "attributes": {
+     "alt_label": "TILL AT DODDINGTON BRIDGE",
+     "status": "OPEN",
+     "point_type": "F6",
+     "point_type_label": "FRESHWATER - RIVERS",
+     "region": "NorthEast",
+     "area": "NORTH EAST - NORTHUMBERLAND DURHAM AND TEES",
+     "area_code": "X",
+     "sub_area": "NORTHUMBERLAND & TYNE",
+     "sub_area_code": "X-H",
+     "in_listing": true,
+     "coordinate_flag": null,
+     "bng_easting": 399885,
+     "bng_northing": 630775,
+     "coordinate_source": "EPSG:27700 as published (1 m); WGS84 by Helmert (<= 1.5 m from the API's GeoJSON)",
+     "n_observations": 1816,
+     "n_samples": 511,
+     "first_sample_utc": "2015-01-07T09:33:00+00:00",
+     "last_sample_utc": "2025-12-22T08:46:00+00:00"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "NE-41000037",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -2.0054205,
+     55.5173954
+    ]
+   },
+   "properties": {
+    "entity_id": "NE-41000037",
+    "domain": "water",
+    "name": "WOOLER WATER AT COLDGATE MILL",
+    "geometry_support": "observed_point",
+    "geometry_source": "https://environment.data.gov.uk/water-quality/sampling-point/NE-41000037",
+    "timezone": "Europe/London",
+    "modelled": true,
+    "attributes": {
+     "alt_label": "WOOLER WATER AT COLDGATE MILL",
+     "status": "OPEN",
+     "point_type": "F6",
+     "point_type_label": "FRESHWATER - RIVERS",
+     "region": "NorthEast",
+     "area": "NORTH EAST - NORTHUMBERLAND DURHAM AND TEES",
+     "area_code": "X",
+     "sub_area": "NORTHUMBERLAND & TYNE",
+     "sub_area_code": "X-H",
+     "in_listing": true,
+     "coordinate_flag": null,
+     "bng_easting": 399756,
+     "bng_northing": 624849,
+     "coordinate_source": "EPSG:27700 as published (1 m); WGS84 by Helmert (<= 1.5 m from the API's GeoJSON)",
+     "n_observations": 668,
+     "n_samples": 138,
+     "first_sample_utc": "2015-01-08T10:24:00+00:00",
+     "last_sample_utc": "2025-12-08T08:18:00+00:00"
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "NE-42500191",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -1.9433568,
+     55.184312
+    ]
+   },
+   "properties": {
+    "entity_id": "NE-42500191",
+    "domain": "water",
+    "name": "DELF BURN U/S HART BURN",
+    "geometry_support": "observed_point",
+    "geometry_source": "https://environment.data.gov.uk/water-quality/sampling-point/NE-42500191",
+    "timezone": "Europe/London",
+    "modelled": true,
+    "attributes": {
+     "alt_label": "DELF BURN U/S HART BURN",
+     "status": "OPEN",
+     "point_type": "F6",
+     "point_type_label": "FRESHWATER - RIVERS",
+     "region": "NorthEast",
+     "area": "NORTH EAST - NORTHUMBERLAND DURHAM AND TEES",
+     "area_code": "X",
+     "sub_area": "NORTHUMBERLAND & TYNE",
+     "sub_area_code": "X-H",
+     "in_listing": true,
+     "coordinate_flag": null,
+     "bng_easting": 403705,
+     "bng_northing": 587782,
+     "coordinate_source": "EPSG:27700 as published (1 m); WGS84 by Helmert (<= 1.5 m from the API's GeoJSON)",
+     "n_observations": 100,
+     "n_samples": 20,
+     "first_sample_utc": "2015-03-13T13:19:00+00:00",
+     "last_sample_utc": "2025-03-03T11:23:00+00:00"
+    }
+   }
+  }
+ ]
+}

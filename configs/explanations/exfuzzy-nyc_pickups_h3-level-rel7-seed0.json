@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.6.2",
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-nyc_pickups_h3-level-rel7-seed0",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.319",
+    "model": "claude-opus-5-5"
+  },
+  "generated_at_utc": "2026-11-09T11:48:31Z",
+  "input_sha256": "14ec65c04faf1d32029b75ad0389c14780058a36a3c03a1a072b61a18d840014",
+  "reviewed": false,
+  "es": {
+    "headline": "Las 7 reglas, de una sola condición, quedan por debajo de repetir la última categoría en F1 macro y solo la igualan en acierto",
+    "summary": [
+      "Las 7 reglas, que predicen a +3 h, tienen una sola condición cada una. Día de la semana (local) aparece en 3 reglas; Nivel medio, 24 h previas (razón), en 2; Nivel hace 2 h (percentil) y Hora local (Nueva York), en 1 cada una. Nivel hace 1 h (percentil), Nivel hace 24 h (percentil) y Nivel hace 168 h (percentil) no aparecen en ninguna.",
+      "Decide la regla con mayor grado de cumplimiento por peso. R06 (alta si el nivel hace 2 h es normal) decide el 29 % y acierta el 32 %, con alta observada en el 28 %. R03 (normal si el nivel medio de 24 h es como lo habitual) decide el 27 % y acierta el 51 %, con normal observada en el 38 %.",
+      "El modelo obtiene un F1 macro de 0,33 y un acierto del 37 %. En F1 macro es peor que Repetir la última categoría (0,35), la regresión logística (0,39) y el Random Forest (0,36). En acierto está a la par de Repetir la última categoría (38 %) y el Random Forest (37 %), y es peor que la regresión logística (44 %). Esa paridad significa que, en acierto, las reglas no van más allá de esa referencia trivial."
+    ],
+    "points": [
+      "R07 predice muy alta en Laborable. Decide el 18 % y acierta el 32 %, con muy alta observada en el 21 %.",
+      "Solo R01 predice baja, que se predice en el 4,6 % de los casos aunque se observa en el 13 %.",
+      "Alta se predice en el 41 % de los casos y se observa en el 28 %. La predicen R06, R04 y R05.",
+      "R02 predice normal en Domingo y acierta el 28 %, menos que el 38 % en que se observa normal.",
+      "En el 15 % de los casos una regla se cumple, pero no se publica predicción porque falta el nivel de referencia."
+    ]
+  },
+  "en": {
+    "headline": "The 7 one-condition rules score below repeating the last category on macro-F1 and only match it on accuracy",
+    "summary": [
+      "The 7 rules predict the relative pickup level at +3 h, and each has a single condition. Weekday (local) appears in 3 rules, Mean level, previous 24 h (ratio) in 2, and Level 2 h ago (percentile) and Local hour (New York) in 1 each. Level 1 h ago (percentile), Level 24 h ago (percentile) and Level 168 h ago (percentile) appear in no rule.",
+      "The rule with the highest degree to which it holds times its weight decides. R06 (high when the level 2 h ago is normal) decides 29% and is right 32% of the time, while high is observed 28% of the time. R03 (normal when the 24 h mean level is as usual) decides 27% and is right 51%, with normal observed 38%.",
+      "The model reaches a macro-F1 of 0.33 and 37% accuracy. On macro-F1 it is worse than Repeat the last category (0.35), logistic regression (0.39) and the random forest (0.36). On accuracy it is on a par with Repeat the last category (38%) and the random forest (37%), and worse than logistic regression (44%). That parity means that, on accuracy, the rules go no further than that trivial baseline."
+    ],
+    "points": [
+      "R07 predicts very high on a Weekday. It decides 18% and is right 32% of the time, while very high is observed 21%.",
+      "Only R01 predicts low, which is predicted in 4.6% of cases although it is observed in 13%.",
+      "High is predicted in 41% of cases but observed in 28%. R06, R04 and R05 predict it.",
+      "R02 predicts normal on Sunday and is right 28% of the time, below the 38% of cases in which normal is observed.",
+      "In 15% of cases a rule holds but no prediction is published, as the reference level is missing."
+    ]
+  }
+}

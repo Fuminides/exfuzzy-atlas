@@ -1,0 +1,27 @@
+{
+  "experiment_id": "mixture-serve",
+  "kind": "class",
+  "task_config": "configs/ml/de_no2_h3_eaqi_experiment.json",
+  "served_experiment": "de_no2_h3/experiments/eaqi-justified",
+  "served_run": "de_no2_h3/eaqi-justified-seed0",
+  "served_seed": 0,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "mixture_C": 1.0,
+  "reference_baselines": [
+    "persistence",
+    "logistic_regression_subsample",
+    "random_forest_subsample"
+  ],
+  "serve": {
+    "arms": [
+      "mix_search_nonneg",
+      "mix_search_free"
+    ],
+    "tie": 0.005,
+    "run_prefix": "mixture"
+  }
+}

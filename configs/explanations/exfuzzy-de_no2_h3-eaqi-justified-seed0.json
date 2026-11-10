@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.6.2",
+  "data_version": "de-no2-h3-v1",
+  "synthetic": false,
+  "model_id": "exfuzzy-de_no2_h3-eaqi-justified-seed0",
+  "template_version": "5",
+  "generated_by": {
+    "tool": "Claude Code",
+    "tool_version": "2.1.319",
+    "model": "claude-opus-5-5"
+  },
+  "generated_at_utc": "2026-11-09T11:41:27Z",
+  "input_sha256": "dda5b36a6ccefb305232abbe89a4c94562a35ff720d61a74d78a5d2eb5a7e410",
+  "reviewed": false,
+  "es": {
+    "headline": "El modelo rinde a la par de repetir la última categoría: sus dos reglas principales, que deciden el 84 %, hacen justo eso.",
+    "summary": [
+      "El modelo tiene 7 reglas con 1,4 condiciones de media. «NO₂ hace 1 h (último dato)» aparece en 5 reglas, que deciden el 98 % de las predicciones. «Humedad relativa hace 1 h (%)» y «NO₂ hace 25 h (misma franja, un día antes)» aparecen en 2 reglas cada una, y «Hora de validez (local)» en 1. Las demás entradas no aparecen en ninguna.",
+      "Cada predicción la decide la regla con mayor grado de cumplimiento por su peso. R01 (si «NO₂ hace 1 h (último dato)» es Buena, entonces Buena) y R02 (si es Aceptable, entonces Aceptable) deciden juntas el 84 %. R01 decide el 47 % y acierta el 78 %, con Buena observada en el 46 %. R02 decide el 37 % y acierta el 57 %, con Aceptable observada en el 35 %.",
+      "En 2025 el modelo logra un F1 macro de 0,53 y un acierto del 66 %, a la par de «Repetir la última categoría» en ambas medidas. En esencia, las reglas han aprendido a repetir la categoría más reciente. Queda a la par de la regresión logística en acierto (67 %) pero por debajo en F1 macro (0,54), y por debajo del Random Forest en ambas (0,59 y 70 %)."
+    ],
+    "points": [
+      "Si «NO₂ hace 25 h» fue Moderada, R07 predice Mala o peor. Decide el 1,4 % y acierta el 16 % (observada en el 0,8 %).",
+      "Mala o peor se observa en el 0,8 % de los casos y se predice en el 1,7 %. Solo la predicen R06 y R07.",
+      "Moderada se predice en el 14 % y se observa en el 18 %. Solo la deciden R05, R03 y R04.",
+      "En el 0,5 % de los casos no se cumple ninguna regla y el modelo no da predicción."
+    ]
+  },
+  "en": {
+    "headline": "The model performs on a par with repeating the last category: its two leading rules, which decide 84% of predictions, do exactly that.",
+    "summary": [
+      "The model has 7 rules with 1.4 conditions on average. “NO₂ 1 h ago (latest value)” appears in 5 rules, which decide 98% of the predictions. “Relative humidity 1 h ago (%)” and “NO₂ 25 h ago (same slot, one day earlier)” appear in 2 rules each, and “Hour of the valid time (local)” in 1. The other inputs appear in none.",
+      "Each prediction is decided by the rule with the highest degree × weight. R01 (if “NO₂ 1 h ago (latest value)” is Good, then Good) and R02 (if it is Fair, then Fair) together decide 84%. R01 decides 47% and is right 78% of the time, while Good is observed 46% of the time. R02 decides 37% and is right 57%, with Fair observed 35%.",
+      "Over 2025 the model reaches a macro-F1 of 0.53 and 66% accuracy, on a par with “Repeat the last category” on both. The rules have essentially learned to repeat the most recent category. It is on a par with logistic regression in accuracy (67%) but worse in macro-F1 (0.54), and worse than the random forest on both (0.59 and 70%)."
+    ],
+    "points": [
+      "If “NO₂ 25 h ago” was Moderate, R07 predicts Poor or worse. It decides 1.4% and is right 16% (observed in 0.8%).",
+      "Poor or worse is observed in 0.8% of cases and predicted in 1.7%, and only R06 and R07 predict it.",
+      "Moderate is predicted in 14% of cases and observed in 18%. R05, R03 and R04 decide it, adding humidity or hour to the latest NO₂.",
+      "In 0.5% of cases no rule holds and the model gives no prediction."
+    ]
+  }
+}

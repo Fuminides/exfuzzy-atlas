@@ -1,0 +1,314 @@
+{
+  "$defs": {
+    "DistributionRow": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "title": "Key",
+          "type": "string"
+        },
+        "n": {
+          "description": "Observed values in the group.",
+          "minimum": 0,
+          "title": "N",
+          "type": "integer"
+        },
+        "quantiles": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "number"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Numeric variable: 'p10', 'p25', 'p50', 'p75', 'p90' and 'mean'.",
+          "title": "Quantiles"
+        },
+        "shares": {
+          "anyOf": [
+            {
+              "items": {
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Classified variable: share of n in each class of the response's `classes`, same order.",
+          "title": "Shares"
+        }
+      },
+      "required": [
+        "key",
+        "n"
+      ],
+      "title": "DistributionRow",
+      "type": "object"
+    },
+    "Domain": {
+      "enum": [
+        "air",
+        "water",
+        "mobility"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "SummaryGroup": {
+      "enum": [
+        "all",
+        "year",
+        "month",
+        "hour",
+        "weekday",
+        "entity"
+      ],
+      "title": "SummaryGroup",
+      "type": "string"
+    },
+    "TargetClass": {
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "anyOf": [
+            {
+              "pattern": "^#[0-9a-fA-F]{6}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Official colour, if any.",
+          "title": "Color"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "description_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English version of `description`; the UI shows it when the interface is in English, else falls back to `description`.",
+          "title": "Description En"
+        },
+        "display_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.5.1: name shown in the UI language when the official `label` is in another one, e.g. EAQI 'Good' -> 'Buena'. `label` stays the key and the official name.",
+          "title": "Display Label"
+        },
+        "display_label_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "v0.6: English display name of the class, e.g. ICA 'Buena' -> 'Good' (EAQI: its own official name); the UI shows it when the interface is in English, else falls back to `display_label` (then `label`).",
+          "title": "Display Label En"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "lower": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Lower bound in the scheme unit; null = unbounded.",
+          "title": "Lower"
+        },
+        "merged_from": {
+          "default": [],
+          "description": "v0.4: labels of the official classes this one groups (e.g. ICA 'Desfavorable o peor').",
+          "items": {
+            "type": "string"
+          },
+          "title": "Merged From",
+          "type": "array"
+        },
+        "upper": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Upper bound in the scheme unit; null = unbounded.",
+          "title": "Upper"
+        }
+      },
+      "required": [
+        "label",
+        "lower",
+        "upper"
+      ],
+      "title": "TargetClass",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.7.0/SummaryResponse.schema.json",
+  "additionalProperties": false,
+  "description": "Distribution of the observed variable of a task over its whole history (precomputed at publish time).",
+  "properties": {
+    "classes": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/TargetClass"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "When set, values are binned into these classes (the task's target scheme); otherwise rows carry quantiles.",
+      "title": "Classes"
+    },
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "domain": {
+      "$ref": "#/$defs/Domain"
+    },
+    "groups": {
+      "additionalProperties": {
+        "items": {
+          "$ref": "#/$defs/DistributionRow"
+        },
+        "type": "array"
+      },
+      "propertyNames": {
+        "$ref": "#/$defs/SummaryGroup"
+      },
+      "title": "Groups",
+      "type": "object"
+    },
+    "label": {
+      "description": "Display name, e.g. 'NO\u2082 horario observado'.",
+      "title": "Label",
+      "type": "string"
+    },
+    "label_en": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "v0.6: English display name, e.g. 'Observed hourly NO\u2082'; the UI shows it when the interface is in English, else falls back to `label`.",
+      "title": "Label En"
+    },
+    "notes": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Notes",
+      "type": "array"
+    },
+    "period_from_utc": {
+      "format": "date-time",
+      "title": "Period From Utc",
+      "type": "string"
+    },
+    "period_to_utc": {
+      "format": "date-time",
+      "title": "Period To Utc",
+      "type": "string"
+    },
+    "schema_version": {
+      "default": "0.7.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    },
+    "timezone": {
+      "description": "IANA zone of the month, hour and weekday groups.",
+      "title": "Timezone",
+      "type": "string"
+    },
+    "unit": {
+      "title": "Unit",
+      "type": "string"
+    },
+    "variable": {
+      "description": "Observed variable summarised, e.g. 'no2'; not a model output.",
+      "title": "Variable",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "task_id",
+    "domain",
+    "variable",
+    "label",
+    "unit",
+    "timezone",
+    "period_from_utc",
+    "period_to_utc",
+    "groups"
+  ],
+  "title": "SummaryResponse",
+  "type": "object"
+}

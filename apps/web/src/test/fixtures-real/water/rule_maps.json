@@ -1,0 +1,420 @@
+[
+ {
+  "query": {
+   "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+   "rule_id": "R01",
+   "metric": "mean_activation",
+   "from": "2025-12-01T00:00:00Z",
+   "to": "2026-01-01T00:00:00Z"
+  },
+  "response": {
+   "schema_version": "0.4.0",
+   "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+   "synthetic": false,
+   "type": "FeatureCollection",
+   "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+   "rule_id": "R01",
+   "metric": "mean_activation",
+   "tau": null,
+   "time_from_utc": "2025-12-01T00:00:00Z",
+   "time_to_utc": "2026-01-01T00:00:00Z",
+   "features": [
+    {
+     "type": "Feature",
+     "id": "NE-41000003",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -1.8494969,
+       55.6492166
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-41000003",
+      "rule_id": "R01",
+      "metric": "mean_activation",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "NE-41000032",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -2.06994,
+       55.766634
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-41000032",
+      "rule_id": "R01",
+      "metric": "mean_activation",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "NE-41000033",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -2.2418644,
+       55.6543621
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-41000033",
+      "rule_id": "R01",
+      "metric": "mean_activation",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "NE-41000035",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -2.0033825,
+       55.5706427
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-41000035",
+      "rule_id": "R01",
+      "metric": "mean_activation",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "NE-41000037",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -2.0054205,
+       55.5173954
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-41000037",
+      "rule_id": "R01",
+      "metric": "mean_activation",
+      "value": 0,
+      "n_valid": 1,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "NE-42500191",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -1.9433568,
+       55.184312
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-42500191",
+      "rule_id": "R01",
+      "metric": "mean_activation",
+      "value": null,
+      "n_valid": 0,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": "no_observation",
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    }
+   ]
+  }
+ },
+ {
+  "query": {
+   "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+   "rule_id": "R02",
+   "metric": "mean_activation",
+   "from": "2025-12-01T00:00:00Z",
+   "to": "2026-01-01T00:00:00Z"
+  },
+  "response": {
+   "schema_version": "0.4.0",
+   "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+   "synthetic": false,
+   "type": "FeatureCollection",
+   "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+   "rule_id": "R02",
+   "metric": "mean_activation",
+   "tau": null,
+   "time_from_utc": "2025-12-01T00:00:00Z",
+   "time_to_utc": "2026-01-01T00:00:00Z",
+   "features": [
+    {
+     "type": "Feature",
+     "id": "NE-41000003",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -1.8494969,
+       55.6492166
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-41000003",
+      "rule_id": "R02",
+      "metric": "mean_activation",
+      "value": 1,
+      "n_valid": 1,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "NE-41000032",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -2.06994,
+       55.766634
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-41000032",
+      "rule_id": "R02",
+      "metric": "mean_activation",
+      "value": 1,
+      "n_valid": 1,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "NE-41000033",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -2.2418644,
+       55.6543621
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-41000033",
+      "rule_id": "R02",
+      "metric": "mean_activation",
+      "value": 1,
+      "n_valid": 1,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "NE-41000035",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -2.0033825,
+       55.5706427
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-41000035",
+      "rule_id": "R02",
+      "metric": "mean_activation",
+      "value": 1,
+      "n_valid": 1,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "NE-41000037",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -2.0054205,
+       55.5173954
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-41000037",
+      "rule_id": "R02",
+      "metric": "mean_activation",
+      "value": 1,
+      "n_valid": 1,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": null,
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    },
+    {
+     "type": "Feature",
+     "id": "NE-42500191",
+     "geometry": {
+      "type": "Point",
+      "coordinates": [
+       -1.9433568,
+       55.184312
+      ]
+     },
+     "properties": {
+      "entity_id": "NE-42500191",
+      "rule_id": "R02",
+      "metric": "mean_activation",
+      "value": null,
+      "n_valid": 0,
+      "time_from_utc": "2025-12-01T00:00:00Z",
+      "time_to_utc": "2026-01-01T00:00:00Z",
+      "issued_at_utc": null,
+      "valid_at_utc": null,
+      "tau": null,
+      "model_id": "exfuzzy-uk_water_do-water-do-chrono-temp-seed0",
+      "data_version": "uk-wq-ne-x-h-rivers-2015-2025-20261030",
+      "geometry_support": "observed_point",
+      "missing_reason": "no_observation",
+      "quality": {
+       "status": "valid",
+       "warnings": []
+      }
+     }
+    }
+   ]
+  }
+ }
+]

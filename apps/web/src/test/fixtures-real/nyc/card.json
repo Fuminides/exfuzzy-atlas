@@ -1,0 +1,675 @@
+{
+ "schema_version": "0.4.0",
+ "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+ "synthetic": false,
+ "manifest": {
+  "schema_version": "0.3.0",
+  "run_id": "level-rel7-seed0",
+  "model_id": "exfuzzy-nyc_pickups_h1-level-rel7-seed0",
+  "task_id": "nyc_pickups_h1",
+  "domain": "mobility",
+  "created_at_utc": "2026-10-30T23:24:18.280531Z",
+  "git_commit": "6d382f7392a2c045690b96c634a2228c0a3dfbd8",
+  "git_dirty": true,
+  "exfuzzy_version": "3.3.1",
+  "python_version": "3.12.3",
+  "seed": 0,
+  "split": {
+   "train_from_utc": "2024-04-01T04:00:00Z",
+   "train_to_utc": "2025-01-01T05:00:00Z",
+   "validation_from_utc": "2025-01-08T05:00:00Z",
+   "validation_to_utc": "2025-02-01T05:00:00Z",
+   "test_from_utc": "2025-02-08T05:00:00Z",
+   "test_to_utc": "2025-04-01T04:00:00Z",
+   "embargo_hours": 168
+  },
+  "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+  "data_checksums": {
+   "nyc_pickups_h1_level_report.json": "73652de93422b5012af5b468ead77390b70be3ba633d43db512d57c6cc6d0dfe",
+   "nyc_pickups_h1_level_reference.parquet": "8e4db2daa1f07348dc9d65adb38f651c92aa42e6f0dad1f00d7bf9c2dcc43d6c",
+   "taxi_zones_simplified.geojson": "25282596024fbd0dafe52e5130c4233e79efef0d68943d000a909c121fe540e3"
+  },
+  "target": "pickups",
+  "horizon_hours": 1,
+  "features": [
+   "rel_lag1",
+   "rel_lag2",
+   "rel_lag24",
+   "rel_lag168",
+   "local_hour",
+   "local_dow",
+   "rel_mean24h"
+  ],
+  "hyperparameters": {
+   "nRules": 30,
+   "nAnts": 2,
+   "n_linguistic_variables": 3,
+   "rule_weighting": "dominance_score",
+   "allow_unknown": true,
+   "tolerance": 0,
+   "n_gen": 150,
+   "pop_size": 60,
+   "patience": null,
+   "backend": "pymoo",
+   "task_type": "classification",
+   "target_label": "nivel",
+   "class_labels": [
+    "baja",
+    "normal",
+    "alta",
+    "muy alta"
+   ],
+   "persistence_feature": "rel_lag1",
+   "timezone": "America/New_York",
+   "n_train_rows": 30000,
+   "fit_info": {
+    "train_fitness_macro_f1_penalised": 0.3875028477755904,
+    "n_generations_run": 150,
+    "stopped_early": false,
+    "backend": "pymoo",
+    "n_train_rows": 30000,
+    "train_class_counts": [
+     8082,
+     11279,
+     7191,
+     3448
+    ],
+    "fixed_partitions": {
+     "rel_lag1": [
+      "baja",
+      "normal",
+      "alta",
+      "muy alta"
+     ],
+     "rel_lag2": [
+      "baja",
+      "normal",
+      "alta",
+      "muy alta"
+     ],
+     "rel_lag24": [
+      "baja",
+      "normal",
+      "alta",
+      "muy alta"
+     ],
+     "rel_lag168": [
+      "baja",
+      "normal",
+      "alta",
+      "muy alta"
+     ],
+     "local_hour": [
+      "Madrugada",
+      "Mañana",
+      "Mediodía",
+      "Tarde-noche"
+     ],
+     "local_dow": [
+      "Laborable",
+      "Sábado",
+      "Domingo"
+     ]
+    }
+   },
+   "sampling_power": 0.5,
+   "experiment": {
+    "experiment_id": "level-rel7",
+    "table": "processed/mobility/features/nyc_pickups_h1_level",
+    "complete_column": "complete",
+    "subsample": {
+     "n_rows": 30000,
+     "seed": 20260101,
+     "partition_rows": null
+    },
+    "selection": {
+     "candidates": [
+      {
+       "nRules": 30,
+       "nAnts": 2,
+       "n_linguistic_variables": 3,
+       "rule_weighting": "dominance_score",
+       "sampling_power": 0.5
+      },
+      {
+       "nRules": 30,
+       "nAnts": 3,
+       "n_linguistic_variables": 3,
+       "rule_weighting": "dominance_score",
+       "sampling_power": 0.5
+      },
+      {
+       "nRules": 30,
+       "nAnts": 4,
+       "n_linguistic_variables": 3,
+       "rule_weighting": "dominance_score",
+       "sampling_power": 0.5
+      },
+      {
+       "nRules": 60,
+       "nAnts": 2,
+       "n_linguistic_variables": 3,
+       "rule_weighting": "dominance_score",
+       "sampling_power": 0.5
+      },
+      {
+       "nRules": 60,
+       "nAnts": 3,
+       "n_linguistic_variables": 3,
+       "rule_weighting": "dominance_score",
+       "sampling_power": 0.5
+      },
+      {
+       "nRules": 60,
+       "nAnts": 4,
+       "n_linguistic_variables": 3,
+       "rule_weighting": "dominance_score",
+       "sampling_power": 0.5
+      }
+     ],
+     "n_gen": 150,
+     "pop_size": 60,
+     "patience": null,
+     "seed": 0
+    },
+    "final": {
+     "n_gen": 150,
+     "pop_size": 60,
+     "patience": null,
+     "seeds": [
+      0,
+      1,
+      2
+     ]
+    },
+    "extremes": {
+     "train_quantiles": [
+      0.99
+     ],
+     "absolute": []
+    },
+    "covid_window_utc": null,
+    "train_exclude_windows_utc": [],
+    "scheme": "configs/mobility/nyc_level_scheme.json",
+    "merge_min_train_rows": 500,
+    "partitions": {
+     "file": "configs/ml/nyc_partitions.json",
+     "use_features": null,
+     "fixed": []
+    },
+    "extra_tables": [],
+    "require_columns": [
+     "rel_lag1",
+     "rel_lag2",
+     "rel_lag24",
+     "rel_lag168",
+     "local_hour",
+     "local_dow",
+     "rel_mean24h",
+     "pickups_lag1",
+     "pickups_lag2",
+     "pickups_lag24",
+     "pickups_lag168",
+     "pickups_mean24h"
+    ],
+    "label_column": "target_level",
+    "status_column": "level_status",
+    "group_column": "volume_group",
+    "baseline_features": [
+     "rel_lag1",
+     "rel_lag2",
+     "rel_lag24",
+     "rel_lag168",
+     "local_hour",
+     "local_dow",
+     "rel_mean24h",
+     "pickups_lag1",
+     "pickups_lag2",
+     "pickups_lag24",
+     "pickups_lag168",
+     "pickups_mean24h"
+    ]
+   },
+   "run_config": {
+    "task_id": "nyc_pickups_h1",
+    "domain": "mobility",
+    "target": "pickups",
+    "target_column": "target",
+    "unit": "trips",
+    "horizon_hours": 1,
+    "features": [
+     "rel_lag1",
+     "rel_lag2",
+     "rel_lag24",
+     "rel_lag168",
+     "local_hour",
+     "local_dow",
+     "rel_mean24h"
+    ],
+    "feature_units": {
+     "rel_lag1": "percentile",
+     "rel_lag2": "percentile",
+     "rel_lag24": "percentile",
+     "rel_lag168": "percentile",
+     "local_hour": "hour",
+     "local_dow": "weekday_index",
+     "rel_mean24h": "ratio"
+    },
+    "persistence_feature": "rel_lag1",
+    "split": {
+     "train_from_utc": "2024-04-01T04:00:00Z",
+     "train_to_utc": "2025-01-01T05:00:00Z",
+     "validation_from_utc": "2025-01-08T05:00:00Z",
+     "validation_to_utc": "2025-02-01T05:00:00Z",
+     "test_from_utc": "2025-02-08T05:00:00Z",
+     "test_to_utc": "2025-04-01T04:00:00Z",
+     "embargo_hours": 168
+    },
+    "seed": 0,
+    "data_version": "nyc-tlc-yellow-2024-04_2025-03-v1",
+    "data_checksums": {
+     "nyc_pickups_h1_level_report.json": "73652de93422b5012af5b468ead77390b70be3ba633d43db512d57c6cc6d0dfe",
+     "nyc_pickups_h1_level_reference.parquet": "8e4db2daa1f07348dc9d65adb38f651c92aa42e6f0dad1f00d7bf9c2dcc43d6c",
+     "taxi_zones_simplified.geojson": "25282596024fbd0dafe52e5130c4233e79efef0d68943d000a909c121fe540e3"
+    },
+    "synthetic": false,
+    "timezone": "America/New_York",
+    "fuzzy": {
+     "nRules": 20,
+     "nAnts": 3,
+     "n_linguistic_variables": 3,
+     "rule_mode": "additive",
+     "tolerance": 0,
+     "n_gen": 50,
+     "pop_size": 50,
+     "backend": "pymoo"
+    },
+    "ridge_alpha": 1,
+    "gbm_max_iter": 200,
+    "run_id": "level-rel7-seed0",
+    "model_id": null
+   }
+  },
+  "artifacts": {
+   "model": "model.pkl",
+   "metrics": "metrics.json",
+   "rules": "rules.json",
+   "predictions": "predictions.parquet",
+   "checksums": "SHA256SUMS"
+  },
+  "warnings": [
+   "fitted on a class-aware subsample of 30000 of the 596400 complete training rows (class counts [8082, 11279, 7191, 3448]); the dominance scores and rule weights therefore reflect that sampling, not the natural class frequencies",
+   "the level is relative to the zone's own April-December 2024 norm for that hour of the week; 'alta' in February-March 2025 mixes unusual demand with season, vendor-reporting and congestion-pricing effects (not separable); rows without a reference level carry no class"
+  ]
+ },
+ "target_scheme": {
+  "name": "Nivel de demanda de taxi amarillo respecto a lo habitual de la zona a esa hora de la semana",
+  "short_name": "Nivel relativo",
+  "kind": "percentile_reference",
+  "source_url": "https://github.com/Fuminides/exfuzzy-atlas/blob/main/docs/mobility/nyc_pickups_h1_level.md",
+  "unit": "percentil (0-100, rango medio) del target en su celda zona x hora de la semana del periodo de train",
+  "boundary": "lower_inclusive",
+  "classes": [
+   {
+    "label": "baja",
+    "lower": 0,
+    "upper": 25,
+    "color": "#DEEBF7",
+    "description": "Menos recogidas que en el 25 % inferior de las horas de train de esa zona y hora de la semana (percentil < 25). Solo es posible si esa celda no suele tener 0 recogidas.",
+    "merged_from": []
+   },
+   {
+    "label": "normal",
+    "lower": 25,
+    "upper": 75,
+    "color": "#9ECAE1",
+    "description": "Dentro del rango habitual de esa zona y hora de la semana (percentil de 25 a menos de 75).",
+    "merged_from": []
+   },
+   {
+    "label": "alta",
+    "lower": 75,
+    "upper": 95,
+    "color": "#4292C6",
+    "description": "Por encima de lo habitual de esa zona y hora de la semana (percentil de 75 a menos de 95).",
+    "merged_from": []
+   },
+   {
+    "label": "muy alta",
+    "lower": 95,
+    "upper": 100,
+    "color": "#08306B",
+    "description": "Entre el 5 % de horas de train con más recogidas de esa zona y hora de la semana (percentil >= 95).",
+    "merged_from": []
+   }
+  ]
+ },
+ "metrics": {
+  "schema_version": "0.3.0",
+  "model_id": "exfuzzy-nyc_pickups_h1-level-rel7-seed0",
+  "task_id": "nyc_pickups_h1",
+  "split": {
+   "train_from_utc": "2024-04-01T04:00:00Z",
+   "train_to_utc": "2025-01-01T05:00:00Z",
+   "validation_from_utc": "2025-01-08T05:00:00Z",
+   "validation_to_utc": "2025-02-01T05:00:00Z",
+   "test_from_utc": "2025-02-08T05:00:00Z",
+   "test_to_utc": "2025-04-01T04:00:00Z",
+   "embargo_hours": 168
+  },
+  "rows": [
+   {
+    "estimator": "persistence",
+    "metric": "macro_f1",
+    "value": 0.4247700173062219,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "persistence",
+    "metric": "balanced_accuracy",
+    "value": 0.4244450187526938,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "persistence",
+    "metric": "accuracy",
+    "value": 0.439413988657845,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "persistence_rel_lag24",
+    "metric": "macro_f1",
+    "value": 0.37890470718571434,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "persistence_rel_lag24",
+    "metric": "balanced_accuracy",
+    "value": 0.37860804323222563,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "persistence_rel_lag24",
+    "metric": "accuracy",
+    "value": 0.3982299364151916,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "persistence_rel_lag168",
+    "metric": "macro_f1",
+    "value": 0.3942754657170459,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "persistence_rel_lag168",
+    "metric": "balanced_accuracy",
+    "value": 0.3947536100578181,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "persistence_rel_lag168",
+    "metric": "accuracy",
+    "value": 0.4115655610929713,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "majority_class",
+    "metric": "macro_f1",
+    "value": 0.13836477987421383,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "majority_class",
+    "metric": "balanced_accuracy",
+    "value": 0.25,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "majority_class",
+    "metric": "accuracy",
+    "value": 0.3826086956521739,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "hist_gradient_boosting",
+    "metric": "macro_f1",
+    "value": 0.3721048048559008,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "hist_gradient_boosting",
+    "metric": "balanced_accuracy",
+    "value": 0.3712182525412124,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "hist_gradient_boosting",
+    "metric": "accuracy",
+    "value": 0.45937446296614537,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "hist_gradient_boosting_balanced",
+    "metric": "macro_f1",
+    "value": 0.3863035310869891,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "hist_gradient_boosting_balanced",
+    "metric": "balanced_accuracy",
+    "value": 0.4193370669648273,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "hist_gradient_boosting_balanced",
+    "metric": "accuracy",
+    "value": 0.38865784499054823,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "logistic_regression",
+    "metric": "macro_f1",
+    "value": 0.32836356997522415,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "logistic_regression",
+    "metric": "balanced_accuracy",
+    "value": 0.3498687093480659,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "logistic_regression",
+    "metric": "accuracy",
+    "value": 0.4462450592885375,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "logistic_regression_balanced",
+    "metric": "macro_f1",
+    "value": 0.3358092176348946,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "logistic_regression_balanced",
+    "metric": "balanced_accuracy",
+    "value": 0.41550773414677766,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "logistic_regression_balanced",
+    "metric": "accuracy",
+    "value": 0.3552070802543392,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "random_forest",
+    "metric": "macro_f1",
+    "value": 0.36507700211241373,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "random_forest",
+    "metric": "balanced_accuracy",
+    "value": 0.3678569646391993,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "random_forest",
+    "metric": "accuracy",
+    "value": 0.4628286647190239,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "random_forest_balanced",
+    "metric": "macro_f1",
+    "value": 0.4196239060213574,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "random_forest_balanced",
+    "metric": "balanced_accuracy",
+    "value": 0.44142554797251166,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "random_forest_balanced",
+    "metric": "accuracy",
+    "value": 0.42396459872830383,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "hist_gradient_boosting_subsample",
+    "metric": "macro_f1",
+    "value": 0.40927074051574464,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "hist_gradient_boosting_subsample",
+    "metric": "balanced_accuracy",
+    "value": 0.4043004898319097,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "hist_gradient_boosting_subsample",
+    "metric": "accuracy",
+    "value": 0.4349716446124764,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "logistic_regression_subsample",
+    "metric": "macro_f1",
+    "value": 0.44743930928724707,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "logistic_regression_subsample",
+    "metric": "balanced_accuracy",
+    "value": 0.4439113217383438,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "logistic_regression_subsample",
+    "metric": "accuracy",
+    "value": 0.47264993985220827,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "random_forest_subsample",
+    "metric": "macro_f1",
+    "value": 0.43385582919986043,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "random_forest_subsample",
+    "metric": "balanced_accuracy",
+    "value": 0.4217738019707115,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "random_forest_subsample",
+    "metric": "accuracy",
+    "value": 0.4687489259322908,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy_classifier",
+    "metric": "macro_f1",
+    "value": 0.41229515079191525,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy_classifier",
+    "metric": "balanced_accuracy",
+    "value": 0.4300364195118359,
+    "n": 116380,
+    "slice": "all"
+   },
+   {
+    "estimator": "exfuzzy_classifier",
+    "metric": "accuracy",
+    "value": 0.42393882110328235,
+    "n": 116380,
+    "slice": "all"
+   }
+  ]
+ },
+ "coverage": {
+  "issued_from_utc": "2025-02-08T05:00:00Z",
+  "issued_to_utc": "2025-04-01T03:00:00Z",
+  "step_hours": 1,
+  "regular": true
+ },
+ "attribution": [
+  {
+   "text": "NYC Taxi & Limousine Commission (TLC) Trip Record Data and Taxi Zones. Los datos de viaje fueron recogidos por los proveedores TPEP/LPEP y no los creó la TLC, que no garantiza su exactitud. La TLC no declara una licencia abierta explícita (rigen la NYC Open Data Legal Policy y los NYC.gov Terms of Use): revisar los términos antes de redistribuir los artefactos derivados.",
+   "license": null,
+   "url": "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page"
+  },
+  {
+   "text": "Esquema de nivel de demanda: construcción propia de ExFuzzy Atlas (percentiles de la referencia de entrenamiento por zona y hora de la semana); no es un índice oficial.",
+   "license": "AGPL-3.0-or-later",
+   "url": "https://github.com/Fuminides/exfuzzy-atlas/blob/main/docs/mobility/nyc_pickups_h1_level.md"
+  }
+ ]
+}
