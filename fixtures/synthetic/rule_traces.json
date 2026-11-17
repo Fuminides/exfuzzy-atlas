@@ -1,6 +1,6 @@
 [
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -141,7 +141,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -282,7 +282,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -423,7 +423,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -564,7 +564,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -705,7 +705,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -846,7 +846,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -987,7 +987,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -1128,7 +1128,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -1269,7 +1269,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -1410,7 +1410,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -1551,7 +1551,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -1692,7 +1692,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -1833,7 +1833,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -1974,7 +1974,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -2115,7 +2115,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -2256,7 +2256,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -2397,7 +2397,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -2538,7 +2538,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -2679,7 +2679,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -2820,7 +2820,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -2882,7 +2882,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -3023,7 +3023,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",
@@ -3164,7 +3164,7 @@
     }
   },
   {
-    "schema_version": "0.8.0",
+    "schema_version": "0.9.0",
     "data_version": "synthetic-fixture-v0",
     "synthetic": true,
     "model_id": "synthetic-no2-h6-v0",

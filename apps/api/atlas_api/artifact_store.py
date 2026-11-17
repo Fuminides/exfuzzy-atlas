@@ -9,6 +9,7 @@ entity is missing and ``no_observation`` when it has none.
 
 from __future__ import annotations
 
+import json
 import os
 import threading
 from datetime import datetime, timedelta, timezone
@@ -98,6 +99,38 @@ class _Published:
             return self._model
 
 
+MONTAGE_FILE, TRIALS_FILE, TRACES_FILE = "montage.json", "trials.json", "traces.json"
+
+
+class _Montage:
+    """One published montage-task model (contract v0.9, ``atlas.domains.fnirs.publish``), read once per version.
+    Every body is precomputed; ``traces.json`` is read on the first trace request."""
+
+    def __init__(self, path: Path):
+        self.path = path
+        sums = path / artifacts.CHECKSUM_FILE
+        self.stamp = (sums.stat().st_mtime_ns, sums.stat().st_size)
+        verify.verify_model_dir(path)
+        self.card = m.FnirsModelCard.model_validate_json((path / layout.CARD_FILE).read_text())
+        self.rules = m.ModelRules.model_validate_json((path / "rules.json").read_text())
+        self.montage = m.MontageResponse.model_validate_json((path / MONTAGE_FILE).read_text())
+        self.trials = m.TrialsResponse.model_validate_json((path / TRIALS_FILE).read_text())
+        self._traces: dict[str, dict] | None = None
+        self._lock = threading.Lock()
+
+    def trace(self, sample_id: str) -> m.TrialTrace:
+        with self._lock:
+            if self._traces is None:
+                self._traces = json.loads((self.path / TRACES_FILE).read_text())
+        if sample_id not in self._traces:
+            raise NotFound(f"unknown sample_id {sample_id} for {self.card.model_id}")
+        return m.TrialTrace.model_validate(self._traces[sample_id])
+
+
+def _is_montage(path: Path) -> bool:
+    return (path / MONTAGE_FILE).is_file()
+
+
 class ArtifactStore:
     mode = "artifacts"
 
@@ -112,6 +145,7 @@ class ArtifactStore:
         self._cache = ByteLRU(cache_bytes)  # rule maps, territories and stories, bounded by approximate bytes
         self._lock = threading.Lock()
         self._models: dict[str, _Published] = {}
+        self._montages: dict[str, _Montage] = {}
 
     @classmethod
     def from_env(cls) -> ArtifactStore:
@@ -133,11 +167,28 @@ class ArtifactStore:
         sums = path / artifacts.CHECKSUM_FILE
         if "/" in model_id or model_id.startswith(".") or not sums.is_file():
             raise NotFound(f"unknown model_id {model_id}")
+        if _is_montage(path):
+            raise BadRequest(f"{model_id} is a montage-task model (fNIRS): use /fnirs/card, /fnirs/trials or "
+                             "/fnirs/trace")
         stamp = (sums.stat().st_mtime_ns, sums.stat().st_size)
         with self._lock:
             cached = self._models.get(model_id)
             if cached is None or cached.stamp != stamp:
                 cached = self._models[model_id] = _Published(path)
+            return cached
+
+    def _montage(self, model_id: str) -> _Montage:
+        path = self.root / model_id
+        sums = path / artifacts.CHECKSUM_FILE
+        if "/" in model_id or model_id.startswith(".") or not sums.is_file():
+            raise NotFound(f"unknown model_id {model_id}")
+        if not _is_montage(path):
+            raise BadRequest(f"{model_id} is a map-task model: the /fnirs/* endpoints are for montage tasks")
+        stamp = (sums.stat().st_mtime_ns, sums.stat().st_size)
+        with self._lock:
+            cached = self._montages.get(model_id)
+            if cached is None or cached.stamp != stamp:
+                cached = self._montages[model_id] = _Montage(path)
             return cached
 
     def _entry(self, task_id: str) -> layout.RegistryEntry:
@@ -172,7 +223,7 @@ class ArtifactStore:
                     m.TaskInfo(task_id=task_id, task_type=e.task_type, target=e.target, unit=e.unit,
                                horizon_hours=e.horizon_hours, status="available", model_id=e.model_id,
                                title=e.title, territory=e.territory, territory_title=e.territory_title,
-                               territory_title_en=e.territory_title_en)
+                               territory_title_en=e.territory_title_en, view=e.view)
                     for task_id, e in mine
                 ],
             ))
@@ -209,7 +260,27 @@ class ArtifactStore:
         return self._model(model_id).card
 
     def model_rules(self, model_id: str) -> m.ModelRules:
+        path = self.root / model_id
+        if "/" not in model_id and not model_id.startswith(".") and _is_montage(path):
+            return self._montage(model_id).rules
         return self._model(model_id).rules
+
+    # ------------------------------------------------------------ contract v0.9
+
+    def fnirs_montage(self, task_id: str) -> m.MontageResponse:
+        entry = self._entry(task_id)
+        if entry.view != m.TaskView.MONTAGE:
+            raise BadRequest(f"{task_id} is a map task: it has no montage")
+        return self._montage(entry.model_id).montage
+
+    def fnirs_card(self, model_id: str) -> m.FnirsModelCard:
+        return self._montage(model_id).card
+
+    def fnirs_trials(self, model_id: str) -> m.TrialsResponse:
+        return self._montage(model_id).trials
+
+    def fnirs_trace(self, model_id: str, sample_id: str) -> m.TrialTrace:
+        return self._montage(model_id).trace(sample_id)
 
     # ------------------------------------------------------------ contract v0.5
 

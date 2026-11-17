@@ -23,3 +23,10 @@ export type AggKind = "day" | "week" | "month" | "year" | "coverage";
 export const aggPath = (modelId: string, kind: AggKind, from: string): string => gz(`models/${modelId}/agg/${kind}/${from}`);
 export const storiesPath = (modelId: string, kind: AggKind, from: string): string => gz(`models/${modelId}/stories/${kind}/${from}`);
 export const whatIfPath = (modelId: string, entityId: string): string => gz(`models/${modelId}/whatif/${entityId}`);
+
+// Montage tasks (format 3, section 15): exact bodies only; the traces of a subject share one file.
+export const montagePath = (taskId: string): string => gz(`tasks/${taskId}/montage`);
+export const fnirsCardPath = (modelId: string): string => gz(`models/${modelId}/fnirs/card`);
+export const fnirsTrialsPath = (modelId: string): string => gz(`models/${modelId}/fnirs/trials`);
+/** `s03` for subject 3 (`fmt.trace_shard`). */
+export const traceShardPath = (modelId: string, subject: number): string => gz(`models/${modelId}/fnirs/traces/s${String(subject).padStart(2, "0")}`);

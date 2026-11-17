@@ -15,6 +15,8 @@ const DATA_CREDITS: { href: string; name: string; licence: string }[] = [
   { href: "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/", name: "Deutscher Wetterdienst", licence: "CC BY 4.0" },
   { href: "https://environment.data.gov.uk/water-quality", name: "Environment Agency", licence: "OGL v3.0" },
   { href: "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page", name: "NYC Taxi & Limousine Commission", licence: "NYC.gov Terms of Use" },
+  { href: "https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/", name: "Shin et al. (2018), EEG+NIRS", licence: "CC0 1.0" },
+  { href: "https://github.com/jjcato9/ex_fuzzy_fnirs_demo", name: "Caterson et al., ex-Fuzzy fNIRS demo", licence: "MIT" },
 ];
 
 const ext = { target: "_blank", rel: "noopener noreferrer" } as const;

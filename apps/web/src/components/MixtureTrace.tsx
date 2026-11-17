@@ -9,7 +9,8 @@ import { WeightBar, WeightKey, WeightValue } from "./ClassWeights";
 import { RuleRef } from "./RuleRef";
 
 interface Props {
-  trace: RuleTrace;
+  /** A map task's `RuleTrace` or a montage task's `TrialTrace` (v0.9): only the rules and the prediction are read. */
+  trace: Pick<RuleTrace, "rules" | "prediction">;
   scheme: TargetScheme;
   onSelectRule: (ruleId: string) => void;
   selectedRuleId: string | null;

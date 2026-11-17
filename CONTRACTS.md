@@ -475,3 +475,41 @@ serializa con `operator: "is"` y `terms: [term]` (`tests/contracts/test_models_v
    registro en una carpeta de respaldo (`artifacts/published-v07`). Los run directories los escribe
    `python -m atlas.ml.publish_ordinal runs` y se publican con `atlas.services.publish` y se comprueban con
    `atlas.ml.publish_parity` como siempre (`docs/ml/ordinal_conditions.md`, sección 6).
+
+## 20. Enmienda de A0 en v0.9 (2026-11-16): dominio fNIRS, vista de montaje, ensayos y trazas por ensayo
+
+Aditiva sobre v0.8 (`SCHEMA_VERSION` 0.9.0): los payloads v0.8 siguen validando, y `RuleTrace` conserva sus campos y su
+esquema (`tests/contracts/test_models_v09.py`). Origen: los resultados de la demo ex-Fuzzy fNIRS (Caterson et al.), reajustados
+con ex-fuzzy 3.5.0 (`docs/fnirs/README.md`, `docs/ml/fnirs_nback.md`). Decisiones del mantenedor del 2026-11-16: un cuarto
+dominio con vista de cuero cabelludo; se exploran los 702 ensayos, marcados train o test; los canales llevan las regiones
+aproximadas del cuaderno 005 de la demo, con su crédito.
+
+1. **Dominio `fnirs`.** En fNIRS una fila es un ensayo (sujeto, bloque) y los sensores son **entradas** del modelo, no
+   entidades con geometría en el tiempo. Nada de lo de mapa ni de tiempo aplica: sin `issued_at`/`valid_at`, sin
+   `/entities`, `/series`, `/rule-map`, `/predictions`, territorios, historias ni what-if.
+2. **`TaskInfo.view`** (y `RegistryEntry.view`): `map` (por defecto, todas las tareas anteriores) o `montage`. Es el único
+   campo en el que se ramifica: los almacenes, el exportador y la web separan las tareas `montage` por él, no por el nombre
+   del dominio.
+3. **`MontageResponse`** (`GET /api/v1/fnirs/montage?task_id=`): un `MontageChannel` por canal con `xyz` **tal como lo
+   publica la fuente** (marco, documento, URL y sha256 del documento en la respuesta) y `xy = head_projection(xyz)`, la
+   proyección azimutal equidistante desde el vértex (radio = ángulo polar / 90°, el plano de las orejas en radio 1; x a la
+   derecha, y a la nariz). El validador recalcula la proyección (±1e-9): no hay posiciones colocadas a mano. Cada canal
+   lista sus entradas (`SensorInput`: `feature`, `signal` HbO/HbR, `label`, `label_en`). `region`, `region_en` y
+   `brodmann` son opcionales; si un canal los tiene, `region_source` es obligatorio, y `region_approximate` dice si son
+   una asignación aproximada.
+4. **`SubjectSplit`**: sujetos de train y de test disjuntos, y los pliegues de selección como grupos disjuntos de sujetos
+   de train, con la métrica que maximizó la búsqueda. **`FnirsModelCard`** (`GET /api/v1/fnirs/card?model_id=`): los campos
+   de procedencia de `RunManifest` con este split en lugar del de periodos, el `target_scheme`, `MetricRow` con
+   `slice` `test`, `train` o `validation` (media de los pliegues) para `exfuzzy` y los baselines, la atribución y los
+   avisos. `ModelCard` y `RunManifest` no cambian.
+5. **`TrialsResponse`** (`GET /api/v1/fnirs/trials?model_id=`): un `TrialRecord` por fila publicada: `sample_id`,
+   `subject`, `trial`, `condition` (lo que era el bloque en la fuente: dato, no se traduce), `split`, clase observada,
+   clase predicha o null con `missing_reason`, y la regla que decidió (winning-rule) o la que más apoya la predicción
+   (mezcla). Un sujeto tiene todos sus ensayos en un solo split. Las filas de train son **predicciones dentro de la
+   muestra** y se marcan como tales.
+6. **`TrialTrace`** (`GET /api/v1/fnirs/trace?model_id=&sample_id=`): el contenido de `RuleTrace` (valores de entrada,
+   pertenencias, firing, peso o contribuciones por clase, predicción) sin tiempos ni entidad. Las comprobaciones de
+   paridad (t-norma, argmax de la winning-rule, sumas de la mezcla) son las mismas: viven en `_TraceChecks`, una mezcla sin
+   campos que comparten las dos trazas. Ningún `FeatureValue` lleva `observed_at_utc`.
+7. **Reglas.** `GET /api/v1/models/{id}/rules` sirve `ModelRules` sin cambios (dominio `fnirs`). El firing de un ensayo sigue
+   siendo un grado de emparejamiento, nunca una probabilidad, una contribución ni un riesgo.

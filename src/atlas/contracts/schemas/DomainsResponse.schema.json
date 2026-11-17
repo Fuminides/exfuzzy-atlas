@@ -4,7 +4,8 @@
       "enum": [
         "air",
         "water",
-        "mobility"
+        "mobility",
+        "fnirs"
       ],
       "title": "Domain",
       "type": "string"
@@ -147,6 +148,11 @@
         "unit": {
           "title": "Unit",
           "type": "string"
+        },
+        "view": {
+          "$ref": "#/$defs/TaskView",
+          "default": "map",
+          "description": "v0.9: how the task is explored. 'map': entities with geometry over time (every endpoint keyed by entity and issue time). 'montage': fNIRS, rows are (subject, trial) and the sensors are inputs drawn on a head; served by the /fnirs/* endpoints, never by /entities, /series or /rule-map."
         }
       },
       "required": [
@@ -158,9 +164,18 @@
       ],
       "title": "TaskInfo",
       "type": "object"
+    },
+    "TaskView": {
+      "description": "v0.9: the view a task is explored in (``TaskInfo.view``).",
+      "enum": [
+        "map",
+        "montage"
+      ],
+      "title": "TaskView",
+      "type": "string"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.8.0/DomainsResponse.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.9.0/DomainsResponse.schema.json",
   "additionalProperties": false,
   "properties": {
     "data_version": {
@@ -175,7 +190,7 @@
       "type": "array"
     },
     "schema_version": {
-      "default": "0.8.0",
+      "default": "0.9.0",
       "title": "Schema Version",
       "type": "string"
     },

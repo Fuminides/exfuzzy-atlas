@@ -41,4 +41,8 @@ export const staticApi: Api = {
   ruleStories: (q, signal) => staticStore().ruleStories(q, signal),
   scenario: (body, signal) => staticStore().scenario(body, signal),
   series: (q, signal) => staticStore().series(q, signal),
+  fnirsMontage: (taskId, signal) => staticStore().fnirsMontage(taskId, signal),
+  fnirsCard: (modelId, signal) => staticStore().fnirsCard(modelId, signal),
+  fnirsTrials: (modelId, signal) => staticStore().fnirsTrials(modelId, signal),
+  fnirsTrace: (modelId, sampleId, signal) => staticStore().fnirsTrace(modelId, sampleId, signal),
 };

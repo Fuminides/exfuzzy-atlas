@@ -7,7 +7,7 @@
       "time": "2025-01-15T06:00:00Z"
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -160,7 +160,7 @@
       "time": "2025-01-15T08:00:00Z"
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -314,7 +314,7 @@
       "to": "2025-01-15T12:00:00Z"
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -467,7 +467,7 @@
       "time": "2025-01-15T08:00:00Z"
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -701,7 +701,7 @@
       "tau": 0.5
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -917,7 +917,7 @@
       "tau": 0.5
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -1133,7 +1133,7 @@
       "limit": 10
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "model_id": "synthetic-no2-h6-v0",
@@ -1239,7 +1239,7 @@
     "path": "/api/v1/scenarios",
     "query": {},
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-fixture-v0",
       "synthetic": true,
       "model_id": "synthetic-no2-h6-v0",
@@ -1274,7 +1274,7 @@
         }
       ],
       "original": {
-        "schema_version": "0.8.0",
+        "schema_version": "0.9.0",
         "data_version": "synthetic-fixture-v0",
         "synthetic": true,
         "model_id": "synthetic-no2-h6-v0",
@@ -1415,7 +1415,7 @@
         }
       },
       "modified": {
-        "schema_version": "0.8.0",
+        "schema_version": "0.9.0",
         "data_version": "synthetic-fixture-v0",
         "synthetic": true,
         "model_id": "synthetic-no2-h6-v0",

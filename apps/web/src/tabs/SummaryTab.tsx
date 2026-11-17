@@ -63,7 +63,7 @@ export function SummaryTab({ domain, task, territoryTitle, onProvenance }: Props
   if (summary.status === "unavailable") {
     return (
       <div className="page">
-        <PageHead title={tr(`Resumen de datos: ${territoryTitle}`, `Data summary: ${territoryTitle}`)}>
+        <PageHead title={tr(`Resumen de datos: ${territoryTitle}`, `Data summary: ${territoryTitle}`)} accent={territoryTitle}>
           {tr(`Cómo son los datos observados en ${territoryTitle}.`, `What the observed data in ${territoryTitle} look like.`)}
         </PageHead>
         <NotYet what={tr("El resumen de los datos", "The data summary")}>
@@ -117,7 +117,7 @@ function SummaryView({ summary, entities, territoryTitle, domainId }: { summary:
 
   return (
     <div className="page" data-task={summary.task_id}>
-      <PageHead title={tr(`Resumen de datos: ${territoryTitle}`, `Data summary: ${territoryTitle}`)}>
+      <PageHead title={tr(`Resumen de datos: ${territoryTitle}`, `Data summary: ${territoryTitle}`)} accent={territoryTitle}>
         {tr(<>Estás viendo <strong>{label}</strong> en {territoryTitle}, medido en {withData.length} {stations} entre {periodText(summary)}. Son datos observados, sin ningún modelo detrás. Aquí no hay predicciones.</>, <>You are looking at <strong>{label}</strong> in {territoryTitle}, measured at {withData.length} {stations} over {periodText(summary)}. These are observed data with no model, so there are no predictions here.</>)}
       </PageHead>
 

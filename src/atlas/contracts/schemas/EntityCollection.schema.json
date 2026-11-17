@@ -57,7 +57,8 @@
       "enum": [
         "air",
         "water",
-        "mobility"
+        "mobility",
+        "fnirs"
       ],
       "title": "Domain",
       "type": "string"
@@ -310,7 +311,7 @@
       "type": "object"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.8.0/EntityCollection.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.9.0/EntityCollection.schema.json",
   "additionalProperties": false,
   "properties": {
     "attribution": {
@@ -337,7 +338,7 @@
       "type": "array"
     },
     "schema_version": {
-      "default": "0.8.0",
+      "default": "0.9.0",
       "title": "Schema Version",
       "type": "string"
     },

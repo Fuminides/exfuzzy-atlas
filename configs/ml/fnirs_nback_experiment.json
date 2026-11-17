@@ -1,0 +1,19 @@
+{
+  "experiment_id": "fnirs_nback_v1",
+  "task_id": "fnirs_nback",
+  "table": "raw/fnirs-nback/block_avg_tmb.csv",
+  "test_subjects": [3, 4, 5, 9, 16, 19],
+  "n_folds": 5,
+  "fold_seed": 0,
+  "selection_seeds": [0, 1],
+  "base": {"n_linguistic_variables": 3, "n_gen": 100, "pop_size": 50, "patience": 20, "allow_unknown": true},
+  "grid": {
+    "inference": ["winning_rule", "mixture"],
+    "ordinal_conditions": [false, true],
+    "nRules": [5, 10, 20],
+    "nAnts": [2, 3]
+  },
+  "final_seeds": [0, 1, 2, 3, 4],
+  "published_seed": 0,
+  "workers": 6
+}

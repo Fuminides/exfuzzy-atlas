@@ -4,6 +4,10 @@ import { ApiError } from "./errors";
 import { staticApi } from "./static";
 import type {
   DomainsResponse,
+  FnirsModelCard,
+  MontageResponse,
+  TrialsResponse,
+  TrialTrace,
   EntityCollection,
   Health,
   ModelCard,
@@ -157,6 +161,15 @@ const httpApi = {
     ),
   /** E5: the real inference over the published row with `overrides`; nothing is written. */
   scenario: (body: ScenarioRequest, signal?: AbortSignal) => post<ScenarioResponse>("/scenarios", body, signal),
+  /** v0.9, montage tasks (fNIRS): channel positions as published by the source, and the inputs measured at each. */
+  fnirsMontage: (taskId: string, signal?: AbortSignal) => get<MontageResponse>("/fnirs/montage", { task_id: taskId }, signal),
+  /** v0.9: provenance, subject split and metrics (validation, test, train) of a montage task's model. */
+  fnirsCard: (modelId: string, signal?: AbortSignal) => get<FnirsModelCard>("/fnirs/card", { model_id: modelId }, signal),
+  /** v0.9: every published trial, test subjects first; train rows are in-sample predictions. */
+  fnirsTrials: (modelId: string, signal?: AbortSignal) => get<TrialsResponse>("/fnirs/trials", { model_id: modelId }, signal),
+  /** v0.9: inputs, memberships, firing and class scores of one trial, as ex_fuzzy computed them at publication. */
+  fnirsTrace: (modelId: string, sampleId: string, signal?: AbortSignal) =>
+    get<TrialTrace>("/fnirs/trace", { model_id: modelId, sample_id: sampleId }, signal),
   /** One page of a series: `[from, to)` by issue time; `next_cursor` of the answer goes back as `cursor`. */
   series: (
     q: { taskId: string; entityId: string; from?: string; to?: string; cursor?: string },

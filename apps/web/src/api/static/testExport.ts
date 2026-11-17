@@ -43,7 +43,7 @@ const inference = (family: string, extra: Record<string, unknown> = {}) => ({
 
 function winning(files: Map<string, unknown>) {
   const meta = {
-    format_version: 2, model_id: "m-win", task_id: "t-win", domain: "air", territory: "x", task_type: "classification",
+    format_version: 3, model_id: "m-win", task_id: "t-win", domain: "air", territory: "x", task_type: "classification",
     family: "winning_rule_classifier", data_version: "dv1", synthetic: false, target: "no2", unit: "ug/m3", target_unit: "ug/m3",
     horizon_hours: 6, regular: true, step_hours: 1,
     coverage: { from: "2025-03-05T22:00:00Z", to: "2025-03-06T00:00:00Z" },
@@ -126,7 +126,7 @@ function winning(files: Map<string, unknown>) {
 
 function mixture(files: Map<string, unknown>) {
   const meta = {
-    format_version: 2, model_id: "m-mix", task_id: "t-mix", domain: "air", territory: "m", task_type: "classification",
+    format_version: 3, model_id: "m-mix", task_id: "t-mix", domain: "air", territory: "m", task_type: "classification",
     family: "rule_mixture_classifier", data_version: "dv1", synthetic: false, target: "no2", unit: "ug/m3", target_unit: "ug/m3",
     horizon_hours: 1, regular: true, step_hours: 1,
     coverage: { from: "2025-03-05T10:00:00Z", to: "2025-03-05T10:00:00Z" },
@@ -162,7 +162,7 @@ function mixture(files: Map<string, unknown>) {
 
 function tsk(files: Map<string, unknown>) {
   const meta = {
-    format_version: 2, model_id: "m-tsk", task_id: "t-tsk", domain: "water", territory: "w", task_type: "regression",
+    format_version: 3, model_id: "m-tsk", task_id: "t-tsk", domain: "water", territory: "w", task_type: "regression",
     family: "tsk_zero_order", data_version: "dv1", synthetic: false, target: "do", unit: "mg/l", target_unit: "mg/l",
     horizon_hours: 0, regular: false, step_hours: 1,
     coverage: { from: "2024-05-01T10:00:00Z", to: "2024-05-03T12:00:00Z" },
@@ -225,7 +225,7 @@ const noReference = (what: string) =>
 /** The whole export as `path -> parsed file`. */
 export function testExport(): Map<string, unknown> {
   const files = new Map<string, unknown>();
-  files.set("manifest.json", { format: "exfuzzy-atlas-static", format_version: 2, export_id: ID, created_at_utc: "2026-11-10T00:00:00Z", schema_version: "0.7.0", texts: TEXTS });
+  files.set("manifest.json", { format: "exfuzzy-atlas-static", format_version: 3, export_id: ID, created_at_utc: "2026-11-10T00:00:00Z", schema_version: "0.7.0", texts: TEXTS });
   const task = (task_id: string, model_id: string, task_type: string, horizon_hours: number, unit: string) => ({
     task_id, model_id, task_type, target: task_id === "t-tsk" ? "do" : "no2", unit, horizon_hours, status: "available",
   });

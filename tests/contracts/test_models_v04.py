@@ -15,7 +15,7 @@ POINT = {"type": "Point", "coordinates": (-3.7, 40.4)}
 
 
 def test_schema_version_is_0_4():
-    assert m.SCHEMA_VERSION == "0.8.0"  # v0.5 to v0.6.2, v0.7 (two relaxations) and v0.8 are additive over v0.4.1
+    assert m.SCHEMA_VERSION == "0.9.0"  # v0.5 to v0.6.2, v0.7 (two relaxations) and v0.8 are additive over v0.4.1
 
 
 def test_v03_payloads_still_validate_without_the_new_fields():

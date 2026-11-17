@@ -96,7 +96,7 @@ def test_a_trace_condition_carries_the_same_operator_and_terms():
 
 
 def test_older_payloads_validate_and_serialise_as_is():
-    assert m.SCHEMA_VERSION == "0.8.0"
+    assert m.SCHEMA_VERSION == "0.9.0"
     for item in json.loads((FIXTURES / "model_rules_extra.json").read_text()):
         rules = m.ModelRules.model_validate(item)
         assert all(a.operator == "is" and a.terms == [a.term] for r in rules.rules for a in r.antecedents)

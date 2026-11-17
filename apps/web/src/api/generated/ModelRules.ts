@@ -7,7 +7,7 @@ export type ClassBias = {
   [k: string]: number;
 } | null;
 export type DataVersion = string;
-export type Domain = "air" | "water" | "mobility";
+export type Domain = "air" | "water" | "mobility" | "fnirs";
 /**
  * Classifier only: no class when no rule fires.
  */

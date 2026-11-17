@@ -385,3 +385,20 @@ juguete, escrita a mano por `make fixtures`, no por una IA). El texto lo escribe
 
 **Pruebas.** `tests/contracts/test_models_v062.py`, `tests/api/test_v062_explanation.py`, `tests/services/test_explain_model.py`;
 sobre los modelos reales `tests/integration/test_explanations.py`.
+
+## 9. Contrato v0.9: tareas de montaje (fNIRS, `CONTRACTS.md` §20)
+
+Una tarea con `view: "montage"` no se sirve por `/entities`, `/series`, `/rule-map`, `/predictions`, `/observations`,
+territorios, historias ni escenarios: `/models/{id}` y `/entities?domain=fnirs` responden 422 y remiten a estos endpoints.
+`/models/{id}/rules` funciona igual que en las tareas de mapa. Todo se precalcula al publicar
+(`python -m atlas.domains.fnirs.publish --run <run_dir>`), y el directorio publicado lleva `rules.json`, `card.json`
+(`FnirsModelCard`), `montage.json`, `trials.json`, `traces.json` (`{sample_id: TrialTrace}`), `model.pkl` y `SHA256SUMS`.
+
+| Endpoint | Cuerpo |
+|---|---|
+| `GET /api/v1/fnirs/montage?task_id=` | `MontageResponse`: canales con `xyz` de la fuente, `xy` proyectado, regiones aproximadas y entradas |
+| `GET /api/v1/fnirs/card?model_id=` | `FnirsModelCard`: procedencia, split por sujetos, métricas de validación, test y train, atribución |
+| `GET /api/v1/fnirs/trials?model_id=` | `TrialsResponse`: los 702 ensayos, los de test primero |
+| `GET /api/v1/fnirs/trace?model_id=&sample_id=` | `TrialTrace` de un ensayo; 404 si no existe |
+
+Pedir un endpoint `/fnirs/*` con un modelo de mapa es un 422.

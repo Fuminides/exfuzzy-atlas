@@ -1,7 +1,7 @@
 {
-  "export_id": "c5d0bb73f032",
-  "release": "static-data-c5d0bb73f032",
-  "asset": "static-data-c5d0bb73f032.tar",
-  "sha256": "aae4e2e7a7381f463243dbac9bcb283d14cfe2ed92a5577064b5db7daf27e21a",
-  "note": "Format 2 (contract v0.8). Germany 2025-01-01 to 2025-03-31; NYC and water full coverage. Built by `make export-static` (docs/static_export.md)."
+  "export_id": "a805d65c140c",
+  "release": "static-data-a805d65c140c",
+  "asset": "static-data-a805d65c140c.tar",
+  "sha256": "797d053080c79173b93fe927bfd54cf23e78e6cdc79f9e5842cc6a7f772e4cf6",
+  "note": "Format 3 (contract v0.9). Germany 2025-01-01 to 2025-03-31; NYC, water and fNIRS full coverage. Built by `make export-static` (docs/static_export.md)."
 }

@@ -33,8 +33,8 @@ export interface Model {
   domainOf: ReadonlyMap<string, [number, number] | null>;
 }
 
-/** `fmt.FORMAT_VERSION` of the exporter (docs/static_export.md). 2: a `mem_pairs` entry is `[feature, operator, term]`. */
-export const FORMAT_VERSION = 2;
+/** `fmt.FORMAT_VERSION` of the exporter (docs/static_export.md). 2: a `mem_pairs` entry is `[feature, operator, term]`; 3: montage tasks. */
+export const FORMAT_VERSION = 3;
 
 export const pairKey = (feature: string, operator: string, term: string): string => `${feature}\u0000${operator}\u0000${term}`;
 

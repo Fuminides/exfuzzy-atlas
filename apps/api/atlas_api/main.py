@@ -225,6 +225,28 @@ def create_app(store: Store) -> FastAPI:
         """Model response to modified inputs of one published row (real ex_fuzzy inference). Writes nothing."""
         return _found(store.scenario, request)
 
+    # ---- contract v0.9: montage tasks (fNIRS); every body is precomputed at publication
+
+    @app.get("/api/v1/fnirs/montage", response_model=m.MontageResponse)
+    def fnirs_montage(task_id: str):
+        """Channel positions of a montage task, as published by the source, and the inputs measured at each."""
+        return _found(store.fnirs_montage, task_id)
+
+    @app.get("/api/v1/fnirs/card", response_model=m.FnirsModelCard)
+    def fnirs_card(model_id: str):
+        """Provenance, subject split and metrics of a montage task's model."""
+        return _found(store.fnirs_card, model_id)
+
+    @app.get("/api/v1/fnirs/trials", response_model=m.TrialsResponse)
+    def fnirs_trials(model_id: str):
+        """Every published trial with its split, observed and predicted class (train rows are in-sample)."""
+        return _found(store.fnirs_trials, model_id)
+
+    @app.get("/api/v1/fnirs/trace", response_model=m.TrialTrace)
+    def fnirs_trace(model_id: str, sample_id: str):
+        """Inputs, memberships, firing and class scores of one trial, as computed by ex_fuzzy."""
+        return _found(store.fnirs_trace, model_id, sample_id)
+
     return app
 
 

@@ -14,6 +14,7 @@ import { PatternsTab } from "./tabs/PatternsTab";
 import { PredictionTab } from "./tabs/PredictionTab";
 import { ReportTab } from "./tabs/ReportTab";
 import { SummaryTab } from "./tabs/SummaryTab";
+import { FnirsWorkspace, type FnirsTab } from "./fnirs/FnirsWorkspace";
 import type { Provenance } from "./Workspace";
 
 export type Tab = "resumen" | "patrones" | "prediccion" | "rendimiento" | "explorar";
@@ -57,6 +58,8 @@ export function App({ initialTab = "patrones", initialExplore = "rules", initial
   // A domain with no tasks yet is listed as a placeholder; picking it replaces the tabs' content with an honest notice.
   const [emptyId, setEmptyId] = useState<string | null>(null);
   const [tab, setTab] = useState<Tab>(initialTab);
+  // v0.9: a montage task (fNIRS) has its own two tabs; kept apart so a map tab is still there when the user comes back
+  const [fnirsTab, setFnirsTab] = useState<FnirsTab>("reglas");
   // Set by "la decidió R04" in Predicción: Patrones then opens with that rule selected. Any other way to a tab clears it.
   const [focusRule, setFocusRule] = useState<string | null>(null);
   // Set by a station card of Patrones: Predicción or Explorar then open with that entity selected. Cleared like focusRule.
@@ -116,6 +119,8 @@ export function App({ initialTab = "patrones", initialExplore = "rules", initial
     setEmptyId(null);
   };
   const synthetic = prov.synthetic || (domains.status === "ok" && domains.data.synthetic === true);
+  // v0.9: a montage task (fNIRS) has no map, no time and no tabs: one page of its own
+  const montage = task?.view === "montage";
 
   const onTabKey = (e: React.KeyboardEvent) => {
     const i = TAB_IDS.indexOf(tab);
@@ -175,7 +180,26 @@ export function App({ initialTab = "patrones", initialExplore = "rules", initial
             <LanguageSwitch />
           </div>
         </div>
-        <div className="topbar-row topbar-row--tabs">
+        {montage && (
+          <div className="topbar-row topbar-row--tabs">
+            <div role="tablist" aria-label={tr("Secciones", "Sections")} className="tabbar" onKeyDown={(e) => {
+              if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+              e.preventDefault();
+              const order: FnirsTab[] = ["reglas", "canales", "rendimiento"];
+              const i = order.indexOf(fnirsTab);
+              const next = order[e.key === "Home" ? 0 : e.key === "End" ? order.length - 1 : (i + (e.key === "ArrowLeft" ? order.length - 1 : 1)) % order.length]!;
+              setFnirsTab(next);
+              document.getElementById(`tab-${next}`)?.focus();
+            }}>
+              {(["reglas", "canales", "rendimiento"] as const).map((t) => (
+                <button key={t} id={`tab-${t}`} type="button" role="tab" aria-selected={fnirsTab === t} aria-controls="tabpanel" tabIndex={fnirsTab === t ? 0 : -1} onClick={() => setFnirsTab(t)}>
+                  {t === "reglas" ? tr("Reglas", "Rules") : t === "canales" ? tr("Canales", "Channels") : tr("Rendimiento", "Performance")}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+        {!montage && <div className="topbar-row topbar-row--tabs">
           <div role="tablist" aria-label={tr("Secciones", "Sections")} className="tabbar" onKeyDown={onTabKey}>
             {TAB_IDS.map((t) => (
               <button
@@ -220,10 +244,10 @@ export function App({ initialTab = "patrones", initialExplore = "rules", initial
               {date}
             </p>
           )}
-        </div>
+        </div>}
       </header>
 
-      <main id="tabpanel" role="tabpanel" aria-labelledby={`tab-${tab}`}>
+      <main id="tabpanel" role="tabpanel" aria-labelledby={`tab-${montage ? fnirsTab : tab}`}>
         {domains.status === "loading" && <StateMessage kind="loading">{tr("Cargando territorios…", "Loading territories…")}</StateMessage>}
         {domains.status === "error" && (
           <StateMessage kind="error" onRetry={domains.reload}>
@@ -252,7 +276,8 @@ export function App({ initialTab = "patrones", initialExplore = "rules", initial
             </p>
           </div>
         )}
-        {domain && task && territory && (
+        {domain && task && territory && montage && <FnirsWorkspace key={task.task_id} domain={domain} task={task} tab={fnirsTab} onTab={(t) => { setFnirsTab(t); document.getElementById("tabpanel")?.scrollTo?.({ top: 0 }); }} onProvenance={onProvenance} />}
+        {domain && task && territory && !montage && (
           <>
             {tab === "resumen" && <SummaryTab key={task.task_id} domain={domain} task={task} territoryTitle={territory.title} onProvenance={onProvenance} />}
             {tab === "patrones" && <PatternsTab key={task.task_id} domain={domain} task={task} territoryTitle={territory.title} onProvenance={onProvenance} onOpenSummary={() => showTab("resumen")} focusRule={focusRule} onOpenPrediction={openEntity("prediccion")} onOpenExplore={openEntity("explorar")} />}

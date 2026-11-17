@@ -2,7 +2,7 @@
 
 export type CreatedAtUtc = string;
 export type DataVersion = string;
-export type Domain = "air" | "water" | "mobility";
+export type Domain = "air" | "water" | "mobility" | "fnirs";
 export type ExfuzzyVersion = string;
 export type Features = string[];
 export type GitCommit = string | null;

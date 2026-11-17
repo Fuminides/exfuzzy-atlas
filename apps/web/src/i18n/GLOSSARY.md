@@ -184,7 +184,7 @@ way ("no prediction is published: the zone has no reference level").
 | Empezar la demo; Ver cómo funciona; Sobre esta demo (página de inicio) | Start the demo; How it works; About this demo |
 | Saltar al contenido | Skip to content |
 | Tres territorios | Three territories |
-| Explicando mapas con reglas (título de la página de inicio) | Explaining maps with rules |
+| Explicando datos con reglas (título de la página de inicio) | Explaining data with rules |
 | frase completa de un término: «demanda alta», «humedad media», «viento alto» (lib/termPhrases.ts) | high demand, medium humidity, high wind |
 | la demanda hace 1 h (sujeto de las reglas de NYC) | demand 1 h ago |
 | la demanda media de las 24 h previas; por encima / por debajo de lo habitual; la habitual | mean demand over the previous 24 h; above / below what is usual; as usual |
@@ -207,3 +207,14 @@ way ("no prediction is published: the zone has no reference level").
 | al menos / como mucho (condición ordinal de una entrada con términos ordenados, contrato v0.8): «es al menos Aceptable», «es como mucho Media» | at least / at most: "is at least Fair", "is at most Medium" |
 | condición compuesta (varios términos con nombre propio, p. ej. «Primeras horas» = Madrugada + Mañana): «es Primeras horas» | compound condition: "is Early hours" |
 | suma acotada (la forma que se dibuja de una condición ordinal o compuesta) | bounded sum |
+| cuero cabelludo (vista de montaje, fNIRS, contrato v0.9) | scalp |
+| canal (NIRS) | channel |
+| ensayo / bloque (una fila de fNIRS: un bloque de la tarea n-back de un sujeto) | trial / block |
+| sujeto | subject |
+| dentro de la muestra (predicción de un sujeto de train) | in-sample |
+| región aproximada | approximate region |
+| se cumple en grado x (firing de una regla en un ensayo) | holds to degree x |
+| carga baja (0-back) / carga alta (2- o 3-back) (clases de la tarea fNIRS; la clave del dataset sigue siendo «0-back», «2/3-back») | low load (0-back) / high load (2- or 3-back) |
+| Reglas / Canales (pestañas de una tarea de montaje) | Rules / Channels |
+| comprueba un ensayo | check a trial |
+| Tarea (línea que abre la primera pestaña de cada problema) | Task |

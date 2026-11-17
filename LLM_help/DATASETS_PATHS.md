@@ -39,6 +39,7 @@ ln -s "${ATLAS_DATASETS_ROOT:-$HOME/Datasets}/madrid-air" data/raw/madrid-air
 | `nyc-tlc` | mobility | `<raíz>/nyc-tlc` | descargado 2026-10-30: yellow 2024-04..2025-03 (Parquet, 42,8 M viajes) + taxi_zone_lookup.csv + taxi_zones.zip (shapefile EPSG:2263) + diccionario PDF (~690 MB, `source_manifest.json`; el PDF de nyc.gov va en `manual/` porque el servidor responde 403 a clientes automáticos); ver `docs/mobility/README.md` |
 | `eea-air-de` | air | `<raíz>/eea-air-de` | NO₂ horario de Alemania, EEA Air Quality Download Service (E1a verificados + E2a actualizados), 2019-2025, más metadatos de estaciones y vocabularios (≈ 0,9 GB, `source_manifest.json`, solo lectura). CC BY 4.0. Ver `docs/air/germany.md` |
 | `dwd-meteo-de` | air | `<raíz>/dwd-meteo-de` | Observaciones horarias del DWD Climate Data Center (temperatura y humedad, viento, presión) de las estaciones alemanas (≈ 1,5 GB, `source_manifest.json`, solo lectura). CC BY 4.0. Ver `docs/air/germany.md` |
+| `fnirs-nback` | fnirs | `<raíz>/fnirs-nback` | descargado 2026-11-16: `block_avg_tmb.csv` (702 bloques × 72 entradas) y `LICENSE` de la demo ex-Fuzzy fNIRS (commit `244d8a0`, MIT), más la descripción del dataset de Shin et al. 2018 (PDF con las coordenadas de los canales); ~1,6 MB, `source_manifest.json`. Original CC0 1.0. Ver `docs/fnirs/README.md` |
 
 URLs, licencias y advertencias en `DATA_SOURCES.md`.
 

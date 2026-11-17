@@ -45,7 +45,7 @@ export function ExploreTab({ domain, task, mode, onMode, territoryTitle, onDate,
   const current = MODES.find((m) => m.id === mode)!;
   return (
     <div className="page page--wide" data-task={task.task_id}>
-      <PageHead title={tr(`Explorar ${territoryTitle}`, `Explore ${territoryTitle}`)}>{current.lead}</PageHead>
+      <PageHead title={tr(`Explorar ${territoryTitle}`, `Explore ${territoryTitle}`)} accent={territoryTitle}>{current.lead}</PageHead>
       <div className="modes" role="group" aria-label={tr("Vista", "View")}>
         {MODES.map((m) => (
           <button key={m.id} type="button" aria-pressed={mode === m.id} onClick={() => onMode(m.id)}>

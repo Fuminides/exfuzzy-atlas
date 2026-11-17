@@ -25,13 +25,13 @@ const landing = () => screen.queryByTestId("landing");
 const tabs = () => screen.queryByRole("tablist", { name: /Secciones|Sections/ });
 
 describe("the landing page", () => {
-  it("opens on the bare URL: one h1, a one-line subtitle, how a model reads and the three territories", () => {
+  it("opens on the bare URL: one h1, a one-line subtitle, how a model reads and the four examples", () => {
     render(<Root initialLang="es" />);
     expect(landing()).not.toBeNull();
     expect(tabs()).toBeNull();
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Explicando mapas con reglas");
-    expect(landing()!.querySelector(".lp-sub")).toHaveTextContent(/^Un estudio de calidad del aire, calidad del agua y demanda de taxis\.$/);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Explicando datos con reglas");
+    expect(landing()!.querySelector(".lp-sub")).toHaveTextContent(/^Un estudio de calidad del aire, calidad del agua, demanda de taxis y actividad cerebral\.$/);
     expect(landing()!.querySelector(".lp-kicker")).toHaveTextContent("Una demostración de ex_fuzzy con datos públicos reales");
     expect(screen.getByRole("link", { name: "Saltar al contenido" })).toBeInTheDocument();
     const text = landing()!.textContent!;
@@ -45,13 +45,13 @@ describe("the landing page", () => {
 
   it("is written whole in English, and the language switch works on it", async () => {
     render(<Root initialLang="en" />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Explaining maps with rules");
-    expect(landing()!.querySelector(".lp-sub")).toHaveTextContent(/^A study of air quality, water quality and taxi demand\.$/);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Explaining data with rules");
+    expect(landing()!.querySelector(".lp-sub")).toHaveTextContent(/^A study of air quality, water quality, taxi demand and brain activity\.$/);
     expect(screen.getAllByRole("button", { name: "Start the demo" }).length).toBeGreaterThan(0);
     expect(screen.getByRole("link", { name: "How it works" })).toBeInTheDocument();
     expect(landing()).toHaveTextContent("Northumberland and Tyne rivers (England)");
     await userEvent.setup().click(screen.getByRole("button", { name: "Español" }));
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Explicando mapas con reglas");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Explicando datos con reglas");
   });
 
   it("the title's second line is the italic accent, in both languages", () => {
@@ -69,20 +69,20 @@ describe("the landing page", () => {
     expect(landing()!.querySelector(".lp-not, .lp-split, .lp-list")).toBeNull();
     expect(text).toContain("Ese grado mide cuánto encaja la regla con lo observado.");
     expect(text).not.toMatch(/No es una probabilidad|no es una probabilidad/);
-    expect(within(landing()!).getAllByRole("heading", { level: 2 }).map((h) => h.textContent)).toEqual(["Un modelo hecho de frases", "Datos públicos de tres lugares", "Empieza por las reglas"]);
+    expect(within(landing()!).getAllByRole("heading", { level: 2 }).map((h) => h.textContent)).toEqual(["Un modelo hecho de frases", "Datos públicos de tres lugares y de un cuero cabelludo", "Empieza por las reglas"]);
   });
 
   it("each territory card has one static map with its alt text, ES and EN", () => {
     const { unmount } = render(<Root initialLang="es" />);
     const cards = [...landing()!.querySelectorAll<HTMLElement>("li.lp-card")];
-    expect(cards.map((c) => c.dataset.territory)).toEqual(["air", "water", "mobility"]);
+    expect(cards.map((c) => c.dataset.territory)).toEqual(["air", "water", "mobility", "fnirs"]);
     for (const c of cards) expect(c.querySelectorAll("img")).toHaveLength(1);
-    expect(cards.map((c) => c.querySelector("img")!.getAttribute("alt"))).toEqual(["Estaciones de medida en Alemania", "Puntos de muestreo en los ríos de Northumberland y Tyne", "Zonas de taxi de Nueva York"]);
+    expect(cards.map((c) => c.querySelector("img")!.getAttribute("alt"))).toEqual(["Estaciones de medida en Alemania", "Puntos de muestreo en los ríos de Northumberland y Tyne", "Zonas de taxi de Nueva York", "Los 36 canales NIRS sobre el cuero cabelludo"]);
     // a static SVG asset (vite inlines the small ones as a data URI), never a tile or a remote URL
     for (const c of cards) expect(c.querySelector("img")!.getAttribute("src")).toMatch(/^(\/src\/assets\/landing\/\w+\.svg|data:image\/svg\+xml)/);
     unmount();
     render(<Root initialLang="en" />);
-    expect([...landing()!.querySelectorAll("li.lp-card img")].map((i) => i.getAttribute("alt"))).toEqual(["Measurement stations in Germany", "Sampling points on the Northumberland and Tyne rivers", "Taxi zones of New York"]);
+    expect([...landing()!.querySelectorAll("li.lp-card img")].map((i) => i.getAttribute("alt"))).toEqual(["Measurement stations in Germany", "Sampling points on the Northumberland and Tyne rivers", "Taxi zones of New York", "The 36 NIRS channels on the scalp"]);
   });
 
   it("the tab named in the prose is in italics (Patrones / Patterns)", () => {
@@ -161,6 +161,6 @@ describe("the landing page", () => {
     await waitFor(() => expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument());
     await new Promise((r) => setTimeout(r, 50));
     expect(screen.queryByTestId("landing-artifacts")).toBeNull();
-    expect(landing()).toHaveTextContent("Datos públicos de tres lugares");
+    expect(landing()).toHaveTextContent("Datos públicos de tres lugares y de un cuero cabelludo");
   });
 });

@@ -1,0 +1,237 @@
+{
+  "$defs": {
+    "HaemoglobinSignal": {
+      "description": "The two signals of a NIRS channel: oxygenated (HbO) and deoxygenated (HbR) haemoglobin concentration change.",
+      "enum": [
+        "HbO",
+        "HbR"
+      ],
+      "title": "HaemoglobinSignal",
+      "type": "string"
+    },
+    "MontageChannel": {
+      "additionalProperties": false,
+      "properties": {
+        "brodmann": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Brodmann area(s), e.g. 'BA10', when the montage carries one.",
+          "title": "Brodmann"
+        },
+        "channel_id": {
+          "description": "Channel name as in the source (nearest 10-5 position).",
+          "pattern": "^[A-Za-z0-9._-]+$",
+          "title": "Channel Id",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/$defs/SensorInput"
+          },
+          "minItems": 1,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "region": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Brain region under the channel, when the montage carries one.",
+          "title": "Region"
+        },
+        "region_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Region En"
+        },
+        "xy": {
+          "description": "head_projection(xyz): where the web draws the channel.",
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Xy",
+          "type": "array"
+        },
+        "xyz": {
+          "description": "Position as published by the source, in its frame.",
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Xyz",
+          "type": "array"
+        }
+      },
+      "required": [
+        "channel_id",
+        "xyz",
+        "xy",
+        "inputs"
+      ],
+      "title": "MontageChannel",
+      "type": "object"
+    },
+    "SensorInput": {
+      "additionalProperties": false,
+      "description": "One model input measured at a channel.",
+      "properties": {
+        "feature": {
+          "description": "Input name, as in rules.json (e.g. 'tmb_s1_chAF7').",
+          "title": "Feature",
+          "type": "string"
+        },
+        "label": {
+          "description": "Display name, e.g. 'HbO en AF7'.",
+          "title": "Label",
+          "type": "string"
+        },
+        "label_en": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "English display name, e.g. 'HbO at AF7'.",
+          "title": "Label En"
+        },
+        "signal": {
+          "$ref": "#/$defs/HaemoglobinSignal"
+        }
+      },
+      "required": [
+        "feature",
+        "signal",
+        "label"
+      ],
+      "title": "SensorInput",
+      "type": "object"
+    }
+  },
+  "$id": "https://exfuzzy-atlas/schemas/0.9.0/MontageResponse.schema.json",
+  "additionalProperties": false,
+  "description": "``GET /fnirs/montage?task_id=``: where each channel of a montage task sits, as published by the source.",
+  "properties": {
+    "channels": {
+      "items": {
+        "$ref": "#/$defs/MontageChannel"
+      },
+      "minItems": 1,
+      "title": "Channels",
+      "type": "array"
+    },
+    "data_version": {
+      "title": "Data Version",
+      "type": "string"
+    },
+    "frame": {
+      "description": "Coordinate frame of xyz, as the source states it.",
+      "title": "Frame",
+      "type": "string"
+    },
+    "projection": {
+      "const": "azimuthal_equidistant",
+      "default": "azimuthal_equidistant",
+      "title": "Projection",
+      "type": "string"
+    },
+    "region_approximate": {
+      "default": false,
+      "description": "True when the region labels are an approximate assignment, not a measurement.",
+      "title": "Region Approximate",
+      "type": "boolean"
+    },
+    "region_source": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Where region and Brodmann labels come from; null when no channel has one.",
+      "title": "Region Source"
+    },
+    "schema_version": {
+      "default": "0.9.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source": {
+      "description": "Where the positions were read (document and table).",
+      "title": "Source",
+      "type": "string"
+    },
+    "source_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Source Sha256",
+      "type": "string"
+    },
+    "source_url": {
+      "title": "Source Url",
+      "type": "string"
+    },
+    "synthetic": {
+      "default": false,
+      "description": "True for fixtures; the UI must label them as synthetic.",
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "task_id": {
+      "title": "Task Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "data_version",
+    "task_id",
+    "frame",
+    "source",
+    "source_url",
+    "source_sha256",
+    "channels"
+  ],
+  "title": "MontageResponse",
+  "type": "object"
+}

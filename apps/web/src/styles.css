@@ -56,6 +56,11 @@
   --div-neg-3: #3a6fa3;
   --div-neg-4: #1a3c61;
   --div-mid: #e7e8ea;
+  /* fNIRS (blood): HbO red, HbR blue; the data view runs from deoxygenated blue to oxygenated red (OKLab L .90/.74/.56/.40) */
+  --hbo: #c4433b;
+  --hbr: #3f72b8;
+  --oxy-1: #f6d4d0; --oxy-2: #e2928a; --oxy-3: #c4433b; --oxy-4: #7f1d17;
+  --deoxy-1: #d4e1f3; --deoxy-2: #92b1df; --deoxy-3: #3f72b8; --deoxy-4: #1c3f70;
 
   /* The fluid shell: full width up to 1680 px with 16–40 px gutters; reading text keeps its own measure (≤ 72ch). */
   --shell-max: 1680px;
@@ -115,18 +120,21 @@ button { font: inherit; cursor: pointer; color: inherit; }
    the left and right edges and the lower corners with a soft, long fall-off, on a fixed layer behind the content. The
    colour is registered so that changing territory fades (and not at all with prefers-reduced-motion). */
 @property --territory-wash { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
-.app { --territory-wash: #ffffff; transition: --territory-wash 0.6s ease; }
+@property --territory-wash-right { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+/* The right edge takes the same tint unless a domain gives it its own (fNIRS: oxygenated red left, deoxygenated blue right). */
+.app { --territory-wash: #ffffff; --territory-wash-right: var(--territory-wash); transition: --territory-wash 0.6s ease, --territory-wash-right 0.6s ease; }
 /* Thematic hues: water blue, taxi yellow, and for air one of two options kept side by side (switch --wash-air below):
    (a) lavender, a sky or haze; (b) pale sage. Neither can be taken for the water blue, the taxi yellow or the EAQI colours. */
 .app { --wash-air-a: #c4b7f0; --wash-air-b: #b0d4a6; --wash-air: var(--wash-air-a); }
 .app[data-domain="air"] { --territory-wash: var(--wash-air); }
 .app[data-domain="water"] { --territory-wash: #7fcbf6; }
 .app[data-domain="mobility"] { --territory-wash: #f8c81c; }
+.app[data-domain="fnirs"] { --territory-wash: #f5b3b3; --territory-wash-right: #9cbcf0; } /* blood: red left, blue right; --muted ≥ 4.5:1 at 30 % */
 .app::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
     radial-gradient(70% 55% at 0% 100%, color-mix(in srgb, var(--territory-wash) 8%, transparent), transparent 70%),
-    radial-gradient(70% 55% at 100% 100%, color-mix(in srgb, var(--territory-wash) 8%, transparent), transparent 70%),
+    radial-gradient(70% 55% at 100% 100%, color-mix(in srgb, var(--territory-wash-right) 8%, transparent), transparent 70%),
     linear-gradient(90deg,
       color-mix(in srgb, var(--territory-wash) 24%, transparent) 0%,
       color-mix(in srgb, var(--territory-wash) 19%, transparent) 3%,
@@ -134,11 +142,11 @@ button { font: inherit; cursor: pointer; color: inherit; }
       color-mix(in srgb, var(--territory-wash) 7%, transparent) 12%,
       color-mix(in srgb, var(--territory-wash) 2.6%, transparent) 18%,
       transparent 25%, transparent 75%,
-      color-mix(in srgb, var(--territory-wash) 2.6%, transparent) 82%,
-      color-mix(in srgb, var(--territory-wash) 7%, transparent) 88%,
-      color-mix(in srgb, var(--territory-wash) 12.5%, transparent) 93%,
-      color-mix(in srgb, var(--territory-wash) 19%, transparent) 97%,
-      color-mix(in srgb, var(--territory-wash) 24%, transparent) 100%);
+      color-mix(in srgb, var(--territory-wash-right) 2.6%, transparent) 82%,
+      color-mix(in srgb, var(--territory-wash-right) 7%, transparent) 88%,
+      color-mix(in srgb, var(--territory-wash-right) 12.5%, transparent) 93%,
+      color-mix(in srgb, var(--territory-wash-right) 19%, transparent) 97%,
+      color-mix(in srgb, var(--territory-wash-right) 24%, transparent) 100%);
 }
 @media (max-width: 640px) {
   /* The edges are narrow on a phone: the same wash, at half the strength, so no text sits on a visible tint. */
@@ -764,7 +772,7 @@ table.per-class .num { white-space: nowrap; }
 .cw-fill { position: absolute; top: 0; bottom: 0; }
 .cw-fill--pos { background: var(--div-pos-3); border-radius: 0 3px 3px 0; }
 .cw-fill--neg { background: var(--div-neg-3); border-radius: 3px 0 0 3px; }
-.cw-value { font-variant-numeric: tabular-nums; text-align: right; color: var(--ink); font-weight: var(--w-label); }
+.cw-value { position: relative; font-variant-numeric: tabular-nums; text-align: right; color: var(--ink); font-weight: var(--w-label); }
 .cw-value--strong { font-weight: var(--w-strong); }
 .cw-value--none { color: var(--muted); }
 .cw-key { display: flex; flex-wrap: wrap; gap: 0.3rem 1.2rem; align-items: center; font-size: 0.82rem; color: var(--muted); margin: 0.2rem 0 0.6rem; }
@@ -1118,6 +1126,8 @@ table.stations .rule-badge { font-size: 0.75rem; }
 .lp-title:focus { outline: none; }
 .lp-title:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; }
 .lp-accent { display: block; font-style: italic; color: var(--terracotta); }
+/* «Explicando» in the slate-blue arm of the diverging pair (#3a6fa3: 5.3:1 on Paper, ≥ 4.3:1 on the landing wash; large text) */
+.lp-accent-blue { font-style: italic; color: var(--div-neg-3); }
 .lp-sub { margin: 1.6rem 0 0; max-width: 46rem; font-size: clamp(1.05rem, 1.35vw, 1.3rem); line-height: 1.5; font-weight: var(--w-body); color: var(--ink); text-wrap: pretty; }
 .lp-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2.2rem; }
 .btn--lg { padding: 0.7rem 1.5rem; font-size: 1.05rem; }
@@ -1166,6 +1176,11 @@ a.btn { display: inline-block; font-weight: var(--w-ui); }
 .lp-map-key li { display: inline-flex; align-items: center; gap: 0.3rem; }
 .lp-map-key .lp-swatch { border-radius: 50%; }
 .lp-art--row { bottom: 5.5rem; right: 12vw; width: auto; max-width: min(34rem, 40vw); }
+.lp-art--scalp { top: 10%; right: calc(var(--lp-gutter) + 2vw); width: clamp(250px, 21vw, 350px); }
+.lp-scalp { display: grid; grid-template-columns: clamp(6.5rem, 8.5vw, 9.5rem) minmax(0, 1fr); gap: 0.9rem; align-items: center; }
+.lp-scalp .scalp--mini { max-width: none; }
+.lp-scalp-key { flex-direction: column; align-items: flex-start; gap: 0.3rem; margin: 0 0 0.45rem; }
+.lp-scalp .lp-art-note { margin: 0; line-height: 1.4; }
 .lp-row { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 0.6rem; }
 .lp-row-id { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.15rem 0.6rem; border-radius: var(--radius-pill); background: var(--mist); font-size: 0.8rem; font-weight: var(--w-strong); }
 .lp-row-tile { max-width: 9rem; }
@@ -1180,13 +1195,15 @@ a.btn { display: inline-block; font-weight: var(--w-ui); }
 .lp-h2 { margin: 0 0 1.25rem; font-family: var(--font-serif); font-weight: 400; font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1.15; letter-spacing: -0.015em; }
 .lp-h2:focus { outline: none; }
 .lp-text { margin: 0; font-size: 1.125rem; line-height: 1.6; max-width: 68ch; }
-.lp-cards { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.lp-cards { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+@media (max-width: 1100px) { .lp-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .lp-card { padding: 1.6rem 1.6rem 1.5rem; border-radius: var(--radius-card); background: var(--mist); }
 .lp-card-map { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; margin: 0 0 1.1rem; border-radius: var(--radius-image); background: var(--lp-tile, var(--paper)); }
 /* Each card's map tile echoes its territory's wash (the same page tints as the app). */
 .lp-card[data-territory="air"] { --lp-tile: #f8f6fd; }
 .lp-card[data-territory="water"] { --lp-tile: #f0f9fe; }
 .lp-card[data-territory="mobility"] { --lp-tile: #fef9e5; }
+.lp-card[data-territory="fnirs"] { --lp-tile: #fdf4f8; }
 .lp-card-tag { margin: 0 0 0.35rem; font-size: 0.875rem; color: var(--muted); }
 .lp-card-title { margin: 0 0 0.6rem; font-family: var(--font-serif); font-weight: 400; font-size: 1.5rem; line-height: 1.2; letter-spacing: -0.01em; }
 .lp-card-text { margin: 0; font-size: 1rem; line-height: 1.55; }
@@ -1202,6 +1219,7 @@ a.btn { display: inline-block; font-weight: var(--w-ui); }
   .lp-art { position: static; width: auto; padding: 1rem 1.2rem 0.9rem; }
   .lp-art--map { justify-self: center; width: min(100%, 22rem); }
   .lp-art--row { max-width: none; }
+  .lp-art--scalp { grid-column: 1 / -1; justify-self: center; width: min(100%, 26rem); }
   .lp-cards { grid-template-columns: minmax(0, 1fr); }
   .lp-section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
 }
@@ -1231,3 +1249,117 @@ a.btn { display: inline-block; font-weight: var(--w-ui); }
 /* In the app the credits close the scrolled content, not the fixed bottom bar, so they never take working space. */
 .app-credits { margin-top: auto; padding: 1.5rem var(--gutter, 1.5rem) 1.25rem; }
 .app-credits .site-credits { border-top: 1px solid var(--line); padding-top: 0.9rem; }
+
+/* ---- fNIRS (contract v0.9): one page, the scalp at its centre */
+
+.fnirs-main { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+@media (max-width: 960px) { .fnirs-main { grid-template-columns: minmax(0, 1fr); } }
+.fnirs-picker { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1rem; }
+.fnirs-picker select { font: inherit; padding: 0.35rem 0.75rem; border-radius: var(--radius-pill); border: 1px solid var(--ink); background: var(--paper); }
+.fnirs-blocks { display: flex; flex-wrap: wrap; gap: 0.4rem; width: 100%; }
+.fnirs-blocks button { font: inherit; font-size: 0.9rem; padding: 0.3rem 0.75rem; border-radius: var(--radius-pill); border: 1px solid var(--line-strong); background: var(--paper); cursor: pointer; }
+.fnirs-blocks button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.fnirs-blocks button[aria-pressed="true"] .muted, .fnirs-blocks button[aria-pressed="true"] .fnirs-miss { color: inherit; }
+.fnirs-miss { color: var(--error); font-weight: var(--w-strong); }
+.fnirs-scalp { display: grid; gap: 0.75rem; }
+.scalp { width: 100%; max-width: 46rem; margin: 0.5rem auto 0; display: block; overflow: visible; }
+.scalp--mini { max-width: 8.5rem; margin: 0; }
+.scalp-skull { stroke: var(--slate); stroke-width: 0.012; }
+.scalp--mini .scalp-skull { stroke-width: 0.03; }
+.scalp-ear, .scalp-nose { fill: #f1ece6; stroke: var(--slate); stroke-width: 0.012; }
+.scalp--mini .scalp-ear, .scalp--mini .scalp-nose { stroke-width: 0.03; }
+.scalp-guide { stroke: var(--grid); stroke-width: 0.006; stroke-dasharray: 0.03 0.03; }
+.scalp-areas path { fill: #e6dfd7; stroke: #e6dfd7; stroke-width: 0.19; stroke-linejoin: round; opacity: 0.75; }
+.scalp-orient text { font-size: 0.07px; font-family: var(--font-sans); fill: var(--muted); text-anchor: middle; }
+.scalp-ch circle { fill: #b9bdc5; stroke: var(--paper); stroke-width: 0.012; }
+.scalp-ch--used circle { stroke: var(--ink); stroke-width: 0.012; stroke-dasharray: 0.03 0.02; }
+.scalp-ch--on circle { stroke: var(--ink); stroke-width: 0.016; stroke-dasharray: none; }
+.scalp--mini .scalp-ch circle { stroke-width: 0.02; }
+.scalp--mini .scalp-ch--on circle { r: 0.11; stroke-width: 0.035; }
+.scalp-ch path { stroke: var(--paper); stroke-width: 0.012; }
+.scalp-ch .scalp-pie-ring { fill: none; stroke: var(--ink); stroke-width: 0.016; }
+.scalp-ch-name { font-size: 0.062px; font-family: var(--font-sans); font-weight: var(--w-label); text-anchor: middle; fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 0.02px; }
+.scalp-legend { display: grid; gap: 0.25rem; max-width: 34rem; }
+.scalp-legend-bins { display: grid; grid-template-columns: repeat(9, 1fr); height: 0.75rem; border-radius: var(--radius-pill); overflow: hidden; }
+.scalp-legend-bins--seq { grid-template-columns: repeat(5, 1fr); }
+.scalp-legend-axis { display: flex; justify-content: space-between; }
+.fnirs-conditions { margin: 0; padding-left: 1.1rem; }
+.fnirs-rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.fnirs-rules li { display: grid; grid-template-columns: 3rem minmax(0, 1fr) 9rem; gap: 0.75rem; align-items: center; background: var(--paper); border-radius: var(--radius-small); padding: 0.5rem 1rem; }
+.fnirs-rules li[aria-current="true"] { box-shadow: 0 0 0 2px var(--ink); }
+.fnirs-rules .rule-sentence { margin: 0; line-height: 1.7; font-size: 1rem; }
+.fnirs-firing { position: relative; display: block; font-variant-numeric: tabular-nums; padding-top: 0.5rem; }
+.fnirs-firing-bar { position: absolute; top: 0; left: 0; height: 4px; border-radius: 4px; background: var(--series); }
+@media (max-width: 640px) { .fnirs-rules li { grid-template-columns: 2.5rem minmax(0, 1fr); } .fnirs-firing { grid-column: 2; } }
+
+/* fNIRS, two tabs (Reglas, Canales) */
+.fnirs-task-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2.5rem; }
+.fnirs-task-grid h3 { font-size: 1rem; font-weight: var(--w-strong); margin: 0 0 0.35rem; }
+.fnirs-task-grid p { margin: 0 0 1rem; max-width: 64ch; }
+.fnirs-task-levels { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.fnirs-overview { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 1.5rem; align-items: center; }
+.fnirs-overview .scalp { background: var(--paper); border-radius: var(--radius-small); box-shadow: var(--hairline); padding: 0.5rem; }
+.scalp-callouts polyline { fill: none; stroke: var(--ink); stroke-width: 0.008; opacity: 0.55; }
+.scalp-callouts text { font-size: 0.078px; font-family: var(--font-sans); font-weight: var(--w-label); fill: var(--ink); }
+.fnirs-overview-legend { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 0.5rem; }
+.fnirs-rule-grid { list-style: none; margin: 0.75rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr)); gap: 1rem; }
+.fnirs-rule-tile { background: var(--paper); border-radius: var(--radius-small); padding: 1rem 1.1rem; display: grid; gap: 0.5rem; align-content: start; box-shadow: inset 0 4px 0 var(--rule-class); }
+.fnirs-rule-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.fnirs-rule-top h3 { margin: 0; font-size: 1.1rem; font-weight: var(--w-strong); }
+.fnirs-rule-body { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0.9rem; align-items: center; }
+.fnirs-rule-body .rule-sentence { margin: 0 0 0.4rem; font-size: 0.98rem; line-height: 1.6; }
+.fnirs-terms summary { cursor: pointer; font-weight: var(--w-label); }
+.trial-matrix { display: grid; gap: 2px; align-items: center; font-variant-numeric: tabular-nums; }
+.tm-row { display: contents; }
+.tm-head > * { font-size: 0.72rem; color: var(--muted); text-align: center; }
+.tm-head .tm-label { text-align: left; }
+.tm-label { font-size: 0.85rem; font-weight: var(--w-label); display: flex; gap: 0.35rem; align-items: center; }
+.tm-test { font-size: 0.68rem; font-weight: var(--w-label); padding: 0 0.4rem; border-radius: var(--radius-pill); box-shadow: inset 0 0 0 1px var(--ink); }
+.tm-cell { width: 1.15rem; height: 1.15rem; border-radius: 3px; display: grid; place-items: center; font-size: 0.8rem; font-weight: var(--w-strong); line-height: 1; color: var(--ink); cursor: pointer; }
+.tm-cell--dark { color: var(--paper); }
+.tm-cell--none { background: repeating-linear-gradient(135deg, var(--paper) 0 3px, var(--line-strong) 3px 5px); }
+.tm-cell[aria-selected="true"] { outline: 2px solid var(--ink); outline-offset: 1px; position: relative; z-index: 1; }
+.tm-cell:focus-visible { outline: 3px solid var(--ink); }
+.tm-hits { font-size: 0.8rem; text-align: right; color: var(--muted); }
+.tm-row--first-train > * { margin-top: 0.6rem; }
+.fnirs-explore { display: grid; grid-template-columns: minmax(0, 46rem) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+@media (max-width: 1200px) { .fnirs-explore { grid-template-columns: minmax(0, 1fr); } }
+.tm-legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; margin-top: 0.9rem; }
+.tm-key { display: inline-grid; place-items: center; width: 0.9rem; height: 0.9rem; border-radius: 3px; vertical-align: -0.15rem; background: var(--line-strong); font-weight: var(--w-strong); font-size: 0.75rem; }
+.tm-key--none { background: repeating-linear-gradient(135deg, var(--paper) 0 3px, var(--line-strong) 3px 5px); }
+.fnirs-picker-narrow { display: none; }
+@media (max-width: 760px) {
+  .trial-matrix-wrap { display: none; }
+  .fnirs-picker-narrow { display: block; }
+  .fnirs-task-grid, .fnirs-overview { grid-template-columns: minmax(0, 1fr); }
+  .fnirs-rule-body { grid-template-columns: 6rem minmax(0, 1fr); }
+}
+.fnirs-channel-list { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 0.3rem; font-size: 0.92rem; }
+.fnirs-channel-rule { display: inline-flex; align-items: center; gap: 0.25rem; margin-right: 0.6rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { .scalp-callouts { display: none; } }
+
+/* The task in one sentence (first tab of a problem) and the accented phrase of a page title (DESIGN.md, Colour in titles) */
+.task-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.75rem; margin: 0; max-width: 72ch; font-size: 1.1rem; line-height: 1.5; }
+.task-line-label { font-size: 0.78rem; font-weight: var(--w-label); letter-spacing: 0.06em; text-transform: uppercase; color: var(--sienna); padding: 0.15rem 0.6rem; border-radius: var(--radius-pill); background: var(--peach); }
+.task-line-text { flex: 1 1 30ch; color: var(--ink); font-weight: var(--w-ui); }
+.task-line + .page-head { margin-top: -1.25rem; }
+.title-accent { font-style: italic; color: var(--terracotta); }
+
+/* fNIRS: the task figure, and what a spread adds to the report's benchmark columns (± one sd, a dot per seed or group) */
+.fnirs-task-figure { margin: 0 0 1rem; }
+.fnirs-task-figure img { display: block; width: 100%; max-width: 30rem; height: auto; border-radius: var(--radius-image); background: var(--paper); box-shadow: var(--hairline); }
+.fnirs-task-figure figcaption { margin-top: 0.4rem; max-width: 30rem; }
+.report-col--spread > .report-sd { position: absolute; left: 50%; width: 2px; margin-left: -1px; background: var(--ink); z-index: 2; }
+.report-col--spread > .report-sd::before, .report-col--spread > .report-sd::after { content: ""; position: absolute; left: -5px; width: 12px; height: 2px; background: var(--ink); }
+.report-col--spread > .report-sd::before { top: 0; }
+.report-col--spread > .report-sd::after { bottom: 0; }
+.report-col--spread > .report-dot { position: absolute; left: calc(50% + 20px); width: 9px; height: 9px; margin-bottom: -4.5px; border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 2px var(--ink); z-index: 2; }
+.report-col--spread > .report-dot--published { box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 2px var(--paper), 0 0 0 4px var(--terracotta); }
+.report-col--spread > .report-spread-value { transform: translate(-50%, -0.5rem); text-align: center; line-height: 1.15; }
+.report-spread-sd { display: block; font-size: 0.78rem; font-weight: var(--w-ui); color: var(--muted); }
+/* fNIRS signal identity: a swatch on the HbO / HbR buttons, the signal coloured in the channel labels */
+.signal-swatch { display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 50%; margin-right: 0.35rem; vertical-align: 0.05rem; box-shadow: 0 0 0 1.5px var(--paper); }
+.signal-swatch--HbO { background: var(--hbo); }
+.signal-swatch--HbR { background: var(--hbr); }
+.scalp-callouts tspan.sig-HbO { fill: var(--hbo); }
+.scalp-callouts tspan.sig-HbR { fill: var(--hbr); }

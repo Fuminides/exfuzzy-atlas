@@ -28,6 +28,7 @@ from atlas.services.static.extract import (
     export_day,
     export_id_for,
     export_inputs,
+    export_montage,
     export_static_files,
     export_stories,
 )
@@ -36,7 +37,7 @@ from atlas_api.main import create_app
 
 # The `kind` of a golden sample / self-check request, and what its `request` holds (docs section 13).
 GOLDEN_KINDS = ["predictions", "observations", "ruleMapInstant", "ruleMapWindow", "ruleTerritories", "ruleStories",
-                "ruleTrace", "series", "scenario"]
+                "ruleTrace", "series", "scenario", "trialTrace"]
 GROUPS = ("static", "inputs", "days", "agg", "stories", "whatif", "finalize")
 EXPLANATIONS_DIR = REPO_ROOT / "configs" / "explanations"
 
@@ -202,8 +203,11 @@ def call(client: TestClient, req: dict):
     return r.status_code, fmt.redact(r.json())
 
 
-def self_check(ctx: Ctx, tasks: list[str], data_dir: Path, n: int, seed: int, golden_n: int = 2) -> dict:
-    """Random requests answered by the real API and by ``StaticStore`` over the exported files; bodies must match."""
+def self_check(ctx: Ctx, tasks: list[str], data_dir: Path, n: int, seed: int, golden_n: int = 2,
+               montage: list[str] = ()) -> dict:
+    """Random requests answered by the real API and by ``StaticStore`` over the exported files; bodies must match.
+    ``montage`` tasks (v0.9) are checked on their exact bodies, the refusal of the map endpoints and ``n`` random
+    trial traces."""
     static = TestClient(create_app(StaticStore(data_dir)))
     by_kind: dict[str, dict] = defaultdict(lambda: {"n": 0, "ok": 0})  # plus http_<status> counts
     failures: list[dict] = []
@@ -241,6 +245,34 @@ def self_check(ctx: Ctx, tasks: list[str], data_dir: Path, n: int, seed: int, go
                 failures.append({"kind": "exact", "model_id": mid, "request": req["request"], "diff": problem})
             else:
                 stat["ok"] += 1
+    for task in montage:
+        mid = ctx.registry.tasks[task].model_id
+        trials = ctx.client.get("/api/v1/fnirs/trials", params={"model_id": mid}).json()["trials"]
+        rng = random.Random(f"{seed}/{task}")
+        picks = rng.sample([t["sample_id"] for t in trials], min(len(trials), max(n, golden_n) * 3))
+        checks = [("exact", "/api/v1/fnirs/montage", {"task_id": task}), ("exact", f"/api/v1/models/{mid}/rules", {}),
+                  ("exact", "/api/v1/fnirs/card", {"model_id": mid}),
+                  ("exact", "/api/v1/fnirs/trials", {"model_id": mid}),
+                  ("exact", f"/api/v1/models/{mid}", {}), ("exact", "/api/v1/entities", {"domain": "fnirs"}),
+                  ("trialTrace", "/api/v1/fnirs/trace", {"model_id": mid, "sample_id": "no-such-trial"})]
+        checks += [("trialTrace", "/api/v1/fnirs/trace", {"model_id": mid, "sample_id": sid}) for sid in picks]
+        for kind, url, params in checks:
+            a, b = ctx.client.get(url, params=params), static.get(url, params=params)
+            stat = by_kind[kind]
+            stat["n"] += 1
+            stat[f"http_{a.status_code}"] = stat.get(f"http_{a.status_code}", 0) + 1
+            body_a = fmt.redact(a.json())
+            problem = None if a.status_code == b.status_code else f"status {a.status_code} != {b.status_code}"
+            problem = problem or (diff(body_a, b.json()) if a.status_code == 200 else None)
+            request = {"url": url, "params": params}
+            if problem:
+                failures.append({"kind": kind, "model_id": mid, "request": request, "diff": problem})
+                continue
+            stat["ok"] += 1
+            if kind == "trialTrace" and a.status_code == 200 and kept[(mid, kind)] < golden_n:
+                kept[(mid, kind)] += 1
+                golden_by_model[mid].append({"kind": kind, "model_id": mid, "status": 200, "body": body_a,
+                                             "request": {"modelId": mid, "sampleId": params["sample_id"]}})
     for mid, items in golden_by_model.items():
         ctx.out.write(f"{mid}.json.gz", items, golden=True)
     ctx.out.write("index.json.gz", {
@@ -266,12 +298,15 @@ def file_kind(rel: str) -> str:
         return "stories"
     if "whatif" in parts:
         return "whatif"
-    if name in ("pred", "fire", "mem", "meta", "card", "rules", "importance", "explanation", "summary", "entities"):
+    if "fnirs" in parts:  # montage tasks (v0.9): card, trials, traces/<subject>
+        return "traces" if "traces" in parts else f"fnirs_{name}"
+    if name in ("pred", "fire", "mem", "meta", "card", "rules", "importance", "explanation", "summary", "entities",
+                "montage"):
         return name
     return "other"
 
 
-def finalize(ctx: Ctx, tasks: list[str], args, export_id: str, started: float) -> dict:
+def finalize(ctx: Ctx, tasks: list[str], args, export_id: str, started: float, montage: list[str] = ()) -> dict:
     out = ctx.out
     data = out.data
     fmt.audit_tree(data)
@@ -291,7 +326,7 @@ def finalize(ctx: Ctx, tasks: list[str], args, export_id: str, started: float) -
     out.write("files.json.gz", index)
     index_raw = (data / "files.json.gz").read_bytes()
     reasons = fmt.MISSING_REASONS
-    golden = self_check(ctx, tasks, data, args.check_n, args.seed)
+    golden = self_check(ctx, tasks, data, args.check_n, args.seed, montage=montage)
     manifest = {
         "format": "exfuzzy-atlas-static", "format_version": fmt.FORMAT_VERSION, "export_id": export_id,
         "created_at_utc": fmt.iso(__import__("datetime").datetime.now(__import__("datetime").timezone.utc)),
@@ -302,12 +337,14 @@ def finalize(ctx: Ctx, tasks: list[str], args, export_id: str, started: float) -
                 "checksums_sha256": _sha_or_none(ctx.published / ctx.registry.tasks[t].model_id / "SHA256SUMS"),
                 "explanation_sha256": _sha_or_none(
                     Path(args.explanations_dir) / f"{ctx.registry.tasks[t].model_id}.json"),
-            } for t in tasks}},
-        "tasks": {t: {"model_id": ctx.registry.tasks[t].model_id, "domain": ctx.registry.tasks[t].domain.value,
-                      "territory": ctx.registry.tasks[t].territory, "regular": ctx.model(t).regular,
-                      "keys": len(ctx.model(t).keys),
-                      "coverage": {"from": fmt.iso(ctx.model(t).first), "to": fmt.iso(ctx.model(t).last)},
-                      "period": _period_doc(ctx.model(t))} for t in tasks},
+            } for t in [*tasks, *montage]}},
+        "tasks": {**{t: {"model_id": ctx.registry.tasks[t].model_id, "domain": ctx.registry.tasks[t].domain.value,
+                         "territory": ctx.registry.tasks[t].territory, "view": "map", "regular": ctx.model(t).regular,
+                         "keys": len(ctx.model(t).keys),
+                         "coverage": {"from": fmt.iso(ctx.model(t).first), "to": fmt.iso(ctx.model(t).last)},
+                         "period": _period_doc(ctx.model(t))} for t in tasks},
+                  **{t: {"model_id": ctx.registry.tasks[t].model_id, "domain": ctx.registry.tasks[t].domain.value,
+                         "territory": ctx.registry.tasks[t].territory, "view": "montage"} for t in montage}},
         "base": {"export_id": args.base_id, "reused_tasks": args.reused},
         "params": {"taus": fmt.TAUS, "stories_tau": fmt.STORIES_TAU, "stories_limit": fmt.STORIES_LIMIT,
                    "series_max_points": fmt.SERIES_MAX_POINTS, "missing_reasons": reasons,
@@ -447,7 +484,8 @@ def reuse_from_base(ctx: Ctx, base: Path, tasks: list[str], only: set[str], args
             by_ter[_territory(ctx.model(t))].add(t)
     args.rebuild_inputs = set()
     for ter, ts in by_ter.items():
-        before = {t for t, v in manifest["tasks"].items() if v["regular"] and (v["territory"] or v["domain"]) == ter}
+        before = {t for t, v in manifest["tasks"].items()
+                  if v.get("view", "map") == "map" and v["regular"] and (v["territory"] or v["domain"]) == ter}
         if ts <= ok and before == ts:
             link_tree(f"inputs/{ter}")
         else:
@@ -479,16 +517,20 @@ def main(argv: list[str] | None = None) -> None:
         raise SystemExit(f"unknown groups {sorted(unknown)}")
     started = time.time()
     probe = Ctx(args.published_dir, Out.__new__(Out))  # registry only
-    tasks = resolve(probe, args.tasks.split(",") if args.tasks else None)
+    every = resolve(probe, args.tasks.split(",") if args.tasks else None)
+    montage = [t for t in every if probe.registry.tasks[t].view == m.TaskView.MONTAGE]  # v0.9: no map files
+    tasks = [t for t in every if t not in montage]
     periods = resolve_periods(probe, tasks, args.period)
     spec = {"taus": fmt.TAUS, "whatif": not args.no_whatif,
             "periods": {t: [fmt.iso(p[0]), fmt.iso(p[1])] for t, p in sorted(periods.items())}}
-    export_id = export_id_for(args.published_dir, tasks, args.explanations_dir, spec)
+    export_id = export_id_for(args.published_dir, every, args.explanations_dir, spec)
     out = Out(args.out, export_id, force=args.force)
     ctx = Ctx(args.published_dir, out, periods=periods)
     only = resolve(ctx, args.only.split(",")) if args.only else None
-    if only is not None and not set(only) <= set(tasks):
+    if only is not None and not set(only) <= set(every):
         raise SystemExit("--only must be inside --tasks")
+    montage_work = [t for t in montage if only is None or t in only]
+    only = None if only is None else [t for t in only if t not in montage]
     args.base_id, args.reused, args.rebuild_inputs = None, [], None
     reused: set[str] = set()
     if args.base:
@@ -508,6 +550,7 @@ def main(argv: list[str] | None = None) -> None:
     units = []
     if "static" in groups:  # cheap, and it rewrites the meta of reused models (their input paths may have changed)
         units += [("static", t) for t in (tasks if args.base else work)]
+        units += [("montage", t) for t in montage_work]
     if "inputs" in groups:
         units += [("inputs", ter) for ter in sorted(territories)]
     for g in ("days", "agg", "stories", "whatif"):
@@ -516,7 +559,8 @@ def main(argv: list[str] | None = None) -> None:
     if "finalize" in groups:
         units.append(("finalize", "all"))
     N = len(units)
-    print(f"export_id={export_id} tasks={len(tasks)} work={len(work)} out={out.data}", flush=True)
+    print(f"export_id={export_id} tasks={len(tasks)} montage={len(montage)} work={len(work)} out={out.data}",
+          flush=True)
     for k, (group, what) in enumerate(units, 1):
         t0 = time.time()
         if group == "static":
@@ -524,6 +568,8 @@ def main(argv: list[str] | None = None) -> None:
             export_static_files(ctx, [what])
             meta = build_meta(ctx, mc, groups_info, with_whatif=not args.no_whatif)
             out.write(f"models/{mc.model_id}/meta.json.gz", meta)
+        elif group == "montage":
+            export_montage(ctx, what)
         elif group == "inputs":
             ts = sorted(t for t in tasks if ctx.model(t).regular and _territory(ctx.model(t)) == what)
             days = sorted({d for t in ts for d in ctx.model(t).days})
@@ -546,7 +592,7 @@ def main(argv: list[str] | None = None) -> None:
 
             export_whatif(ctx, ctx.model(what))
         elif group == "finalize":
-            manifest = finalize(ctx, tasks, args, export_id, started)
+            manifest = finalize(ctx, tasks, args, export_id, started, montage=montage)
             print(f"  total {manifest['totals']['bytes'] / 1e6:.1f} MB in {manifest['totals']['files']} files; "
                   f"golden {manifest['golden']['n_passed']}/{manifest['golden']['n_checked']}; "
                   f"privacy violations {manifest['privacy']['violations']}", flush=True)

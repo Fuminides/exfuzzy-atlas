@@ -14,7 +14,7 @@ from typing import Annotated, Any, Literal
 
 from pydantic import AfterValidator, AwareDatetime, BaseModel, ConfigDict, Field, model_validator
 
-SCHEMA_VERSION = "0.8.0"
+SCHEMA_VERSION = "0.9.0"
 PARITY_TOLERANCE = 1e-9
 
 
@@ -48,6 +48,7 @@ class Domain(str, Enum):
     AIR = "air"
     WATER = "water"
     MOBILITY = "mobility"
+    FNIRS = "fnirs"  # v0.9: brain activity (functional near-infrared spectroscopy); entities are trials, not places
 
 
 class GeometrySupport(str, Enum):
@@ -871,30 +872,11 @@ def top_contributor(values: Sequence[float]) -> int | None:
     return None if best <= 0 else list(values).index(best)
 
 
-class RuleTrace(_Envelope):
-    model_id: str
-    task_id: str
-    entity_id: str
-    issued_at_utc: UtcDatetime
-    valid_at_utc: UtcDatetime
-    inference: InferenceSpec
-    feature_values: list[FeatureValue]
-    rules: list[RuleTraceEntry]
-    prediction: TracePrediction
-    observation_ids: list[str] = []
-    observed: float | None = Field(
-        None, description="v0.4: target value observed at valid_at_utc, when known; not available at issue time."
-    )
-    observed_label: str | None = Field(None, description="v0.4: class of the observed value (classification tasks).")
-    quality: Quality = Quality()
+class _TraceChecks:
+    """Parity checks shared by ``RuleTrace`` and ``TrialTrace`` (v0.9): memberships, t-norm, the winning-rule argmax and
+    the mixture sums. It declares no field, so ``RuleTrace``'s schema is the same as before v0.9."""
 
-    @model_validator(mode="after")
-    def _consistent(self) -> RuleTrace:
-        if self.valid_at_utc < self.issued_at_utc:
-            raise ValueError("valid_at_utc must not precede issued_at_utc")
-        for fv in self.feature_values:
-            if fv.observed_at_utc is not None and fv.observed_at_utc > self.issued_at_utc:
-                raise ValueError(f"{fv.feature} was observed after issued_at_utc (future information)")
+    def _check_parity(self) -> None:
         tnorm = _TNORMS[self.inference.tnorm]
         for entry in self.rules:
             for ant in entry.antecedents:
@@ -916,7 +898,6 @@ class RuleTrace(_Envelope):
         elif self.prediction.class_scores is not None or any(
                 e.class_weights is not None or e.class_contributions is not None for e in self.rules):
             raise ValueError("class weights, contributions and scores are for the rule mixture only")
-        return self
 
     def _check_mixture(self) -> None:
         """contributions = weight x firing, scores = bias + sum, label = first argmax, top rule (v0.7)."""
@@ -978,6 +959,36 @@ class RuleTrace(_Envelope):
             best = max(self.rules, key=lambda e: e.association_degree, default=None)  # first max, as numpy argmax
             if best is None or best.association_degree <= 0 or best.rule_id != self.prediction.winning_rule_id:
                 raise ValueError("winning_rule_id must be the rule with the largest positive association_degree")
+
+
+
+
+class RuleTrace(_TraceChecks, _Envelope):
+    model_id: str
+    task_id: str
+    entity_id: str
+    issued_at_utc: UtcDatetime
+    valid_at_utc: UtcDatetime
+    inference: InferenceSpec
+    feature_values: list[FeatureValue]
+    rules: list[RuleTraceEntry]
+    prediction: TracePrediction
+    observation_ids: list[str] = []
+    observed: float | None = Field(
+        None, description="v0.4: target value observed at valid_at_utc, when known; not available at issue time."
+    )
+    observed_label: str | None = Field(None, description="v0.4: class of the observed value (classification tasks).")
+    quality: Quality = Quality()
+
+    @model_validator(mode="after")
+    def _consistent(self) -> RuleTrace:
+        if self.valid_at_utc < self.issued_at_utc:
+            raise ValueError("valid_at_utc must not precede issued_at_utc")
+        for fv in self.feature_values:
+            if fv.observed_at_utc is not None and fv.observed_at_utc > self.issued_at_utc:
+                raise ValueError(f"{fv.feature} was observed after issued_at_utc (future information)")
+        self._check_parity()
+        return self
 
 
 # ---------------------------------------------------------------- data provenance
@@ -1118,6 +1129,13 @@ class MetricsReport(_Model):
 # ---------------------------------------------------------------------- API shapes
 
 
+class TaskView(str, Enum):
+    """v0.9: the view a task is explored in (``TaskInfo.view``)."""
+
+    MAP = "map"
+    MONTAGE = "montage"
+
+
 class TaskInfo(_Model):
     task_id: str
     task_type: Literal["regression", "classification"] = "regression"
@@ -1135,6 +1153,11 @@ class TaskInfo(_Model):
     territory_title_en: str | None = Field(
         None, description="v0.6: English display name of the territory, e.g. 'Germany' for 'Alemania'; the UI shows "
         "it when the interface is in English, else falls back to `territory_title`."
+    )
+    view: TaskView = Field(
+        TaskView.MAP, description="v0.9: how the task is explored. 'map': entities with geometry over time (every "
+        "endpoint keyed by entity and issue time). 'montage': fNIRS, rows are (subject, trial) and the sensors are "
+        "inputs drawn on a head; served by the /fnirs/* endpoints, never by /entities, /series or /rule-map."
     )
 
 
@@ -1929,3 +1952,208 @@ class ModelExplanation(_Envelope):
     reviewed: bool = Field(description="True once a person has read the text against the rules and metrics.")
     es: ExplanationText
     en: ExplanationText
+
+
+# ----------------------------------------------------------------- v0.9: fNIRS (sensor montage, trials)
+
+SAMPLE_ID = r"^[A-Za-z0-9._-]+$"
+
+
+class HaemoglobinSignal(str, Enum):
+    """The two signals of a NIRS channel: oxygenated (HbO) and deoxygenated (HbR) haemoglobin concentration change."""
+
+    HBO = "HbO"
+    HBR = "HbR"
+
+
+def head_projection(xyz: Sequence[float]) -> tuple[float, float]:
+    """Azimuthal equidistant projection from the vertex of a point of a head frame (x right ear, y nose, z vertex):
+    the direction is normalised, the radius is the polar angle over pi/2 (the ear plane z = 0 maps to radius 1) and
+    the angle is kept, so x stays to the right and y to the nose. The standard flattening of EEG/NIRS topographies."""
+    x, y, z = (float(v) for v in xyz)
+    norm = math.sqrt(x * x + y * y + z * z)
+    if norm == 0:
+        raise ValueError("a sensor position cannot be the origin")
+    x, y, z = x / norm, y / norm, z / norm
+    radius = math.acos(max(-1.0, min(1.0, z))) / (math.pi / 2)
+    planar = math.hypot(x, y)
+    if planar == 0:
+        return 0.0, 0.0
+    return radius * x / planar, radius * y / planar
+
+
+class SensorInput(_Model):
+    """One model input measured at a channel."""
+
+    feature: str = Field(description="Input name, as in rules.json (e.g. 'tmb_s1_chAF7').")
+    signal: HaemoglobinSignal
+    label: str = Field(description="Display name, e.g. 'HbO en AF7'.")
+    label_en: str | None = Field(None, description="English display name, e.g. 'HbO at AF7'.")
+
+
+class MontageChannel(_Model):
+    channel_id: str = Field(pattern=SAMPLE_ID, description="Channel name as in the source (nearest 10-5 position).")
+    xyz: tuple[float, float, float] = Field(description="Position as published by the source, in its frame.")
+    xy: tuple[float, float] = Field(description="head_projection(xyz): where the web draws the channel.")
+    region: str | None = Field(None, description="Brain region under the channel, when the montage carries one.")
+    region_en: str | None = None
+    brodmann: str | None = Field(None, description="Brodmann area(s), e.g. 'BA10', when the montage carries one.")
+    inputs: list[SensorInput] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _consistent(self) -> MontageChannel:
+        if not all(math.isfinite(v) for v in self.xyz):
+            raise ValueError(f"{self.channel_id}: non-finite position")
+        expected = head_projection(self.xyz)
+        if any(abs(a - b) > PARITY_TOLERANCE for a, b in zip(self.xy, expected, strict=True)):
+            raise ValueError(f"{self.channel_id}: xy is not head_projection(xyz)")
+        return self
+
+
+class MontageResponse(_Envelope):
+    """``GET /fnirs/montage?task_id=``: where each channel of a montage task sits, as published by the source."""
+
+    task_id: str
+    frame: str = Field(description="Coordinate frame of xyz, as the source states it.")
+    projection: Literal["azimuthal_equidistant"] = "azimuthal_equidistant"
+    source: str = Field(description="Where the positions were read (document and table).")
+    source_url: str
+    source_sha256: Sha256
+    region_source: str | None = Field(
+        None, description="Where region and Brodmann labels come from; null when no channel has one.")
+    region_approximate: bool = Field(
+        False, description="True when the region labels are an approximate assignment, not a measurement.")
+    channels: list[MontageChannel] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _consistent(self) -> MontageResponse:
+        ids = [c.channel_id for c in self.channels]
+        if len(ids) != len(set(ids)):
+            raise ValueError("channel_id values must be unique")
+        features = [i.feature for c in self.channels for i in c.inputs]
+        if len(features) != len(set(features)):
+            raise ValueError("an input belongs to one channel only")
+        if any(c.region or c.brodmann for c in self.channels) and self.region_source is None:
+            raise ValueError("region labels need region_source")
+        return self
+
+
+class SubjectSplit(_Model):
+    """Split by subject: no subject has rows in two parts. Selection folds are groups of training subjects."""
+
+    train_subjects: list[int] = Field(min_length=1)
+    test_subjects: list[int] = Field(min_length=1)
+    selection_folds: list[list[int]] = Field(
+        [], description="Training subjects held out in each cross-validation fold of the configuration search.")
+    selection_metric: str | None = Field(None, description="Metric the search maximised (mean over folds).")
+
+    @model_validator(mode="after")
+    def _consistent(self) -> SubjectSplit:
+        train, test = set(self.train_subjects), set(self.test_subjects)
+        if len(train) != len(self.train_subjects) or len(test) != len(self.test_subjects):
+            raise ValueError("duplicate subjects")
+        if train & test:
+            raise ValueError(f"subjects in train and test: {sorted(train & test)}")
+        held = [s for fold in self.selection_folds for s in fold]
+        if len(held) != len(set(held)) or not set(held) <= train:
+            raise ValueError("selection folds must be disjoint groups of training subjects")
+        return self
+
+
+class FnirsModelCard(_Envelope):
+    """``GET /fnirs/card?model_id=``: provenance, split and metrics of a montage task's model (a ``ModelCard`` whose
+    split is by subject instead of by period)."""
+
+    model_id: str
+    task_id: str
+    domain: Domain
+    run_id: str
+    created_at_utc: UtcDatetime
+    git_commit: str | None
+    git_dirty: bool
+    exfuzzy_version: str
+    python_version: str
+    seed: int
+    target: str
+    features: list[str]
+    hyperparameters: dict[str, Any]
+    data_checksums: dict[str, Sha256]
+    split: SubjectSplit
+    target_scheme: TargetScheme
+    metrics: list[MetricRow] = Field(
+        description="slice 'test', 'train' or 'validation' (mean over the selection folds); for error bars also "
+        "'test/seed=<k>' (every estimator refitted with seed k on the same split), 'validation/fold=<k>' (one "
+        "subject fold of the selection) and 'nested/fold=<k>' (subject-grouped cross-validation over every subject: "
+        "outer group k as test, the configuration chosen again without it, mean over the seeds). Estimator "
+        "'exfuzzy' is the served model (under 'nested', the same procedure), the others are baselines.")
+    attribution: list[Attribution] = []
+    warnings: list[str] = []
+
+
+class TrialRecord(_Model):
+    sample_id: str = Field(pattern=SAMPLE_ID, description="Unique row id, e.g. 's03-t05'.")
+    subject: int
+    trial: int = Field(ge=1, description="Order of the block within the subject's recording.")
+    condition: str = Field(description="What the block was in the source (e.g. '3-back'); data, not translated.")
+    split: Literal["train", "test"]
+    observed_label: str
+    predicted_label: str | None
+    missing_reason: MissingReason | None = None
+    winning_rule_id: str | None = Field(None, description="Winning-rule classifier: the rule that decided.")
+    top_rule_id: str | None = Field(None, description="Rule mixture: the rule that supports the prediction the most.")
+
+    @model_validator(mode="after")
+    def _consistent(self) -> TrialRecord:
+        if (self.predicted_label is None) == (self.missing_reason is None):
+            raise ValueError("predicted_label is null exactly when missing_reason is set")
+        if self.winning_rule_id is not None and self.top_rule_id is not None:
+            raise ValueError("winning_rule_id and top_rule_id belong to different inference families")
+        return self
+
+
+class TrialsResponse(_Envelope):
+    """``GET /fnirs/trials?model_id=``: every published row of a montage task, test subjects included and marked."""
+
+    model_id: str
+    task_id: str
+    trials: list[TrialRecord]
+
+    @model_validator(mode="after")
+    def _consistent(self) -> TrialsResponse:
+        ids = [t.sample_id for t in self.trials]
+        if len(ids) != len(set(ids)):
+            raise ValueError("sample_id values must be unique")
+        keys = [(t.subject, t.trial) for t in self.trials]
+        if len(keys) != len(set(keys)):
+            raise ValueError("(subject, trial) must be unique")
+        splits: dict[int, set[str]] = {}
+        for t in self.trials:
+            splits.setdefault(t.subject, set()).add(t.split)
+        if any(len(v) > 1 for v in splits.values()):
+            raise ValueError("a subject's trials are all in one split")
+        return self
+
+
+class TrialTrace(_TraceChecks, _Envelope):
+    """``GET /fnirs/trace?model_id=&sample_id=``: the inference of one trial, with the parity checks of ``RuleTrace``
+    and no issue or valid time (a block of a recording, not a forecast)."""
+
+    model_id: str
+    task_id: str
+    sample_id: str = Field(pattern=SAMPLE_ID)
+    subject: int
+    trial: int = Field(ge=1)
+    split: Literal["train", "test"]
+    inference: InferenceSpec
+    feature_values: list[FeatureValue]
+    rules: list[RuleTraceEntry]
+    prediction: TracePrediction
+    observed_label: str | None = None
+    quality: Quality = Quality()
+
+    @model_validator(mode="after")
+    def _consistent(self) -> TrialTrace:
+        if any(fv.observed_at_utc is not None for fv in self.feature_values):
+            raise ValueError("a trial trace has no observation times")
+        self._check_parity()
+        return self

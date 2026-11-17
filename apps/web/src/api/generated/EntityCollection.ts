@@ -15,7 +15,7 @@ export type Url = string | null;
  */
 export type Attribution = Attribution1[];
 export type DataVersion = string;
-export type Domain = "air" | "water" | "mobility";
+export type Domain = "air" | "water" | "mobility" | "fnirs";
 /**
  * Null when the source has no geometry; never fabricated.
  */

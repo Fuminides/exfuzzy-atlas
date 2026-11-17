@@ -14,7 +14,7 @@ from pathlib import Path
 
 from atlas.contracts import models as m
 
-FORMAT_VERSION = 2  # 2: a P entry is a condition (feature, operator, term), contract v0.8
+FORMAT_VERSION = 3  # 2: a P entry is a condition (feature, operator, term), contract v0.8; 3: montage tasks (v0.9)
 EXPORTER = f"atlas.services.static {FORMAT_VERSION}"
 TAUS = [round(0.05 * k, 2) for k in range(1, 21)]
 STORIES_TAU = 0.5
@@ -30,6 +30,18 @@ DAY = timedelta(days=1)
 # Per-territory periods of the export (issue times, inclusive): Germany is exported for winter only (user decision,
 # 2026-11-10). Override per task, model or territory with ``--period KEY=FROM,TO`` (``full`` = the whole coverage).
 DEFAULT_PERIODS = {"germany": ("2025-01-01T00:00:00Z", "2025-03-31T23:00:00Z")}
+
+# ---------------------------------------------------------------------------------------------- montage tasks
+def montage_paths(task_id: str, model_id: str) -> dict[str, str]:
+    """Where a montage task's bodies go (contract v0.9; docs/static_export.md section 15)."""
+    return {"montage": f"tasks/{task_id}/montage.json.gz", "rules": f"models/{model_id}/rules.json.gz",
+            "card": f"models/{model_id}/fnirs/card.json.gz", "trials": f"models/{model_id}/fnirs/trials.json.gz",
+            "traces": f"models/{model_id}/fnirs/traces/{{subject}}.json.gz"}
+
+
+def trace_shard(subject: int) -> str:
+    return f"s{int(subject):02d}"
+
 
 # ---------------------------------------------------------------------------------------------- allow-list
 FORBIDDEN_SUFFIXES = (".pkl", ".pickle", ".parquet", ".joblib", ".npy", ".npz", ".pt", ".pth", ".onnx", ".h5", ".bin")

@@ -351,3 +351,17 @@ class FixtureStore:
             return scenarios.build_scenario(request, rules, original, rerun)
         except scenarios.ScenarioError as exc:
             raise BadRequest(str(exc)) from exc
+
+    # ---- contract v0.9: the synthetic fixtures have no montage task
+
+    def fnirs_montage(self, task_id: str) -> m.MontageResponse:
+        raise NotFound(f"no montage task {task_id} in the synthetic fixtures")
+
+    def fnirs_card(self, model_id: str) -> m.FnirsModelCard:
+        raise NotFound(f"no montage model {model_id} in the synthetic fixtures")
+
+    def fnirs_trials(self, model_id: str) -> m.TrialsResponse:
+        raise NotFound(f"no montage model {model_id} in the synthetic fixtures")
+
+    def fnirs_trace(self, model_id: str, sample_id: str) -> m.TrialTrace:
+        raise NotFound(f"no montage model {model_id} in the synthetic fixtures")

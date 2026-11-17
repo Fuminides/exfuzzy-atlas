@@ -17,6 +17,7 @@ EXPORTED = [
     m.PredictionsResponse, m.ObservationsResponse, m.RuleTerritoriesResponse, m.RuleStoriesResponse,
     m.ScenarioRequest, m.ScenarioResponse, m.RuleImportanceResponse, m.SummaryResponse, m.ModelExplanation,
     m.SourceManifest, m.QualityReport, m.RunManifest, m.MetricsReport,
+    m.MontageResponse, m.FnirsModelCard, m.TrialsResponse, m.TrialTrace,
 ]
 
 

@@ -4,7 +4,8 @@
       "enum": [
         "air",
         "water",
-        "mobility"
+        "mobility",
+        "fnirs"
       ],
       "title": "Domain",
       "type": "string"
@@ -49,7 +50,7 @@
       "type": "object"
     }
   },
-  "$id": "https://exfuzzy-atlas/schemas/0.8.0/SourceManifest.schema.json",
+  "$id": "https://exfuzzy-atlas/schemas/0.9.0/SourceManifest.schema.json",
   "additionalProperties": false,
   "properties": {
     "attribution": {
@@ -114,7 +115,7 @@
       "title": "Period Start"
     },
     "schema_version": {
-      "default": "0.8.0",
+      "default": "0.9.0",
       "title": "Schema Version",
       "type": "string"
     },

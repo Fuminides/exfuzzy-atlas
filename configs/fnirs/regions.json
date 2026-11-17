@@ -1,0 +1,187 @@
+{
+ "source": "ex-Fuzzy fNIRS demo (Caterson et al.), notebook 005_Visualisation_Demo_with_PyCirclize.ipynb, commit 244d8a0: approximate Brodmann area and brain region per channel",
+ "source_sha256": "56e1d8621d4dd8a73100d341326413ce49db37194fd8c7dd6b62c2d5997886c1",
+ "approximate": true,
+ "channels": {
+  "AF1": {
+   "brodmann": "BA10",
+   "region_en": "Left prefrontal cortex",
+   "region": "Corteza prefrontal izquierda"
+  },
+  "AF2": {
+   "brodmann": "BA10",
+   "region_en": "Right prefrontal cortex",
+   "region": "Corteza prefrontal derecha"
+  },
+  "AF5h": {
+   "brodmann": "BA10",
+   "region_en": "Left prefrontal cortex",
+   "region": "Corteza prefrontal izquierda"
+  },
+  "AF6h": {
+   "brodmann": "BA10",
+   "region_en": "Right prefrontal cortex",
+   "region": "Corteza prefrontal derecha"
+  },
+  "AF7": {
+   "brodmann": "BA10",
+   "region_en": "Left prefrontal cortex",
+   "region": "Corteza prefrontal izquierda"
+  },
+  "AF8": {
+   "brodmann": "BA10",
+   "region_en": "Right prefrontal cortex",
+   "region": "Corteza prefrontal derecha"
+  },
+  "AFF3h": {
+   "brodmann": "BA10",
+   "region_en": "Left prefrontal cortex",
+   "region": "Corteza prefrontal izquierda"
+  },
+  "AFF4h": {
+   "brodmann": "BA10",
+   "region_en": "Right prefrontal cortex",
+   "region": "Corteza prefrontal derecha"
+  },
+  "AFF5": {
+   "brodmann": "BA10",
+   "region_en": "Left prefrontal cortex",
+   "region": "Corteza prefrontal izquierda"
+  },
+  "AFF6": {
+   "brodmann": "BA10",
+   "region_en": "Right prefrontal cortex",
+   "region": "Corteza prefrontal derecha"
+  },
+  "AFFz": {
+   "brodmann": "BA10",
+   "region_en": "Medial prefrontal cortex",
+   "region": "Corteza prefrontal medial"
+  },
+  "AFp3": {
+   "brodmann": "BA10",
+   "region_en": "Left prefrontal cortex",
+   "region": "Corteza prefrontal izquierda"
+  },
+  "AFp4": {
+   "brodmann": "BA10",
+   "region_en": "Right prefrontal cortex",
+   "region": "Corteza prefrontal derecha"
+  },
+  "AFp7": {
+   "brodmann": "BA10",
+   "region_en": "Left prefrontal cortex",
+   "region": "Corteza prefrontal izquierda"
+  },
+  "AFp8": {
+   "brodmann": "BA10",
+   "region_en": "Right prefrontal cortex",
+   "region": "Corteza prefrontal derecha"
+  },
+  "AFpz": {
+   "brodmann": "BA10",
+   "region_en": "Medial prefrontal cortex",
+   "region": "Corteza prefrontal medial"
+  },
+  "C3h": {
+   "brodmann": "BA4",
+   "region_en": "Left primary motor cortex",
+   "region": "Corteza motora primaria izquierda"
+  },
+  "C4h": {
+   "brodmann": "BA4",
+   "region_en": "Right primary motor cortex",
+   "region": "Corteza motora primaria derecha"
+  },
+  "C5h": {
+   "brodmann": "BA4",
+   "region_en": "Left primary motor cortex",
+   "region": "Corteza motora primaria izquierda"
+  },
+  "C6h": {
+   "brodmann": "BA4",
+   "region_en": "Right primary motor cortex",
+   "region": "Corteza motora primaria derecha"
+  },
+  "CCP3": {
+   "brodmann": "BA3",
+   "region_en": "Left primary somatosensory cortex",
+   "region": "Corteza somatosensorial primaria izquierda"
+  },
+  "CCP4": {
+   "brodmann": "BA3",
+   "region_en": "Right primary somatosensory cortex",
+   "region": "Corteza somatosensorial primaria derecha"
+  },
+  "CPP3": {
+   "brodmann": "BA5",
+   "region_en": "Left somatosensory association cortex",
+   "region": "Corteza somatosensorial de asociación izquierda"
+  },
+  "CPP4": {
+   "brodmann": "BA5",
+   "region_en": "Right somatosensory association cortex",
+   "region": "Corteza somatosensorial de asociación derecha"
+  },
+  "FCC3": {
+   "brodmann": "BA6",
+   "region_en": "Left premotor cortex",
+   "region": "Corteza premotora izquierda"
+  },
+  "FCC4": {
+   "brodmann": "BA6",
+   "region_en": "Right premotor cortex",
+   "region": "Corteza premotora derecha"
+  },
+  "P3h": {
+   "brodmann": "BA7",
+   "region_en": "Left superior parietal lobule",
+   "region": "Lobulillo parietal superior izquierdo"
+  },
+  "P4h": {
+   "brodmann": "BA7",
+   "region_en": "Right superior parietal lobule",
+   "region": "Lobulillo parietal superior derecho"
+  },
+  "P5h": {
+   "brodmann": "BA7",
+   "region_en": "Left superior parietal lobule",
+   "region": "Lobulillo parietal superior izquierdo"
+  },
+  "P6h": {
+   "brodmann": "BA7",
+   "region_en": "Right superior parietal lobule",
+   "region": "Lobulillo parietal superior derecho"
+  },
+  "PO1": {
+   "brodmann": "BA19",
+   "region_en": "Left visual association cortex",
+   "region": "Corteza visual de asociación izquierda"
+  },
+  "PO2": {
+   "brodmann": "BA19",
+   "region_en": "Right visual association cortex",
+   "region": "Corteza visual de asociación derecha"
+  },
+  "POOz": {
+   "brodmann": "BA17",
+   "region_en": "Primary visual cortex",
+   "region": "Corteza visual primaria"
+  },
+  "PPO3": {
+   "brodmann": "BA7",
+   "region_en": "Left superior parietal lobule",
+   "region": "Lobulillo parietal superior izquierdo"
+  },
+  "PPO4": {
+   "brodmann": "BA7",
+   "region_en": "Right superior parietal lobule",
+   "region": "Lobulillo parietal superior derecho"
+  },
+  "PPOz": {
+   "brodmann": "BA7",
+   "region_en": "Medial superior parietal lobule",
+   "region": "Lobulillo parietal superior medial"
+  }
+ }
+}

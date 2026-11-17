@@ -4,7 +4,7 @@
     "path": "/api/v1/models/exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3/rules",
     "query": {},
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -418,7 +418,7 @@
       "at": "2024-01-05T00:00:00Z"
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -616,7 +616,7 @@
       "at": "2024-01-14T11:00:00Z"
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -814,7 +814,7 @@
       "at": "2024-01-05T20:00:00Z"
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -900,7 +900,7 @@
       "time": "2024-01-05T00:00:00Z"
     },
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "type": "FeatureCollection",
@@ -1050,7 +1050,7 @@
     "path": "/api/v1/scenarios",
     "query": {},
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -1109,7 +1109,7 @@
         }
       ],
       "original": {
-        "schema_version": "0.8.0",
+        "schema_version": "0.9.0",
         "data_version": "synthetic-test",
         "synthetic": true,
         "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -1299,7 +1299,7 @@
         }
       },
       "modified": {
-        "schema_version": "0.8.0",
+        "schema_version": "0.9.0",
         "data_version": "synthetic-test",
         "synthetic": true,
         "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",
@@ -1546,7 +1546,7 @@
     "path": "/api/v1/models/exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3/importance",
     "query": {},
     "response": {
-      "schema_version": "0.8.0",
+      "schema_version": "0.9.0",
       "data_version": "synthetic-test",
       "synthetic": true,
       "model_id": "exfuzzy-synthetic_mixture_h6-synthetic-mixture-seed3",

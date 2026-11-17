@@ -230,6 +230,37 @@ def export_static_files(ctx: Ctx, tasks: list[str]) -> dict[str, int]:
     return sizes
 
 
+# ------------------------------------------------------------------------------------------------ montage tasks
+def export_montage(ctx: Ctx, task: str) -> dict[str, int]:
+    """Every body of a montage task is the API's own: montage, rules, card, trials, and the traces of each subject in
+    one file (``{sample_id: TrialTrace}``), so the web loads one subject at a time. {rel: bytes}."""
+    entry = ctx.registry.tasks[task]
+    fmt.check_id(task)
+    mid = fmt.check_id(entry.model_id)
+    paths = fmt.montage_paths(task, mid)
+    out, sizes = ctx.out, {}
+    sizes["domains.json.gz"] = out.write("domains.json.gz", ctx.exact("/api/v1/domains"))
+    for name, url, params in (("montage", "/api/v1/fnirs/montage", {"task_id": task}),
+                              ("rules", f"/api/v1/models/{mid}/rules", {}),
+                              ("card", "/api/v1/fnirs/card", {"model_id": mid}),
+                              ("trials", "/api/v1/fnirs/trials", {"model_id": mid})):
+        body = ctx.exact(url, **params)
+        if body is None:
+            raise RuntimeError(f"{task}: {url} answered 404")
+        sizes[paths[name]] = out.write(paths[name], body)
+        if name == "trials":
+            trials = body["trials"]
+    by_subject: dict[int, dict] = defaultdict(dict)
+    for t in trials:
+        fmt.check_id(t["sample_id"])
+        by_subject[t["subject"]][t["sample_id"]] = ctx.exact("/api/v1/fnirs/trace", model_id=mid,
+                                                              sample_id=t["sample_id"])
+    for subject, traces in sorted(by_subject.items()):
+        rel = paths["traces"].format(subject=fmt.trace_shard(subject))
+        sizes[rel] = out.write(rel, traces)
+    return sizes
+
+
 # ------------------------------------------------------------------------------------------------ inputs sharing
 def assign_inputs(ctx: Ctx, tasks: list[str]) -> dict:
     """Which input columns can share one file: same territory, same name, identical values on the common keys.

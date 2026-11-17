@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.8.0",
+  "schema_version": "0.9.0",
   "data_version": "synthetic-fixture-v0",
   "synthetic": true,
   "domains": [
@@ -19,7 +19,8 @@
           "title": null,
           "territory": "madrid",
           "territory_title": "Madrid (inventado)",
-          "territory_title_en": "Madrid (made up)"
+          "territory_title_en": "Madrid (made up)",
+          "view": "map"
         }
       ]
     },

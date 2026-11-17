@@ -21,6 +21,9 @@ describe("Patrones (classifier)", () => {
   it("opens with one title and a sentence: how many rules, what they predict, at which horizon and over which period", async () => {
     render(<App initialTab="patrones" />);
     expect(await screen.findByRole("heading", { level: 1, name: "Patrones: las reglas del modelo" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 }).querySelector(".title-accent")).toHaveTextContent("las reglas");
+    // the task in one sentence comes first, so a reader knows what the rules are solving
+    expect(screen.getByTestId("task-line")).toHaveTextContent(/^Tarea\s*Prever, \d+ h antes, .* en cada estación de medida\.$/);
     const lead = await screen.findByTestId("page-lead");
     await waitFor(() => expect(lead).toHaveTextContent("ordenadas por cuántas predicciones deciden en 2024"));
     expect(lead).toHaveTextContent("Las 4 reglas que usa el modelo para prever");

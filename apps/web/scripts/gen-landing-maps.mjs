@@ -1,6 +1,7 @@
-// Draws the three small territory maps of the landing page (src/assets/landing/{air,water,mobility}.svg) from the
+// Draws the small territory maps of the landing page (src/assets/landing/{air,water,mobility,fnirs}.svg) from the
 // entities.geojson each published model ships: the German stations (points), the river sampling points (points) and
-// the NYC taxi zones (polygons). Nothing else is drawn: no basemap, no tiles, no outline that is not in the data, so
+// the NYC taxi zones (polygons); and the 36 NIRS channels from configs/fnirs/montage.json (the dataset's positions,
+// projected as the contract's head_projection: azimuthal equidistant from the vertex, nose up). Nothing else is drawn: no basemap, no tiles, no outline that is not in the data, so
 // the pictures need no tile attribution and carry no made-up geometry. The files are committed; rerun with
 //   npm run gen:landing-maps [-- <published dir>]      (default: ../../artifacts/published, read only)
 // Colours are DESIGN.md's (Ink #17191c, Mist #f2f2f3); an <img> cannot read the page's CSS variables.
@@ -90,3 +91,19 @@ function write(file, text, n) {
 dots("air.svg", "Stations in Germany", entities("de_no2_h1"), 3.4);
 dots("water.svg", "River sampling points in Northumberland and Tyne", entities("uk_water_do"), 4.2);
 zones("mobility.svg", "Taxi zones of New York", entities("nyc_pickups_h1"));
+
+/** The NIRS channels, as `MontageChannel.xy` (contract v0.9): radius = polar angle / 90°, nose up, right ear right. */
+function channels(file, title, montagePath, diameter) {
+  const doc = JSON.parse(readFileSync(montagePath, "utf8"));
+  const xy = doc.channels.map(({ xyz: [x, y, z] }) => {
+    const n = Math.hypot(x, y, z);
+    const r = Math.acos(Math.max(-1, Math.min(1, z / n))) / (Math.PI / 2);
+    const p = Math.hypot(x, y);
+    return p === 0 ? [0, 0] : [(r * x) / p, (r * y) / p];
+  });
+  const scale = (H / 2 - MARGIN) / Math.max(...xy.map(([x, y]) => Math.hypot(x, y)));
+  const d = xy.map(([x, y]) => `M${num(W / 2 + x * scale)} ${num(H / 2 - y * scale)}h0`).join("");
+  write(file, svg(title, `<path d="${d}" fill="none" stroke="${INK}" stroke-width="${diameter}" stroke-linecap="round" opacity=".85"/>`), xy.length);
+}
+
+channels("fnirs.svg", "NIRS channels on the scalp", join(here, "..", "..", "..", "configs", "fnirs", "montage.json"), 9);

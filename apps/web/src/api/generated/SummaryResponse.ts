@@ -35,7 +35,7 @@ export type MergedFrom = string[];
  */
 export type Upper = number | null;
 export type DataVersion = string;
-export type Domain = "air" | "water" | "mobility";
+export type Domain = "air" | "water" | "mobility" | "fnirs";
 export type Key = string;
 /**
  * Observed values in the group.

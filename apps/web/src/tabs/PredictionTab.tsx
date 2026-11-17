@@ -39,7 +39,7 @@ export function PredictionTab({ domain, task, territoryTitle, horizons, onDate, 
   return (
     <Naming variables={rules.status === "ok" ? rules.data.variables : NO_VARIABLES} scheme={scheme} target={task.target} rules={rules.status === "ok" ? rules.data.rules : NO_VARIABLES}>
       <div className="page page--wide" data-task={task.task_id}>
-        <PageHead title={tr(`Predicción: ${predicts} en ${territoryTitle}`, `Prediction: ${predicts} in ${territoryTitle}`)}>
+        <PageHead title={tr(`Predicción: ${predicts} en ${territoryTitle}`, `Prediction: ${predicts} in ${territoryTitle}`)} accent={predicts}>
           {ready && regular && task.horizon_hours > 0 ? (
             tr(<>Estás viendo lo que el modelo prevé {horizonClause(task.horizon_hours)} para cada {domain.domain === "mobility" ? "zona" : "estación"} de {territoryTitle}, junto a lo que se observó después. Los datos van de {formatDate(coverage.issued_from_utc, zone)} a {formatDate(coverage.issued_to_utc, zone)}.</>,
               <>

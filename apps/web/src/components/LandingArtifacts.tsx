@@ -11,6 +11,8 @@ import { hitsWhenTop, isMixture, isMixtureImportance, leadShare } from "../lib/m
 import { barLabel, performanceReport } from "../lib/performance";
 import { colourOf, otherRulesLabel, OTHER_RULES_COLOUR, ruleColours } from "../lib/ruleColours";
 import { groupTerritories } from "../lib/tasks";
+import { classColor } from "../lib/classifier";
+import { ruleWedges, ScalpMap } from "../fnirs/ScalpMap";
 import { OutcomePill } from "./OutcomePill";
 import { RuleSentenceView } from "./RuleSentenceView";
 import { ACCENT, columnRange, TermGlyph } from "./TermGlyph";
@@ -19,11 +21,14 @@ import { ACCENT, columnRange, TermGlyph } from "./TermGlyph";
  * The landing's floating artifacts (DESIGN.md › Floating Product Artifact): small copies of what the demo shows, drawn
  * by the app's own helpers from the API's data for the task the demo opens on. They are decorative (hidden from screen
  * readers: the landing's text says everything), and an artifact whose data does not arrive is simply not drawn; no
- * number here is made up.
+ * number here is made up. The scalp card is the fNIRS task's (a montage task, v0.9), the others the opening task's.
  */
 export function LandingArtifacts() {
   const domains = useAsync((s) => api.domains(s), []);
-  const first = domains.status === "ok" ? (groupTerritories(domains.data.domains)[0]?.territories[0] ?? null) : null;
+  // the artifacts draw a map task's rules and entities: a montage task (fNIRS, contract v0.9) has neither
+  const territories = domains.status === "ok" ? groupTerritories(domains.data.domains).flatMap((g) => g.territories) : [];
+  const first = territories.find((t) => t.defaultTask.view !== "montage") ?? null;
+  const scalp = territories.find((t) => t.defaultTask.view === "montage")?.defaultTask ?? null;
   const task = first?.defaultTask ?? null;
   const modelId = task?.model_id ?? null;
   const on = modelId !== null;
@@ -32,16 +37,21 @@ export function LandingArtifacts() {
   const importance = useOptionalAsync((s) => api.importance(modelId!, s), [modelId], on);
   const entities = useAsync((s) => api.entities(first!.domain, task?.task_id, s), [task?.task_id], on);
 
-  if (!task || !first) return null;
+  if ((!task || !first) && !scalp?.model_id) return null;
   const imp = importance.status === "ok" ? importance.data : null;
   const colours = imp ? ruleColours(rankedRules(imp.rules).map((r) => r.rule_id)) : null;
-  const where = `${first.title} · ${task.horizon_hours > 0 ? `+${task.horizon_hours} h` : tr("misma muestra", "same sample")}`;
+  const where = task && first ? `${first.title} · ${task.horizon_hours > 0 ? `+${task.horizon_hours} h` : tr("misma muestra", "same sample")}` : "";
   return (
     <div className="lp-arts" aria-hidden="true" data-testid="landing-artifacts">
-      {card.status === "ok" && <PerfArtifact card={card.data} where={where} unit={task.unit} />}
-      {rules.status === "ok" && imp && colours && <RuleArtifact rules={rules.data} importance={imp} colours={colours} task={task} where={where} />}
-      {entities.status === "ok" && imp && colours && <MapArtifact entities={entities.data} importance={imp} colours={colours} where={first.title} mixture={isMixtureImportance(imp)} />}
-      {rules.status === "ok" && imp && colours && <RowArtifact rules={rules.data} importance={imp} colours={colours} task={task} />}
+      {task && first && (
+        <>
+          {card.status === "ok" && <PerfArtifact card={card.data} where={where} unit={task.unit} />}
+          {rules.status === "ok" && imp && colours && <RuleArtifact rules={rules.data} importance={imp} colours={colours} task={task} where={where} />}
+          {entities.status === "ok" && imp && colours && <MapArtifact entities={entities.data} importance={imp} colours={colours} where={first.title} mixture={isMixtureImportance(imp)} />}
+          {rules.status === "ok" && imp && colours && <RowArtifact rules={rules.data} importance={imp} colours={colours} task={task} />}
+        </>
+      )}
+      {scalp?.model_id && <ScalpArtifact task={scalp} modelId={scalp.model_id} />}
     </div>
   );
 }
@@ -224,6 +234,43 @@ function RowArtifact({ rules, importance, colours, task }: { rules: ModelRules; 
         <span className="rmx-arrow">→</span>
         <OutcomePill outcome={sentence.outcome} />
         {(!isMixture(rules) || pick.top_contributor_share != null) && <span className="lp-row-share">{pct(leadShare(pick))}</span>}
+      </div>
+    </figure>
+  );
+}
+
+/**
+ * Where the fNIRS rules look (Reglas › Dónde miran las reglas, in miniature): the scalp with one wedge per rule at each
+ * channel it reads, in the colour of the load that rule supports most.
+ */
+function ScalpArtifact({ task, modelId }: { task: TaskInfo; modelId: string }) {
+  const rules = useAsync((s) => api.modelRules(modelId, s), [modelId]);
+  const montage = useAsync((s) => api.fnirsMontage(task.task_id, s), [task.task_id]);
+  const scheme = rules.status === "ok" ? (rules.data.target_scheme ?? null) : null;
+  if (rules.status !== "ok" || montage.status !== "ok" || !scheme) return null;
+  const colour = (label: string | null | undefined) => (label ? classColor(scheme, label) : "var(--slate)");
+  const wedges = ruleWedges(rules.data, montage.data, (r) => colour(r.strongest_class), (r) => r.rule_id);
+  const names = namesFor(rules.data.variables, scheme, task.target);
+  const n = rules.data.rules.length;
+  return (
+    <figure className="lp-art lp-art--scalp" data-testid="landing-scalp">
+      <p className="lp-art-label">{tr("Dónde miran las reglas · fNIRS", "Where the rules look · fNIRS")}</p>
+      <div className="lp-scalp">
+        <ScalpMap channels={montage.data.channels} wedges={wedges} mini label={tr("Canales que usan las reglas", "Channels the rules use")} testId="landing-scalp-map" />
+        <div>
+          <ul className="lp-map-key lp-scalp-key">
+            {scheme.classes.map((c) => (
+              <li key={c.label}>
+                <span className="lp-swatch" style={{ background: colour(c.label) }} />
+                {names.cls(c.label)}
+              </li>
+            ))}
+          </ul>
+          <p className="lp-art-note">
+            {tr(`${n} reglas, ${wedges.size} de ${montage.data.channels.length} canales. Cada porción: la carga que apoya su regla.`,
+              `${n} rules, ${wedges.size} of ${montage.data.channels.length} channels. Each slice: the load its rule supports.`)}
+          </p>
+        </div>
       </div>
     </figure>
   );

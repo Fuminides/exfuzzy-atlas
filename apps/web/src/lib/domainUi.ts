@@ -14,12 +14,24 @@ export interface DomainUi {
   dataScale?: "sqrt";
   /** What an entity "sin modelo" (`modelled: false`) means in this domain; shown in the legend when there are any. */
   absentNote?: string;
+  /** The task in one sentence (the «Tarea» line that opens the first tab), from the task's own horizon and classes. */
+  task?: (t: TaskContext) => string;
+}
+
+/** What a task statement may use: the horizon, «la categoría EAQI de NO₂», and the class names in the interface language. */
+export interface TaskContext {
+  hours: number;
+  predicts: string;
+  /** «Buena, Aceptable, Moderada o Mala o peor». */
+  classes: string;
 }
 
 // Built at call time (not at import): the language can change while the page is open.
 const air = (): DomainUi => ({
   title: tr("Calidad del aire", "Air quality"),
   noun: tr({ one: "estación", many: "estaciones" }, { one: "station", many: "stations" }),
+  task: ({ hours, predicts, classes }) =>
+    tr(`Prever, ${hours} h antes, ${predicts}${classes ? ` (${classes})` : ""} en cada estación de medida.`, `Predict, ${hours} h ahead, ${predicts}${classes ? ` (${classes})` : ""} at each measuring station.`),
 });
 
 const DOMAIN_UI: Record<string, () => DomainUi> = {
@@ -31,14 +43,28 @@ const DOMAIN_UI: Record<string, () => DomainUi> = {
     dataScale: "sqrt",
     absentNote: tr("Las zonas sin modelo (con poco volumen en el entrenamiento) aparecen en gris claro. No tienen predicción ni activación, y el gris no indica demanda baja.", "Zones that aren't modelled (low volume in training) appear in light grey. They have no prediction or activation, and the grey doesn't mean low demand."),
     predictionNote: tr("Nivel de demanda de taxi amarillo respecto a lo habitual en esa zona a esa hora de la semana (percentil del periodo de entrenamiento).", "Yellow taxi demand level relative to what is usual in that zone at that hour of the week (percentile of the training period)."),
+    task: ({ hours, classes }) =>
+      tr(`Prever, ${hours} h antes, si la demanda de taxi amarillo en cada zona será ${classes} respecto a lo habitual en esa zona a esa hora de la semana.`, `Predict, ${hours} h ahead, whether yellow-taxi demand in each zone will be ${classes} relative to what is usual for that zone at that hour of the week.`),
+  }),
+  fnirs: () => ({
+    title: tr("Actividad cerebral (fNIRS)", "Brain activity (fNIRS)"),
+    task: () => tr("A partir de la actividad cerebral medida con fNIRS, distinguir si una persona hacía una tarea de memoria fácil o difícil.", "From brain activity measured with fNIRS, tell whether a person was doing an easy or a hard memory task."),
+    noun: tr({ one: "ensayo", many: "ensayos" }, { one: "trial", many: "trials" }),
   }),
   water: () => ({
     title: tr("Calidad del agua", "Water quality"),
     noun: tr({ one: "punto de muestreo", many: "puntos de muestreo" }, { one: "sampling point", many: "sampling points" }),
+    task: () => tr("Estimar el oxígeno disuelto de cada muestra de río a partir de lo que mide esa misma muestra.", "Estimate the dissolved oxygen of each river sample from what that same sample measures."),
   }),
 };
 
 export const domainUi = (domain: string): DomainUi => (DOMAIN_UI[domain] ?? air)();
+
+/** «a, b, c o d» / "a, b, c or d": a list of options in a sentence. */
+export function listOr(items: readonly string[]): string {
+  if (items.length < 2) return items.join("");
+  return `${items.slice(0, -1).join(", ")}${tr(" o ", " or ")}${items[items.length - 1]}`;
+}
 
 /**
  * Articles of an entity noun. Spanish: "punto de muestreo" is masculine, "estación" and "zona de taxi" are feminine.

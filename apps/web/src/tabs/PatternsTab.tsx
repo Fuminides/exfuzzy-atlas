@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { api } from "../api/client";
 import type { DomainInfo, RuleImportance, TaskInfo } from "../api/types";
-import { Card, MoreInfo, NotYet, PageHead } from "../components/Card";
+import { Card, MoreInfo, NotYet, PageHead, TaskLine } from "../components/Card";
 import { DataLine } from "../components/DataLine";
 import { ModelExplanationCard } from "../components/ModelExplanationCard";
 import { RuleCard } from "../components/RuleCard";
@@ -20,11 +20,11 @@ import { useOptionalAsync } from "../hooks/useOptionalAsync";
 import { tr, useLang } from "../i18n";
 import type { Provenance } from "../hooks/useProvenance";
 import { isClassifier, schemeOf } from "../lib/classifier";
-import { domainUi, articles } from "../lib/domainUi";
+import { domainUi, articles, listOr } from "../lib/domainUi";
 import { dec, pct, unitLabel } from "../lib/format";
 import { baseRate, decideText, importancePeriod, isRegressionImportance, noRuleShare, rankedRules, withheldOf, withheldShare } from "../lib/importance";
 import { isMixture, leadShare, measuredNote, topRuleLabel, topRulesLabel, variableShareNote, weightScale } from "../lib/mixture";
-import { labelerFor } from "../lib/labels";
+import { className, labelerFor } from "../lib/labels";
 import { entityScore, modelSize } from "../lib/performance";
 import { MAX_RULE_COLOURS } from "../lib/ruleColours";
 import { classShare } from "../lib/summary";
@@ -116,6 +116,7 @@ export function PatternsTab({ domain, task, territoryTitle, onProvenance, onOpen
   const n = model.rules.length;
   const scale = mixture ? weightScale(model.rules) : 0;
   const horizon = horizonClause(task.horizon_hours);
+  const taskText = domainUi(domain.domain).task?.({ hours: task.horizon_hours, predicts, classes: scheme ? listOr(scheme.classes.map(className)) : "" });
   const size = modelSize(model);
   const ranking = imp ? rankedRules(imp.rules) : [];
   const top = ranking[0] && leadShare(ranking[0]) > 0 ? ranking[0] : null;
@@ -136,7 +137,8 @@ export function PatternsTab({ domain, task, territoryTitle, onProvenance, onOpen
     <Naming variables={model.variables} scheme={scheme} target={task.target} rules={model.rules}>
       <RuleLookupProvider model={model} importance={imp} scheme={scheme} unit={unit}>
       <div className="page page--wide" data-task={task.task_id}>
-        <PageHead title={tr("Patrones: las reglas del modelo", "Patterns: the model's rules")}>
+        {taskText && <TaskLine>{taskText}</TaskLine>}
+        <PageHead title={tr("Patrones: las reglas del modelo", "Patterns: the model's rules")} accent={tr("las reglas", "rules")}>
           {tr(
             <>
               Las <strong>{n} reglas</strong> que usa el modelo para {regression ? "estimar" : "prever"} {predicts} {horizon}

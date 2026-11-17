@@ -492,6 +492,7 @@ stays Paper; Mist, the cards and every other token are unchanged. No dark mode e
 | air, option (b) | pale sage | `#b0d4a6` |
 | water | clear water blue | `#7fcbf6` |
 | mobility (taxis) | taxi yellow | `#f8c81c` |
+| fnirs (brain activity, contract v0.9) | blood: red on the left edge, blue on the right (`--territory-wash-right`, the only domain with two) | `#f5b3b3` / `#9cbcf0` |
 
 The hues are thematic (the user, 2026-11-10): blue is water's, yellow the taxis', and air takes a colour that is neither
 of those nor an EAQI category colour on its map (so not a blue, a yellow or a green-teal): lavender (a) reads as sky or
@@ -524,7 +525,10 @@ in the warm pair Steep already has, never on body text:
 | Eyebrows (the hero's "Alemania · +1 h · 2025", the landing's section eyebrows) | Sienna `#5d2a1a`, weight 480 | 11.6:1 on Paper, ≥ 9.6:1 on the app wash |
 | Section titles (the serif H2 of a Neutral Card: «Las reglas de un vistazo», report and summary cards) | the title stays Ink; a 28 × 3 px terracotta rule sits above it | 4.9:1 on Mist (non-text, needs 3:1) |
 
-Page titles (H1), side-card titles (H3), the Peach card's title and all body text stay Ink. Sienna is still never body
+| Page titles (H1, 2026-11-16, the user's request: "some emphasis using colour in the main titles") | Ink, with the one phrase that names what the page is about in the same terracotta italic as the hero's figure (`PageHead accent`: «Patrones: *las reglas* del modelo», «Predicción: *la categoría EAQI de NO₂* en Alemania») | 5.5:1 on Paper; ≥ 4.0:1 at the strongest wash pixel, at 32 px (large text needs 3:1) |
+| The task line («TAREA», first thing on the first tab of every problem) | label Sienna on Peach, weight 480, small caps-like tracking; the sentence Ink at 450 | Sienna on Peach 9.3:1 |
+
+Side-card titles (H3), the Peach card's title and all body text stay Ink. Sienna is still never body
 text on white: on Paper it appears only at eyebrow size and weight.
 
 ### Term phrases
@@ -647,3 +651,46 @@ The bare URL opens a landing page (`components/Landing.tsx`, outside `App`): Ste
 - 64 / 90 px display sizes and 80 px section gaps inside the app (the landing page uses them; see Layout).
 - Slate as text colour (see Text-safe greys).
 - Avatar bubbles, the AI composer and the alternating Fog sections: Atlas has no such content.
+
+### The scalp (fNIRS, contract v0.9, 2026-11-16)
+
+A montage task has no map. It gets its own two tabs in the header (`src/fnirs/`): **Reglas** (the task in plain words,
+where the rules look, one tile per rule, the report) and **Canales** (every trial, the scalp of one trial, why it got its
+load). Model and selection live above the tabs, so a switch refetches nothing; «Verla en los ensayos» on a rule tile
+opens Canales with that rule.
+
+- **The head:** an SVG at `MontageChannel.xy` (the projection of the positions the dataset publishes): a soft radial fill
+  (white to `#f1ece6`), Slate outline, nose and ears, dashed guides front-back and ear to ear, «Izq.» / «Der.». Behind
+  the channels, neutral patches (`#e6dfd7`, a padded convex hull) group them by proximity: the single-linkage tree of the
+  served positions cut into the six areas the montage has (16 + 4 × 5, asserted by a test). They carry no name and no
+  value; nothing is drawn as a surface between channels.
+- **Labels** of the marked channels sit outside the head in two columns (left channels to the left), spread so none
+  overlaps, each tied to its channel by a leader line. Below 640 px they are hidden and the list beside the head says it.
+- **Reglas, overview:** every channel a rule reads is a small pie, one wedge per rule, in the colour of the class that
+  rule supports most (Ink ring, Paper gaps). **Rule tiles:** a mini head with the rule's channels in Sienna, the
+  sentence, the centred class weights (diverging pair) and the share of train blocks where it holds.
+- **Signal colours (blood, the user's request, 2026-11-16):** HbO red `--hbo` `#c4433b`, HbR blue `--hbr` `#3f72b8`
+  (dataviz validator, Paper and Mist: all checks pass). They mark the HbO / HbR buttons (a swatch), the signal in the
+  channel labels and the channels of the mini heads of the rule tiles.
+- **Canales, data view (HbO, HbR):** polarity on a blood scale instead of the sienna/slate pair: red towards oxygenated,
+  blue towards deoxygenated (`--oxy-1…4` `#f6d4d0 #e2928a #c4433b #7f1d17`, `--deoxy-1…4` `#d4e1f3 #92b1df #3f72b8 #1c3f70`,
+  OKLab L 0.90/0.74/0.56/0.40 on each arm, `--div-mid` at 0). A rise of HbO is red and its fall blue; a rise of HbR is
+  blue and its fall red. Nine bins on the trial's own symmetric bound (legend in µmol/L). **Rule view:** the selected rule's channels by the membership of their condition (Sienna arm,
+  five bins). Channels used by another rule have a dashed Ink outline.
+- **Trial matrix:** one row per subject (test first, then a gap), one cell per block, fixed 1.15 rem cells filled with
+  the block's actual class; × marks a block the model got wrong (Ink on the light green, Paper on the dark), a hatch a
+  block with no class; Ink outline on the selected cell; one tab stop, arrow keys move. Below 760 px the subject select
+  and the block strip replace it.
+- **Class colours** (low load / high load): two steps of one green, `#36b26f` / `#0b6e36`, a level of one quantity and
+  away from the diverging blue/sienna and the rule colours. Dataviz validator, light mode, on Paper and on Mist: all
+  checks pass (normal-vision and CVD ΔE ≥ 22); the light step is 2.6:1 / 2.4:1 (WARN), so chips and cells always carry
+  text or a tooltip.
+- **Rendimiento (third tab):** one row per model, as the report's bars (ExFuzzy Sienna, baselines `--baseline`), the bar
+  to the mean, ± one standard deviation as an Ink line with caps, and a white dot with an Ink ring per seed (test) or
+  per subject fold (validation); ExFuzzy's published seed has a terracotta halo. A model whose result does not depend on
+  the seed says «(igual en todas)» instead of ± 0. Macro-F1 / Acierto / MCC switch above; a table view below.
+- **The task figure:** panel a of figure 1 of Shin et al. (2018), cropped, on Paper with a hairline ring, its caption
+  giving the source and the licence (CC BY 4.0) with links.
+- Fills go in `style`, not in the `fill` attribute, which the stylesheet's default would override.
+- The territory wash is blood: red `#f5b3b3` on the left edge and blue `#9cbcf0` on the right. At their strongest pixels
+  (30 %, `#fce8e8` / `#e1ebfa`): `--muted` 4.60:1 / 4.50:1, terracotta 4.71:1 / 4.61:1, Ink ≥ 14.6:1.

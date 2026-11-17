@@ -114,11 +114,15 @@ class StaticStore:
             raise FileNotFoundError(f"{data_dir} is not a static export (no domains.json.gz)")
         self._domains = m.DomainsResponse.model_validate(domains)
         self._tasks = {t.task_id: (d.domain, t) for d in self._domains.domains for t in d.tasks}
+        self._montage = {t.model_id: t.task_id for _, t in self._tasks.values() if t.view == m.TaskView.MONTAGE}
 
     # ------------------------------------------------------------------ plumbing
     def _model(self, model_id: str) -> _Model:
         if "/" in model_id or model_id.startswith("."):
             raise NotFound(f"unknown model_id {model_id}")
+        if model_id in self._montage:
+            raise BadRequest(f"{model_id} is a montage-task model (fNIRS): use /fnirs/card, /fnirs/trials or "
+                             "/fnirs/trace")
         if model_id not in self._models:
             self._models[model_id] = _Model(self, model_id)
         return self._models[model_id]
@@ -142,6 +146,7 @@ class StaticStore:
         chosen = served_task({t: d for t, (d, _) in self._tasks.items()}, domain, task_id)
         if chosen is None:
             raise NotFound(f"no entities for domain {domain.value}")
+        self._model(self._task(chosen).model_id)  # a montage task refuses as the API does
         return self._exact(f"tasks/{chosen}/entities.json.gz", m.EntityCollection,
                            f"no entities for domain {domain.value}")
 
@@ -150,7 +155,44 @@ class StaticStore:
         return self._exact(f"models/{model_id}/card.json.gz", m.ModelCard, f"unknown model_id {model_id}")
 
     def model_rules(self, model_id: str) -> m.ModelRules:
+        if model_id in self._montage:
+            return self._exact(f"models/{model_id}/rules.json.gz", m.ModelRules, f"unknown model_id {model_id}")
         return self._model(model_id).rules
+
+    # ------------------------------------------------------------------ v0.9: montage tasks, exact bodies
+    def _montage_model(self, model_id: str) -> str:
+        if model_id not in self._montage:
+            if model_id in {t.model_id for _, t in self._tasks.values()}:
+                raise BadRequest(f"{model_id} is a map-task model: the /fnirs/* endpoints are for montage tasks")
+            raise NotFound(f"unknown model_id {model_id}")
+        return self._montage[model_id]
+
+    def fnirs_montage(self, task_id: str) -> m.MontageResponse:
+        if self._task(task_id).view != m.TaskView.MONTAGE:
+            raise BadRequest(f"{task_id} is a map task: it has no montage")
+        return self._exact(fmt.montage_paths(task_id, self._task(task_id).model_id)["montage"], m.MontageResponse,
+                           f"unknown task_id {task_id}")
+
+    def fnirs_card(self, model_id: str) -> m.FnirsModelCard:
+        task = self._montage_model(model_id)
+        return self._exact(fmt.montage_paths(task, model_id)["card"], m.FnirsModelCard, f"unknown model_id {model_id}")
+
+    def fnirs_trials(self, model_id: str) -> m.TrialsResponse:
+        task = self._montage_model(model_id)
+        rel = fmt.montage_paths(task, model_id)["trials"]
+        return self._exact(rel, m.TrialsResponse, f"unknown model_id {model_id}")
+
+    def fnirs_trace(self, model_id: str, sample_id: str) -> m.TrialTrace:
+        """The trial's subject names its file (``s<subject>-t<trial>`` ids are looked up in the trials body)."""
+        trials = {t.sample_id: t for t in self.fnirs_trials(model_id).trials}
+        if sample_id not in trials:
+            raise NotFound(f"unknown sample_id {sample_id} for {model_id}")
+        rel = fmt.montage_paths(self._montage[model_id], model_id)["traces"].format(
+            subject=fmt.trace_shard(trials[sample_id].subject))
+        shard = self.reader.get(rel)
+        if shard is None or sample_id not in shard:
+            raise NotFound(f"unknown sample_id {sample_id} for {model_id}")
+        return m.TrialTrace.model_validate(shard[sample_id])
 
     def importance(self, model_id: str) -> m.RuleImportanceResponse:
         self._model(model_id)

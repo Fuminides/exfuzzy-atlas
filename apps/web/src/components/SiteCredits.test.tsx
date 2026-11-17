@@ -17,6 +17,7 @@ describe("SiteCredits", () => {
     }
     expect(block).toHaveTextContent("CC BY 4.0");
     expect(block).toHaveTextContent("OGL v3.0");
+    expect(block).toHaveTextContent("Shin et al. (2018), EEG+NIRS (CC0 1.0)");
     expect(block).toHaveTextContent("no producidos ni respaldados por NYC ni por la TLC");
     expect(screen.getByRole("img", { name: "GNU AGPL v3" })).toBeInTheDocument();
     expect(block).toHaveTextContent("AGPL-3.0-or-later");

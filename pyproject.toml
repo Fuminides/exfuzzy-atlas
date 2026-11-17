@@ -28,6 +28,8 @@ dependencies = [
 [project.optional-dependencies]
 # Polygon handling for zone geometries (mobility): GEOS >= 3.14 via shapely 2.2 for coverage_clean.
 geo = ["shapely>=2.2", "pyproj>=3.6", "pyshp>=2.3"]
+# fNIRS: rebuilds configs/fnirs/montage.json from the dataset description PDF (atlas.domains.fnirs.montage).
+fnirs = ["pypdf>=4"]
 dev = ["pytest>=8", "httpx>=0.27", "ruff>=0.5", "shapely>=2.2", "pyproj>=3.6", "pyshp>=2.3"]
 
 [tool.setuptools.packages.find]

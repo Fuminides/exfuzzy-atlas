@@ -42,7 +42,7 @@ export function ReportTab({ domain, task, territoryTitle }: Props) {
   return (
     <Naming variables={rules.status === "ok" ? rules.data.variables : NO_VARIABLES} scheme={scheme} target={task.target} rules={rules.status === "ok" ? rules.data.rules : NO_VARIABLES}>
       <div className="page" data-task={task.task_id}>
-        <PageHead title={tr(`Informe de rendimiento: ${territoryTitle}`, `Performance report: ${territoryTitle}`)}>
+        <PageHead title={tr(`Informe de rendimiento: ${territoryTitle}`, `Performance report: ${territoryTitle}`)} accent={territoryTitle}>
           {tr(<>Cómo predice el modelo {predicts}{when} en el periodo de prueba ({period}), frente a modelos de referencia sobre las mismas predicciones.</>,
             <>How well the model predicts {predicts}{when} in the test period ({period}), compared with baseline models on the same predictions.</>)}
         </PageHead>

@@ -1,6 +1,6 @@
 # Static export: the demo as a fully static site (GitHub Pages)
 
-Format version **2** (`manifest.format_version`, `meta.format_version`; 1 was the first layout, whose `mem_pairs` had no operator). Contract: v0.8 (`SCHEMA_VERSION` 0.8.0); the export changes no contract. A reader refuses a format other than its own.
+Format version **3** (`manifest.format_version`, `meta.format_version`; 1 was the first layout, whose `mem_pairs` had no operator; 2 added the operator, contract v0.8; 3 adds montage tasks, section 15, contract v0.9). Contract: v0.9 (`SCHEMA_VERSION` 0.9.0); the export changes no contract. A reader refuses a format other than its own.
 Study behind it: the feasibility study of 2026-11-09 (sizes, Pages limits, what-if), re-checked here against `main` at
 registry 0.7.0 (10 tasks, 9 mixture-of-rules classifiers plus the water TSK, NYC +6 h being a winning-rule classifier).
 
@@ -493,3 +493,26 @@ python -u -m atlas.services.static.export --published-dir artifacts/published --
 * One model, one day at a time, so memory stays bounded (DuckDB `memory_limit` 1 GB, ex_fuzzy in batches of at most 100 000 rows).
   Files are written atomically; a day whose `mem` file exists is skipped.
 * The log prints one `[k/N] group=… <task>` line per (group, model), for the machines dashboard.
+
+## 15. Montage tasks (format 3, contract v0.9)
+
+A task with `view: "montage"` (fNIRS, `CONTRACTS.md` §20) has no entities, no time and no Parquet files: every body is small and
+precomputed at publication (`atlas.domains.fnirs.publish`). The exporter writes them as **exact API bodies** and nothing else
+(`extract.export_montage`, one `[k/N] group=montage <task>` unit in the `static` group):
+
+```
+tasks/<task_id>/montage.json.gz                       GET /fnirs/montage?task_id=
+models/<model_id>/rules.json.gz                       GET /models/<id>/rules
+models/<model_id>/fnirs/card.json.gz                  GET /fnirs/card?model_id=
+models/<model_id>/fnirs/trials.json.gz                GET /fnirs/trials?model_id=
+models/<model_id>/fnirs/traces/s<NN>.json.gz          {sample_id: GET /fnirs/trace?model_id=&sample_id=} for subject NN
+```
+
+* No `meta.json.gz`, `card.json.gz`, `entities.json.gz`, shards, windows, stories or what-if. The builder answers
+  `/models/<id>`, `/entities?domain=fnirs` and every map endpoint of such a model with the API's 422.
+* A trace is looked up through `trials.json.gz` (its `subject` names the file); a `sample_id` that is not there is a 404.
+* `manifest.tasks[<task_id>]` is `{model_id, domain, territory, view: "montage"}` (no `regular`, `keys`, `coverage`, `period`);
+  map tasks carry `view: "map"`. The self-check compares the exact bodies, the 422s and the 404 of an unknown trial, and
+  `3 × check_n` random traces; golden samples of kind `trialTrace` have `request = {modelId, sampleId}` (camelCase, as the web's `api.*` takes them).
+* With `--base`, montage tasks are always written again (a few seconds); only map tasks are reused.
+* Size: the n-back model is about 0.8 MB (traces 0.79 MB in 26 files).

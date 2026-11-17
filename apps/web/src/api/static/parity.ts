@@ -44,6 +44,7 @@ export function differences(expected: unknown, got: unknown, path = "$", out: st
 /** The kinds the exporter writes (`GOLDEN_KINDS`, spec section 13), and nothing else. */
 export const GOLDEN_KINDS = [
   "predictions", "observations", "ruleMapInstant", "ruleMapWindow", "ruleTerritories", "ruleStories", "ruleTrace", "series", "scenario",
+  "trialTrace",
 ] as const;
 
 /** Replays a sample's request against the store: the call of `api.*` it stands for. */
@@ -67,6 +68,8 @@ export function replay(store: StaticStore, sample: GoldenSample): Promise<unknow
       return store.series(r as never);
     case "scenario":
       return store.scenario(r as never);
+    case "trialTrace":
+      return store.fnirsTrace(r.modelId, r.sampleId);
     default:
       throw new Error(`unknown golden kind ${sample.kind}`);
   }

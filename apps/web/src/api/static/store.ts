@@ -1,5 +1,5 @@
 import type {
-  DomainsResponse, EntityCollection, ModelCard, ModelExplanation, ModelRules, ObservationsResponse, PredictionsResponse,
+  DomainsResponse, EntityCollection, FnirsModelCard, MontageResponse, TrialsResponse, TrialTrace, ModelCard, ModelExplanation, ModelRules, ObservationsResponse, PredictionsResponse,
   RuleImportanceResponse, RuleMapMetric, RuleMapResponse, RuleStoriesResponse, RuleTerritoriesResponse, RuleTrace, ScenarioRequest,
   ScenarioResponse, SeriesResponse, SummaryResponse, TerritoryMeasure,
 } from "../types";
@@ -152,6 +152,43 @@ export class StaticStore {
 
   async scenario(body: ScenarioRequest, signal?: AbortSignal): Promise<ScenarioResponse> {
     return scenario(this.data, await this.data.model(body.model_id, signal), body, signal);
+  }
+
+  // ---- contract v0.9: montage tasks (fNIRS), exact bodies (docs/static_export.md section 15)
+
+  /** The montage task of `modelId`, or the API's 422 for a map model (404 when the model is unknown). */
+  private async montageTask(modelId: string, signal?: AbortSignal): Promise<string> {
+    const tasks = (await this.data.domains(signal)).domains.flatMap((d) => d.tasks);
+    const own = tasks.find((t) => t.model_id === modelId);
+    if (!own) throw notFound(`unknown model_id ${modelId}`);
+    if (own.view !== "montage") throw unprocessable(`${modelId} is a map-task model: the /fnirs/* endpoints are for montage tasks`);
+    return own.task_id;
+  }
+
+  async fnirsMontage(taskId: string, signal?: AbortSignal): Promise<MontageResponse> {
+    const { task } = await this.data.task(taskId, signal);
+    if (task.view !== "montage") throw unprocessable(`${taskId} is a map task: it has no montage`);
+    return this.data.exact<MontageResponse>(paths.montagePath(taskId), `unknown task_id ${taskId}`, signal);
+  }
+
+  async fnirsCard(modelId: string, signal?: AbortSignal): Promise<FnirsModelCard> {
+    await this.montageTask(modelId, signal);
+    return this.data.exact<FnirsModelCard>(paths.fnirsCardPath(modelId), `unknown model_id ${modelId}`, signal);
+  }
+
+  async fnirsTrials(modelId: string, signal?: AbortSignal): Promise<TrialsResponse> {
+    await this.montageTask(modelId, signal);
+    return this.data.exact<TrialsResponse>(paths.fnirsTrialsPath(modelId), `unknown model_id ${modelId}`, signal);
+  }
+
+  /** The trial's subject (from the trials body) names the file that holds its trace. */
+  async fnirsTrace(modelId: string, sampleId: string, signal?: AbortSignal): Promise<TrialTrace> {
+    const trial = (await this.fnirsTrials(modelId, signal)).trials.find((t) => t.sample_id === sampleId);
+    if (!trial) throw notFound(`unknown sample_id ${sampleId} for ${modelId}`);
+    const shard = await this.data.file<Record<string, TrialTrace>>(paths.traceShardPath(modelId, trial.subject), signal);
+    const trace = shard?.[sampleId];
+    if (!trace) throw notFound(`unknown sample_id ${sampleId} for ${modelId}`);
+    return trace;
   }
 
   // ---- what the export holds (the UI offers nothing else)

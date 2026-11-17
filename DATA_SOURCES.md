@@ -52,6 +52,16 @@ Es el dominio Air que sirve la demo (tareas `de_no2_*`). Detalle en `docs/air/ge
   Limousine Commission (TLC) Trip Record Data. Los recuentos por zona y hora y las predicciones son trabajo propio, no
   producidos ni respaldados por NYC ni por la TLC.»
 
+## Atlas fNIRS (n-back)
+
+- **Tabla por bloque** (`fnirs-nback`): `block_avg_tmb.csv` de la demo ex-Fuzzy fNIRS (J. Caterson et al.,
+  https://github.com/jjcato9/ex_fuzzy_fnirs_demo, commit `244d8a0`), licencia **MIT**. 702 bloques de 26 sujetos, 72 entradas.
+- **Registros originales:** Shin et al. (2018), Scientific Data 5, 180003; https://doc.ml.tu-berlin.de/simultaneous_EEG_NIRS/.
+  Licencia **CC0 1.0** según el registro DepositOnce (doi:10.14279/depositonce-5830, `dc.rights.uri`, consultado el 2026-11-16).
+  La página de TU Berlin pide citar el artículo.
+- **Posiciones de los canales:** tabla de coordenadas cartesianas de la descripción del dataset (`Dataset description_MATLAB.pdf`).
+- Detalle en `docs/fnirs/README.md`.
+
 ## Auditoría obligatoria en cada fuente
 
 Tabla esperada en `quality_report.json`: `source_url`, `downloaded_at`, `source_period`, `license`, `sha256`, `raw_rows`, `valid_rows`, `uniqueness_key`, `missing_by_column`, `date_range`, `geographic_coverage`, `sampling_frequency`, `value_units`, `known_limitations`.

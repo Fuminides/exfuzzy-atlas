@@ -42,3 +42,8 @@ export type {
 } from "./generated/RuleImportanceResponse";
 export type { SummaryResponse, DistributionRow } from "./generated/SummaryResponse";
 export type { ModelExplanation, ExplanationText } from "./generated/ModelExplanation";
+// contract v0.9: montage tasks (fNIRS)
+export type { MontageResponse, MontageChannel, SensorInput } from "./generated/MontageResponse";
+export type { FnirsModelCard, SubjectSplit, MetricRow as FnirsMetricRow } from "./generated/FnirsModelCard";
+export type { TrialsResponse, TrialRecord } from "./generated/TrialsResponse";
+export type { TrialTrace } from "./generated/TrialTrace";

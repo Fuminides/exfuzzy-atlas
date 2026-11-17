@@ -43,7 +43,8 @@ PUBLISH_INFO_FILE = "publish.json"
 ACTIVATIONS_DIR = "activations"
 IMPORTANCE_FILE = "importance.json"
 SUMMARY_FILE = "summary.json"
-DOMAIN_TITLES = {m.Domain.AIR: "Air quality", m.Domain.WATER: "Water quality", m.Domain.MOBILITY: "Urban mobility"}
+DOMAIN_TITLES = {m.Domain.AIR: "Air quality", m.Domain.WATER: "Water quality", m.Domain.MOBILITY: "Urban mobility",
+                 m.Domain.FNIRS: "Brain activity (fNIRS)"}
 # The task a domain with several opens on: /domains lists it first (the web shows the first task). The others follow
 # by task_id. Air keeps Madrid, its first task, as the default next to Germany (author's choice, 2026-11-02).
 DEFAULT_TASKS = {m.Domain.AIR: "madrid_no2_h6"}
@@ -151,6 +152,7 @@ class RegistryEntry(_Doc):
     territory_title_en: str | None = Field(
         None, description="v0.6: English display name of the territory (publish/enrich --territory-title-en)."
     )
+    view: m.TaskView = Field(m.TaskView.MAP, description="v0.9: 'montage' tasks (fNIRS) have no map files.")
 
 
 class Registry(_Doc):

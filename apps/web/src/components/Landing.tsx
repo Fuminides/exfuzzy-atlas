@@ -5,9 +5,10 @@ import { LanguageSwitch } from "./LanguageSwitch";
 import airMap from "../assets/landing/air.svg";
 import waterMap from "../assets/landing/water.svg";
 import mobilityMap from "../assets/landing/mobility.svg";
+import fnirsMap from "../assets/landing/fnirs.svg";
 
 /**
- * The three territories of the demo, one line each (what is predicted, from which public source) and a small map of
+ * The four examples of the demo (three territories and a scalp), one line each (what is predicted, from which public source) and a small map of
  * where its data are (static SVGs drawn from the published geometry by `npm run gen:landing-maps`).
  */
 const territories = () => [
@@ -34,6 +35,14 @@ const territories = () => [
     tag: tr("Movilidad urbana", "Urban mobility"),
     title: tr("Nueva York", "New York"),
     text: tr("El nivel de demanda de taxi amarillo en cada zona, respecto a lo habitual en esa zona a esa hora de la semana, con los viajes que publica la NYC TLC.", "The yellow-taxi demand level in each zone, relative to what is usual there at that hour of the week, from the trips the NYC TLC publishes.",),
+  },
+  {
+    key: "fnirs",
+    map: fnirsMap,
+    alt: tr("Los 36 canales NIRS sobre el cuero cabelludo", "The 36 NIRS channels on the scalp"),
+    tag: tr("Actividad cerebral (fNIRS)", "Brain activity (fNIRS)"),
+    title: tr("Cuero cabelludo", "Scalp"),
+    text: tr("Si una persona hacía una tarea de memoria fácil o difícil, a partir del cambio de oxihemoglobina y desoxihemoglobina en 36 canales NIRS de 26 sujetos (Shin et al., 2018).", "Whether a person was doing an easy or a hard memory task, from the change of oxy- and deoxyhaemoglobin at 36 NIRS channels of 26 subjects (Shin et al., 2018).",),
   },
 ];
 
@@ -71,10 +80,10 @@ export function Landing({ onStart }: { onStart: () => void }) {
           <div className="lp-hero-text">
             <p className="lp-kicker">{tr("Una demostración de ex_fuzzy con datos públicos reales", "An ex_fuzzy demo on real public data")}</p>
             <h1 id="landing-title" className="lp-title" tabIndex={-1}>
-              {tr(<>Explicando mapas <em className="lp-accent">con reglas</em></>, <>Explaining maps <em className="lp-accent">with rules</em></>)}
+              {tr(<><em className="lp-accent-blue">Explicando</em> datos <em className="lp-accent">con reglas</em></>, <><em className="lp-accent-blue">Explaining</em> data <em className="lp-accent">with rules</em></>)}
             </h1>
             <p className="lp-sub">
-              {tr("Un estudio de calidad del aire, calidad del agua y demanda de taxis.", "A study of air quality, water quality and taxi demand.")}
+              {tr("Un estudio de calidad del aire, calidad del agua, demanda de taxis y actividad cerebral.", "A study of air quality, water quality, taxi demand and brain activity.")}
             </p>
             <div className="lp-actions">
               <button type="button" className="btn btn--primary btn--lg" onClick={onStart} data-testid="landing-start">
@@ -100,9 +109,9 @@ export function Landing({ onStart }: { onStart: () => void }) {
 
         <section className="lp-section" aria-labelledby="lp-territories-title">
           <div className="lp-col lp-col--wide">
-            <p className="lp-eyebrow">{tr("Tres territorios", "Three territories")}</p>
+            <p className="lp-eyebrow">{tr("Cuatro ejemplos", "Four examples")}</p>
             <h2 id="lp-territories-title" className="lp-h2">
-              {tr("Datos públicos de tres lugares", "Public data from three places")}
+              {tr("Datos públicos de tres lugares y de un cuero cabelludo", "Public data from three places and a scalp")}
             </h2>
             <ul className="lp-cards">
               {territories().map((t) => (
