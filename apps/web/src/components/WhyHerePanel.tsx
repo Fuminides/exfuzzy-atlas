@@ -272,8 +272,8 @@ export function WhyHerePanel({ entityName, state, rules, selectedRuleId, onSelec
           ) : (
             noReference ? (
               <p className="missing-text" data-testid="no-reference">
-                {tr("sin referencia (esta zona tuvo poco volumen a esa hora de la semana en el periodo de entrenamiento y no tiene nivel de referencia, así que no se publica categoría ni se compara con «normal»). Las reglas de abajo son lo que da el motor con estas entradas.",
-                  "no reference (this zone had too little volume at that hour of the week in the training period to have a reference level, so no category is published and nothing is compared with “normal”). The rules below are what the engine outputs for these inputs.")}
+                {tr("sin referencia: esta zona tuvo pocas recogidas a esa hora de la semana en el periodo de entrenamiento y no tiene nivel de referencia, así que no se publica categoría (tampoco «normal»). Las reglas de abajo se calculan igualmente con estas entradas.",
+                  "no reference: this zone had too few pickups at that hour of the week in the training period to have a reference level, so no category is published (not even “normal”). The rules below are still computed for these inputs.")}
               </p>
             ) : (
               <p className="missing-text">
@@ -407,7 +407,7 @@ export function WhyHerePanel({ entityName, state, rules, selectedRuleId, onSelec
           {unweighted ? (
             <p className="muted small" data-testid="unweighted-note">
               {tr("Las reglas de este modelo no llevan peso. Decide la que más se activa y, ante un empate, la primera en el orden del modelo, que es el orden de esta tabla.",
-                "This model's rules carry no weight. The one that fires most decides, and on a tie the first in the model's order wins; this table follows that order.",
+                "This model's rules have no weights. The one that fires most decides, and on a tie the first in the model's order wins; this table follows that order.",
               )}
             </p>
           ) : (

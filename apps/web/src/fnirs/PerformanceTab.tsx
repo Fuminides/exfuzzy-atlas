@@ -17,8 +17,8 @@ const metricName = (m: Metric): string => ({ macro_f1: tr("F1 macro", "Macro-F1"
 const metricNote = (m: Metric): string =>
   ({
     macro_f1: tr("F1 macro: las dos cargas cuentan igual. Con esta métrica se eligen los modelos.", "Macro-F1: both loads count the same. The models are selected on this metric."),
-    accuracy: tr("Acierto: parte de los bloques con la carga correcta. Dos de cada tres bloques son de carga alta, así que decir siempre «alta» ya acierta el 67 %.", "Accuracy: the share of blocks with the right load. Two blocks in three are high load, so always saying «high» is already right 67 % of the time."),
-    mcc: tr("MCC (coeficiente de correlación de Matthews): 0 es no mejor que el azar, 1 es acertarlo todo.", "MCC (Matthews correlation coefficient): 0 is no better than chance, 1 is getting everything right."),
+    accuracy: tr("Acierto: parte de los bloques con la carga correcta. Dos de cada tres bloques son de carga alta, así que decir siempre «alta» ya acierta el 67 %.", "Accuracy: the share of blocks with the right load. Two blocks in three are high load, so always saying “high” is already right 67% of the time."),
+    mcc: tr("MCC (coeficiente de correlación de Matthews): 0 equivale al azar y 1 a acertarlo todo.", "MCC (Matthews correlation coefficient): 0 is chance level, 1 is getting everything right."),
   })[m];
 
 export const estimatorName = (e: string): string =>
@@ -184,7 +184,7 @@ export function PerformanceTab({ card, rules, context }: { card: FnirsModelCard;
     },
   ];
   const where = hasNested
-    ? tr(`en las ${nSubjects} personas, cada una evaluada cuando el modelo no la había visto`, `over all ${nSubjects} people, each evaluated when the model had not seen them`)
+    ? tr(`en las ${nSubjects} personas, cada una evaluada por un modelo ajustado sin ella`, `over all ${nSubjects} people, each scored by a model fitted without them`)
     : tr("en los sujetos de test del artículo", "on the manuscript's test subjects");
   const cell = (x: Spread | undefined) => (x ? <><span data-raw={String(x.mean)}>{dec(x.mean, 3)}</span> ± {dec(x.sd, 3)}</> : "—");
   return (
@@ -211,8 +211,8 @@ export function PerformanceTab({ card, rules, context }: { card: FnirsModelCard;
           className="report-bench"
           label={tr("Personas que el modelo no vio", "People the model never saw")}
           title={tr("Personas que el modelo no vio", "People the model never saw")}
-          subtitle={tr(`Las ${nSubjects} personas en ${nGroups} grupos: cada grupo hace de test una vez, con todos los modelos ajustados de nuevo en las demás (y la configuración de ExFuzzy elegida otra vez sin ese grupo). Aquí varían todos los modelos que aprenden algo: lo que más mueve el resultado es qué personas se evalúan. La clase mayoritaria no cambia porque todas las personas hicieron la misma proporción de bloques fáciles y difíciles.`,
-            `The ${nSubjects} people in ${nGroups} groups: each group is the test once, with every model fitted again on the others (and ExFuzzy's configuration chosen again without that group). Here every model that learns something varies: what moves the result most is which people are evaluated. The majority class does not change because every person did the same share of easy and hard blocks.`)}
+          subtitle={tr(`Se reparten las ${nSubjects} personas en ${nGroups} grupos. Cada grupo sirve de prueba una vez, y todos los modelos se ajustan de nuevo con las demás personas (también se vuelve a elegir la configuración de ExFuzzy sin ese grupo). El resultado de todos los modelos que aprenden cambia de un grupo a otro, sobre todo según qué personas se evalúan. La clase mayoritaria no cambia porque todas las personas hicieron la misma proporción de bloques fáciles y difíciles.`,
+            `The ${nSubjects} people are split into ${nGroups} groups. Each group is the test set once, and every model is fitted again on the other people (ExFuzzy's configuration is also chosen again without that group). Every model that learns something scores differently from one group to the next, mostly depending on which people are evaluated. The majority class stays the same, since every person did the same share of easy and hard blocks.`)}
           actions={<MetricToggle metric={metric} onMetric={setMetric} />}
         >
           <SpreadColumns rows={nested} metric={metric} unitWord={tr("grupo", "group")} dotWord={tr(`un grupo de personas, con la media de ${nSeeds} semillas`, `one group of people, averaging ${nSeeds} seeds`)} highlight={null} />

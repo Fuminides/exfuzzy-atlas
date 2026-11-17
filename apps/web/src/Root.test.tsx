@@ -36,7 +36,7 @@ describe("the landing page", () => {
     expect(screen.getByRole("link", { name: "Saltar al contenido" })).toBeInTheDocument();
     const text = landing()!.textContent!;
     expect(text).toContain("ex_fuzzy");
-    expect(text).toContain("Ese grado mide cuánto encaja la regla con lo observado");
+    expect(text).toContain("se cumple en un grado entre 0 y 1 que mide cuánto encaja con lo observado");
     for (const t of ["Alemania", "Ríos de Northumberland y Tyne (Inglaterra)", "Nueva York"]) expect(screen.getByRole("heading", { level: 3, name: t })).toBeInTheDocument();
     expect(text).toMatch(/EAQI.*NO₂/);
     expect(screen.getAllByRole("button", { name: "Empezar la demo" }).length).toBeGreaterThan(0);
@@ -67,7 +67,7 @@ describe("the landing page", () => {
     const text = landing()!.textContent!;
     for (const gone of ["Qué verás", "Qué no es", "Las reglas enteras", "No da consejos de salud"]) expect(text).not.toContain(gone);
     expect(landing()!.querySelector(".lp-not, .lp-split, .lp-list")).toBeNull();
-    expect(text).toContain("Ese grado mide cuánto encaja la regla con lo observado.");
+    expect(text).toContain("se cumple en un grado entre 0 y 1 que mide cuánto encaja con lo observado.");
     expect(text).not.toMatch(/No es una probabilidad|no es una probabilidad/);
     expect(within(landing()!).getAllByRole("heading", { level: 2 }).map((h) => h.textContent)).toEqual(["Un modelo hecho de frases", "Datos públicos de tres lugares y de un cuero cabelludo", "Empieza por las reglas"]);
   });

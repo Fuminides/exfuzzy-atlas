@@ -27,7 +27,7 @@ describe("Resumen (classified variable)", () => {
     expect(lead).toHaveTextContent("Estás viendo concentración observada en Zona de prueba");
     expect(lead).toHaveTextContent("1 de enero de 2024 – 31 de diciembre de 2024");
     expect(lead).toHaveTextContent("2 estaciones"); // the third station has no observations
-    expect(lead).toHaveTextContent("sin ningún modelo detrás. Aquí no hay predicciones");
+    expect(lead).toHaveTextContent("Son datos observados: en esta pestaña no hay predicciones");
     expect(fake.calls.some((c) => c.startsWith("/api/v1/summary?task_id="))).toBe(true);
   });
 

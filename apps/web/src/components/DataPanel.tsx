@@ -53,8 +53,8 @@ export function DataPanel({ entityName, observation, targetName }: Props) {
     <section className="data-panel" aria-label={tr("Observaciones de la entidad", "Observations of the entity")}>
       <h2>{tr(`Observaciones de ${entityName}`, `Observations of ${entityName}`)}</h2>
       <p className="muted">
-        {tr(<>Emisión {issued}. El objetivo ({targetName}) se observa en la hora de validez {valid}, y cada entrada en el instante que indica. Son valores publicados.</>,
-          <>Issue {issued}. The target ({targetName}) is observed at the valid time {valid}, and each input at the instant it states. These are published values.</>,
+        {tr(<>Emisión {issued}. El objetivo ({targetName}) se observa en la hora de validez {valid}, y cada entrada en su propio instante (columna «Observado el»).</>,
+          <>Issue {issued}. The target ({targetName}) is observed at the valid time {valid}, and each input at its own time (the “Observed at” column).</>,
         )}
       </p>
       {observation.target_label && (

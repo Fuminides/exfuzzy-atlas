@@ -129,7 +129,7 @@ export function MixtureTrace({ trace, scheme, onSelectRule, selectedRuleId }: Pr
             </table>
           </div>
           <p className="muted small" data-testid="mixture-adds-note">
-            {tr("Cada cifra es lo que la regla suma a esa categoría aquí: su peso centrado por cuánto se cumple. Centrar resta a cada regla la misma cantidad en todas las categorías, así que no cambia qué categoría gana, pero estas cifras no suman la puntuación.", "Each figure is what the rule adds to that category here: its centred weight times how much it holds. Centring takes the same amount from every category of a rule, so it does not change which category wins, but these figures do not add up to the score.")}
+            {tr("Cada cifra es el peso centrado de la regla para esa categoría, multiplicado por cuánto se cumple aquí. Centrar quita a cada regla la misma cantidad en todas las categorías: no cambia qué categoría gana, pero hace que estas cifras no sumen la puntuación.", "Each figure is the rule's centred weight for that category, multiplied by how much the rule holds here. Centring takes the same amount from every category of a rule: it does not change which category wins, but it means these figures do not add up to the score.")}
             {silent > 0 && (silent === 1 ? tr(" Otra regla no se cumple aquí y no suma nada.", " One more rule does not hold here and adds nothing.") : tr(` Otras ${silent} reglas no se cumplen aquí y no suman nada.`, ` ${silent} more rules do not hold here and add nothing.`))}
           </p>
         </>

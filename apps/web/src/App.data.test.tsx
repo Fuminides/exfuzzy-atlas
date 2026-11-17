@@ -102,7 +102,7 @@ describe("Data mode (observations as published)", () => {
       expect(row).toHaveTextContent(String(Number(v.value!.toPrecision(4))));
       expect(row).toHaveTextContent(v.source_id!);
     }
-    expect(panel).toHaveTextContent("Son valores publicados.");
+    expect(panel).toHaveTextContent("en su propio instante (columna «Observado el»).");
   });
 
   it("an input that is missing says so with its reason and is never shown as 0", async () => {

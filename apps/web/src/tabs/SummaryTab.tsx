@@ -118,7 +118,7 @@ function SummaryView({ summary, entities, territoryTitle, domainId }: { summary:
   return (
     <div className="page" data-task={summary.task_id}>
       <PageHead title={tr(`Resumen de datos: ${territoryTitle}`, `Data summary: ${territoryTitle}`)} accent={territoryTitle}>
-        {tr(<>Estás viendo <strong>{label}</strong> en {territoryTitle}, medido en {withData.length} {stations} entre {periodText(summary)}. Son datos observados, sin ningún modelo detrás. Aquí no hay predicciones.</>, <>You are looking at <strong>{label}</strong> in {territoryTitle}, measured at {withData.length} {stations} over {periodText(summary)}. These are observed data with no model, so there are no predictions here.</>)}
+        {tr(<>Estás viendo <strong>{label}</strong> en {territoryTitle}, medido en {withData.length} {stations} entre {periodText(summary)}. Son datos observados: en esta pestaña no hay predicciones.</>, <>You are looking at <strong>{label}</strong> in {territoryTitle}, measured at {withData.length} {stations} over {periodText(summary)}. These are observed data: this tab has no predictions.</>)}
       </PageHead>
 
       <section className="data-strip" aria-label={tr("Qué hay en los datos", "What is in the data")}>
@@ -200,8 +200,8 @@ function SummaryView({ summary, entities, territoryTitle, domainId }: { summary:
                 title={classified ? tr(`Horas en ${quoted}`, `Hours in ${quoted}`) : tr(`Mediana de ${label}`, `Median of ${label}`)}
                 note={
                   classified
-                    ? tr(`Parte de las observaciones de cada ${noun.one} que caen en esa clase. Es un dato observado.`, `Share of each ${noun.one}'s observations in that class. Observed data.`)
-                    : tr(`Mediana de las observaciones de cada ${noun.one} (${unit}). Es un dato observado.`, `Median of each ${noun.one}'s observations (${unit}). Observed data.`)
+                    ? tr(`Parte de las observaciones de cada ${noun.one} que caen en esa clase.`, `Share of each ${noun.one}'s observations in that class.`)
+                    : tr(`Mediana de las observaciones de cada ${noun.one} (${unit}).`, `Median of each ${noun.one}'s observations (${unit}).`)
                 }
                 stops={classified ? ORANGES : BLUES}
                 domain={domainRange}

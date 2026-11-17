@@ -148,7 +148,7 @@ export function PatternsTab({ domain, task, territoryTitle, onProvenance, onOpen
             </>,
           )}
           {imp && mixture
-            ? tr(`, ordenadas por en cuántas predicciones de ${importancePeriod(imp)} son la que más suma a la categoría prevista. Ninguna regla decide sola: las que se cumplen suman su apoyo a cada categoría. Elige una regla para verla en el mapa.`, `, ordered by how many predictions in ${importancePeriod(imp)} they add the most to the predicted category. No rule decides alone: the rules that hold add up their support for each category. Pick a rule to see it on the map.`)
+            ? tr(`, ordenadas por el número de predicciones de ${importancePeriod(imp)} en las que cada una es la que más suma a la categoría prevista. Ninguna regla decide sola: las que se cumplen suman su apoyo a cada categoría. Elige una regla para verla en el mapa.`, `, ordered by the number of predictions in ${importancePeriod(imp)} in which each one adds the most to the predicted category. No single rule decides: the rules that hold add up their support for each category. Pick a rule to see it on the map.`)
             : imp
             ? tr(`, ordenadas por cuántas predicciones deciden en ${importancePeriod(imp)}. Elige una regla para ver en el mapa dónde decide.`, `, ordered by how many predictions they decide in ${importancePeriod(imp)}. Pick a rule to see where it decides on the map.`)
             : mixture
@@ -203,7 +203,7 @@ export function PatternsTab({ domain, task, territoryTitle, onProvenance, onOpen
               title={tr("Las reglas", "The rules")}
               subtitle={
                 imp && mixture
-                  ? tr("De la que en más predicciones es la que más suma a la que en menos. Debajo de cada una, su peso centrado para cada categoría. Pulsa una para verla en el mapa.", "From the one that adds the most in most predictions to the one that does in fewest. Under each, its centred weight for each category. Click one to see it on the map.")
+                  ? tr("Ordenadas por el número de predicciones en las que cada una es la que más suma, de más a menos. Debajo de cada regla, su peso centrado para cada categoría. Pulsa una para verla en el mapa.", "Ordered by the number of predictions in which each one adds the most, from most to fewest. Under each rule, its centred weight for each category. Click one to see it on the map.")
                   : imp
                   ? tr("De la que decide más predicciones a la que decide menos. Pulsa una para verla en el mapa.", "From the one that decides most predictions to the one that decides fewest. Click one to see it on the map.")
                   : tr("En el orden del modelo.", "In the model's order.")
@@ -292,7 +292,7 @@ export function PatternsTab({ domain, task, territoryTitle, onProvenance, onOpen
                   mixture
                     ? variableShareNote()
                     : regression
-                    ? tr("Cuota media del promedio que aportan las reglas que usan cada variable.", "Mean share of the average taken up by the rules that use each variable.")
+                    ? tr("Cuota media, en cada estimación, de las reglas que usan cada variable.", "Mean share of each estimate held by the rules that use each variable.")
                     : tr("Parte de las predicciones decididas por reglas que usan cada variable.", "Share of the predictions decided by rules that use each variable.")
                 }
               >

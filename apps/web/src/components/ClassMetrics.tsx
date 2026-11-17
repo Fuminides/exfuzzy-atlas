@@ -89,8 +89,8 @@ export function ClassMetrics({ rows, scheme }: Props) {
         </tbody>
       </table>
       <p className="muted">
-        {tr("En negrita, el valor más favorable de cada columna, si solo hay uno. La F1 macro y la exactitud balanceada dan el mismo peso a todas las categorías, así que las que apenas aparecen en el periodo de prueba (columna «Observadas», abajo) las vuelven muy inestables.",
-          "Bold marks the most favourable value in each column, when there is only one. Macro-F1 and balanced accuracy give every category the same weight, so categories that are rare in the test period (the “Observed” column below) make them very unstable.")}
+        {tr("En negrita, el mejor valor de cada columna, salvo empate. La F1 macro y la exactitud balanceada dan el mismo peso a todas las categorías, así que las que apenas aparecen en el periodo de prueba (columna «Observadas», abajo) las vuelven muy inestables.",
+          "Bold marks the best value in each column, unless there is a tie. Macro-F1 and balanced accuracy give every category the same weight, so categories that are rare in the test period (the “Observed” column below) make them very unstable.")}
       </p>
 
       {(perClass.length > 0 || hasConfusion) && (

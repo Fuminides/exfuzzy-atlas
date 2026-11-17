@@ -55,7 +55,7 @@ export function RuleLegend({ view, tau, scheme, Nouns, withValue, total, detail 
       title={`${legendTitle(view, tau)}`}
       note={
         scheme
-          ? tr("Grado de activación calculado por el motor del modelo. Muestra la activación de la regla elegida.", "Activation degree computed by the model's engine. This is the activation of the chosen rule.")
+          ? tr("Grado de activación de la regla elegida, calculado por el motor del modelo.", "Activation degree of the chosen rule, computed by the model's engine.")
           : tr("Grado de activación calculado por el motor del modelo.", "Activation degree computed by the model's engine.")
       }
       stops={VIRIDIS}
@@ -162,7 +162,7 @@ export function TerritoriesLegend(p: TerritoriesLegendProps) {
   return (
     <Legend
       title={tr(`Intensidad de ${ruleId}: ${measureName(measure)} (fracción 0–1)`, `Intensity of ${ruleId}: ${measureName(measure)} (fraction 0–1)`)}
-      note={tr(`${measureThe(measure, true)} de la regla ${ruleId} en cada ${noun.one} durante la ventana elegida, calculada sobre sus registros válidos. Es un grado de activación de esa regla. La escala es secuencial y distinta de los colores de regla de los territorios.`, `The ${measureName(measure)} of rule ${ruleId} at each ${noun.one} over the chosen window, computed on its valid records. It's that rule's activation degree. The scale is sequential and separate from the territories' rule colours.`)}
+      note={tr(`${measureThe(measure, true)} de la regla ${ruleId} en cada ${noun.one} durante la ventana elegida, calculada sobre sus registros válidos. Sus colores no son los de las reglas en la vista de territorios.`, `The ${measureName(measure)} of rule ${ruleId} at each ${noun.one} over the chosen window, computed on its valid records. Its colours are not the rule colours of the territories view.`)}
       stops={VIRIDIS}
       domain={ACTIVATION_DOMAIN}
       ticks={ticks01()}
@@ -214,7 +214,7 @@ export function PredictionLegend(p: PredictionLegendProps) {
             {relativeScheme && (
               <p className="legend-missing" data-testid="no-reference-legend">
                 <span className="marker marker--noref" aria-hidden="true" />{" "}
-                {tr(`sin referencia: ${articles(noun.one).el} ${noun.one} no tiene nivel de referencia a esa hora de la semana (tuvo poco volumen en el entrenamiento) y no se pinta como «normal» ni como clase`, `no reference: the ${noun.one} has no reference level at that hour of the week (too little volume in training), so it isn't painted as “normal” or as a class`)}
+                {tr(`sin referencia: ${articles(noun.one).el} ${noun.one} tuvo pocas recogidas a esa hora de la semana en el entrenamiento y no tiene nivel de referencia, así que no recibe categoría (tampoco «normal»)`, `no reference: the ${noun.one} had too few pickups at that hour of the week in training to have a reference level, so it gets no category (not even “normal”)`)}
                 {p.noReferenceCount > 0 && <>: <strong>{p.noReferenceCount}</strong> {tr("de", "of")} {total}</>}
               </p>
             )}
@@ -231,7 +231,7 @@ export function PredictionLegend(p: PredictionLegendProps) {
       title={irregular ? tr(`${label} estimado en la última muestra (${unit})`, `Estimated ${label} at the last sample (${unit})`) : tr(`${label} previsto (${unit})`, `Predicted ${label} (${unit})`)}
       note={
         irregular
-          ? tr(`Valor que el modelo completo estima para la última muestra de cada punto dentro de la ventana, a partir de las demás determinaciones de esa misma muestra. Es una ${sameSampleText()}. La fecha de la muestra está en la tabla y en la descripción emergente.`, `Value the full model estimates for each point's last sample in the window, from the other determinations of that same sample. This is ${sameSampleText()}. The sample's date is in the table and in the tooltip.`)
+          ? tr(`Lo que el modelo completo estima para la última muestra de cada punto en la ventana, a partir de las otras mediciones de esa misma muestra (${sameSampleText()}). La fecha de la muestra está en la tabla y al pasar el ratón.`, `What the full model estimates for each point's last sample in the window, from the other measurements of that same sample (${sameSampleText()}). The sample's date is in the table and on hover.`)
           : tr(`Concentración predicha por el modelo completo para la hora de validez (emisión + ${horizon} h).`, `Concentration predicted by the full model for the valid time (issue + ${horizon} h).`)
       }
       stops={MAGMA}
@@ -245,8 +245,8 @@ export function PredictionLegend(p: PredictionLegendProps) {
         <>
           <p className="legend-count">
             {irregular
-              ? tr(`Escala 0–${domainRange[1]} ${unit}: se ajusta a las predicciones cargadas (la última muestra de cada punto en la ventana elegida) y solo crece al navegar.`, `Scale 0–${domainRange[1]} ${unit}: it fits the loaded predictions (the last sample of each point in the chosen window) and only grows while browsing.`)
-              : tr(`Escala 0–${domainRange[1]} ${unit}: se ajusta a las predicciones cargadas (la hora de emisión elegida) y solo crece al navegar.`, `Scale 0–${domainRange[1]} ${unit}: it fits the loaded predictions (the chosen issue time) and only grows while browsing.`)}
+              ? tr(`La escala va de 0 a ${domainRange[1]} ${unit} y se ajusta a las predicciones cargadas (la última muestra de cada punto en la ventana elegida); al navegar, puede crecer pero no encogerse.`, `The scale runs from 0 to ${domainRange[1]} ${unit} and fits the loaded predictions (the last sample of each point in the chosen window); as you browse, it can grow but never shrink.`)
+              : tr(`La escala va de 0 a ${domainRange[1]} ${unit} y se ajusta a las predicciones cargadas (la hora de emisión elegida); al navegar, puede crecer pero no encogerse.`, `The scale runs from 0 to ${domainRange[1]} ${unit} and fits the loaded predictions (the chosen issue time); as you browse, it can grow but never shrink.`)}
           </p>
           {periodNote}
           {noGeometryNote}
@@ -273,7 +273,7 @@ export function DataLegend({ label, unit, horizon, irregular, domainRange, sqrt,
       title={tr(`${label} observado (${unit})`, `Observed ${label} (${unit})`)}
       note={
         irregular
-          ? tr(`Última muestra medida de cada ${noun.one} dentro de la ventana, tal como se publicó, con su propia fecha (en la tabla y en la descripción emergente). Cada círculo es una lectura.`, `Each ${noun.one}'s last measured sample in the window, as published, with its own date (in the table and in the tooltip). Each circle is one reading.`)
+          ? tr(`Última muestra medida de cada ${noun.one} dentro de la ventana, tal como se publicó, con su propia fecha (en la tabla y al pasar el ratón). Cada círculo es una lectura.`, `Each ${noun.one}'s last measured sample in the window, as published, with its own date (in the table and on hover). Each circle is one reading.`)
           : tr(`Valor medido en la hora de validez (emisión + ${horizon} h)${validTimeText ? `: ${validTimeText}` : ""}, tal como se publicó. Cada ${noun.one} es una lectura.`, `Value measured at the valid time (issue + ${horizon} h)${validTimeText ? `: ${validTimeText}` : ""}, as published. Each ${noun.one} is one reading.`)
       }
       stops={BLUES}
@@ -287,8 +287,8 @@ export function DataLegend({ label, unit, horizon, irregular, domainRange, sqrt,
         <>
           <p className="legend-count">
             {tr(`Escala de observaciones de 0 a ${domainRange[1]} ${unit}`, `Observation scale from 0 to ${domainRange[1]} ${unit}`)}
-            {sqrt && tr(" (raíz cuadrada: las marcas de la barra están a 0, 6, 25, 56 y 100 % del recorrido en raíz)", " (square root: the bar's ticks sit at 0, 6, 25, 56 and 100% of the square-root range)")}
-            {tr("; solo crece al navegar.", "; it only grows while browsing.")}
+            {sqrt && tr(" (escala de raíz cuadrada: las marcas, a igual distancia en la barra, valen el 0, 6, 25, 56 y 100 % del máximo)", " (square-root scale: the ticks, evenly spaced on the bar, stand for 0, 6, 25, 56 and 100% of the maximum)")}
+            {tr("; al navegar, puede crecer pero no encogerse.", "; as you browse, it can grow but never shrink.")}
           </p>
           {noGeometryNote}
           {absentNote}

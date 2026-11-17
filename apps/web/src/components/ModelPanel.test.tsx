@@ -54,7 +54,7 @@ describe("ModelPanel", () => {
     const best = [...table.querySelectorAll('td[data-best="true"]')].map((td) => td.textContent);
     // MAE: exfuzzy and ridge tie at 7.5 but HGB's 7.0 is unique; RMSE and R²: HGB too.
     expect(best).toEqual(["7,000", "9,500", "0,600"]);
-    expect(screen.getByText(/En negrita, el valor más favorable de cada columna/)).toBeInTheDocument();
+    expect(screen.getByText(/En negrita, el mejor valor de cada columna/)).toBeInTheDocument();
     expect(document.body.textContent).not.toMatch(/No dice que ese estimador/);
   });
 

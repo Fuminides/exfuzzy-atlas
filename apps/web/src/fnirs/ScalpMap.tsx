@@ -232,8 +232,8 @@ export function DivergingLegend({ bound, signal }: { bound: number; signal: stri
       </div>
       <p className="muted small">
         {signal === "HbO"
-          ? tr(`Cambio de oxihemoglobina respecto a la línea base del bloque: rojo si sube (más sangre oxigenada), azul si baja. La escala es la de este ensayo: su mayor cambio, ${top} µmol/L en valor absoluto, y cada tono cubre un cuarto de él.`, `Change of oxyhaemoglobin from the block's baseline: red where it rises (more oxygenated blood), blue where it falls. The scale is this trial's: its largest change, ${top} µmol/L in absolute value, and each shade covers a quarter of it.`)
-          : tr(`Cambio de desoxihemoglobina respecto a la línea base del bloque: azul si sube (más sangre desoxigenada), rojo si baja. La escala es la de este ensayo: su mayor cambio, ${top} µmol/L en valor absoluto, y cada tono cubre un cuarto de él.`, `Change of deoxyhaemoglobin from the block's baseline: blue where it rises (more deoxygenated blood), red where it falls. The scale is this trial's: its largest change, ${top} µmol/L in absolute value, and each shade covers a quarter of it.`)}
+          ? tr(`Cambio de oxihemoglobina respecto a la línea base del bloque: rojo si sube (más sangre oxigenada), azul si baja. La escala llega hasta ${top} µmol/L, el mayor cambio de este ensayo en valor absoluto, y cada tono abarca una cuarta parte.`, `Change of oxyhaemoglobin from the block's baseline: red where it rises (more oxygenated blood), blue where it falls. The scale goes up to ${top} µmol/L, this trial's largest change in absolute value, and each shade spans a quarter of it.`)
+          : tr(`Cambio de desoxihemoglobina respecto a la línea base del bloque: azul si sube (más sangre desoxigenada), rojo si baja. La escala llega hasta ${top} µmol/L, el mayor cambio de este ensayo en valor absoluto, y cada tono abarca una cuarta parte.`, `Change of deoxyhaemoglobin from the block's baseline: blue where it rises (more deoxygenated blood), red where it falls. The scale goes up to ${top} µmol/L, this trial's largest change in absolute value, and each shade spans a quarter of it.`)}
       </p>
     </div>
   );

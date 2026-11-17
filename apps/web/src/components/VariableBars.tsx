@@ -28,7 +28,7 @@ export function VariableBars({ variables, info, label, regression, mixture = fal
         mixture
           ? variableShareNote()
           : regression
-          ? tr("Cuota media del promedio que aportan las reglas que usan cada variable", "Mean share of the average carried by the rules that use each variable")
+          ? tr("Cuota media, en cada estimación, de las reglas que usan cada variable", "Mean share of each estimate held by the rules that use each variable")
           : tr("Parte de las predicciones decididas por reglas que usan cada variable", "Share of the predictions decided by rules that use each variable")
       }>
       {sorted.map((v) => (

@@ -25,7 +25,7 @@ describe("WindowNavigator (irregular sample times)", () => {
     expect(screen.queryByRole("button", { name: /hora/i })).toBeNull();
     expect(screen.getByRole("group", { name: "Tamaño de la ventana" })).toBeInTheDocument();
     expect(screen.getByTestId("window-range")).toHaveTextContent("[2025-12-01 00:00 UTC, 2026-01-01 00:00 UTC) · 31 d");
-    expect(screen.getByTestId("irregular-note")).toHaveTextContent("No se avanza hora a hora");
+    expect(screen.getByTestId("irregular-note")).toHaveTextContent("se avanza por ventanas que agrupan las muestras de cada punto");
     // the plain line is on top; the UTC range, coverage and the note are in the folded details
     expect(screen.getByTestId("timeline-line")).toHaveTextContent("Muestras del 1 al 31 dic 2025");
     expect(screen.getByText("Detalles de tiempo").closest("details")).not.toHaveAttribute("open");

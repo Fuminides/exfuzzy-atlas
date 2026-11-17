@@ -154,7 +154,7 @@ describe("Rule Territories (E2) on a regressor", () => {
     const seq = await screen.findByRole("region", { name: new RegExp(`Leyenda: Intensidad de ${target}`) });
     expect(seq).toHaveAttribute("data-domain", "0-1");
     expect(screen.queryByRole("region", { name: /Leyenda: Territorios de reglas/ })).toBeNull();
-    expect(seq).toHaveTextContent("La escala es secuencial y distinta de los colores de regla");
+    expect(seq).toHaveTextContent("Sus colores no son los de las reglas en la vista de territorios");
     await waitFor(() => expect(features().some((f) => f.properties.value !== null)).toBe(true));
     for (const f of features()) {
       const stats = api.features.find((x) => x.properties.entity_id === f.properties.entity_id)!.properties.rules?.find((r) => r.rule_id === target);

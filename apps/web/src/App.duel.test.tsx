@@ -235,8 +235,8 @@ describe("Rule Duel on points (Madrid-like mock model, regression)", () => {
     expect(within(b!).queryByRole("option", { name: /^R01/ })).toBeNull();
     const scope = within(box).getByTestId("duel-scope");
     expect(scope).toHaveTextContent(fx.rules.model_id);
-    expect(scope).toHaveTextContent("Entre modelos no hay correspondencia de reglas");
-    expect(scope).toHaveTextContent("la «R07» de uno no equivale a la «R07» de otro");
+    expect(scope).toHaveTextContent("Solo se comparan reglas del mismo modelo");
+    expect(scope).toHaveTextContent("la «R07» de un modelo no tiene nada que ver con la «R07» de otro");
     expect(within(box).queryByText(/otro modelo|modelo B|comparar modelos/i)).toBeNull();
   });
 

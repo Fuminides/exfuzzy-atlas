@@ -198,7 +198,7 @@ describe("Patrones (additive regression)", () => {
     expect(first).toHaveTextContent(/error medio 2,5\sµg\/m³/);
     expect(first.textContent).not.toMatch(/acierta/);
     expect(first).toHaveTextContent("Si NO₂ actual es alta (inventada) y Velocidad del viento es baja (inventada) → 72 µg/m³");
-    expect(screen.getByRole("list", { name: /Cuota media del promedio/ })).toBeInTheDocument();
+    expect(screen.getByRole("list", { name: /Cuota media, en cada estimación/ })).toBeInTheDocument();
     expect(screen.getByTestId("page-lead")).toHaveTextContent("para estimar");
   });
 });

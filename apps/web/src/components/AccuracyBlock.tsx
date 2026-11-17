@@ -132,7 +132,7 @@ export function AccuracyBlock({ card, unit }: { card: ModelCard; unit: string })
         {acc && base && baseline?.classifier && (
           <>
             <p className="callout" data-testid="baseline-verdict" data-verdict={verdict(acc.value, base.value, true)}>
-              {tr(`Frente a ${baseline.classifier} (la referencia más simple, con las mismas filas), ${verdictText(verdict(acc.value, base.value, true))} en exactitud (${dec(acc.value * 100, 1)} frente a ${dec(base.value * 100, 1)} de cada 100). Un modelo que no mejora a la referencia no aporta más que repetir lo último observado.`,
+              {tr(`Frente a ${baseline.classifier} (la referencia más simple, con las mismas filas), ${verdictText(verdict(acc.value, base.value, true))} en exactitud (${dec(acc.value * 100, 1)} frente a ${dec(base.value * 100, 1)} de cada 100).`,
                 `Compared with ${baseline.classifier} (the simplest reference, on the same rows), ${verdictText(verdict(acc.value, base.value, true))} on accuracy (${dec(acc.value * 100, 1)} against ${dec(base.value * 100, 1)} out of 100). A model that doesn't beat the reference adds nothing over repeating the last observation.`)}
             </p>
             <table className="plain per-class" aria-label={tr("Comparación con la referencia", "Comparison with the reference")}>

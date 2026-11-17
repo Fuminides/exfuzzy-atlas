@@ -142,7 +142,7 @@ describe("NYC: polygons, categories and 'sin referencia'", () => {
     expect(layers()["zones-line-no-reference"]!.paint!["line-dasharray"]).toBeDefined();
     const legend = screen.getByTestId("no-reference-legend");
     expect(legend).toHaveTextContent("sin referencia");
-    expect(legend).toHaveTextContent("no se pinta como «normal» ni como clase");
+    expect(legend).toHaveTextContent("así que no recibe categoría (tampoco «normal»)");
     expect(legend).toHaveTextContent(`${fx.NYC_NO_REFERENCE.length}`);
     // zones with a class keep it
     expect(row(fx.NYC_ZONE).querySelector(".class-chip")).toHaveAttribute("data-class", point(fx.NYC_ZONE).predicted_label!);

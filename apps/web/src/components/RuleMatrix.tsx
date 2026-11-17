@@ -126,7 +126,7 @@ export function RuleMatrix({ model, importance, scheme, regression, unit, select
         )}
         <li className="rmx-key-order">
           {imp && mixture
-            ? tr("Columnas: primero la variable cuyas reglas son las que más suman en más predicciones.", "Columns: the variable whose rules add the most in most predictions comes first.")
+            ? tr("Las columnas van ordenadas por la parte de las predicciones en las que la regla que más suma usa esa variable, de más a menos.", "Columns are ordered by the share of the predictions in which the rule that adds the most uses that variable, highest first.")
             : imp
             ? tr("Columnas: primero la variable cuyas reglas deciden más predicciones.", "Columns: the variable whose rules decide most predictions comes first.")
             : tr("Columnas: primero la variable que usan más reglas.", "Columns: the variable used by most rules comes first.")}
@@ -290,14 +290,14 @@ export function RuleMatrix({ model, importance, scheme, regression, unit, select
         <button type="button" className="rmx-fold" onClick={onToggleAll} aria-expanded={showAll}>
           {showAll
             ? imp && mixture
-              ? tr("Ocultar las reglas que son la que más suma en menos del 1 %", "Hide the rules that add the most in less than 1%")
+              ? tr("Ocultar esas reglas (cada una es la que más suma en menos del 1 % de las predicciones)", "Hide those rules (each adds the most in less than 1% of the predictions)")
               : imp
               ? tr("Ocultar las reglas que deciden menos del 1 %", "Hide the rules that decide less than 1%")
               : tr(`Ver solo las ${nMain} primeras en la matriz`, `Show only the first ${nMain} in the matrix`)
             : imp && mixture
               ? nHidden === 1
-                ? tr("Ver también la regla que es la que más suma en menos del 1 %", "Also show the rule that adds the most in less than 1%")
-                : tr(`Ver también las ${nHidden} reglas que son la que más suma en menos del 1 %`, `Also show the ${nHidden} rules that add the most in less than 1%`)
+                ? tr("Ver también 1 regla más (es la que más suma en menos del 1 % de las predicciones)", "Also show 1 more rule (it adds the most in less than 1% of the predictions)")
+                : tr(`Ver también ${nHidden} reglas más (cada una es la que más suma en menos del 1 % de las predicciones)`, `Also show ${nHidden} more rules (each adds the most in less than 1% of the predictions)`)
               : imp
               ? nHidden === 1
                 ? tr("Ver también la regla que decide menos del 1 %", "Also show the rule that decides less than 1%")

@@ -92,7 +92,7 @@ describe("Patterns in English (regression, folding, not published)", () => {
     expect(cards()[0]).toHaveTextContent("decides 50% of the predictions · mean weight in the estimate: 50%");
     expect(cards()[0]).toHaveTextContent(/mean error 2\.5\sµg\/m³/);
     expect(screen.getByTestId("page-lead")).toHaveTextContent("to estimate");
-    expect(screen.getByRole("list", { name: "Mean share of the average carried by the rules that use each variable" })).toBeInTheDocument();
+    expect(screen.getByRole("list", { name: "Mean share of each estimate held by the rules that use each variable" })).toBeInTheDocument();
   });
 
   it("folds the rules that decide less than 1% behind an English button", async () => {

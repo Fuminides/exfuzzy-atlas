@@ -44,7 +44,7 @@ describe("What-if from Prediction mode on a regressor", () => {
     expect(entry()).toBeNull(); // no entity yet
     await user.click(stationButton("Synthetic station A (not real)"));
     const open = await screen.findByRole("button", { name: "¿Y si…?" });
-    expect(screen.getByTestId("whatif-entry")).toHaveTextContent("respuesta del modelo a entradas hipotéticas");
+    expect(screen.getByTestId("whatif-entry")).toHaveTextContent("mira cómo responde el modelo");
     expect(open).toBeInTheDocument();
     expect(screen.queryByTestId("whatif-panel")).toBeNull();
     expect(traceCalls()).toHaveLength(0);
@@ -67,7 +67,7 @@ describe("What-if from Prediction mode on a regressor", () => {
     expect(panel.querySelector('li[data-feature="wind_speed_t"]')).toHaveTextContent("observado: 2,4");
     expect(within(panel).getByTestId("whatif-label")).toHaveTextContent(WHAT_IF_LABEL);
     const intro = screen.getByTestId("prediction-whatif");
-    expect(intro).toHaveTextContent("Es la respuesta del modelo a las entradas modificadas.");
+    expect(intro).toHaveTextContent("el modelo vuelve a calcular");
     expect(intro.textContent).not.toMatch(/causal|probabilidad|contribución|riesgo/i);
     // and it is the same panel: an edit POSTs the scenario of this entity and time
     fireEvent.change(wind, { target: { value: "5" } });
@@ -154,7 +154,7 @@ describe("What-if from Prediction mode on a classifier", () => {
     emit("click", { features: [{ properties: { entity_id: "E1" } }] }, "stations-valid");
     await user.click(await screen.findByRole("button", { name: "¿Y si…?" }));
     const intro = await screen.findByTestId("prediction-whatif");
-    expect(intro).toHaveTextContent("Salida que se recalcula: categoría prevista de y");
+    expect(intro).toHaveTextContent("el modelo vuelve a calcular categoría prevista de y");
     expect(intro.textContent).not.toMatch(/riesgo sanitario|probabilidad de/i);
     expect(await within(intro).findByTestId("whatif-label")).toHaveTextContent(WHAT_IF_LABEL);
     expect(traceCalls().map((c) => new URL(c, "http://x").searchParams.get("at"))).toEqual([iso]);

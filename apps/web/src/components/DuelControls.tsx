@@ -65,8 +65,8 @@ export function DuelControls({ on, onToggle, rules, modelId, ruleA, ruleB, onRul
             </label>
           </fieldset>
           <p className="muted" data-testid="duel-scope">
-            {tr(<>Las dos reglas son de <code>{modelId}</code> y se piden con la misma medida, instante o ventana y τ. Solo se comparan reglas de un mismo modelo. Entre modelos no hay correspondencia de reglas, y la «R07» de uno no equivale a la «R07» de otro.</>,
-              <>Both rules belong to <code>{modelId}</code> and are requested with the same measure, instant or window and τ. Only rules from the same model are compared. Rules don&apos;t map across models, so one model&apos;s “R07” isn&apos;t another&apos;s “R07”.</>)}
+            {tr(<>Las dos reglas son de <code>{modelId}</code> y se piden con la misma medida, instante o ventana y τ. Solo se comparan reglas del mismo modelo: la «R07» de un modelo no tiene nada que ver con la «R07» de otro.</>,
+              <>Both rules belong to <code>{modelId}</code> and are requested with the same measure, instant or window and τ. Only rules of the same model are compared: one model&apos;s “R07” has nothing to do with another&apos;s “R07”.</>)}
           </p>
         </>
       )}

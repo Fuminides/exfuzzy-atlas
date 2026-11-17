@@ -63,8 +63,8 @@ export const howItPredicts = (): string =>
 
 /** What a centred weight is (legend of the weight bars). */
 export const centredNote = (): string =>
-  tr("Peso centrado: el peso de la regla para esa categoría menos su media en todas las categorías. Positivo es apoyo: la regla sube esa categoría frente a las demás. Negativo es supresión: la baja frente a las demás.",
-    "Centred weight: the rule's weight for that category minus its mean over all the categories. Positive is support: the rule raises that category against the others. Negative is suppression: it lowers it against the others.");
+  tr("El peso centrado es el peso de la regla para esa categoría menos su media en todas las categorías. Si es positivo (apoyo), la regla sube esa categoría frente a las demás; si es negativo (supresión), la baja.",
+    "The centred weight is the rule's weight for that category minus its mean over all the categories. When positive (support), the rule raises that category against the others; when negative (suppression), it lowers it.");
 
 export const strongestText = (name: string | null): string =>
   name === null ? tr("no apoya ninguna categoría más que otra", "supports no category more than another") : tr(`apoya sobre todo ${name}`, `supports ${name} most`);

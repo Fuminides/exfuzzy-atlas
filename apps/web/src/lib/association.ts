@@ -84,7 +84,7 @@ function unweightedStory(rules: readonly AssociationEntry[], winner: Association
     tied.length === 0
       ? tr(`${W} decide la categoría. Se activa con grado ${wf}, más que ninguna otra regla.`, `${W} decides the category. It fires with degree ${wf}, more than any other rule.`)
       : tr(`${W} decide la categoría. Se activa con grado ${wf}, igual que ${list(tied, "y")}. En este modelo las reglas no llevan peso y, ante un empate, decide la primera en el orden del modelo.`,
-          `${W} decides the category. It fires with degree ${wf}, the same as ${list(tied, "and")}. This model's rules carry no weight, and on a tie, the first in the model's order decides.`,
+          `${W} decides the category. It fires with degree ${wf}, the same as ${list(tied, "and")}. This model's rules have no weights; on a tie, the first in the model's order decides.`,
         );
   return { winnerId: W, winner: text, loserId: null, loser: null };
 }

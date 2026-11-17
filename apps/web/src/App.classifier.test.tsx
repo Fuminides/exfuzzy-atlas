@@ -98,7 +98,7 @@ describe("App with a winning-rule classifier", () => {
     const rail = screen.getByRole("region", { name: "Reglas del modelo" });
     expect(within(rail).getAllByText(/^\s*· peso/).length).toBe(fx.rules.rules.length);
     expect(rail.querySelectorAll(".class-chip").length).toBe(fx.rules.rules.length);
-    expect(screen.getByRole("region", { name: /Leyenda: activación/ })).toHaveTextContent("Muestra la activación de la regla elegida");
+    expect(screen.getByRole("region", { name: /Leyenda: activación/ })).toHaveTextContent("Grado de activación de la regla elegida");
 
     emit("click", { features: [{ properties: { entity_id: "E0" } }] }, "stations-valid");
     const panel = await screen.findByRole("region", { name: "Why here?" });

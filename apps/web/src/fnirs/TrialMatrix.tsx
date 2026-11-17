@@ -57,7 +57,7 @@ export function TrialMatrix({ trials, scheme, sampleId, onTrial }: { trials: rea
         role="grid"
         aria-label={tr("Todos los ensayos: un sujeto por fila, un bloque por columna", "All trials: one subject per row, one block per column")}
         onKeyDown={onKey}
-        style={{ gridTemplateColumns: `3.75rem repeat(${width}, 1.15rem) 3rem` }}
+        style={{ gridTemplateColumns: `5.25rem repeat(${width}, 1.15rem) 3rem` }}
         data-testid="trial-matrix"
       >
         <div role="row" className="tm-row tm-head">
@@ -73,7 +73,7 @@ export function TrialMatrix({ trials, scheme, sampleId, onTrial }: { trials: rea
             <div key={r.subject} role="row" className={`tm-row${i === firstTrain ? " tm-row--first-train" : ""}`} data-subject={r.subject}>
               <span role="rowheader" className="tm-label">
                 {r.subject}
-                {r.split === "test" && <span className="tm-test">test</span>}
+                {r.split === "test" && <span className="tm-test">{tr("prueba", "test")}</span>}
               </span>
               {r.trials.map((t) => {
                 const o = outcome(t);
@@ -107,7 +107,7 @@ export function TrialMatrix({ trials, scheme, sampleId, onTrial }: { trials: rea
         {scheme.classes.map((c) => <ClassChip key={c.label} label={c.label} color={c.color ?? "#999"} />)}
         <span><span className="tm-key tm-key--miss" aria-hidden="true">×</span> {tr("el modelo falló", "the model was wrong")}</span>
         <span><span className="tm-key tm-key--none" aria-hidden="true" /> {tr("sin clase", "no class")}</span>
-        <span>{tr("Color: la carga real del bloque. Las filas de train son predicciones dentro de la muestra.", "Colour: the block's actual load. Train rows are in-sample predictions.")}</span>
+        <span>{tr("El color es la carga real del bloque. En las filas de entrenamiento, las predicciones son dentro de la muestra.", "The colour is the block's actual load. Training rows are in-sample predictions.")}</span>
       </div>
     </div>
   );

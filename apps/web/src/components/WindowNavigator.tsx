@@ -85,7 +85,7 @@ export function WindowNavigator({ kind, window: w, coverage, onKind, kinds: offe
           </div>
         </dl>
         <p className="muted" data-testid="irregular-note">
-          {tr("Las emisiones son las fechas de muestreo, que son irregulares: no hay una por hora. La ventana agrupa las muestras de cada punto. No se avanza hora a hora.", "The issue times are the sampling dates, which are irregular, so there isn't one per hour. The window groups each point's samples. It doesn't step hour by hour.")}
+          {tr("Aquí las emisiones son las fechas de muestreo, que son irregulares (no hay una por hora), así que se avanza por ventanas que agrupan las muestras de cada punto.", "Here the issue times are the sampling dates, which are irregular (not one per hour), so you move by windows that group each point's samples.")}
         </p>
       </details>
     </section>

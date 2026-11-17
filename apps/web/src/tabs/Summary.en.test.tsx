@@ -24,7 +24,7 @@ describe("Summary in English (classified variable)", () => {
     const lead = screen.getByTestId("page-lead");
     expect(lead).toHaveTextContent("You are looking at concentración observada in Zona de prueba, measured at 2 stations");
     expect(lead).toHaveTextContent("1 January 2024 – 31 December 2024");
-    expect(lead).toHaveTextContent("with no model, so there are no predictions here");
+    expect(lead).toHaveTextContent("These are observed data: this tab has no predictions");
     const strip = screen.getByRole("region", { name: "What is in the data" });
     expect(within(strip).getByTestId("data-facts")).toHaveTextContent("2 of 3 stations");
     expect(within(strip).getByTestId("data-facts")).toHaveTextContent("1,000 observations");

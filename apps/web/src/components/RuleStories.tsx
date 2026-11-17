@@ -25,7 +25,7 @@ export function RuleStories({ open, onToggle, state, onReproduce, activeStory }:
           {tr("Historias", "Stories")}
         </button>
       </h2>
-      {!open && <p className="muted">{tr("Frases sobre activaciones del modelo en la ventana elegida, con las consultas que las respaldan.", "Sentences about the model's activations in the chosen window, with the queries that back them.")}</p>}
+      {!open && <p className="muted">{tr("Frases que resumen cómo se activan las reglas en la ventana elegida, cada una con las consultas que la comprueban.", "Sentences that sum up how the rules fire in the chosen window, each with the queries that check it.")}</p>}
       {open && state.status === "loading" && <StateMessage kind="loading">{tr("Cargando historias…", "Loading stories…")}</StateMessage>}
       {open && state.status === "error" && (
         <StateMessage kind="error" onRetry={state.reload}>
@@ -42,8 +42,8 @@ function Loaded({ data, onReproduce, activeStory }: { data: RuleStoriesResponse;
   return (
     <>
       <p className="muted">
-        {tr(<>{data.stories.length} de {data.n_candidates} historias candidatas, ventana <code>[{data.time_from_utc}, {data.time_to_utc})</code> UTC, τ = {data.tau}. Cada historia describe activaciones del modelo y se puede comprobar con las consultas que lista.</>,
-          <>{data.stories.length} of {data.n_candidates} candidate stories, window <code>[{data.time_from_utc}, {data.time_to_utc})</code> UTC, τ = {data.tau}. Each story describes the model&apos;s activations and can be checked with the queries it lists.</>)}
+        {tr(<>{data.stories.length} de {data.n_candidates} historias candidatas, ventana <code>[{data.time_from_utc}, {data.time_to_utc})</code> UTC, τ = {data.tau}.</>,
+          <>{data.stories.length} of {data.n_candidates} candidate stories, window <code>[{data.time_from_utc}, {data.time_to_utc})</code> UTC, τ = {data.tau}.</>)}
       </p>
       {data.stories.length === 0 && <p>{tr("No hay historias para esta ventana.", "There are no stories for this window.")}</p>}
       <ol className="story-list">

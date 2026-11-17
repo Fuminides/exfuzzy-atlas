@@ -67,7 +67,7 @@ describe("Predicción in English", () => {
     expect(await screen.findByRole("heading", { name: "Predicted NO₂ (µg/m³)" })).toBeInTheDocument();
     await user.click(stationButton("SYN_A"));
     expect(await screen.findByRole("button", { name: "What if…?" })).toBeInTheDocument();
-    expect(screen.getByTestId("whatif-entry")).toHaveTextContent("the model's answer to hypothetical inputs");
+    expect(screen.getByTestId("whatif-entry")).toHaveTextContent("see how the model responds");
     await user.click(screen.getByRole("button", { name: "What if…?" }));
     const panel = await screen.findByTestId("whatif-panel");
     expect(within(panel).getByTestId("whatif-label")).toHaveTextContent("the model's response to modified inputs");

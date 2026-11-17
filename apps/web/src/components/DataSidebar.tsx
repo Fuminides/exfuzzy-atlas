@@ -25,8 +25,8 @@ export function DataSidebar({ noun, irregular, label, window, observationsStatus
       <section className="data-intro" aria-label={tr("Modo Data", "Data mode")}>
         <h2>{tr("Modo Data", "Data mode")}</h2>
         <p className="muted">
-          {tr(<>Valores observados y publicados, sin pasar por el modelo. Aparecen el objetivo ({label}) en su hora de validez y cada entrada del modelo en el instante que indica. Un hueco se muestra como «sin dato» con su motivo.</>,
-            <>Observed, published values that don&apos;t go through the model. You see the target ({label}) at its valid time and each model input at the instant it states. A gap shows as “no data” with its reason.</>,
+          {tr(<>Valores observados tal como se publicaron. El objetivo ({label}) aparece en su hora de validez y cada entrada del modelo en su propio instante. Un hueco se muestra como «sin dato» con su motivo.</>,
+            <>Observed values, as published. The target ({label}) is shown at its valid time and each model input at its own time. A gap shows as “no data” with its reason.</>,
           )}
         </p>
         {irregular && window && (

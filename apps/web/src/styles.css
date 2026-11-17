@@ -505,6 +505,8 @@ button.disclosure[aria-expanded="true"]::before { content: "▾"; }
 .bench-sub { margin: 0; color: var(--muted); font-size: 0.95rem; max-width: 72ch; }
 .bench-actions { flex: none; display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 0.5rem 1rem; }
 .report-direction { font-size: 0.9rem; font-weight: var(--w-label); color: var(--muted); white-space: nowrap; }
+/* On a phone the metric choice takes its own line under the title, so it never pushes the page sideways. */
+@media (max-width: 640px) { .bench-actions { flex: 1 1 100%; justify-content: flex-start; } }
 .bench-body { min-width: 0; }
 /* A side card (h3) titles in the sans, the level the serif does not reach. */
 .bench--h3 { padding: 1.35rem 1.4rem 1.25rem; border-radius: var(--radius-card); }
@@ -1217,8 +1219,19 @@ a.btn { display: inline-block; font-weight: var(--w-ui); }
 .lp-end .lp-text { margin: 0 auto; }
 .lp-foot { padding: 1.5rem var(--lp-gutter) 2rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.85rem; text-align: center; }
 
-/* Narrower than a desktop: the artifacts leave the edges and line up under the actions; on a phone the map goes. */
-@media (max-width: 1100px) {
+/* A laptop (narrower than 1440 px or shorter than 820 px): three artifacts float, narrower, around a narrower text;
+   the map and the rule row go, there is no room for five without covering each other or the text. */
+@media (min-width: 1280px) and (max-width: 1439px), (min-width: 1280px) and (max-height: 819px) {
+  .lp-hero-text { width: min(100%, 46vw, 920px); }
+  .lp-art--map, .lp-art--row { display: none; }
+  .lp-art--perf { top: 27%; width: clamp(250px, 20vw, 300px); grid-template-columns: minmax(0, 1fr); gap: 0.4rem; }
+  .lp-art--perf .lp-perf-table { border-left: 0; }
+  .lp-art--scalp { top: 9%; right: var(--lp-gutter); width: clamp(260px, 21vw, 310px); }
+  .lp-art--rule { top: 41%; width: clamp(260px, 21vw, 310px); }
+}
+
+/* Narrower than a laptop: the artifacts leave the edges and line up under the actions; on a phone the map goes. */
+@media (max-width: 1279px) {
   .lp-hero { min-height: 0; padding-top: 6.5rem; }
   .lp-hero-text { width: min(100%, 46rem); }
   .lp-arts { position: relative; inset: auto; margin-top: 3rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; width: min(100%, 52rem); }
@@ -1226,6 +1239,8 @@ a.btn { display: inline-block; font-weight: var(--w-ui); }
   .lp-art--map { justify-self: center; width: min(100%, 22rem); }
   .lp-art--row { max-width: none; }
   .lp-art--scalp { grid-column: 1 / -1; justify-self: center; width: min(100%, 26rem); }
+}
+@media (max-width: 1100px) {
   .lp-cards { grid-template-columns: minmax(0, 1fr); }
   .lp-section { padding-top: 3.5rem; padding-bottom: 3.5rem; }
 }
@@ -1315,6 +1330,7 @@ a.btn { display: inline-block; font-weight: var(--w-ui); }
 .fnirs-rule-body { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0.9rem; align-items: center; }
 .fnirs-rule-body .rule-sentence { margin: 0 0 0.4rem; font-size: 0.98rem; line-height: 1.6; }
 .fnirs-terms summary { cursor: pointer; font-weight: var(--w-label); }
+.fnirs-terms .terms-plots { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
 .trial-matrix { display: grid; gap: 2px; align-items: center; font-variant-numeric: tabular-nums; }
 .tm-row { display: contents; }
 .tm-head > * { font-size: 0.72rem; color: var(--muted); text-align: center; }

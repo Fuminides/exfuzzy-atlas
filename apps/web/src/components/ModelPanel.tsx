@@ -116,8 +116,8 @@ export function ModelPanel({ card, open = false, unit, brief = false }: Props) {
             </tbody>
           </table>
           <p className="muted">
-            {tr("En negrita, el valor más favorable de cada columna (menor MAE/RMSE, mayor R²), si solo hay uno.",
-              "Bold marks the most favourable value in each column (lowest MAE/RMSE, highest R²), when there is only one.")}
+            {tr("En negrita, el mejor valor de cada columna (menor MAE/RMSE, mayor R²), salvo empate.",
+              "Bold marks the best value in each column (lowest MAE/RMSE, highest R²), unless there is a tie.")}
           </p>
           {extra.length > 0 && (
             <details>

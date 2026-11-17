@@ -15,7 +15,7 @@ export function WhatIfEntry({ onOpen }: { onOpen: () => void }) {
       <button type="button" onClick={onOpen}>
         {tr("¿Y si…?", "What if…?")}
       </button>{" "}
-      <span className="muted">{tr("Prueba entradas distintas en este registro. Es la respuesta del modelo a entradas hipotéticas.", "Try different inputs on this record. What you see is the model's answer to hypothetical inputs.")}</span>
+      <span className="muted">{tr("Prueba entradas distintas en este registro y mira cómo responde el modelo.", "Try different inputs on this record and see how the model responds.")}</span>
     </p>
   );
 }
@@ -63,7 +63,7 @@ export function PredictionWhatIf({ modelId, entityId, entityName, at, variables,
         </button>
       </p>
       <p className="muted">
-        {tr(<>Escenario sobre el registro publicado de {entityName} en la emisión <code>{at}</code>. Salida que se recalcula: {outputName}. Es la respuesta del modelo a las entradas modificadas.</>,
+        {tr(<>Escenario sobre el registro publicado de {entityName} (emisión <code>{at}</code>): el modelo vuelve a calcular {outputName} con las entradas que cambies.</>,
           <>Scenario on the published record of {entityName} at issue <code>{at}</code>. Recalculated output: {outputName}. This is the model&apos;s answer to the modified inputs.</>)}
       </p>
       {trace.status === "error" && (

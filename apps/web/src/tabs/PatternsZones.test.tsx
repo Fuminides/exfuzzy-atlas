@@ -61,7 +61,7 @@ describe("Por zonas: colouring modes", () => {
     // R01 60 % against 45 %: ×1,33; R02 70 % against 55 %: ×1,27; E6, R02 68 %: ×1,24, below 1,25: «sin regla característica»
     expect(labels()).toMatchObject({ E0: null, E1: "R01", E2: "R02", E5: "R02", E6: "__none__" });
     expect(screen.getByTestId("legend-none")).toHaveTextContent(/sin regla característica\s*1/);
-    expect(screen.getByTestId("zones-legend")).toHaveTextContent(/al menos el 5\s% y 5 de las predicciones del lugar, y al menos 1,25 veces su parte general/);
+    expect(screen.getByTestId("zones-legend")).toHaveTextContent(/al menos el 5\s% y 5 de las predicciones del lugar, y si esa división da al menos 1,25/);
 
     await user.click(within(modes).getByRole("button", { name: "Perfiles" }));
     const legend = screen.getByRole("region", { name: "Leyenda: perfiles de reglas" });
@@ -175,7 +175,7 @@ describe("Por zonas in English", () => {
     await waitFor(() => expect(features()).toHaveLength(7));
     const modes = screen.getByRole("group", { name: "Colour by" });
     expect(within(modes).getAllByRole("button").map((b) => b.textContent)).toEqual(["Characteristic rule", "Profiles", "Rule that decides most"]);
-    expect(screen.getByTestId("zones-legend")).toHaveTextContent(/at least 5% and 5 of the place's predictions, and at least 1.25 times its overall share/);
+    expect(screen.getByTestId("zones-legend")).toHaveTextContent(/at least 5% and 5 of the place's predictions, and if that ratio is at least 1.25/);
     await user.click(within(modes).getByRole("button", { name: "Profiles" }));
     expect(screen.getByRole("region", { name: "Legend: rule profiles" })).toHaveTextContent(/A more R01 3/);
     emit("click", { features: [{ properties: { entity_id: "E1" } }] }, "stations-valid");

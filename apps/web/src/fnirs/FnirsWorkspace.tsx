@@ -116,7 +116,7 @@ function TaskIntro({ card, trials }: { card: FnirsModelCard; trials: readonly Tr
             <img src={taskFigure} width={756} height={487} loading="lazy" decoding="async"
               alt={tr("Secuencia de la tarea: una instrucción de 2 s, dígitos de 0,5 s seguidos de una cruz de 1,5 s, la palabra STOP y 20 s de reposo.", "Sequence of the task: a 2 s instruction, digits of 0.5 s each followed by a 1.5 s cross, the word STOP and 20 s of rest.")} />
             <figcaption className="muted small">
-              {tr("Cómo se presentaba la tarea: una instrucción, un dígito cada 2 s durante 40 s, «STOP» y 20 s de reposo. ", "How the task was presented: an instruction, a digit every 2 s for 40 s, «STOP» and 20 s of rest. ")}
+              {tr("Cómo se presentaba la tarea: una instrucción, un dígito cada 2 s durante 40 s, «STOP» y 20 s de reposo. ", "How the task was presented: an instruction, a digit every 2 s for 40 s, “STOP” and 20 s of rest. ")}
               <a href="https://doi.org/10.1038/sdata.2018.3" target="_blank" rel="noopener noreferrer">Shin et al. (2018), Scientific Data 5:180003</a>
               {tr(", figura 1a (recortada). ", ", figure 1a (cropped). ")}
               <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>.
@@ -130,13 +130,13 @@ function TaskIntro({ card, trials }: { card: FnirsModelCard; trials: readonly Tr
         <div>
           <h3>{tr("Qué mide fNIRS", "What fNIRS measures")}</h3>
           <p>
-            {tr("36 canales de luz infrarroja sobre el cuero cabelludo miden cuánto cambia la oxihemoglobina (HbO) y la desoxihemoglobina (HbR) en la corteza que tienen debajo: el rastro de la actividad de esa zona.",
-              "36 near-infrared channels on the scalp measure how much oxyhaemoglobin (HbO) and deoxyhaemoglobin (HbR) change in the cortex beneath them: the trace of that area's activity.")}
+            {tr("36 canales de luz infrarroja sobre el cuero cabelludo miden cuánto cambian la oxihemoglobina (HbO) y la desoxihemoglobina (HbR) en la corteza que tienen debajo. Esos cambios siguen la actividad de esa zona.",
+              "36 near-infrared channels on the scalp measure how much oxyhaemoglobin (HbO) and deoxyhaemoglobin (HbR) change in the cortex beneath them. These changes follow the activity of that area.")}
           </p>
           <h3>{tr("Qué hace el modelo", "What the model does")}</h3>
           <p>
-            {tr(`Para cada bloque toma el cambio medio de HbO y HbR de cada canal entre los segundos 10 y 40, respecto al reposo justo antes, y dice si el bloque era de ${names.cls(low.label).toLowerCase()} o de ${names.cls(high.label).toLowerCase()}. Lo dice con reglas que puedes leer.`,
-              `For each block it takes the mean change of HbO and HbR at each channel from second 10 to 40, relative to the rest just before, and says whether the block was ${names.cls(low.label).toLowerCase()} or ${names.cls(high.label).toLowerCase()}. It says so with rules you can read.`)}
+            {tr(`Para cada bloque, el modelo toma el cambio medio de HbO y HbR de cada canal entre los segundos 10 y 40, respecto al reposo justo antes, y dice, con reglas que se pueden leer, si el bloque era de ${names.cls(low.label).toLowerCase()} o de ${names.cls(high.label).toLowerCase()}.`,
+              `For each block, the model takes the mean change of HbO and HbR at each channel from second 10 to 40, relative to the rest just before, and uses rules you can read to say whether the block was ${names.cls(low.label).toLowerCase()} or ${names.cls(high.label).toLowerCase()}.`)}
           </p>
         </div>
       </div>
@@ -175,7 +175,7 @@ function RulesTab({ rules, montage, card, trials, onOpenRule, onOpenChannels }: 
 
       <TaskIntro card={card} trials={trials} />
 
-      <Card title={tr("Dónde miran las reglas", "Where the rules look")} subtitle={tr("Cada canal que usa una regla lleva una porción por regla, del color de la carga que esa regla apoya más.", "Each channel a rule uses carries one slice per rule, in the colour of the load that rule supports most.")}>
+      <Card title={tr("Dónde miran las reglas", "Where the rules look")} subtitle={tr("Un canal tiene una porción por cada regla que lo usa, del color de la carga que esa regla apoya más.", "A channel gets one slice for each rule that uses it, coloured by the load that rule supports most.")}>
         <div className="fnirs-overview">
           <ScalpMap channels={montage.channels} wedges={wedges} label={tr("Canales que usan las reglas", "Channels the rules use")} testId="rules-scalp" />
           <div className="fnirs-overview-side">
@@ -201,14 +201,14 @@ function RulesTab({ rules, montage, card, trials, onOpenRule, onOpenChannels }: 
               ))}
             </ul>
             <p className="muted small">
-              {tr(`Las reglas usan ${wedges.size} de los ${montage.channels.length} canales. Las manchas grises agrupan los canales por cercanía (las seis zonas del montaje); el resto de canales son los puntos pequeños.`,
-                `The rules use ${wedges.size} of the ${montage.channels.length} channels. The grey patches group the channels by proximity (the six areas of the montage); the other channels are the small dots.`)}
+              {tr(`Las reglas usan ${wedges.size} de los ${montage.channels.length} canales. Los puntos pequeños son los canales que no usa ninguna regla. Las manchas grises son las seis zonas del montaje, cada una con canales cercanos.`,
+                `The rules use ${wedges.size} of the ${montage.channels.length} channels. The small dots are the channels no rule uses. The grey patches are the six areas of the montage, each a group of nearby channels.`)}
             </p>
           </div>
         </div>
       </Card>
 
-      <Card title={tr(`Las ${rules.rules.length} reglas`, `The ${rules.rules.length} rules`)} subtitle={tr("No decide una sola regla: cada una suma a cada carga su peso por cuánto se cumple, y gana la carga con más total.", "No single rule decides: each adds its weight to each load in proportion to how much it holds, and the load with the largest total wins.")}>
+      <Card title={tr(`Las ${rules.rules.length} reglas`, `The ${rules.rules.length} rules`)} subtitle={tr("Ninguna regla decide sola: cada una suma a cada carga su peso multiplicado por cuánto se cumple, y gana la carga con más total.", "No single rule decides: each adds to each load its weight times how much it holds, and the load with the largest total wins.")}>
         <WeightKey note={false} />
         <ol className="fnirs-rule-grid" data-testid="fnirs-rule-grid">
           {rules.rules.map((r) => {
@@ -233,7 +233,7 @@ function RulesTab({ rules, montage, card, trials, onOpenRule, onOpenChannels }: 
                 )}
                 {freq !== undefined && tau !== null && (
                   <p className="muted small" data-raw={String(freq)}>
-                    {tr(`Se cumple (grado ≥ ${dec(tau, 1)}) en el ${pct(freq)} de los bloques de train.`, `Holds (degree ≥ ${dec(tau, 1)}) in ${pct(freq)} of the train blocks.`)}
+                    {tr(`Se cumple (grado ≥ ${dec(tau, 1)}) en el ${pct(freq)} de los bloques de entrenamiento.`, `Holds (degree ≥ ${dec(tau, 1)}) in ${pct(freq)} of the training blocks.`)}
                   </p>
                 )}
                 <details className="fnirs-terms">
@@ -284,7 +284,7 @@ function ChannelsTab({ rules, montage, card, trials, sampleId, onTrial, chosenRu
 
       <div className="fnirs-explore">
         <Card title={tr("Todos los ensayos", "All trials")} subtitle={tr(
-          `Un sujeto por fila, un bloque por columna. Los de test (${card.split.test_subjects.join(", ")}) no se usaron para ajustar el modelo.`,
+          `Un sujeto por fila, un bloque por columna. Los sujetos de prueba (${card.split.test_subjects.join(", ")}) no se usaron para ajustar el modelo.`,
           `One subject per row, one block per column. The test subjects (${card.split.test_subjects.join(", ")}) were not used to fit the model.`,
         )}>
           <TrialMatrix trials={trials} scheme={scheme} sampleId={sampleId} onTrial={onTrial} />
@@ -338,15 +338,15 @@ function TrialPicker({ subjects, subject, onSubject, trials, sampleId, onTrial, 
       <label>
         {tr("Sujeto", "Subject")}{" "}
         <select value={subject} onChange={(e) => onSubject(Number(e.target.value))} data-testid="subject-select">
-          <optgroup label={tr(`Test (${testSubjects.length} sujetos que el modelo no vio)`, `Test (${testSubjects.length} subjects the model never saw)`)}>
+          <optgroup label={tr(`Prueba (${testSubjects.length} sujetos que el modelo no vio)`, `Test (${testSubjects.length} subjects the model never saw)`)}>
             {subjects.filter((s) => s.split === "test").map((s) => <option key={s.subject} value={s.subject}>{s.subject}</option>)}
           </optgroup>
-          <optgroup label={tr("Train (dentro de la muestra)", "Train (in-sample)")}>
+          <optgroup label={tr("Entrenamiento (dentro de la muestra)", "Training (in-sample)")}>
             {subjects.filter((s) => s.split === "train").map((s) => <option key={s.subject} value={s.subject}>{s.subject}</option>)}
           </optgroup>
         </select>
       </label>
-      <span className="badge" data-testid="split-badge">{split === "test" ? "test" : tr("train · dentro de la muestra", "train · in-sample")}</span>
+      <span className="badge" data-testid="split-badge">{split === "test" ? tr("prueba", "test") : tr("entrenamiento · dentro de la muestra", "training · in-sample")}</span>
       <div className="fnirs-blocks" role="group" aria-label={tr("Bloques del sujeto", "The subject's blocks")}>
         {trials.map((r) => {
           const hit = r.predicted_label === r.observed_label;
@@ -439,8 +439,8 @@ function Scalp({ trace, montage, rules, view, ruleId }: { trace: TrialTrace; mon
       )}
       <p className="muted small">
         {montage.region_approximate
-          ? tr("Posiciones: tabla de coordenadas del dataset. Regiones (al pasar el ratón): asignación aproximada de la demo ex-Fuzzy fNIRS.", "Positions: the dataset's coordinate table. Regions (on hover): approximate assignment of the ex-Fuzzy fNIRS demo.")
-          : tr("Posiciones: tabla de coordenadas del dataset.", "Positions: the dataset's coordinate table.")}
+          ? tr("Las posiciones salen de la tabla de coordenadas del dataset. Las regiones que aparecen al pasar el ratón son aproximadas y vienen de la demo fNIRS de ex-Fuzzy.", "Channel positions come from the dataset's coordinate table. The regions shown on hover are approximate, taken from the ex-Fuzzy fNIRS demo.")
+          : tr("Las posiciones salen de la tabla de coordenadas del dataset.", "Channel positions come from the dataset's coordinate table.")}
       </p>
     </div>
   );
