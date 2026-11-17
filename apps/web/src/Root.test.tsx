@@ -32,7 +32,7 @@ describe("the landing page", () => {
     expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Explicando datos con reglas");
     expect(landing()!.querySelector(".lp-sub")).toHaveTextContent(/^Un estudio de calidad del aire, calidad del agua, demanda de taxis y actividad cerebral\.$/);
-    expect(landing()!.querySelector(".lp-kicker")).toHaveTextContent("exFuzzy con datos reales");
+    expect(landing()!.querySelector(".lp-kicker")).toHaveTextContent("ExFuzzy con datos reales");
     expect(screen.getByRole("link", { name: "Saltar al contenido" })).toBeInTheDocument();
     const text = landing()!.textContent!;
     expect(text).toContain("ex_fuzzy");

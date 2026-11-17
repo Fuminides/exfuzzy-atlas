@@ -1,8 +1,10 @@
 // Draws the small territory maps of the landing page (src/assets/landing/{air,water,mobility,fnirs}.svg) from the
 // entities.geojson each published model ships: the German stations (points), the river sampling points (points) and
 // the NYC taxi zones (polygons); and the 36 NIRS channels from configs/fnirs/montage.json (the dataset's positions,
-// projected as the contract's head_projection: azimuthal equidistant from the vertex, nose up). Nothing else is drawn: no basemap, no tiles, no outline that is not in the data, so
-// the pictures need no tile attribution and carry no made-up geometry. The files are committed; rerun with
+// projected as the contract's head_projection: azimuthal equidistant from the vertex, nose up). Under the dots: the land
+// from Natural Earth 1:10m (public domain; src/assets/landing/outlines.json, Germany whole and Great Britain cropped
+// around the river points) and, for the scalp, the head the app draws (fnirs/ScalpMap.tsx). No basemap and no tiles,
+// so the pictures need no tile attribution. The files are committed; rerun with
 //   npm run gen:landing-maps [-- <published dir>]      (default: ../../artifacts/published, read only)
 // Colours are DESIGN.md's (Ink #17191c, Mist #f2f2f3); an <img> cannot read the page's CSS variables.
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
@@ -16,6 +18,8 @@ mkdirSync(outDir, { recursive: true });
 
 const INK = "#17191c";
 const MIST = "#f2f2f3";
+const EDGE = "#c9cbd1";
+const outlines = JSON.parse(readFileSync(join(here, "..", "src", "assets", "landing", "outlines.json"), "utf8"));
 const W = 400;
 const H = 300;
 const MARGIN = 16;
@@ -61,12 +65,19 @@ function svg(title, body) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" role="img"><title>${title}</title>${body}</svg>\n`;
 }
 
-/** One path of round dots: a zero-length segment with a round cap is a circle, at a fraction of <circle>'s bytes. */
-function dots(file, title, features, diameter) {
+/** The land under the dots, as one evenodd path. */
+const land = (rings, project) =>
+  `<path d="${rings.map((r) => `M${r.map((c) => project(c)).map(([x, y]) => `${num(x)} ${num(y)}`).join("L")}Z`).join("")}" fill="${MIST}" fill-rule="evenodd" stroke="${EDGE}" stroke-width="1" stroke-linejoin="round"/>`;
+
+/**
+ * One path of round dots (a zero-length segment with a round cap is a circle, at a fraction of <circle>'s bytes) over
+ * the land, framed on the outline too when `outline.fit` (Germany whole), else on the dots alone (the rivers).
+ */
+function dots(file, title, features, diameter, outline) {
   const coords = features.map((f) => f.geometry.coordinates);
-  const project = projector(coords);
+  const project = projector(outline.fit ? [...coords, ...outline.rings.flat()] : coords);
   const d = coords.map((c) => project(c)).map(([x, y]) => `M${num(x)} ${num(y)}h0`).join("");
-  write(file, svg(title, `<path d="${d}" fill="none" stroke="${INK}" stroke-width="${diameter}" stroke-linecap="round" opacity=".85"/>`), features.length);
+  write(file, svg(title, `${land(outline.rings, project)}<path d="${d}" fill="none" stroke="${INK}" stroke-width="${diameter}" stroke-linecap="round" opacity=".85"/>`), features.length);
 }
 
 function zones(file, title, features) {
@@ -88,8 +99,8 @@ function write(file, text, n) {
   console.log(`${file}: ${n} features, ${statSync(path).size} bytes`);
 }
 
-dots("air.svg", "Stations in Germany", entities("de_no2_h1"), 3.4);
-dots("water.svg", "River sampling points in Northumberland and Tyne", entities("uk_water_do"), 4.2);
+dots("air.svg", "Stations in Germany", entities("de_no2_h1"), 3.4, outlines.air);
+dots("water.svg", "River sampling points in Northumberland and Tyne", entities("uk_water_do"), 4.2, outlines.water);
 zones("mobility.svg", "Taxi zones of New York", entities("nyc_pickups_h1"));
 
 /** The NIRS channels, as `MontageChannel.xy` (contract v0.9): radius = polar angle / 90°, nose up, right ear right. */
@@ -101,9 +112,16 @@ function channels(file, title, montagePath, diameter) {
     const p = Math.hypot(x, y);
     return p === 0 ? [0, 0] : [(r * x) / p, (r * y) / p];
   });
-  const scale = (H / 2 - MARGIN) / Math.max(...xy.map(([x, y]) => Math.hypot(x, y)));
-  const d = xy.map(([x, y]) => `M${num(W / 2 + x * scale)} ${num(H / 2 - y * scale)}h0`).join("");
-  write(file, svg(title, `<path d="${d}" fill="none" stroke="${INK}" stroke-width="${diameter}" stroke-linecap="round" opacity=".85"/>`), xy.length);
+  // the head of fnirs/ScalpMap.tsx, in head units (the ear plane is the unit circle): skull 1.09, nose to 1.23
+  const scale = (H / 2 - MARGIN) / 1.24;
+  const X = (x) => num(W / 2 + x * scale);
+  const Y = (y) => num(H / 2 - y * scale);
+  const head = [
+    `<path d="M${X(-1.09)} ${Y(0.18)}C${X(-1.22)} ${Y(0.14)} ${X(-1.22)} ${Y(-0.14)} ${X(-1.09)} ${Y(-0.18)}M${X(1.09)} ${Y(0.18)}C${X(1.22)} ${Y(0.14)} ${X(1.22)} ${Y(-0.14)} ${X(1.09)} ${Y(-0.18)}M${X(-0.13)} ${Y(1.075)}L${X(0)} ${Y(1.23)}L${X(0.13)} ${Y(1.075)}" fill="${MIST}" stroke="${EDGE}" stroke-width="1.5" stroke-linejoin="round"/>`,
+    `<circle cx="${X(0)}" cy="${Y(0)}" r="${num(1.09 * scale)}" fill="${MIST}" stroke="${EDGE}" stroke-width="1.5"/>`,
+  ].join("");
+  const d = xy.map(([x, y]) => `M${X(x)} ${Y(y)}h0`).join("");
+  write(file, svg(title, `${head}<path d="${d}" fill="none" stroke="${INK}" stroke-width="${diameter}" stroke-linecap="round" opacity=".85"/>`), xy.length);
 }
 
-channels("fnirs.svg", "NIRS channels on the scalp", join(here, "..", "..", "..", "configs", "fnirs", "montage.json"), 9);
+channels("fnirs.svg", "NIRS channels on the scalp", join(here, "..", "..", "..", "configs", "fnirs", "montage.json"), 8);

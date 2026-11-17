@@ -13,6 +13,10 @@ import { colourOf, otherRulesLabel, OTHER_RULES_COLOUR, ruleColours } from "../l
 import { groupTerritories } from "../lib/tasks";
 import { classColor } from "../lib/classifier";
 import { ruleWedges, ScalpMap } from "../fnirs/ScalpMap";
+import outlines from "../assets/landing/outlines.json";
+
+/** Land under the dots (Natural Earth 1:10m, public domain; scripts/landing_outlines.py), by domain. */
+const LAND: Partial<Record<string, { fit: boolean; rings: number[][][] }>> = { air: outlines.air, water: outlines.water };
 import { OutcomePill } from "./OutcomePill";
 import { RuleSentenceView } from "./RuleSentenceView";
 import { ACCENT, columnRange, TermGlyph } from "./TermGlyph";
@@ -47,7 +51,7 @@ export function LandingArtifacts() {
         <>
           {card.status === "ok" && <PerfArtifact card={card.data} where={where} unit={task.unit} />}
           {rules.status === "ok" && imp && colours && <RuleArtifact rules={rules.data} importance={imp} colours={colours} task={task} where={where} />}
-          {entities.status === "ok" && imp && colours && <MapArtifact entities={entities.data} importance={imp} colours={colours} where={first.title} mixture={isMixtureImportance(imp)} />}
+          {entities.status === "ok" && imp && colours && <MapArtifact entities={entities.data} importance={imp} colours={colours} where={first.title} mixture={isMixtureImportance(imp)} land={LAND[first.domain] ?? null} />}
           {rules.status === "ok" && imp && colours && <RowArtifact rules={rules.data} importance={imp} colours={colours} task={task} />}
         </>
       )}
@@ -146,8 +150,8 @@ function RuleArtifact({ rules, importance, colours, task, where }: { rules: Mode
   );
 }
 
-/** Where each rule decides most: the stations as dots in the rule's colour (Patrones › Por zonas, in miniature). */
-function MapArtifact({ entities, importance, colours, where, mixture }: { entities: EntityCollection; importance: RuleImportanceResponse; colours: ReadonlyMap<string, string>; where: string; mixture: boolean }) {
+/** Where each rule decides most: the stations as dots in the rule's colour over the land (Patrones › Por zonas, in miniature). */
+function MapArtifact({ entities, importance, colours, where, mixture, land }: { entities: EntityCollection; importance: RuleImportanceResponse; colours: ReadonlyMap<string, string>; where: string; mixture: boolean; land: { fit: boolean; rings: number[][][] } | null }) {
   const byId = new Map(importance.entities.map((e) => [e.entity_id, e] as const));
   const points = entities.features.flatMap((f) => {
     const g = f.geometry;
@@ -158,8 +162,9 @@ function MapArtifact({ entities, importance, colours, where, mixture }: { entiti
     return [{ id: f.properties.entity_id, lon, lat, rule: top.rule_id }];
   });
   if (points.length < 10) return null;
-  const lats = points.map((p) => p.lat);
-  const lons = points.map((p) => p.lon);
+  const framed = land?.fit ? land.rings.flat() : [];
+  const lats = [...points.map((p) => p.lat), ...framed.map((c) => c[1]!)];
+  const lons = [...points.map((p) => p.lon), ...framed.map((c) => c[0]!)];
   const [la0, la1, lo0, lo1] = [Math.min(...lats), Math.max(...lats), Math.min(...lons), Math.max(...lons)];
   const k = Math.cos((((la0 + la1) / 2) * Math.PI) / 180);
   const W = 240;
@@ -173,6 +178,7 @@ function MapArtifact({ entities, importance, colours, where, mixture }: { entiti
     <figure className="lp-art lp-art--map" data-testid="landing-map">
       <p className="lp-art-label">{mixture ? tr(`Dónde suma más cada regla · ${where}`, `Where each rule adds the most · ${where}`) : tr(`Dónde decide cada regla · ${where}`, `Where each rule decides · ${where}`)}</p>
       <svg viewBox={`0 0 ${W + 12} ${H + 12}`} className="lp-map">
+        {land && <path className="lp-map-land" d={land.rings.map((r) => `M${r.map((c) => `${x(c[0]!).toFixed(1)} ${y(c[1]!).toFixed(1)}`).join("L")}Z`).join("")} />}
         {points.map((p) => (
           <circle key={p.id} cx={x(p.lon)} cy={y(p.lat)} r={3.2} style={{ fill: colourOf(colours, p.rule) }} />
         ))}

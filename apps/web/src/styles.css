@@ -1180,6 +1180,7 @@ a.btn { display: inline-block; font-weight: var(--w-ui); }
 .lp-art--map { bottom: 3.5rem; left: calc(26vw - 250px); width: clamp(240px, 17vw, 300px); }
 .lp-map { display: block; width: 100%; height: auto; max-height: 260px; }
 .lp-map circle { stroke: var(--paper); stroke-width: 0.8; }
+.lp-map-land { fill: var(--mist); fill-rule: evenodd; stroke: var(--line-strong); stroke-width: 0.8; stroke-linejoin: round; }
 .lp-map-key { list-style: none; display: flex; flex-wrap: wrap; gap: 0.2rem 0.75rem; margin: 0.5rem 0 0; padding: 0; font-size: 0.75rem; color: var(--muted); }
 .lp-map-key li { display: inline-flex; align-items: center; gap: 0.3rem; }
 .lp-map-key .lp-swatch { border-radius: 50%; }

@@ -78,7 +78,7 @@ export function Landing({ onStart }: { onStart: () => void }) {
         <section className="lp-hero" aria-labelledby="landing-title">
           <div className="lp-wash" aria-hidden="true" />
           <div className="lp-hero-text">
-            <p className="lp-kicker">{tr("exFuzzy con datos reales", "exFuzzy on real data")}</p>
+            <p className="lp-kicker">{tr("ExFuzzy con datos reales", "ExFuzzy on real data")}</p>
             <h1 id="landing-title" className="lp-title" tabIndex={-1}>
               {tr(<><em className="lp-accent-blue">Explicando</em> datos <em className="lp-accent">con reglas</em></>, <><em className="lp-accent-blue">Explaining</em> data <em className="lp-accent">with rules</em></>)}
             </h1>
