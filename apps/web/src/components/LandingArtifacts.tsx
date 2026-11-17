@@ -267,8 +267,7 @@ function ScalpArtifact({ task, modelId }: { task: TaskInfo; modelId: string }) {
             ))}
           </ul>
           <p className="lp-art-note">
-            {tr(`${n} reglas, ${wedges.size} de ${montage.data.channels.length} canales. Cada porción: la carga que apoya su regla.`,
-              `${n} rules, ${wedges.size} of ${montage.data.channels.length} channels. Each slice: the load its rule supports.`)}
+            {tr(`${n} reglas usan ${wedges.size} de los ${montage.data.channels.length} canales.`, `${n} rules use ${wedges.size} of the ${montage.data.channels.length} channels.`)}
           </p>
         </div>
       </div>

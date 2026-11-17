@@ -1,13 +1,13 @@
-import type { LinguisticVariable, RuleDefinition } from "../api/types";
+import type { LinguisticTerm, LinguisticVariable, RuleDefinition } from "../api/types";
 import { tr } from "../i18n";
 import { fmtNum } from "../lib/format";
-import { boundedSumPoints, isExtra, termsOf } from "../lib/conditions";
+import { boundedSumPoints, isExtra, termMembership, termsOf } from "../lib/conditions";
 import { labelWithUnit, useFeatureLabel, useNames } from "../lib/labels";
-import { COLORS, isDrawn, vertices } from "./PartitionsPanel";
+import { isDrawn } from "./PartitionsPanel";
 
-const W = 300;
-const H = 88;
-const M = { l: 6, r: 6, t: 24, b: 16 };
+const W = 320;
+const H = 96;
+const M = { l: 8, r: 8, t: 30, b: 18 };
 
 /**
  * The x range worth drawing: where the terms actually change. A domain that runs far past the last term (NO₂ up to 1100 µg/m³
@@ -25,9 +25,28 @@ export function viewRange(params: readonly number[], dom: [number, number] | nul
   return [Math.max(dLo, a - pad), Math.min(dHi, b + pad)];
 }
 
+/** A term's line inside the drawn range: its membership at the range ends and at its own knots in between, without the
+ * runs at 0 before and after it (they would lie on the axis). The line is cut at the range, so no edge is drawn as a wall. */
+function termPoints(t: LinguisticTerm, lo: number, hi: number): [number, number][] {
+  const xs = [...new Set([lo, ...t.params.filter((v) => v > lo && v < hi), hi])].sort((a, b) => a - b);
+  return trimZeros(xs.map((x): [number, number] => [x, termMembership(t, x)]));
+}
+
+/** A line without its runs at 0 at either end. */
+function trimZeros(points: readonly [number, number][]): [number, number][] {
+  const pts = [...points];
+  while (pts.length > 2 && pts[0]![1] === 0 && pts[1]![1] === 0) pts.shift();
+  while (pts.length > 2 && pts[pts.length - 1]![1] === 0 && pts[pts.length - 2]![1] === 0) pts.pop();
+  return pts;
+}
+
+/** Two significant digits for the axis (`-0,00096`, not `-0,0009633`). */
+const axisNum = (v: number): string => fmtNum(Number(v.toPrecision(2)));
+
 /**
  * The membership functions of the variables a rule uses, one small plot per variable: every term of the variable as a
- * line, the one the rule uses drawn thick. The lines are the terms' published parameters; nothing is computed here.
+ * grey line, and what the rule asks for (its term, or the bounded sum of the terms an ordinal or compound condition
+ * covers) as a filled shape in the accent colour, named above the plot. The lines are the terms' published parameters.
  */
 export function RuleTermsPlot({ rule, variables }: { rule: RuleDefinition; variables: readonly LinguisticVariable[] }) {
   const label = useFeatureLabel();
@@ -42,39 +61,58 @@ export function RuleTermsPlot({ rule, variables }: { rule: RuleDefinition; varia
         // an ordinal or compound condition (v0.8) is drawn as the bounded sum of the terms it covers, not as one of them
         const extra = condition && isExtra(condition) ? condition : null;
         const used = extra ? null : (condition?.term ?? null);
+        const covered = new Set(extra ? termsOf(extra) : used ? [used] : []);
         const drawn = variable.terms.filter(isDrawn);
         const dom = variable.domain as [number, number] | null | undefined;
-        const xs = drawn.flatMap((t) => t.params);
-        const [lo, hi] = viewRange(xs, dom);
+        const [lo, hi] = viewRange(drawn.flatMap((t) => t.params), dom);
         const X = (v: number) => M.l + ((Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo || 1)) * (W - M.l - M.r);
         const Y = (m: number) => H - M.b - m * (H - M.t - M.b);
+        const line = (pts: readonly [number, number][]) => pts.map(([x, m]) => `${X(x).toFixed(1)},${Y(m).toFixed(1)}`).join(" ");
+        const area = (pts: readonly [number, number][]) => `M ${X(pts[0]![0]).toFixed(1)},${Y(0)} L ${line(pts).replace(/ /g, " L ")} L ${X(pts[pts.length - 1]![0]).toFixed(1)},${Y(0)} Z`;
+        const ruleShape = extra
+          ? trimZeros(boundedSumPoints(variable.terms.filter((t) => covered.has(t.name)), lo, hi))
+          : (() => { const t = drawn.find((d) => d.name === used); return t ? termPoints(t, lo, hi) : null; })();
+        // term names on one row above the plateaus; a name that would touch the previous one goes up a row
+        const placed: { x: number; w: number; row: number }[] = [];
+        const labels = drawn.map((t) => {
+          const text = names.term(feature, t.name);
+          const w = text.length * 6;
+          const centre = X((Math.max(t.params[1]!, lo) + Math.min(t.params[2]!, hi)) / 2);
+          const x = Math.min(W - M.r - w / 2, Math.max(M.l + w / 2, centre));
+          const prev = placed[placed.length - 1];
+          const row = prev && prev.row === 0 && x - w / 2 < prev.x + prev.w / 2 + 6 ? 1 : 0;
+          placed.push({ x, w, row });
+          return { t, text, x, row };
+        });
         const name = labelWithUnit(label(feature), variable.unit);
+        const asked = condition ? (extra ? names.label(feature, extra) : names.term(feature, condition.term)) : null;
         return (
           <figure key={feature} className="terms-plot">
-            <figcaption>{name}</figcaption>
-            <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={tr(`Términos de ${name} entre ${fmtNum(lo)} y ${fmtNum(hi)}; la regla usa ${condition ? names.phrase(feature, condition.term, condition) : "ninguno"}`, `Terms of ${name} between ${fmtNum(lo)} and ${fmtNum(hi)}; the rule uses ${condition ? names.phrase(feature, condition.term, condition) : "none"}`)}>
-              <line x1={M.l} x2={W - M.r} y1={Y(0)} y2={Y(0)} className="axis-line" />
-              {variable.terms.map((t, i) => {
-                if (!isDrawn(t)) return null;
-                const vs = vertices(t.params);
-                const color = COLORS[i % COLORS.length]!;
-                return (
-                  <g key={t.name}>
-                    <polyline className={t.name === used ? "term term--rule" : "term"} style={{ stroke: color }} points={vs.map(([x, m]) => `${X(x)},${Y(m)}`).join(" ")} />
-                    <text x={X((Math.max(t.params[1]!, lo) + Math.min(t.params[2]!, hi)) / 2)} y={Y(1) - 3 - (i % 2) * 10} textAnchor="middle" className="axis" style={{ fill: color, fontWeight: t.name === used ? 700 : 400, fontStyle: "italic" }}>
-                      {names.term(feature, t.name)}
-                    </text>
-                  </g>
-                );
-              })}
-              {extra && (
-                <g data-condition={extra.operator}>
-                  <polyline className="term term--sum" points={boundedSumPoints(variable.terms.filter((t) => termsOf(extra).includes(t.name)), lo, hi).map(([x, m]) => `${X(x)},${Y(m)}`).join(" ")} />
-                  <text x={M.l} y={Y(1) + 11} className="axis" style={{ fill: "var(--ink)", fontWeight: 700, fontStyle: "italic" }}>{names.label(feature, extra)}</text>
-                </g>
+            <figcaption>
+              {name}
+              {asked && (
+                <span className="terms-plot-asked">
+                  <span className="terms-plot-swatch" aria-hidden="true" />
+                  <em>{asked}</em>
+                </span>
               )}
-              <text x={M.l} y={H - 3} className="axis">{fmtNum(lo)}</text>
-              <text x={W - M.r} y={H - 3} textAnchor="end" className="axis">{fmtNum(hi)}</text>
+            </figcaption>
+            <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={tr(`Términos de ${name} entre ${fmtNum(lo)} y ${fmtNum(hi)}; la regla usa ${condition ? names.phrase(feature, condition.term, condition) : "ninguno"}`, `Terms of ${name} between ${fmtNum(lo)} and ${fmtNum(hi)}; the rule uses ${condition ? names.phrase(feature, condition.term, condition) : "none"}`)}>
+              {ruleShape && ruleShape.length > 1 && <path className="term-area" d={area(ruleShape)} />}
+              <line x1={M.l} x2={W - M.r} y1={Y(0)} y2={Y(0)} className="axis-line" />
+              {lo < 0 && hi > 0 && <line x1={X(0)} x2={X(0)} y1={Y(0)} y2={Y(0) + 3} className="axis-line" />}
+              {drawn.map((t) => (
+                <polyline key={t.name} className={t.name === used ? "term term--rule" : "term"} points={line(termPoints(t, lo, hi))} />
+              ))}
+              {extra && ruleShape && <polyline className="term term--rule term--sum" data-condition={extra.operator} points={line(ruleShape)} />}
+              {labels.map(({ t, text, x, row }) => (
+                <text key={t.name} x={x} y={Y(1) - 4 - row * 11} textAnchor="middle" className={covered.has(t.name) ? "term-label term-label--rule" : "term-label"}>
+                  {text}
+                </text>
+              ))}
+              <text x={M.l} y={H - 3} className="axis">{axisNum(lo)}</text>
+              {lo < 0 && hi > 0 && X(0) - M.l > 40 && W - M.r - X(0) > 40 && <text x={X(0)} y={H - 3} textAnchor="middle" className="axis">0</text>}
+              <text x={W - M.r} y={H - 3} textAnchor="end" className="axis">{axisNum(hi)}</text>
             </svg>
           </figure>
         );

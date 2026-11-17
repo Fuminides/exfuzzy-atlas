@@ -274,7 +274,7 @@ describe("fNIRS on the landing", () => {
     const map = within(card).getByTestId("landing-scalp-map");
     const used = new Set(fx.rules.rules.flatMap((r) => r.antecedents.map((a) => fx.montage.channels.find((c) => c.inputs.some((i) => i.feature === a.feature))?.channel_id)).filter(Boolean));
     expect(map.querySelectorAll("[data-rules]")).toHaveLength(used.size);
-    expect(card).toHaveTextContent(`${fx.rules.rules.length} rules, ${used.size} of ${fx.montage.channels.length} channels`);
+    expect(card).toHaveTextContent(`${fx.rules.rules.length} rules use ${used.size} of the ${fx.montage.channels.length} channels.`);
     expect(screen.getByTestId("landing-artifacts")).toHaveAttribute("aria-hidden", "true");
   });
 });
